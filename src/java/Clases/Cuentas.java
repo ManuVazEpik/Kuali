@@ -24,7 +24,14 @@ public class Cuentas {
     private int id_usu, per_usu,id_caf;
     private String nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tel_usu, dir_caf,nom_caf;
     private InputStream fot_caf;
+    private boolean aut_caf;
 
+    public boolean getAut_caf(){
+        return aut_caf;
+    }
+    public void setAut_caf(boolean aut_caf){
+        this.aut_caf=aut_caf;
+    }
     public int getId_usu() {
         return id_usu;
     }
@@ -148,14 +155,30 @@ public class Cuentas {
                 ps.setBoolean(5, false);
                 estatus=ps.executeUpdate();
             }
-            
             con.close();
-            
         }catch(Exception ed){
             System.out.println("Error al guardar usuario");
             System.out.println(ed.getMessage());
             System.out.println(ed.getStackTrace());
         }
+        return estatus;
+    }
+    public int Autorizar(Cuentas c)throws SQLException{
+        int estatus=-1;
+            Connection con = conexion.getConexion();
+            String sql = "";
+            PreparedStatement ps = null;
+            try{
+                sql = "update cafeteria set aut_caf=? where id_caf=?";
+                ps=con.prepareStatement(sql);
+                ps.setBoolean(1,true);
+                ps.setInt(2, c.getId_caf());
+                estatus =ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                con.close();
+            }
+            con.close();
         return estatus;
     }
     public int Actualizar(Cuentas c, int tipo) throws SQLException{
@@ -203,11 +226,16 @@ public class Cuentas {
                 q ="delete from usuario where id_usu=?";
                 ps = con.prepareStatement(q);
                 ps.setInt(1, id);
-                estatus += ps.executeUpdate();
+                estatus = ps.executeUpdate();
+            }else if(permisos==3){
+                con = conexion.getConexion();
+                q="delete from cafeteria where id_caf=?";
+                ps = con.prepareStatement(q);
+                ps.setInt(1, id);
+                estatus =ps.executeUpdate();
             }
-            
-        
         }catch (Exception ed){
+            con.close();
             System.out.println("No conecto a la tabla");
             System.out.println(ed.getMessage());
             System.out.println(ed.getStackTrace());
@@ -221,29 +249,27 @@ public class Cuentas {
         Cuentas c = new Cuentas();
         try{
             Connection con = conexion.getConexion();
-            String sql = "Select * from usuario,cuenta where usuario.id_cue=cuenta.id_cue and id_usu = ?";
+            String sql = "Select * from usuario where id_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                c.setIdC(rs.getInt(1));
-                c.setNombre(rs.getString(3));
-                c.setAppat(rs.getString(4));
-                c.setApmat(rs.getString(5));
-                c.setTel(rs.getString(6));
-                c.setCorreo(rs.getString(8));
-                c.setContrasena(rs.getString(9));
+                c.setId_usu(rs.getInt(1));
+                c.setNom_usu(rs.getString(2));
+                c.setAppat_usu(rs.getString(3));
+                c.setApmat_usu(rs.getString(4));
+                c.setEmail_usu(rs.getString(5));
+                c.setPass_usu(rs.getString(6));
+                c.setTel_usu(rs.getString(7));
                 break;
             }
-            
+            ps.close();
             con.close();
-            
         }catch(Exception ed){
             System.out.println("error en get usuario by id");
             System.out.println(ed.getMessage());
             System.out.println(ed.getStackTrace());
-        
         }
         return c;
     }
@@ -251,49 +277,43 @@ public class Cuentas {
         Cuentas c = new Cuentas();
         try{
             Connection con = conexion.getConexion();
-            String sql = "Select * from cafeteria,cuenta where cafeteria.id_cue=cuenta.id_cue and id_caf = ?";
+            String sql = "Select * from cafeteria where id_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                c.setIdC(rs.getInt(1));
-                c.setFoto(rs.getBinaryStream(3));
-                c.setNomLocal(rs.getString(4));
-                c.setCalle(rs.getString(5));
-                c.setColonia(rs.getString(6));
-                c.setEx(rs.getInt(7));
-                c.setCorreo(rs.getString(9));
-                c.setContrasena(rs.getString(10));
+                c.setId_caf(rs.getInt(1));
+                c.setNom_caf(rs.getString(2)); //rs.getBinaryStream(3)
+                c.setDir_caf(rs.getString(3));
+                c.setFot_caf(rs.getBinaryStream(5));
+                c.setAut_caf(rs.getBoolean(6));
                 break;
             }
-            
+            ps.close();
             con.close();
             
         }catch(Exception ed){
             System.out.println("error en get cafeteria by id");
             System.out.println(ed.getMessage());
             System.out.println(ed.getStackTrace());
-        
         }
         return c;
     }
     public Cuentas encontrarUsuario(String correo, String contr) throws SQLException{
         Cuentas c = new Cuentas ();
             Connection con = conexion.getConexion();
-            String sql="select * from cuenta where email_usu = '"+correo+"' and pass_usu = '"+contr+"'";
+            String sql="select * from usuario where email_usu = '"+correo+"' and pass_usu = '"+contr+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                
-                c.setIdC(rs.getInt(1));
-                c.setCorreo(rs.getString(2));
-                c.setContrasena(rs.getString(3));
-                c.setPermisos(rs.getInt(4));
+                c.setId_usu(rs.getInt(1));
+                c.setEmail_usu(rs.getString(5));
+                c.setPass_usu(rs.getString(6));
+                c.setPer_usu(rs.getInt(8));
                 break;
             }
-    
         return c;
     }
     
@@ -309,7 +329,7 @@ public class Cuentas {
         try{
             outputstream=response.getOutputStream();
             cn=conexion.getConexion();
-            String q="SELECT img_caf FROM cafeteria where id_caf="+idP+"";
+            String q="SELECT fot_caf FROM cafeteria where id_caf="+idP+"";
             ps=cn.prepareStatement(q);
             rs=ps.executeQuery();
             if(rs.next()){
