@@ -53,21 +53,19 @@ public class EliminarUsu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String eseidU, permiS;
-            eseidU = request.getParameter("idUE");
-            permiS=request.getParameter("perUE");
-            System.out.println("?");
-            int idU = Integer.parseInt(eseidU);
-            int permisos = Integer.parseInt(permiS);
+            String idS, tipoS;
+            idS = request.getParameter("id");
+            tipoS=request.getParameter("tipo");
+            int id = Integer.parseInt(idS);
+            int tipo = Integer.parseInt(tipoS);
             
             Cuentas opc = new Cuentas();
-            int estatus=opc.Eliminar(idU,permisos);
+            int estatus=opc.Eliminar(id,tipo);
             if(estatus>0){
                 response.sendRedirect("index.html");
             }else{
                 response.sendRedirect("error.jsp");
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);
         }
