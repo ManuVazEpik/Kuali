@@ -49,31 +49,27 @@ public class RegistrarUsu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String telS, nombre, appat, apmat, correo, contrasena, permisosS, nomLocal, calle, col, num;
+            String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf,calle,col,num;
+            tipo=request.getParameter("tipo");
             
-            int idC = 0;
-            
-            permisosS=request.getParameter("perU");
-            System.out.println(permisosS);
-            if (permisosS.equals("Cliente")) {
-                nombre = request.getParameter("nomU");
-                appat = request.getParameter("appatU");
-                apmat = request.getParameter("apmatU");
-                telS =request.getParameter("telU");
-                correo=request.getParameter("corU");
-                contrasena=request.getParameter("conU");
+            if (Integer.parseInt(tipo)==2) {
+                nom_usu = request.getParameter("nom_usu");
+                appat_usu = request.getParameter("appat_usu");
+                apmat_usu = request.getParameter("apmat_usu");
+                tel_usu =request.getParameter("tel_usu");
+                email_usu=request.getParameter("email_usu");
+                pass_usu=request.getParameter("pass_usu");
                 
                 Cuentas c = new Cuentas();
                 Cuentas operC= new Cuentas();
-                c.setNombre(nombre);
-                c.setAppat(appat);
-                c.setApmat(apmat);
-                c.setCorreo(correo);
-                c.setContrasena(contrasena);
-                c.setTel(telS);
-                c.setPermisos(2);
+                c.setNom_usu(nom_usu);
+                c.setAppat_usu(appat_usu);
+                c.setApmat_usu(apmat_usu);
+                c.setEmail_usu(email_usu);
+                c.setPass_usu(pass_usu);
+                c.setTel_usu(tel_usu);
                 
-                 int estado=operC.Guardar(c);
+                int estado=operC.Guardar(c,2);
             
                 if(estado >0){
                     response.sendRedirect("index.html");
@@ -81,30 +77,23 @@ public class RegistrarUsu extends HttpServlet {
                     out.println("<h1>Valio cake</h1>");
                     out.println("");
                 }
-            }else if (permisosS.equals("Cafeteria")) {
-                nomLocal = request.getParameter("nomC");
-                
-                Part part=request.getPart("imgC");
+            }else if (Integer.parseInt(tipo)==3) {
+                int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
+                nom_caf = request.getParameter("nom_caf");
+                Part part=request.getPart("fot_caf");
                 InputStream inputStream=part.getInputStream();
-                
-                calle = request.getParameter("calleC");
-                col = request.getParameter("colC");
-                num =request.getParameter("numC");
-                correo=request.getParameter("corU");
-                contrasena=request.getParameter("conU");
+                calle = request.getParameter("calle_caf");
+                col = request.getParameter("col_caf");
+                num =request.getParameter("num_caf");
+                dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
                 
                 Cuentas c = new Cuentas();
                 Cuentas operC= new Cuentas();
-                c.setFoto(inputStream);
-                c.setNomLocal(nomLocal);
-                c.setColonia(col);
-                c.setCalle(calle);
-                c.setCorreo(correo);
-                c.setContrasena(contrasena);
-                c.setEx(Integer.parseInt(num));
-                c.setPermisos(3);
-                
-                int estado=operC.Guardar(c);
+                c.setFot_caf(inputStream);
+                c.setNom_caf(nom_caf);
+                c.setDir_caf(dir_caf);
+                c.setId_usu(id_usu);
+                int estado=operC.Guardar(c,3);
             
                 if(estado >0){
                     response.sendRedirect("index.html");

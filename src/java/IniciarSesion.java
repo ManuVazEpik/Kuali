@@ -49,8 +49,8 @@ public class IniciarSesion extends HttpServlet {
             try{
                 Cuentas opc = new Cuentas();
                 Cuentas c = opc.encontrarUsuario(noms, cons);
-                nivel = c.getIdC();
-                int perm= c.getPermisos();
+                nivel = c.getId_usu();
+                int perm= c.getPer_usu();
                 String nivelS = String.valueOf(nivel);
                 String privS = String.valueOf(perm);
                 if(c != null){
@@ -62,15 +62,6 @@ public class IniciarSesion extends HttpServlet {
                         sesionOK.setAttribute("id", nivelS);
                         sesionOK.setAttribute("privilegio", privS);
                         response.sendRedirect("Cuentas.jsp");
-                        
-                    }else if(perm==3){
-                        HttpSession sesion = request.getSession(true);
-                        sesion.setAttribute("usuario", c);
-                        HttpSession sesionOK = request.getSession();
-                        sesionOK.setAttribute("usuario", noms);
-                        sesionOK.setAttribute("id", nivelS);
-                        sesionOK.setAttribute("privilegio", privS);
-                        response.sendRedirect("Cafeteria.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);

@@ -14,22 +14,20 @@ and open the template in the editor.
         <h1>Prueba</h1>
         <form enctype="multipart/form-data" action="RegistrarUsu" method="POST">
             <p>Registrar Usuario</p>
-            <label>Ingresa tu nombre</label><input type="text" name="nomU"/><br>
-            <label>Ingresa tu apellido paterno</label><input type="text" name="appatU"/><br>
-            <label>Ingresa tu apellido materno</label><input type="text" name="apmatU"/><br>
-            <label>Ingresa tu numero de telefono</label><input type="text" name="telU"/><br><br>
+            <label>Ingresa tu nombre</label><input type="text" name="nom_usu"/><br>
+            <label>Ingresa tu apellido paterno</label><input type="text" name="appat_usu"/><br>
+            <label>Ingresa tu apellido materno</label><input type="text" name="apmat_usu"/><br>
+            <label>Ingresa tu numero de telefono</label><input type="text" name="tel_usu"/><br><br>
             
-            <label>Ingresa el nombre de tu cafeteria</label><input type="text" name="nomC"/><br>
-            <label>Ingresa una foto de tu local</label><input type="file" name="imgC"><br>
-            <label>Ingresa la calle de tu local</label><input type="text" name="calleC"><br>
-            <label>Ingresa la colonia de tu local</label><input type="text" name="colC"><br>
-            <label>Ingresa el numero de tu local</label><input type="text" name="numC"><br>
-            <select name="perU">
-                <option>Cliente</option>
-                <option>Cafeteria</option>
-            </select><br><br>
-            <label>Ingresa tu correo</label><input type="text" name="corU"/><br>
-            <label>Ingresa tu contraseña</label><input type="text" name="conU"/><br>
+            <label>Ingresa el nombre de tu cafeteria</label><input type="text" name="nom_caf"/><br>
+            <label>Ingresa una foto de tu local</label><input type="file" name="fot_caf"><br>
+            <label>Ingresa la calle de tu local</label><input type="text" name="calle_caf"><br>
+            <label>Ingresa la colonia de tu local</label><input type="text" name="col_caf"><br>
+            <label>Ingresa el numero de tu local</label><input type="text" name="num_caf"><br>
+            
+            <label>Ingresa tu correo</label><input type="text" name="email_usu"/><br>
+            <label>Ingresa tu contraseña</label><input type="text" name="pass_usu"/><br>
+            <input type="hidden" name="tipo" value="2"/>
             <input type="submit" value="Aceptar"/>
             
         </form>

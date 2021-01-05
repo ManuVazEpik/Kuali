@@ -262,6 +262,7 @@ public class Cuentas {
                 c.setEmail_usu(rs.getString(5));
                 c.setPass_usu(rs.getString(6));
                 c.setTel_usu(rs.getString(7));
+                c.setPer_usu(rs.getInt(8));
                 break;
             }
             ps.close();

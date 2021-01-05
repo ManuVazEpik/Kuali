@@ -55,32 +55,28 @@ public class ActualizarUsu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String telS, nombre, appat, apmat, correo, contrasena, permisosS,calle,col,num,nomLocal;
-            
-            int idC = Integer.parseInt(request.getParameter("idC").trim());
-            
-            permisosS=request.getParameter("perU");
-            int permisos = Integer.parseInt(permisosS);
+            String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf;            
+            int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
+            tipo=request.getParameter("tipo");
+            int permisos = Integer.parseInt(tipo);
             
             if (permisos==2) {
-                nombre = request.getParameter("nomU");
-                appat = request.getParameter("appatU");
-                apmat = request.getParameter("apmatU");
-                telS =request.getParameter("telU");
-
-
+                
+                nom_usu = request.getParameter("nom_usu");
+                appat_usu = request.getParameter("appat_usu");
+                apmat_usu = request.getParameter("apmat_usu");
+                tel_usu =request.getParameter("tel_usu");
+                
                 Cuentas c = new Cuentas();
                 Cuentas operC= new Cuentas();
 
-                System.out.println(permisosS);
-                c.setIdC(idC);
-                c.setNombre(nombre);
-                c.setAppat(appat);
-                c.setApmat(apmat);
-                c.setTel(telS);
-                c.setPermisos(Integer.parseInt(permisosS));
+                c.setId_usu(id_usu);
+                c.setNom_usu(nom_usu);
+                c.setAppat_usu(appat_usu);
+                c.setApmat_usu(apmat_usu);
+                c.setTel_usu(tel_usu);
 
-                int estado=operC.Actualizar(c);
+                int estado=operC.Actualizar(c,2);
 
                 if(estado >0){
                     response.sendRedirect("Cuentas.jsp");
@@ -89,28 +85,22 @@ public class ActualizarUsu extends HttpServlet {
                     out.println("");
                 }
             }else if (permisos==3) {
-                System.out.println("?");
-                Part part=request.getPart("imgC");
-                InputStream inputStream=part.getInputStream();
-                nomLocal = request.getParameter("nomC");
-                calle = request.getParameter("calleC");
-                col = request.getParameter("colC");
-                num =request.getParameter("numC");
 
+                Part part=request.getPart("fot_usu");
+                InputStream inputStream=part.getInputStream();
+                int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
+                nom_caf = request.getParameter("nom_usu");
+                dir_caf = request.getParameter("dir_usu");
 
                 Cuentas c = new Cuentas();
                 Cuentas operC= new Cuentas();
 
-                System.out.println(permisosS);
-                c.setIdC(idC);
-                c.setFoto(inputStream);
-                c.setNomLocal(nomLocal);
-                c.setCalle(calle);
-                c.setColonia(col);
-                c.setEx(Integer.parseInt(num));
-                c.setPermisos(Integer.parseInt(permisosS));
+                c.setId_caf(id_caf);
+                c.setFot_caf(inputStream);
+                c.setNom_caf(nom_caf);
+                c.setDir_caf(dir_caf);
 
-                int estado=operC.Actualizar(c);
+                int estado=operC.Actualizar(c,3);
 
                 if(estado >0){
                     response.sendRedirect("Cafeteria.jsp");
@@ -118,9 +108,6 @@ public class ActualizarUsu extends HttpServlet {
                     out.println("<h1>Valio cake</h1>");
                     out.println("");
                 }
-            }
-{
-                
             }
             
         } catch (SQLException ex) {
