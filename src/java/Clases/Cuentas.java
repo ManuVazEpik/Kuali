@@ -138,14 +138,14 @@ public class Cuentas {
                 ps1.setString(6, c.getTel_usu());
                 ps1.setInt(7, 2);
                 estatus=ps1.executeUpdate();
-                
             }else if(tipo==3){
-                String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu) values (?,?,?,?,?,?,?)";
+                String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu,aut_caf) values (?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(q);
                 ps.setString(1, c.getNom_caf());
                 ps.setString(2, c.getDir_caf());
                 ps.setBlob(3, c.getFot_caf());
                 ps.setInt(4, c.getId_usu());
+                ps.setBoolean(5, false);
                 estatus=ps.executeUpdate();
             }
             
@@ -158,30 +158,28 @@ public class Cuentas {
         }
         return estatus;
     }
-    public int Actualizar(Cuentas c) throws SQLException{
+    public int Actualizar(Cuentas c, int tipo) throws SQLException{
         int estatus = 0;
         Connection con = conexion.getConexion();
         String sql = "";
         PreparedStatement ps = null;
         try{
-            if (c.getPermisos()==2) {
+            if (tipo==2) {
                 sql= "update usuario set nom_usu=?, appat_usu=?, apmat_usu=?, tel_usu=? where id_usu=?";
                 ps = con.prepareStatement(sql);
-                ps.setString(1, c.getNombre());
-                ps.setString(2, c.getAppat());
-                ps.setString(3, c.getApmat());
-                ps.setString(4, c.getTel());
-                ps.setInt(5, c.getIdC());
+                ps.setString(1, c.getNom_usu());
+                ps.setString(2, c.getAppat_usu());
+                ps.setString(3, c.getApmat_usu());
+                ps.setString(4, c.getTel_usu());
+                ps.setInt(5, c.getId_usu());
                 estatus += ps.executeUpdate();
-            }else if(c.getPermisos()==3){
-                sql= "update cafeteria set nom_caf=?, img_caf=?, calle_caf=?, col_caf=?, num_caf=? where id_caf=?";
+            }else if(tipo==3){
+                sql= "update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
                 ps = con.prepareStatement(sql);
-                ps.setString(1, c.getNomLocal());
-                ps.setBlob(2, c.getFoto());
-                ps.setString(3, c.getCalle());
-                ps.setString(4, c.getColonia());
-                ps.setInt(5, c.getEx());
-                ps.setInt(6, c.getIdC());
+                ps.setString(1, c.getNom_caf());
+                ps.setString(2, c.getDir_caf());
+                ps.setBlob(3, c.getFot_caf());
+                ps.setInt(4, c.getId_caf());
                 estatus += ps.executeUpdate();
             }
         }catch(Exception ed){
