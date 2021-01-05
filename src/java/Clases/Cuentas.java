@@ -21,157 +21,131 @@ import javax.servlet.http.HttpServletResponse;
  * @author bocal
  */
 public class Cuentas {
-    private int idC, permisos,ex;
-    private String nombre, appat, apmat, colonia, correo, contrasena, calle, nomLocal, tel;
-    private InputStream foto;
-    
-    public InputStream getFoto() {
-        return foto;
+    private int id_usu, per_usu,id_caf;
+    private String nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tel_usu, dir_caf,nom_caf;
+    private InputStream fot_caf;
+
+    public int getId_usu() {
+        return id_usu;
     }
 
-    public void setFoto(InputStream foto) {
-        this.foto = foto;
-    }
-    
-    public int getIdC() {
-        return idC;
+    public void setId_usu(int id_usu) {
+        this.id_usu = id_usu;
     }
 
-    public void setIdC(int idC) {
-        this.idC = idC;
+    public int getPer_usu() {
+        return per_usu;
     }
 
-    public String getTel() {
-        return tel;
+    public void setPer_usu(int per_usu) {
+        this.per_usu = per_usu;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public int getId_caf() {
+        return id_caf;
     }
 
-    public int getPermisos() {
-        return permisos;
+    public void setId_caf(int id_caf) {
+        this.id_caf = id_caf;
     }
 
-    public void setPermisos(int permisos) {
-        this.permisos = permisos;
+    public String getNom_usu() {
+        return nom_usu;
     }
 
-    public int getEx() {
-        return ex;
+    public void setNom_usu(String nom_usu) {
+        this.nom_usu = nom_usu;
     }
 
-    public void setEx(int ex) {
-        this.ex = ex;
+    public String getAppat_usu() {
+        return appat_usu;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setAppat_usu(String appat_usu) {
+        this.appat_usu = appat_usu;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getApmat_usu() {
+        return apmat_usu;
     }
 
-    public String getAppat() {
-        return appat;
+    public void setApmat_usu(String apmat_usu) {
+        this.apmat_usu = apmat_usu;
     }
 
-    public void setAppat(String appat) {
-        this.appat = appat;
+    public String getEmail_usu() {
+        return email_usu;
     }
 
-    public String getApmat() {
-        return apmat;
+    public void setEmail_usu(String email_usu) {
+        this.email_usu = email_usu;
     }
 
-    public void setApmat(String apmat) {
-        this.apmat = apmat;
+    public String getPass_usu() {
+        return pass_usu;
     }
 
-    public String getColonia() {
-        return colonia;
+    public void setPass_usu(String pass_usu) {
+        this.pass_usu = pass_usu;
     }
 
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
+    public String getTel_usu() {
+        return tel_usu;
     }
 
-    public String getCorreo() {
-        return correo;
+    public void setTel_usu(String tel_usu) {
+        this.tel_usu = tel_usu;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public String getDir_caf() {
+        return dir_caf;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public void setDir_caf(String dir_caf) {
+        this.dir_caf = dir_caf;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public String getNom_caf() {
+        return nom_caf;
     }
 
-    public String getCalle() {
-        return calle;
+    public void setNom_caf(String nom_caf) {
+        this.nom_caf = nom_caf;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public InputStream getFot_caf() {
+        return fot_caf;
     }
 
-    public String getNomLocal() {
-        return nomLocal;
-    }
-
-    public void setNomLocal(String nomLocal) {
-        this.nomLocal = nomLocal;
+    public void setFot_caf(InputStream fot_caf) {
+        this.fot_caf = fot_caf;
     }
     
-    public int Guardar(Cuentas c){
+    
+    
+    public int Guardar(Cuentas c, int tipo){
         int estatus = -1;
         try{
-            
             Connection con = conexion.getConexion();
-            String q1="insert into cuenta (email_usu,pass_usu,perm_usu) values (?,?,?)";
-            PreparedStatement ps1 = con.prepareStatement(q1);
-            ps1.setString(1, c.getCorreo());
-            ps1.setString(2, c.getContrasena());
-            ps1.setInt(3, c.getPermisos());
-            int est=ps1.executeUpdate();
-            System.out.println(est);
-            
-            String sql = "select * from cuenta where email_usu = '"+c.getCorreo()+"' and pass_usu = '"+c.getContrasena()+"'";
-            PreparedStatement ps2 = con.prepareStatement(sql);
-            ResultSet rs = ps2.executeQuery();
-            
-            int idC=0;
-            if(rs.next()){
-                idC=rs.getInt(1);
-            }
-            System.out.println("id obtenida"+idC);
-            if (c.getPermisos()==2) {
-                String q = "insert into usuario (id_usu, id_cue, nom_usu, appat_usu, appmat_usu, tel_usu) values (?,?,?,?,?,?)";
-                PreparedStatement ps = con.prepareStatement(q);
-                ps.setInt(1, idC);
-                ps.setInt(2, idC);
-                ps.setString(3, c.getNombre());
-                ps.setString(4, c.getAppat());
-                ps.setString(5, c.getApmat());
-                ps.setString(6, c.getTel());
+            if (tipo==2) {
+                String q1="insert into usuario (nom_usu,appat_usu,apmat_usu,email_usu,pass_usu,tel_usu,perm_usu) values (?,?,?,?,?,?)";
+                PreparedStatement ps1 = con.prepareStatement(q1);
+                ps1.setString(1, c.getNom_usu());
+                ps1.setString(2, c.getApmat_usu());
+                ps1.setString(3, c.getApmat_usu());
+                ps1.setString(4, c.getEmail_usu());
+                ps1.setString(5, c.getPass_usu());
+                ps1.setString(6, c.getTel_usu());
+                ps1.setInt(7, 2);
+                estatus=ps1.executeUpdate();
                 
-                estatus=ps.executeUpdate();
-            }else if(c.getPermisos()==3){
-                String q = "insert into cafeteria (id_caf, id_cue, img_caf, nom_caf,calle_caf,col_caf,num_caf) values (?,?,?,?,?,?,?)";
+            }else if(tipo==3){
+                String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu) values (?,?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(q);
-                ps.setInt(1, idC);
-                ps.setInt(2, idC);
-                ps.setBlob(3, c.getFoto());
-                ps.setString(4, c.getNomLocal());
-                ps.setString(5, c.getCalle());
-                ps.setString(6, c.getColonia());
-                ps.setInt(7, c.getEx());
+                ps.setString(1, c.getNom_caf());
+                ps.setString(2, c.getDir_caf());
+                ps.setBlob(3, c.getFot_caf());
+                ps.setInt(4, c.getId_usu());
                 estatus=ps.executeUpdate();
             }
             

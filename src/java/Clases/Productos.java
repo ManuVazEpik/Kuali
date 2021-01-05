@@ -15,47 +15,61 @@ import java.sql.SQLException;
  * @author bocal
  */
 public class Productos {
-    private String nombre, descripción;
-    private int costo, id;
-    private boolean dispon;
+    private String nom_prod, desc_prod;
+    private int id_prod;
+    private float pre_prod;
+    private int id_caf;
+    private boolean disp_prod;
 
-    public int getID(){
-        return id;
-    }
-    public void setID(int id){
-        this.id=id;
-    }
-    public String getNombre() {
-        return nombre;
+    public String getNom_prod() {
+        return nom_prod;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNom_prod(String nom_prod) {
+        this.nom_prod = nom_prod;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDesc_prod() {
+        return desc_prod;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDesc_prod(String desc_prod) {
+        this.desc_prod = desc_prod;
     }
 
-    public int getCosto() {
-        return costo;
+    public int getId_prod() {
+        return id_prod;
     }
 
-    public void setCosto(int costo) {
-        this.costo = costo;
+    public void setId_prod(int id_prod) {
+        this.id_prod = id_prod;
     }
 
-    public boolean isDispon() {
-        return dispon;
+    public float getPre_prod() {
+        return pre_prod;
     }
 
-    public void setDispon(boolean dispon) {
-        this.dispon = dispon;
+    public void setPre_prod(float pre_prod) {
+        this.pre_prod = pre_prod;
     }
+
+    public int getId_caf() {
+        return id_caf;
+    }
+
+    public void setId_caf(int id_caf) {
+        this.id_caf = id_caf;
+    }
+
+    public boolean isDisp_prod() {
+        return disp_prod;
+    }
+
+    public void setDisp_prod(boolean disp_prod) {
+        this.disp_prod = disp_prod;
+    }
+
+    
     
     public static int Guardar(Productos p){
         int estatus = -1;
