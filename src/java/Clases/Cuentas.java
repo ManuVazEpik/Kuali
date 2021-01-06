@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -163,7 +164,7 @@ public class Cuentas {
         }
         return estatus;
     }
-    public int Autorizar(Cuentas c)throws SQLException{
+    public int Autorizar(int id)throws SQLException{
         int estatus=-1;
             Connection con = conexion.getConexion();
             String sql = "";
@@ -172,8 +173,11 @@ public class Cuentas {
                 sql = "update cafeteria set aut_caf=? where id_caf=?";
                 ps=con.prepareStatement(sql);
                 ps.setBoolean(1,true);
-                ps.setInt(2, c.getId_caf());
-                estatus =ps.executeUpdate();
+                ps.setInt(2, id);
+                estatus=ps.executeUpdate();
+                System.out.println("???autorizar");
+                System.out.println(id);
+                System.out.println(estatus);
             }catch(Exception e){
                 System.out.println(e.getMessage());
                 con.close();
@@ -321,6 +325,56 @@ public class Cuentas {
             System.out.println(ed.getStackTrace());
         }
         return c;
+    }
+    public static ArrayList<Cuentas> getCafeteriasAutorizadas(){
+        ArrayList<Cuentas> lista= new ArrayList<Cuentas>();
+        try{
+            Connection con = conexion.getConexion();
+            String sql = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            
+            sql="select * from cafeteria where aut_caf=true";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Cuentas c = new Cuentas();
+                    c.setId_caf(rs.getInt(1));
+                    c.setNom_caf(rs.getString(2));
+                    c.setDir_caf(rs.getString(3));
+                    c.setId_usu(rs.getInt(4));
+                lista.add(c);
+            }            
+            con.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return lista;
+    }
+    public static ArrayList<Cuentas> getCafeteriasNoAutorizadas(){
+        ArrayList<Cuentas> lista= new ArrayList<Cuentas>();
+        try{
+            Connection con = conexion.getConexion();
+            String sql = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            
+            sql="select * from cafeteria where aut_caf=false";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Cuentas c = new Cuentas();
+                    c.setId_caf(rs.getInt(1));
+                    c.setNom_caf(rs.getString(2));
+                    c.setDir_caf(rs.getString(3));
+                    c.setId_usu(rs.getInt(4));
+                lista.add(c);
+            }            
+            con.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return lista;
     }
     public Cuentas getCafeteriaById(int id){
         Cuentas c = new Cuentas();

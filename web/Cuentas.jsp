@@ -79,6 +79,7 @@ if(sessionOk.getAttribute("usuario")==null){
         <h2>Ingresa a los datos de tu cafeteria</h2>
         <form action="Cafeteria.jsp">
             <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
+            <input type="submit" value="Ingresar"/>
         </form>
     <%
         }else if(autorizacion==false){%>

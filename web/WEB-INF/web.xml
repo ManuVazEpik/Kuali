@@ -24,6 +24,10 @@
         <servlet-name>obtenerImg</servlet-name>
         <servlet-class>obtenerImg</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Autorizar</servlet-name>
+        <servlet-class>Autorizar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>obtenerImg</servlet-name>
         <url-pattern>/obtenerImg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autorizar</servlet-name>
+        <url-pattern>/Autorizar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
