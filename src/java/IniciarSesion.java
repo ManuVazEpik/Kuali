@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Clases.Cafeteria;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,6 +62,21 @@ public class IniciarSesion extends HttpServlet {
                         sesionOK.setAttribute("usuario", noms);
                         sesionOK.setAttribute("id", nivelS);
                         sesionOK.setAttribute("privilegio", privS);
+                        Cafeteria operC=new Cafeteria();
+                        boolean caftener=operC.comprobarCafExiste(nivel);
+                        if (caftener==true){
+                            int autorizacion=operC.comprobarAutorizacion(nivel);
+                            if(autorizacion==1){
+                                sesionOK.setAttribute("autorizacion","1");
+                            }else if(autorizacion==2){
+                                sesionOK.setAttribute("autorizacion","2");
+                            }else if(autorizacion==3){
+                                sesionOK.setAttribute("autorizacion","3");
+                            }
+                        }else{
+                            sesionOK.setAttribute("autorizacion","0");
+                        }
+                        
                         response.sendRedirect("Cuentas.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);

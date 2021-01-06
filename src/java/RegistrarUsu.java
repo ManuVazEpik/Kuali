@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import Clases.Cuentas;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,16 +34,12 @@ public class RegistrarUsu extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
     

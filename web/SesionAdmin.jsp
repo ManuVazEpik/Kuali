@@ -4,14 +4,14 @@
     Author     : bocal
 --%>
 
-<%@page import="Clases.Cuentas"%>
+<%@page import="Clases.Cafeteria"%>
+<%@page import="Clases.Usuario"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 String usuario = "";
 HttpSession sesionOk = request.getSession();
 String priv=(String)sesionOk.getAttribute("privilegio");
-System.out.println("aqui va un nuevo sout   "+priv);
 if (sesionOk.getAttribute("usuario") == null ) {
 %>
 <jsp:forward page="IniciarSesion.jsp">
@@ -19,7 +19,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
 </jsp:forward>
 <%
 } else if("2".equals(priv)){
-    response.sendRedirect("Sesion.jsp");
+    response.sendRedirect("Cuentas.jsp");
 } else {
     usuario = (String)sesionOk.getAttribute("usuario");
 }
@@ -34,8 +34,8 @@ if (sesionOk.getAttribute("usuario") == null ) {
         <h1>Sesion Administrador</h1>
         <h3>Cafeterias por autorizar</h3>
         <%
-        Cuentas operC=new Cuentas();
-        ArrayList<Cuentas> listaNoAut=operC.getCafeteriasNoAutorizadas();
+        Cafeteria operC=new Cafeteria();
+        ArrayList<Cafeteria> listaNoAut=operC.getCafeteriasPendientes();
         %>
         <table>
             <th>Id_caf</th>
@@ -45,7 +45,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
             <th>Autorizar</th>
             <th>Rechazar</th>
     <%
-        for(Cuentas c:listaNoAut){
+        for(Cafeteria c:listaNoAut){
     %>
             <tr>
                 <td><%=c.getId_caf()%></td>
@@ -70,7 +70,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
         
         <h3>Cafeterias Autorizadas</h3>
         <%
-        ArrayList<Cuentas> listaAut=operC.getCafeteriasAutorizadas();
+        ArrayList<Cafeteria> listaAut=operC.getCafeteriasAutorizadas();
         %>
         <table>
             <th>Id_caf</th>
@@ -79,7 +79,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
             <th>Id Usuario</th>
             <th>Eliminar</th>
     <%
-        for(Cuentas c:listaAut){
+        for(Cafeteria c:listaAut){
     %>
             <tr>
                 <td><%=c.getId_caf()%></td>
@@ -99,7 +99,9 @@ if (sesionOk.getAttribute("usuario") == null ) {
         
         <h3>Cafeterias Autorizadas</h3>
         <%
-        ArrayList<Cuentas> listaUsu=operC.getUsuarios();
+        Usuario u = new Usuario();
+        ArrayList<Usuario> listaUsu=u.getUsuarios();
+        
         %>
         <table>
             <th>Id_usu</th>
@@ -111,7 +113,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
             <th>Telefono</th>
             <th>Eliminar</th>
     <%
-        for(Cuentas c:listaUsu){
+        for(Usuario c:listaUsu){
     %>
             <tr>
                 <td><%=c.getId_usu()%></td>
@@ -131,7 +133,6 @@ if (sesionOk.getAttribute("usuario") == null ) {
         }
     %>
         </table>
-        
         <a href="CerrarSesion">Cerrar Sesion</a>
     </body>
 </html>

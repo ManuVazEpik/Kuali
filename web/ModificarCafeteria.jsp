@@ -14,20 +14,19 @@ String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
 
-if(sessionOk.getAttribute("usuario")==null || sessionOk.getAttribute("cafeteria")==null){
-   
+if(sessionOk.getAttribute("usuario")==null || sessionOk.getAttribute("autorizacion")=="2" || 
+        sessionOk.getAttribute("autorizacion")=="3" || sessionOk.getAttribute("autorizacion")=="0" ){
 %>
         <jsp:forward page="index.html">
             <jsp:param name="error" value="Es obligatorio identificarse"/>
         </jsp:forward>}
 <%   
-}else{
+}else if(sessionOk.getAttribute("autorizacion")=="1"){
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     Cafeteria opc = new Cafeteria();
     Cafeteria c=opc.getCafeteriaById(idU);
-    String tipo="";
     
 %>
 <!DOCTYPE html>

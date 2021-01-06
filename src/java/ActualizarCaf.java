@@ -63,7 +63,7 @@ public class ActualizarCaf extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             String nom_caf, dir_caf;
-            Part part=request.getPart("fot_usu");
+            Part part=request.getPart("fot_caf");
             InputStream inputStream=part.getInputStream();
             int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
             nom_caf = request.getParameter("nom_caf");
