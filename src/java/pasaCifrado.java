@@ -6,11 +6,15 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,9 +32,12 @@ public class pasaCifrado extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            
+            //HttpSession sesion
             
             String nombre = "Ivan";
             String apellido = "Vazquez";
@@ -49,13 +56,18 @@ public class pasaCifrado extends HttpServlet {
             System.out.println(usuario.get(2).toString());
             System.out.println(usuario.get(3).toString());
             
-            if (usuario.isEmpty()) {
+            usuario usu = new usuario();
+            boolean check = usu.guardarPersona(usuario.get(0).toString(), 
+                    usuario.get(1).toString(), usuario.get(2).toString(), usuario.get(3).toString());
+            
+            
+            if (check) {
                 
-                response.sendRedirect("error.html");
+                response.sendRedirect("perfecto.html");
                 
             }else{
             
-                response.sendRedirect("perfecto.html");
+                response.sendRedirect("error.html");
                 
             }
             
@@ -74,7 +86,11 @@ public class pasaCifrado extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(pasaCifrado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -88,7 +104,11 @@ public class pasaCifrado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(pasaCifrado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

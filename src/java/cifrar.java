@@ -24,6 +24,8 @@ public class cifrar {
         
         SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
         
+        System.out.println("Llave: "+key);
+        
         Cipher cifrado;
         
         try{
@@ -45,17 +47,23 @@ public class cifrar {
             byte campoEdad[] = cifrado.doFinal(edad.getBytes());
             byte campoTel[] = cifrado.doFinal(telefono.getBytes());
             
+            /* Recuperacion mediante BASE64 para la legibilidad */
+            String nombreB64 = new BASE64Encoder().encode(campoNombre);
+            String apellidoB64 = new BASE64Encoder().encode(campoApellido);
+            String edadB64 = new BASE64Encoder().encode(campoEdad);
+            String telB64 = new BASE64Encoder().encode(campoTel);
+            
             /*Comprobación de los datos cifrados*/
             System.out.println("Esto pertenece a la clase cifrado");
-            System.out.println("Nombre: "+campoNombre);
-            System.out.println("Apellido: "+campoApellido);
-            System.out.println("Edad: "+campoEdad);
-            System.out.println("Telefono: "+campoTel);
+            System.out.println("Nombre: "+nombreB64);
+            System.out.println("Apellido: "+apellidoB64);
+            System.out.println("Edad: "+edadB64);
+            System.out.println("Telefono: "+telB64);
             
-            usuario.add(campoNombre);
-            usuario.add(campoApellido);
-            usuario.add(campoEdad);
-            usuario.add(campoTel);
+            usuario.add(nombreB64);
+            usuario.add(apellidoB64);
+            usuario.add(edadB64);
+            usuario.add(telB64);
             
         }catch(Exception e){
         
@@ -104,10 +112,15 @@ public class cifrar {
             System.out.println(edadCifrado);
             System.out.println(telefonoCifrado);
             
-            u.add(nombreCifrado);
-            u.add(apellidoCifrado);
-            u.add(edadCifrado);
-            u.add(telefonoCifrado);
+            String nombreRec = new String(nombreCifrado);
+            String apellidoRec = new String(apellidoCifrado);
+            String edadRec = new String(edadCifrado);
+            String telRec = new String(telefonoCifrado);
+            
+            u.add(nombreRec);
+            u.add(apellidoRec);
+            u.add(edadRec);
+            u.add(telRec);
             
         }catch(Exception e){}
         

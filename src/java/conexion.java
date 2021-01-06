@@ -16,9 +16,9 @@ public class conexion {
     
         Connection con = null;
         String url, username, password;
-        url = "jdbc:mysql://localhost:3306/base?serverTimezone=UTC";
+        url = "jdbc:mysql://localhost:3306/pruebacifrado";
         username = "root";
-        password = "n0m3l0";
+        password = "n0m3lo";
         
         try{
         
