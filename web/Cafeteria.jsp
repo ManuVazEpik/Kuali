@@ -22,16 +22,12 @@ if(sessionOk.getAttribute("usuario")==null){
         </jsp:forward>}
 <%   
 }else{
-System.out.println("s");
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     Cuentas opc = new Cuentas();
     Cuentas c=opc.getCafeteriaById(idU);
     String tipo="";
-    if(c.getPermisos()==3){
-        tipo="cafeteria";
-    }
 %>
 <!DOCTYPE html>
 <html>
@@ -40,6 +36,35 @@ System.out.println("s");
         <title>Cafeteria</title>
     </head>
     <body>
+        <table border="0" aling="center" width="1060px" style="font-size: 20px">
+                    
+        <%
+            ArrayList<Productos> lp = Productos.listaProductos();
+            int salto=0;            
+            for (Productos prod: lp) {            
+        %>                        
+                    
+                    <th>
+                        <img src="obtenerImg?idI=<%=prod.getId_prod()%>"><p>
+                            <%= prod.getNom_prod()%><br>
+                            Tipo: <%= prod.getDesc_prod()%><br>
+                            Region: <%= prod.getPre_prod()%><br>
+                            <input hidden value="<%= prod.getDisp_prod()%>"><br>
+                            <a href="anadirPedido.jsp?id=<%= prod.getId_prod()%>" style="color:white">Añadir</a>
+                    </th>
+        <%
+            salto++;
+            if (salto == 4) {
+        %>
+        <tr>
+        <%
+                salto=0;
+            }
+           }
+        %>
+        </table>
+        
+        ssssssssssssssssssssssssssssssssssssssssssssssss
         <h1>Datos</h1>
         <ul>
             <li>Nombre:<%=c.getNomLocal()%> <br></li>

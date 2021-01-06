@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Cuentas;
+import Clases.Cafeteria;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,7 +28,7 @@ public class obtenerImg extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cuentas c = new Cuentas();
+        Cafeteria c = new Cafeteria();
         String idPS = request.getParameter("idI");
         int idP = Integer.parseInt(idPS);
         c.listarImg(idP,response);

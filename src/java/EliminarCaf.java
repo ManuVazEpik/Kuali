@@ -77,9 +77,9 @@ public class EliminarCaf extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String idS, tipoS;
             idS = request.getParameter("id");
-            tipoS=request.getParameter("tipo");
+            
             int id = Integer.parseInt(idS);
-            int tipo = Integer.parseInt(tipoS);
+            
             
             Cafeteria opc = new Cafeteria();
             int estatus=opc.EliminarCafeteria(id);

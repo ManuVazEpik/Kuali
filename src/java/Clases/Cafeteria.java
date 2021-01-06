@@ -37,7 +37,7 @@ public class Cafeteria {
                 ps.setString(2, c.getDir_caf());
                 ps.setBlob(3, c.getFot_caf());
                 ps.setInt(4, c.getId_usu());
-                ps.setBoolean(5, false);
+                ps.setInt(5, 1);
                 estatus=ps.executeUpdate();
             con.close();
         }catch(Exception ed){
@@ -54,13 +54,13 @@ public class Cafeteria {
         String sql = "";
         PreparedStatement ps = null;
         try{
-                sql= "update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
-                ps = con.prepareStatement(sql);
-                ps.setString(1, c.getNom_caf());
-                ps.setString(2, c.getDir_caf());
-                ps.setBlob(3, c.getFot_caf());
-                ps.setInt(4, c.getId_caf());
-                estatus += ps.executeUpdate();
+            sql= "update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, c.getNom_caf());
+            ps.setString(2, c.getDir_caf());
+            ps.setBlob(3, c.getFot_caf());
+            ps.setInt(4, c.getId_caf());
+            estatus += ps.executeUpdate();
         }catch(Exception ed){
             System.out.println("No conecto a la tabla");
             System.out.println(ed.getMessage());
@@ -78,11 +78,11 @@ public class Cafeteria {
         String q=null;
         int estatus = 0;
         try{
-                con = conexion.getConexion();
-                q="delete from cafeteria where id_caf=?";
-                ps = con.prepareStatement(q);
-                ps.setInt(1, id);
-                estatus =ps.executeUpdate();
+            con = conexion.getConexion();
+            q="delete from cafeteria where id_caf=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id);
+            estatus =ps.executeUpdate();
         }catch (Exception ed){
             con.close();
             System.out.println("No conecto a la tabla");
@@ -95,8 +95,8 @@ public class Cafeteria {
         return estatus;   
     }
     
-    public boolean comprobarAutorizacion(int id_usu) throws SQLException{
-        boolean compro=true;
+    public int comprobarAutorizacion(int id_usu) throws SQLException{
+        int compro=0;
         Connection con = null;
         PreparedStatement ps = null;
         String q=null;
@@ -107,8 +107,8 @@ public class Cafeteria {
             ps.setInt(1, id_usu);
             ResultSet rs=ps.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getBoolean(6));
-                compro=rs.getBoolean(6);
+                System.out.println(rs.getInt(6));
+                compro=rs.getInt(6);
                 break;
             }
         }catch(Exception e){
@@ -121,7 +121,7 @@ public class Cafeteria {
     }
     
     public boolean comprobarCafExiste(int id_usu) throws SQLException{
-        boolean compro=true;
+        boolean compro = true;
         Connection con = null;
         PreparedStatement ps = null;
         String q=null;
@@ -172,14 +172,14 @@ public class Cafeteria {
     }
     
     public static ArrayList<Cafeteria> getCafeteriasPendientes(){
-        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
+        ArrayList<Cafeteria> lista= new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
             
-            sql="select * from cafeteria where aut_caf=false";
+            sql="select * from cafeteria where aut_caf=1";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){

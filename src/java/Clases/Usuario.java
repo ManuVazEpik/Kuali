@@ -183,7 +183,28 @@ public class Usuario {
         String sql = "";
         PreparedStatement ps = null;
         try{
-                sql= "update cafeteria set aut_caf = 'true' where id_caf = ?";
+                sql= "update cafeteria set aut_caf = '2' where id_caf = ?";
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, id);
+                estatus += ps.executeUpdate();
+        }catch(Exception ed){
+            System.out.println("No conecto a la tabla");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return estatus;
+    }
+    
+    public int RechazarCafeteria(int id) throws SQLException{
+        int estatus = 0;
+        Connection con = conexion.getConexion();
+        String sql = "";
+        PreparedStatement ps = null;
+        try{
+                sql= "update cafeteria set aut_caf = '3' where id_caf = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 estatus += ps.executeUpdate();

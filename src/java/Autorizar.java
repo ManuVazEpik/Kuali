@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Cuentas;
+import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -60,14 +60,29 @@ public class Autorizar extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String idS=request.getParameter("id_usu");
+            String tipo=request.getParameter("tipo");
             int id=Integer.parseInt(idS);
-            Cuentas c = new Cuentas();
-            int estatus=c.Autorizar(id);
-            if (estatus>0) {
-                response.sendRedirect("SesionAdmin.jsp");
+            
+            if ("1".equals(tipo)) {
+                Usuario c = new Usuario();
+                int estatus=c.AutorizarCafeteria(id);
+                if (estatus>0) {
+                    response.sendRedirect("SesionAdmin.jsp");
+                }else{
+                    response.sendRedirect("Error.html");
+                }
+            }else if("2".equals(tipo)){
+                Usuario c = new Usuario();
+                int estatus=c.RechazarCafeteria(id);
+                if (estatus>0) {
+                    response.sendRedirect("SesionAdmin.jsp");
+                }else{
+                    response.sendRedirect("Error.html");
+                }
             }else{
-                response.sendRedirect("Error.html");
+                out.println("<h1>No cambies nada >:|</h1>");
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Autorizar.class.getName()).log(Level.SEVERE, null, ex);
         }

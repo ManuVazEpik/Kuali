@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Cuentas;
+import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -47,10 +47,10 @@ public class IniciarSesion extends HttpServlet {
             cons=request.getParameter("conU");
             
             try{
-                Cuentas opc = new Cuentas();
-                Cuentas c = opc.encontrarUsuario(noms, cons);
+                Usuario opc = new Usuario();
+                Usuario c = opc.encontrarUsuario(noms, cons);
                 nivel = c.getId_usu();
-                int perm= c.getPer_usu();
+                int perm= c.getPerm_usu();
                 String nivelS = String.valueOf(nivel);
                 String privS = String.valueOf(perm);
                 if(c != null){

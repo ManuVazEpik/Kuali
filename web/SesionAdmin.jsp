@@ -43,6 +43,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
             <th>Direccion_caf</th>
             <th>Id Usuario</th>
             <th>Autorizar</th>
+            <th>Rechazar</th>
     <%
         for(Cuentas c:listaNoAut){
     %>
@@ -53,8 +54,14 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <td><%=c.getId_usu()%></td>
                 <td><form action="Autorizar" method="POST">
                     <input type="hidden" name="id_usu" value="<%=c.getId_usu()%>"/>
-                    <input type="submit" value="Autorizar"/>
+                    <input type="hidden" name="tipo" value="1"/>
+                    <input type="submit" value="Aceptar"/>
                 </form></td>
+                <td><form action="Autorizar" method="POST">
+                    <input type="hidden" name="id_usu" value="<%=c.getId_usu()%>"/>
+                    <input type="hidden" name="tipo" value="2"/>
+                    <input type="submit" value="Aceptar"/>
+                    </form></td>
             </tr>
     <%
         }

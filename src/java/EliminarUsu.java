@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import Clases.Cuentas;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;

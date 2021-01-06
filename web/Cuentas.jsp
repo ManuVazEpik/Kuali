@@ -3,9 +3,10 @@
     Created on : 10/12/2020, 12:22:20 PM
     Author     : bocal
 --%>
+<%@page import="Clases.Cafeteria"%>
+<%@page import="Clases.Usuario"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.List"%>
-<%@page import="Clases.Cuentas" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
@@ -25,13 +26,13 @@ if(sessionOk.getAttribute("usuario")==null){
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
     int id_usu=Integer.parseInt(idUS);
-    Cuentas opc = new Cuentas();
-    Cuentas u=opc.getUsuarioById(id_usu);
+    Usuario opc = new Usuario();
+    Usuario u=opc.getUsuarioById(id_usu);
     String tipo="";
-    if(u.getPer_usu()==2){
+    if(u.getPerm_usu()==2){
         tipo="cliente";
     }
-    Cuentas operC=new Cuentas();
+    Cafeteria operC=new Cafeteria();
     boolean caftener=operC.comprobarCafExiste(id_usu);
     
 %>
@@ -68,22 +69,24 @@ if(sessionOk.getAttribute("usuario")==null){
     <h2>Eliminar</h2>
     <form action='EliminarUsu' method='POST'>
         <input type='hidden' name='id' value='<%=id_usu%>'/>
-        <input type='hidden' name='per_usu' value='<%=u.getPer_usu()%>'/>
+        <input type='hidden' name='per_usu' value='<%=u.getPerm_usu()%>'/>
         <input type="submit" value="Eliminar"/>
     </form>
     <%
     if (caftener==true){
-        boolean autorizacion=operC.comprobarAutorizacion(id_usu);
+        int autorizacion=operC.comprobarAutorizacion(id_usu);
         
-        if (autorizacion==true) {%>
+        if (autorizacion==1) {%>
         <h2>Ingresa a los datos de tu cafeteria</h2>
         <form action="Cafeteria.jsp">
             <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
             <input type="submit" value="Ingresar"/>
         </form>
     <%
-        }else if(autorizacion==false){%>
+        }else if(autorizacion==2){%>
         <h2>Su cafeteria sigue en proceso de autorizacion</h2>
+    <%  }else if(autorizacion==3){%>
+        <h2>La solicitud de su cafeteria ha sido rechazada</h2>
     <%  }
     }else{%>
     <h2>Registrar una cafeteria</h2>
