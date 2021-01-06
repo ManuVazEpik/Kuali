@@ -33,10 +33,10 @@ public class descifraAES extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String nombre = "[B@5236b96e";
-            String apellido = "[B@dceba25";
-            String edad = "[B@33d30ffe";
-            String telefono = "[B@2dda595a";
+            String nombre = "SQdbXmq8c4oHAQC1c86b9A==";
+            String apellido = "LY6D5om0nA+Y5nUgLX8DFw==";
+            String edad = "/792IY0ZA63Dua9a/TS+RA==";
+            String telefono = "zZVFjPyLV3z+jbfhAOfziQ==";
             
             cifrar cifra = new cifrar();
             ArrayList usuario = new ArrayList();
