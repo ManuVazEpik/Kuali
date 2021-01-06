@@ -22,16 +22,18 @@ if(sessionOk.getAttribute("usuario")==null){
         </jsp:forward>}
 <%   
 }else{
-System.out.println("s");
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
-    int idU=Integer.parseInt(idUS);
+    int id_usu=Integer.parseInt(idUS);
     Cuentas opc = new Cuentas();
-    Cuentas u=opc.getUsuarioById(idU);
+    Cuentas u=opc.getUsuarioById(id_usu);
     String tipo="";
-    if(u.getPermisos()==2){
+    if(u.getPer_usu()==2){
         tipo="cliente";
     }
+    Cuentas operC=new Cuentas();
+    boolean caftener=operC.comprobarCafExiste(id_usu);
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -43,33 +45,59 @@ System.out.println("s");
 
     <h1>Datos</h1>
     <ul>
-        <li>Nombre completo:<%=u.getNombre()+" "+u.getAppat()+" "+u.getApmat()%> <br></li>
-        <li>Telefono: <%=u.getTel()%></li>
-        <li>Correo <%=u.getCorreo()%><br></li>
-        <li>Contraseña: <%=u.getContrasena()%><br></li>
-        <li>Tipo de Cuenta: <%=tipo%><br></li>
+        <li>Nombre completo:<%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%> <br></li>
+        <li>Telefono: <%=u.getTel_usu()%></li>
+        <li>Email_usu <%=u.getEmail_usu()%><br></li>
+        <li>Pass_usu: <%=u.getPass_usu()%><br></li>
     </ul>
     
     <a href="CerrarSesion">Cerrar Sesion</a>
     <h2>Modificar</h2>
     <form action='ActualizarUsu' method='POST' name='formulario1'>
-        <input type='hidden' name='idU' value='<%=idU%>'/>
-        <input type='hidden' name='perU' value='<%=u.getPermisos()%>'/>
+        <input type='hidden' name='id_usu' value='<%=id_usu%>'/>
+        <input type='hidden' name='tipo' value='2'/>
     
     <ul>
-        <li>Nombre: <input type='text' name='nomU' value='<%=u.getNombre()%>'/></li>
-        <li>Apellido paterno: <input type='text' name='appatU' value='<%=u.getAppat()%>'/></li>
-        <li>Apellido materno: <input type='text' name='apmatU' value='<%=u.getApmat()%>'/></li>
-        <li>Telefono: <input type='text' name='telU' value='<%=u.getTel()%>'/></li>
+        <li>Nombre: <input type='text' name='nomU' value='<%=u.getNom_usu()%>'/></li>
+        <li>Apellido paterno: <input type='text' name='appatU' value='<%=u.getAppat_usu()%>'/></li>
+        <li>Apellido materno: <input type='text' name='apmatU' value='<%=u.getApmat_usu()%>'/></li>
+        <li>Telefono: <input type='text' name='telU' value='<%=u.getTel_usu()%>'/></li>
         <input type="submit" value="Aceptar"/>
     </ul>
     </form>
     <h2>Eliminar</h2>
     <form action='EliminarUsu' method='POST'>
-        <input type='hidden' name='idUE' value='<%=idU%>'/>
-        <input type='hidden' name='perUE' value='<%=u.getPermisos()%>'/>
+        <input type='hidden' name='id' value='<%=id_usu%>'/>
+        <input type='hidden' name='tipo' value='2'/>
         <input type="submit" value="Eliminar"/>
     </form>
+    <%
+    if (caftener==true){
+        boolean autorizacion=operC.comprobarAutorizacion(id_usu);
+        if (autorizacion=true) {%>
+        <h2>Ingresa a los datos de tu cafeteria</h2>
+        <form action="Cafeteria.jsp">
+            <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
+        </form>
+    <%
+        }else if(autorizacion==false){%>
+        <h2>Su cafeteria sigue en proceso de autorizacion</h2>
+    <%  }
+    }else{%>
+    <h2>Registrar una cafeteria</h2>
+    <form action="RegistrarUsu">
+        <label>Ingresa el nombre de tu cafeteria</label><input type="text" name="nom_caf"/><br>
+        <label>Ingresa una foto de tu local</label><input type="file" name="fot_caf"><br>
+        <label>Ingresa la calle de tu local</label><input type="text" name="calle_caf"><br>
+        <label>Ingresa la colonia de tu local</label><input type="text" name="col_caf"><br>
+        <label>Ingresa el numero de tu local</label><input type="text" name="num_caf"><br>
+    </form>
+    <%
+    }
+    %>
+    
     </body>
 </html>
-<%}%>
+<%
+}
+%>

@@ -135,7 +135,7 @@ public class Cuentas {
         try{
             Connection con = conexion.getConexion();
             if (tipo==2) {
-                String q1="insert into usuario (nom_usu,appat_usu,apmat_usu,email_usu,pass_usu,tel_usu,perm_usu) values (?,?,?,?,?,?)";
+                String q1="insert into usuario (nom_usu,appat_usu,apmat_usu,email_usu,pass_usu,tel_usu,perm_usu) values (?,?,?,?,?,?,?)";
                 PreparedStatement ps1 = con.prepareStatement(q1);
                 ps1.setString(1, c.getNom_usu());
                 ps1.setString(2, c.getApmat_usu());
@@ -244,6 +244,53 @@ public class Cuentas {
             con.close();
         }
         return estatus;   
+    }
+    public boolean comprobarAutorizacion(int id_usu) throws SQLException{
+        boolean compro=true;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        try{
+            con = conexion.getConexion();
+            q ="select * from cafeteria where id_usu=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id_usu);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {
+                compro=rs.getBoolean(6);
+                break;
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return compro;
+    }
+    public boolean comprobarCafExiste(int id_usu) throws SQLException{
+        boolean compro=true;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        try{
+            con = conexion.getConexion();
+            q ="select * from cafeteria where id_usu=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id_usu);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                compro=true;
+            }else{
+                compro=false;
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return compro;
     }
     public Cuentas getUsuarioById(int id){
         Cuentas c = new Cuentas();
