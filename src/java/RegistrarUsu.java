@@ -5,9 +5,13 @@
  */
 
 import Clases.Cuentas;
+import Clases.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +56,6 @@ public class RegistrarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf,calle,col,num;
             tipo=request.getParameter("tipo");
             
-            if (Integer.parseInt(tipo)==2) {
                 nom_usu = request.getParameter("nom_usu");
                 appat_usu = request.getParameter("appat_usu");
                 apmat_usu = request.getParameter("apmat_usu");
@@ -60,8 +63,8 @@ public class RegistrarUsu extends HttpServlet {
                 email_usu=request.getParameter("email_usu");
                 pass_usu=request.getParameter("pass_usu");
                 
-                Cuentas c = new Cuentas();
-                Cuentas operC= new Cuentas();
+                Usuario c = new Usuario();
+                Usuario operC= new Usuario();
                 c.setNom_usu(nom_usu);
                 c.setAppat_usu(appat_usu);
                 c.setApmat_usu(apmat_usu);
@@ -69,7 +72,7 @@ public class RegistrarUsu extends HttpServlet {
                 c.setPass_usu(pass_usu);
                 c.setTel_usu(tel_usu);
                 
-                int estado=operC.Guardar(c,2);
+                int estado=operC.AñadirUsuario(c);
             
                 if(estado >0){
                     response.sendRedirect("index.html");
@@ -77,44 +80,12 @@ public class RegistrarUsu extends HttpServlet {
                     out.println("<h1>Valio cake</h1>");
                     out.println("");
                 }
-            }else if (Integer.parseInt(tipo)==3) {
-                String idS=request.getParameter("id_usu");
-                int id_usu = Integer.parseInt(idS);
-                nom_caf = request.getParameter("nom_caf");
-                Part part=request.getPart("fot_caf");
-                InputStream inputStream=part.getInputStream();
-                calle = request.getParameter("calle_caf");
-                col = request.getParameter("col_caf");
-                num =request.getParameter("num_caf");
-                dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
-                
-                Cuentas c = new Cuentas();
-                Cuentas operC= new Cuentas();
-                c.setFot_caf(inputStream);
-                c.setNom_caf(nom_caf);
-                c.setDir_caf(dir_caf);
-                c.setId_usu(id_usu);
-                int estado=operC.Guardar(c,3);
             
-                if(estado >0){
-                    response.sendRedirect("index.html");
-                }else{
-                    out.println("<h1>Valio cake</h1>");
-                    out.println("");
-                }
-            }
-{
-                
-            }
-            
-            
-            
-            
-            
-            
-           
-            
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarUsu.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+        
     }
 
 }

@@ -68,7 +68,7 @@ if(sessionOk.getAttribute("usuario")==null){
     <h2>Eliminar</h2>
     <form action='EliminarUsu' method='POST'>
         <input type='hidden' name='id' value='<%=id_usu%>'/>
-        <input type='hidden' name='tipo' value='2'/>
+        <input type='hidden' name='per_usu' value='<%=u.getPer_usu()%>'/>
         <input type="submit" value="Eliminar"/>
     </form>
     <%

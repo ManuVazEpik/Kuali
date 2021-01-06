@@ -28,6 +28,18 @@
         <servlet-name>Autorizar</servlet-name>
         <servlet-class>Autorizar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrarCaf</servlet-name>
+        <servlet-class>RegistrarCaf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarCaf</servlet-name>
+        <servlet-class>ActualizarCaf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCaf</servlet-name>
+        <servlet-class>EliminarCaf</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>Autorizar</servlet-name>
         <url-pattern>/Autorizar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarCaf</servlet-name>
+        <url-pattern>/RegistrarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarCaf</servlet-name>
+        <url-pattern>/ActualizarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCaf</servlet-name>
+        <url-pattern>/EliminarCaf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

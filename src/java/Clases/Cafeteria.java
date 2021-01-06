@@ -21,132 +21,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bocal
  */
-public class Cuentas {
-    private int id_usu, per_usu,id_caf;
-    private String nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tel_usu, dir_caf,nom_caf;
+public class Cafeteria {
+    private int id_caf, id_usu;
+    private String dir_caf,nom_caf;
     private InputStream fot_caf;
     private boolean aut_caf;
 
-    public boolean getAut_caf(){
-        return aut_caf;
-    }
-    
-    public void setAut_caf(boolean aut_caf){
-        this.aut_caf=aut_caf;
-    }
-    
-    public int getId_usu() {
-        return id_usu;
-    }
-
-    public void setId_usu(int id_usu) {
-        this.id_usu = id_usu;
-    }
-
-    public int getPer_usu() {
-        return per_usu;
-    }
-
-    public void setPer_usu(int per_usu) {
-        this.per_usu = per_usu;
-    }
-
-    public int getId_caf() {
-        return id_caf;
-    }
-
-    public void setId_caf(int id_caf) {
-        this.id_caf = id_caf;
-    }
-
-    public String getNom_usu() {
-        return nom_usu;
-    }
-
-    public void setNom_usu(String nom_usu) {
-        this.nom_usu = nom_usu;
-    }
-
-    public String getAppat_usu() {
-        return appat_usu;
-    }
-
-    public void setAppat_usu(String appat_usu) {
-        this.appat_usu = appat_usu;
-    }
-
-    public String getApmat_usu() {
-        return apmat_usu;
-    }
-
-    public void setApmat_usu(String apmat_usu) {
-        this.apmat_usu = apmat_usu;
-    }
-
-    public String getEmail_usu() {
-        return email_usu;
-    }
-
-    public void setEmail_usu(String email_usu) {
-        this.email_usu = email_usu;
-    }
-
-    public String getPass_usu() {
-        return pass_usu;
-    }
-
-    public void setPass_usu(String pass_usu) {
-        this.pass_usu = pass_usu;
-    }
-
-    public String getTel_usu() {
-        return tel_usu;
-    }
-
-    public void setTel_usu(String tel_usu) {
-        this.tel_usu = tel_usu;
-    }
-
-    public String getDir_caf() {
-        return dir_caf;
-    }
-
-    public void setDir_caf(String dir_caf) {
-        this.dir_caf = dir_caf;
-    }
-
-    public String getNom_caf() {
-        return nom_caf;
-    }
-
-    public void setNom_caf(String nom_caf) {
-        this.nom_caf = nom_caf;
-    }
-
-    public InputStream getFot_caf() {
-        return fot_caf;
-    }
-
-    public void setFot_caf(InputStream fot_caf) {
-        this.fot_caf = fot_caf;
-    }
-    
-    public int Guardar(Cuentas c, int tipo){
+    public int AñadirCafeteria(Cafeteria c){
         int estatus = -1;
         try{
             Connection con = conexion.getConexion();
-            if (tipo==2) {
-                String q1="insert into usuario (nom_usu,appat_usu,apmat_usu,email_usu,pass_usu,tel_usu,perm_usu) values (?,?,?,?,?,?,?)";
-                PreparedStatement ps1 = con.prepareStatement(q1);
-                ps1.setString(1, c.getNom_usu());
-                ps1.setString(2, c.getApmat_usu());
-                ps1.setString(3, c.getApmat_usu());
-                ps1.setString(4, c.getEmail_usu());
-                ps1.setString(5, c.getPass_usu());
-                ps1.setString(6, c.getTel_usu());
-                ps1.setInt(7, 2);
-                estatus=ps1.executeUpdate();
-            }else if(tipo==3){
                 String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu,aut_caf) values (?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(q);
                 ps.setString(1, c.getNom_caf());
@@ -155,7 +39,6 @@ public class Cuentas {
                 ps.setInt(4, c.getId_usu());
                 ps.setBoolean(5, false);
                 estatus=ps.executeUpdate();
-            }
             con.close();
         }catch(Exception ed){
             System.out.println("Error al guardar usuario");
@@ -164,40 +47,13 @@ public class Cuentas {
         }
         return estatus;
     }
-    public int Autorizar(int id)throws SQLException{
-        int estatus=-1;
-            Connection con = conexion.getConexion();
-            String sql = "";
-            PreparedStatement ps = null;
-            try{
-                sql = "update cafeteria set aut_caf=? where id_caf=?";
-                ps=con.prepareStatement(sql);
-                ps.setBoolean(1,true);
-                ps.setInt(2, id);
-                estatus=ps.executeUpdate();
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                con.close();
-            }
-            con.close();
-        return estatus;
-    }
-    public int Actualizar(Cuentas c, int tipo) throws SQLException{
+    
+    public int ActualizarCafeteria(Cafeteria c) throws SQLException{
         int estatus = 0;
         Connection con = conexion.getConexion();
         String sql = "";
         PreparedStatement ps = null;
         try{
-            if (tipo==2) {
-                sql= "update usuario set nom_usu=?, appat_usu=?, apmat_usu=?, tel_usu=? where id_usu=?";
-                ps = con.prepareStatement(sql);
-                ps.setString(1, c.getNom_usu());
-                ps.setString(2, c.getAppat_usu());
-                ps.setString(3, c.getApmat_usu());
-                ps.setString(4, c.getTel_usu());
-                ps.setInt(5, c.getId_usu());
-                estatus += ps.executeUpdate();
-            }else if(tipo==3){
                 sql= "update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, c.getNom_caf());
@@ -205,7 +61,6 @@ public class Cuentas {
                 ps.setBlob(3, c.getFot_caf());
                 ps.setInt(4, c.getId_caf());
                 estatus += ps.executeUpdate();
-            }
         }catch(Exception ed){
             System.out.println("No conecto a la tabla");
             System.out.println(ed.getMessage());
@@ -216,25 +71,18 @@ public class Cuentas {
         }
         return estatus;
     }
-    public int Eliminar(int id, int permisos) throws SQLException{
+    
+    public int EliminarCafeteria(int id) throws SQLException{
         Connection con = null;
         PreparedStatement ps = null;
         String q=null;
         int estatus = 0;
         try{
-            if (permisos==2) {
-                con = conexion.getConexion();
-                q ="delete from usuario where id_usu=?";
-                ps = con.prepareStatement(q);
-                ps.setInt(1, id);
-                estatus = ps.executeUpdate();
-            }else if(permisos==3){
                 con = conexion.getConexion();
                 q="delete from cafeteria where id_caf=?";
                 ps = con.prepareStatement(q);
                 ps.setInt(1, id);
                 estatus =ps.executeUpdate();
-            }
         }catch (Exception ed){
             con.close();
             System.out.println("No conecto a la tabla");
@@ -246,6 +94,7 @@ public class Cuentas {
         }
         return estatus;   
     }
+    
     public boolean comprobarAutorizacion(int id_usu) throws SQLException{
         boolean compro=true;
         Connection con = null;
@@ -270,6 +119,7 @@ public class Cuentas {
         }
         return compro;
     }
+    
     public boolean comprobarCafExiste(int id_usu) throws SQLException{
         boolean compro=true;
         Connection con = null;
@@ -294,37 +144,9 @@ public class Cuentas {
         }
         return compro;
     }
-    public Cuentas getUsuarioById(int id){
-        Cuentas c = new Cuentas();
-        try{
-            Connection con = conexion.getConexion();
-            String sql = "Select * from usuario where id_usu = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                c.setId_usu(rs.getInt(1));
-                c.setNom_usu(rs.getString(2));
-                c.setAppat_usu(rs.getString(3));
-                c.setApmat_usu(rs.getString(4));
-                c.setEmail_usu(rs.getString(5));
-                c.setPass_usu(rs.getString(6));
-                c.setTel_usu(rs.getString(7));
-                c.setPer_usu(rs.getInt(8));
-                break;
-            }
-            ps.close();
-            con.close();
-        }catch(Exception ed){
-            System.out.println("error en get usuario by id");
-            System.out.println(ed.getMessage());
-            System.out.println(ed.getStackTrace());
-        }
-        return c;
-    }
-    public static ArrayList<Cuentas> getCafeteriasAutorizadas(){
-        ArrayList<Cuentas> lista= new ArrayList<Cuentas>();
+    
+    public static ArrayList<Cafeteria> getCafeteriasAutorizadas(){
+        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
@@ -335,7 +157,7 @@ public class Cuentas {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Cuentas c = new Cuentas();
+                Cafeteria c = new Cafeteria();
                     c.setId_caf(rs.getInt(1));
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
@@ -348,8 +170,9 @@ public class Cuentas {
         }
         return lista;
     }
-    public static ArrayList<Cuentas> getCafeteriasNoAutorizadas(){
-        ArrayList<Cuentas> lista= new ArrayList<Cuentas>();
+    
+    public static ArrayList<Cafeteria> getCafeteriasPendientes(){
+        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
@@ -360,7 +183,7 @@ public class Cuentas {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Cuentas c = new Cuentas();
+                Cafeteria c = new Cafeteria();
                     c.setId_caf(rs.getInt(1));
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
@@ -373,36 +196,9 @@ public class Cuentas {
         }
         return lista;
     }
-    public ArrayList<Cuentas> getUsuarios(){
-        ArrayList<Cuentas> lista = new ArrayList<>();
-        try{
-            Connection con = conexion.getConexion();
-            String sql = null;
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            
-            sql="select * from usuario where perm_usu=2";
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                Cuentas c = new Cuentas();
-                    c.setId_usu(rs.getInt(1));
-                    c.setNom_usu(rs.getString(2));
-                    c.setAppat_usu(rs.getString(3));
-                    c.setApmat_usu(rs.getString(4));
-                    c.setEmail_usu(rs.getString(5));
-                    c.setPass_usu(rs.getString(6));
-                    c.setTel_usu(rs.getString(7));
-                lista.add(c);
-            }            
-            con.close();
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        return lista;
-    }
-    public Cuentas getCafeteriaById(int id){
-        Cuentas c = new Cuentas();
+    
+    public Cafeteria getCafeteriaById(int id){
+        Cafeteria c = new Cafeteria();
         try{
             Connection con = conexion.getConexion();
             String sql = "Select * from cafeteria where id_usu = ?";
@@ -426,22 +222,6 @@ public class Cuentas {
             System.out.println(ed.getMessage());
             System.out.println(ed.getStackTrace());
         }
-        return c;
-    }
-    public Cuentas encontrarUsuario(String correo, String contr) throws SQLException{
-        Cuentas c = new Cuentas ();
-            Connection con = conexion.getConexion();
-            String sql="select * from usuario where email_usu = '"+correo+"' and pass_usu = '"+contr+"'";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                c.setId_usu(rs.getInt(1));
-                c.setEmail_usu(rs.getString(5));
-                c.setPass_usu(rs.getString(6));
-                c.setPer_usu(rs.getInt(8));
-                break;
-            }
         return c;
     }
     
@@ -483,4 +263,55 @@ public class Cuentas {
             }
         }
     }
+    
+    
+    public int getId_caf() {
+        return id_caf;
+    }
+
+    public void setId_caf(int id_caf) {
+        this.id_caf = id_caf;
+    }
+
+    public String getDir_caf() {
+        return dir_caf;
+    }
+
+    public void setDir_caf(String dir_caf) {
+        this.dir_caf = dir_caf;
+    }
+
+    public String getNom_caf() {
+        return nom_caf;
+    }
+
+    public void setNom_caf(String nom_caf) {
+        this.nom_caf = nom_caf;
+    }
+
+    public InputStream getFot_caf() {
+        return fot_caf;
+    }
+
+    public void setFot_caf(InputStream fot_caf) {
+        this.fot_caf = fot_caf;
+    }
+
+    public boolean isAut_caf() {
+        return aut_caf;
+    }
+
+    public void setAut_caf(boolean aut_caf) {
+        this.aut_caf = aut_caf;
+    }
+
+    public int getId_usu() {
+        return id_usu;
+    }
+
+    public void setId_usu(int id_usu) {
+        this.id_usu = id_usu;
+    }
+    
+    
 }
