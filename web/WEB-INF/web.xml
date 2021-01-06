@@ -40,6 +40,10 @@
         <servlet-name>EliminarCaf</servlet-name>
         <servlet-class>EliminarCaf</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrarPro</servlet-name>
+        <servlet-class>RegistrarPro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>EliminarCaf</servlet-name>
         <url-pattern>/EliminarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarPro</servlet-name>
+        <url-pattern>/RegistrarPro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

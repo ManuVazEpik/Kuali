@@ -5,6 +5,7 @@
  */
 
 import Clases.Cafeteria;
+import Clases.Productos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -18,8 +19,17 @@ import javax.servlet.http.Part;
  *
  * @author bocal
  */
-public class RegistrarCaf extends HttpServlet {
+public class RegistrarPro extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -48,33 +58,33 @@ public class RegistrarCaf extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String tipo, nom_caf, dir_caf, calle, col, num;
-            tipo=request.getParameter("tipo");
+            String nom_prod, desc_prod, pre_prodS , id_cafS;
+            boolean  disp_prod;
             
-                String idS=request.getParameter("id_usu");
-                int id_usu = Integer.parseInt(idS);
-                nom_caf = request.getParameter("nom_caf");
-                Part part=request.getPart("fot_caf");
-                InputStream inputStream=part.getInputStream();
-                calle = request.getParameter("calle_caf");
-                col = request.getParameter("col_caf");
-                num =request.getParameter("num_caf");
-                dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
-                
-                Cafeteria c = new Cafeteria();
-                Cafeteria operC= new Cafeteria();
-                c.setFot_caf(inputStream);
-                c.setNom_caf(nom_caf);
-                c.setDir_caf(dir_caf);
-                c.setId_usu(id_usu);
-                int estado=operC.AñadirCafeteria(c);
-            
-                if(estado >0){
-                    response.sendRedirect("index.html");
-                }else{
-                    out.println("<h1>Valio cake</h1>");
-                    out.println("");
-                }
+            id_cafS=request.getParameter("id_caf");
+            int id_caf = Integer.parseInt(id_cafS);
+            nom_prod = request.getParameter("nom_prod");
+            Part part=request.getPart("fot_prod");
+            InputStream inputStream=part.getInputStream();
+            desc_prod = request.getParameter("desc_prod");
+            pre_prodS = request.getParameter("pre_prod");
+            disp_prod=true;
+            float pre_prod=Float.parseFloat(pre_prodS);
+            Productos c = new Productos();
+            Productos operC= new Productos();
+            c.setFot_prod(inputStream);
+            c.setNom_prod(nom_prod);
+            c.setDesc_prod(desc_prod);
+            c.setId_caf(id_caf);
+            c.setPre_prod(pre_prod);
+            int estado=operC.Guardar(c);
+
+            if(estado >0){
+                response.sendRedirect("index.html");
+            }else{
+                out.println("<h1>Valio cake</h1>");
+                out.println("");
+            }
         }
     }
 

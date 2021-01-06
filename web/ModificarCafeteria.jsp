@@ -58,6 +58,8 @@ if(sessionOk.getAttribute("usuario")==null || sessionOk.getAttribute("autorizaci
         <input type='hidden' name='id' value='<%=c.getId_caf()%>'/>
         <input type="submit" value="Eliminar"/>
     </form>
+        
+        <h2>Registrar producto nuevo</h2>
     </body>
 </html>
 <%
