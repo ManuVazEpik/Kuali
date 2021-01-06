@@ -78,7 +78,8 @@ public class RegistrarUsu extends HttpServlet {
                     out.println("");
                 }
             }else if (Integer.parseInt(tipo)==3) {
-                int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
+                String idS=request.getParameter("id_usu");
+                int id_usu = Integer.parseInt(idS);
                 nom_caf = request.getParameter("nom_caf");
                 Part part=request.getPart("fot_caf");
                 InputStream inputStream=part.getInputStream();

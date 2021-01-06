@@ -257,6 +257,7 @@ public class Cuentas {
             ps.setInt(1, id_usu);
             ResultSet rs=ps.executeQuery();
             while (rs.next()) {
+                System.out.println(rs.getBoolean(6));
                 compro=rs.getBoolean(6);
                 break;
             }

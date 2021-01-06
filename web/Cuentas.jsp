@@ -74,7 +74,8 @@ if(sessionOk.getAttribute("usuario")==null){
     <%
     if (caftener==true){
         boolean autorizacion=operC.comprobarAutorizacion(id_usu);
-        if (autorizacion=true) {%>
+        
+        if (autorizacion==true) {%>
         <h2>Ingresa a los datos de tu cafeteria</h2>
         <form action="Cafeteria.jsp">
             <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
@@ -85,12 +86,15 @@ if(sessionOk.getAttribute("usuario")==null){
     <%  }
     }else{%>
     <h2>Registrar una cafeteria</h2>
-    <form action="RegistrarUsu">
+    <form enctype="multipart/form-data" action="RegistrarUsu" method="POST">
+        <input type='hidden' name="tipo" value="3"/>
+        <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
         <label>Ingresa el nombre de tu cafeteria</label><input type="text" name="nom_caf"/><br>
         <label>Ingresa una foto de tu local</label><input type="file" name="fot_caf"><br>
         <label>Ingresa la calle de tu local</label><input type="text" name="calle_caf"><br>
         <label>Ingresa la colonia de tu local</label><input type="text" name="col_caf"><br>
         <label>Ingresa el numero de tu local</label><input type="text" name="num_caf"><br>
+        <input type='submit' value='Aceptar'/>
     </form>
     <%
     }
