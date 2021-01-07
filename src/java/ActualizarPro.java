@@ -4,36 +4,32 @@
  * and open the template in the editor.
  */
 
-import Clases.Cafeteria;
-import Clases.Usuario;
+import Clases.Productos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-@MultipartConfig
 
 /**
  *
  * @author bocal
  */
-public class RegistrarCaf extends HttpServlet {
+public class ActualizarPro extends HttpServlet {
 
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -54,35 +50,43 @@ public class RegistrarCaf extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String tipo, nom_caf, dir_caf, calle, col, num,idS;
+            String nom_prod, desc_prod, pre_prodS , id_cafS, dispon;
+            boolean  disp_prod=true;
             
-                
-                nom_caf = request.getParameter("nom_caf");
-                System.out.println(nom_caf);
-                idS=request.getParameter("id_usuC");
-                System.out.println("idS:"+idS);
-                int id_usu = Integer.parseInt(idS);
-                Part part=request.getPart("fot_caf");
-                InputStream inputStream=part.getInputStream();
-                calle = request.getParameter("calle_caf");
-                col = request.getParameter("col_caf");
-                num =request.getParameter("num_caf");
-                dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
-                
-                Cafeteria c = new Cafeteria();
-                Cafeteria operC= new Cafeteria();
-                c.setFot_caf(inputStream);
-                c.setNom_caf(nom_caf);
-                c.setDir_caf(dir_caf);
-                c.setId_usu(id_usu);
-                int estado=operC.AñadirCafeteria(c);
+            id_cafS=request.getParameter("id_caf");
+            int id_caf = Integer.parseInt(id_cafS);
+            nom_prod = request.getParameter("nom_prod");
+            Part part=request.getPart("fot_prod");
+            InputStream inputStream=part.getInputStream();
+            desc_prod = request.getParameter("desc_prod");
+            pre_prodS = request.getParameter("pre_prod");
+            dispon=request.getParameter("dispon");
             
-                if(estado >0){
-                    response.sendRedirect("ModificarCafeteria.jsp");
-                }else{
-                    out.println("<h1>Valio cake</h1>");
-                    out.println("");
-                }
+            if ("Disponible".equals(dispon)) {
+                disp_prod=true;
+            }else if("NoDisponible".equals(dispon)){
+                disp_prod=false;
+            }else{
+                response.sendRedirect("error.jsp");
+            }
+            
+            float pre_prod=Float.parseFloat(pre_prodS);
+            Productos c = new Productos();
+            Productos operC= new Productos();
+            c.setFot_prod(inputStream);
+            c.setNom_prod(nom_prod);
+            c.setDesc_prod(desc_prod);
+            c.setId_caf(id_caf);
+            c.setPre_prod(pre_prod);
+            c.setDisp_prod(disp_prod);
+            int estado=operC.Guardar(c);
+
+            if(estado >0){
+                response.sendRedirect("ModificarCafeteria.jsp");
+            }else{
+                out.println("<h1>Valio cake</h1>");
+                out.println("");
+            }
         }
     }
 

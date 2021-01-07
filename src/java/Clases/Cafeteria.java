@@ -179,7 +179,7 @@ public class Cafeteria {
             PreparedStatement ps = null;
             ResultSet rs = null;
             
-            sql="select * from cafeteria where aut_caf=1";
+            sql="select * from cafeteria where aut_caf=2";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){

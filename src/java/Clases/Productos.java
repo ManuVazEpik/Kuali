@@ -5,12 +5,17 @@
  */
 package Clases;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -85,7 +90,7 @@ public class Productos {
         try{
             
             Connection con = conexion.getConexion();
-            String q = "insert into Producto (nom_prod,desc_prod,pre_prod,disp_prod,fot_prod,id_caf) values (?,?,?,?,?)";
+            String q = "insert into Producto (nom_prod,desc_prod,pre_prod,disp_prod,fot_prod,id_caf) values (?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(q);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getDesc_prod());
@@ -93,7 +98,6 @@ public class Productos {
             ps.setBoolean(4,p.getDisp_prod());
             ps.setBlob(5, p.getFot_prod());
             ps.setInt(6,p.getId_caf());
-            ps.executeUpdate();
             estatus=ps.executeUpdate();
             con.close();
             
@@ -118,6 +122,7 @@ public class Productos {
             ps.setFloat(3, p.getPre_prod());
             ps.setBoolean(4,p.getDisp_prod());
             ps.setBlob(5, p.getFot_prod());
+            ps.setInt(6, p.getId_prod());
             estatus += ps.executeUpdate();
 
         }catch(Exception ed){
@@ -182,7 +187,7 @@ public class Productos {
         }
         return p;
     }
-    public ArrayList<Productos> getProductosCaf(int id){
+    public static ArrayList<Productos> getProductosCaf(int id){
         ArrayList<Productos> listap = new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
@@ -211,5 +216,43 @@ public class Productos {
         
         }
         return listap;
+    }
+    public void listarImg(int idP, HttpServletResponse response) throws IOException{
+        Connection cn=null;
+        PreparedStatement ps=null;
+        ResultSet rs= null;
+        InputStream inputstream=null;
+        OutputStream outputstream=null;
+        BufferedInputStream bufferedinputstream=null;
+        BufferedOutputStream bufferedoutputstream=null;
+        response.setContentType("image/*");
+        try{
+            outputstream=response.getOutputStream();
+            cn=conexion.getConexion();
+            String q="SELECT fot_prod FROM Producto where id_prod="+idP+"";
+            ps=cn.prepareStatement(q);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                inputstream=rs.getBinaryStream(1);
+            }
+            bufferedinputstream=new BufferedInputStream(inputstream);
+            bufferedoutputstream=new BufferedOutputStream(outputstream);
+            int i=0;
+            while((i=bufferedinputstream.read())!=-1){
+                bufferedoutputstream.write(i);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en listarImg");
+        }finally{
+            try{
+                rs.close();
+                ps.close();
+                cn.close();
+            }catch(SQLException ex){
+                ex.getStackTrace();
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 }

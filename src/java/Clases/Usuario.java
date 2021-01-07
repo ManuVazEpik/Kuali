@@ -112,9 +112,11 @@ public class Usuario {
                 c.setId_usu(rs.getInt(1));
                 c.setNom_usu(rs.getString(2));
                 c.setAppat_usu(rs.getString(3));
+                c.setApmat_usu(rs.getString(4));
                 c.setTel_usu(rs.getString(7));
-                c.setEmail_usu(rs.getString(8));
-                c.setPass_usu(rs.getString(9));
+                c.setEmail_usu(rs.getString(5));
+                c.setPass_usu(rs.getString(6));
+                c.setPerm_usu(rs.getInt(8));
                 break;
             }
             
@@ -141,7 +143,7 @@ public class Usuario {
                 c.setId_usu(rs.getInt(1));
                 c.setEmail_usu(rs.getString(2));
                 c.setPass_usu(rs.getString(3));
-                c.setPerm_usu(rs.getInt(4));
+                c.setPerm_usu(rs.getInt(8));
                 break;
             }
     
@@ -183,7 +185,7 @@ public class Usuario {
         String sql = "";
         PreparedStatement ps = null;
         try{
-                sql= "update cafeteria set aut_caf = '2' where id_caf = ?";
+                sql= "update cafeteria set aut_caf = '1' where id_caf = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, id);
                 estatus += ps.executeUpdate();

@@ -44,6 +44,18 @@
         <servlet-name>RegistrarPro</servlet-name>
         <servlet-class>RegistrarPro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarPro</servlet-name>
+        <servlet-class>ActualizarPro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarPro</servlet-name>
+        <servlet-class>EliminarPro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObtenerImgP</servlet-name>
+        <servlet-class>ObtenerImgP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -87,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>RegistrarPro</servlet-name>
         <url-pattern>/RegistrarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarPro</servlet-name>
+        <url-pattern>/ActualizarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPro</servlet-name>
+        <url-pattern>/EliminarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObtenerImgP</servlet-name>
+        <url-pattern>/ObtenerImgP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

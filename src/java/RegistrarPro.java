@@ -6,14 +6,20 @@
 
 import Clases.Cafeteria;
 import Clases.Productos;
+import Clases.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+@MultipartConfig
 
 /**
  *
@@ -30,13 +36,7 @@ public class RegistrarPro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -77,10 +77,11 @@ public class RegistrarPro extends HttpServlet {
             c.setDesc_prod(desc_prod);
             c.setId_caf(id_caf);
             c.setPre_prod(pre_prod);
+            c.setDisp_prod(disp_prod);
             int estado=operC.Guardar(c);
 
             if(estado >0){
-                response.sendRedirect("index.html");
+                response.sendRedirect("ModificarCafeteria.jsp");
             }else{
                 out.println("<h1>Valio cake</h1>");
                 out.println("");
