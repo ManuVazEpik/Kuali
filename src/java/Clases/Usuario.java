@@ -33,7 +33,7 @@ public class Usuario {
             String q1="insert into usuario (nom_usu,appat_usu,apmat_usu,email_usu,pass_usu,tel_usu,perm_usu) values (?,?,?,?,?,?,?)";
             PreparedStatement ps1 = con.prepareStatement(q1);
             ps1.setString(1, c.getNom_usu());
-            ps1.setString(2, c.getApmat_usu());
+            ps1.setString(2, c.getAppat_usu());
             ps1.setString(3, c.getApmat_usu());
             ps1.setString(4, c.getEmail_usu());
             ps1.setString(5, c.getPass_usu());
