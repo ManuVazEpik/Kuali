@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
+      <servlet-name>RegistrarUsu</servlet-name>
+        <servlet-class>RegistrarUsu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarUsu</servlet-name>
+        <servlet-class>ActualizarUsu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IniciarSesion</servlet-name>
+        <servlet-class>IniciarSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarUsu</servlet-name>
+        <servlet-class>EliminarUsu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>CerrarSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>obtenerImg</servlet-name>
+        <servlet-class>obtenerImg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Autorizar</servlet-name>
+        <servlet-class>Autorizar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarCaf</servlet-name>
+        <servlet-class>RegistrarCaf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarCaf</servlet-name>
+        <servlet-class>ActualizarCaf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCaf</servlet-name>
+        <servlet-class>EliminarCaf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarPro</servlet-name>
+        <servlet-class>RegistrarPro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarPro</servlet-name>
+        <servlet-class>ActualizarPro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarPro</servlet-name>
+        <servlet-class>EliminarPro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObtenerImgP</servlet-name>
+        <servlet-class>ObtenerImgP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarUsu</servlet-name>
+        <url-pattern>/RegistrarUsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarUsu</servlet-name>
+        <url-pattern>/ActualizarUsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IniciarSesion</servlet-name>
+        <url-pattern>/IniciarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarUsu</servlet-name>
+        <url-pattern>/EliminarUsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>obtenerImg</servlet-name>
+        <url-pattern>/obtenerImg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autorizar</servlet-name>
+        <url-pattern>/Autorizar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarCaf</servlet-name>
+        <url-pattern>/RegistrarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarCaf</servlet-name>
+        <url-pattern>/ActualizarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCaf</servlet-name>
+        <url-pattern>/EliminarCaf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarPro</servlet-name>
+        <url-pattern>/RegistrarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarPro</servlet-name>
+        <url-pattern>/ActualizarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarPro</servlet-name>
+        <url-pattern>/EliminarPro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObtenerImgP</servlet-name>
+        <url-pattern>/ObtenerImgP</url-pattern>
+=======
         <servlet-name>pasaCifrado</servlet-name>
         <servlet-class>pasaCifrado</servlet-class>
     </servlet>
@@ -15,6 +126,7 @@
     <servlet-mapping>
         <servlet-name>descifraAES</servlet-name>
         <url-pattern>/descifraAES</url-pattern>
+      
     </servlet-mapping>
     <session-config>
         <session-timeout>
