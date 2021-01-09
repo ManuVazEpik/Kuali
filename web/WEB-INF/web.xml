@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>RegistrarUsu</servlet-name>
+      <servlet-name>RegistrarUsu</servlet-name>
         <servlet-class>RegistrarUsu</servlet-class>
     </servlet>
     <servlet>
@@ -111,6 +111,22 @@
     <servlet-mapping>
         <servlet-name>ObtenerImgP</servlet-name>
         <url-pattern>/ObtenerImgP</url-pattern>
+=======
+        <servlet-name>pasaCifrado</servlet-name>
+        <servlet-class>pasaCifrado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>descifraAES</servlet-name>
+        <servlet-class>descifraAES</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pasaCifrado</servlet-name>
+        <url-pattern>/pasaCifrado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>descifraAES</servlet-name>
+        <url-pattern>/descifraAES</url-pattern>
+      
     </servlet-mapping>
     <session-config>
         <session-timeout>
