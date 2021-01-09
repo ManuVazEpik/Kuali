@@ -134,8 +134,10 @@ public class Usuario {
     public Usuario encontrarUsuario(String correo, String contr) throws SQLException{
         Usuario c = new Usuario ();
             Connection con = conexion.getConexion();
-            String sql="select * from Usuario where email_usu = '"+correo+"' and pass_usu = '"+contr+"'";
+            String sql="select * from Usuario where email_usu = ? and pass_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, correo);
+            ps.setString(2, contr);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){

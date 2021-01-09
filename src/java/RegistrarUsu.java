@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Clases.cifrar;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,16 +59,22 @@ public class RegistrarUsu extends HttpServlet {
                 email_usu=request.getParameter("email_usu");
                 pass_usu=request.getParameter("pass_usu");
                 
-                Usuario c = new Usuario();
-                Usuario operC= new Usuario();
-                c.setNom_usu(nom_usu);
-                c.setAppat_usu(appat_usu);
-                c.setApmat_usu(apmat_usu);
-                c.setEmail_usu(email_usu);
-                c.setPass_usu(pass_usu);
-                c.setTel_usu(tel_usu);
+                try{
                 
-                int estado=operC.AñadirUsuario(c);
+                Usuario operC= new Usuario();
+//                c.setNom_usu(nom_usu);
+//                c.setAppat_usu(appat_usu);
+//                c.setApmat_usu(apmat_usu);
+//                c.setEmail_usu(email_usu);
+//                c.setPass_usu(pass_usu);
+//                c.setTel_usu(tel_usu);
+                
+                cifrar cifra = new cifrar();
+                
+                Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,email_usu,
+                        pass_usu,tel_usu);
+                
+                int estado=operC.AñadirUsuario(u);
             
                 if(estado >0){
                     response.sendRedirect("index.html");
@@ -83,4 +90,5 @@ public class RegistrarUsu extends HttpServlet {
         
     }
 
+}
 }
