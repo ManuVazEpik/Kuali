@@ -111,21 +111,6 @@
     <servlet-mapping>
         <servlet-name>ObtenerImgP</servlet-name>
         <url-pattern>/ObtenerImgP</url-pattern>
-=======
-        <servlet-name>pasaCifrado</servlet-name>
-        <servlet-class>pasaCifrado</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>descifraAES</servlet-name>
-        <servlet-class>descifraAES</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>pasaCifrado</servlet-name>
-        <url-pattern>/pasaCifrado</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>descifraAES</servlet-name>
-        <url-pattern>/descifraAES</url-pattern>
       
     </servlet-mapping>
     <session-config>
