@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import Clases.cifrar;
 import Clases.Usuario;
 import Clases.Validar;
 import java.io.IOException;
@@ -58,6 +60,7 @@ public class ActualizarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu, tipo, nom_caf, dir_caf;
             int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
             System.out.println("id_usu: "+id_usu);
+            cifrar cifra = new cifrar();
             
             
             nom_usu = request.getParameter("nom_usu");
@@ -78,10 +81,12 @@ public class ActualizarUsu extends HttpServlet {
                 Usuario operC= new Usuario();
 
                 c.setId_usu(id_usu);
-                c.setNom_usu(nom_usu);
-                c.setAppat_usu(appat_usu);
-                c.setApmat_usu(apmat_usu);
-                c.setTel_usu(tel_usu);
+                
+                c = cifra.AESCifrar(nom_usu, appat_usu, apmat_usu, tel_usu);
+//                c.setNom_usu(nom_usu);
+//                c.setAppat_usu(appat_usu);
+//                c.setApmat_usu(apmat_usu);
+//                c.setTel_usu(tel_usu);
 
                 int estado=operC.ActualizarUsuario(c);
 
