@@ -112,8 +112,12 @@ public class Usuario {
             while(rs.next()){
                 c.setId_usu(rs.getInt(1));
                 System.out.println(c.getId_usu());
-                c = cifra.AESDescifrar(rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(7));
+                String nombre = rs.getString(2);
+                String apPat = rs.getString(3);
+                String apMat = rs.getString(4);
+                String tel = rs.getString(7);
+                c = cifra.AESDescifrar(nombre, apPat,
+                        apMat, tel);
                 c.setEmail_usu(rs.getString(5));
                 c.setPass_usu(rs.getString(6));
                 c.setPerm_usu(rs.getInt(8));
