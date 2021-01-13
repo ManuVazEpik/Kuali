@@ -43,11 +43,11 @@ if(sessionOk.getAttribute("usuario")==null){
             for (Productos prod: lp) {
         %>                        
                     <th>
-                        <img src="obtenerImg?idI=<%=prod.getId_prod()%>"><p>
+                        <img src="<%=prod.getFot_prod()%>"><p>
                             <%= prod.getNom_prod()%><br>
                             Descripcion: <%= prod.getDesc_prod()%><br>
                             Precio <%= prod.getPre_prod()%><br>
-                            <input hidden value="<%= prod.getDisp_prod()%>"><br>
+                            <input type="hidden" value="<%= prod.getDisp_prod()%>"><br>
                             <a href="anadirPedido.jsp?id=<%= prod.getId_prod()%>" style="color:white">Añadir</a>
                     </th>
         <%

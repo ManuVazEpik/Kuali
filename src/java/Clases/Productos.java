@@ -27,13 +27,13 @@ public class Productos {
     private float pre_prod;
     private int id_caf;
     private boolean disp_prod;
-    private InputStream fot_prod;
+    private String fot_prod;
 
-    public InputStream getFot_prod(){
+    public String getFot_prod(){
         return fot_prod;
     }
     
-    public void setFot_prod(InputStream fot_prod){
+    public void setFot_prod(String fot_prod){
         this.fot_prod=fot_prod;
     }
     
@@ -96,7 +96,7 @@ public class Productos {
             ps.setString(2, p.getDesc_prod());
             ps.setFloat(3, p.getPre_prod());
             ps.setBoolean(4,p.getDisp_prod());
-            ps.setBlob(5, p.getFot_prod());
+            ps.setString(5, p.getFot_prod());
             ps.setInt(6,p.getId_caf());
             estatus=ps.executeUpdate();
             con.close();
@@ -115,15 +115,19 @@ public class Productos {
         PreparedStatement ps = null;
         try{
 
-            sql= "update Producto set nom_prod=?, desc_prod=?, pre_prod=?,disp_prod=?,fot_prod=? where id_prod=?";
+            sql= "update Producto set nom_prod=?, desc_prod=?, pre_prod=?, fot_prod=? where id_prod=?";
             ps = con.prepareStatement(sql);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getDesc_prod());
             ps.setFloat(3, p.getPre_prod());
-            ps.setBoolean(4,p.getDisp_prod());
-            ps.setBlob(5, p.getFot_prod());
-            ps.setInt(6, p.getId_prod());
+            ps.setString(4, p.getFot_prod());
+            ps.setInt(5, p.getId_prod());
             estatus += ps.executeUpdate();
+            System.out.println(p.getNom_prod());
+            System.out.println(p.getDesc_prod());
+            System.out.println(p.getPre_prod());
+            System.out.println(p.getFot_prod());
+            System.out.println(p.getId_prod());
 
         }catch(Exception ed){
             System.out.println("No conecto a la tabla");
@@ -173,6 +177,7 @@ public class Productos {
                 p.setDesc_prod(rs.getString(3));
                 p.setPre_prod(rs.getFloat(4));
                 p.setDisp_prod(rs.getBoolean(5));
+                p.setFot_prod(rs.getString(6));
                 p.setId_caf(rs.getInt(7));
                 break;
             }
@@ -203,6 +208,7 @@ public class Productos {
                 p.setDesc_prod(rs.getString(3));
                 p.setPre_prod(rs.getFloat(4));
                 p.setDisp_prod(rs.getBoolean(5));
+                p.setFot_prod(rs.getString(6));
                 p.setId_caf(rs.getInt(7));
                 listap.add(p);
             }
@@ -216,43 +222,5 @@ public class Productos {
         
         }
         return listap;
-    }
-    public void listarImg(int idP, HttpServletResponse response) throws IOException{
-        Connection cn=null;
-        PreparedStatement ps=null;
-        ResultSet rs= null;
-        InputStream inputstream=null;
-        OutputStream outputstream=null;
-        BufferedInputStream bufferedinputstream=null;
-        BufferedOutputStream bufferedoutputstream=null;
-        response.setContentType("image/*");
-        try{
-            outputstream=response.getOutputStream();
-            cn=conexion.getConexion();
-            String q="SELECT fot_prod FROM Producto where id_prod="+idP+"";
-            ps=cn.prepareStatement(q);
-            rs=ps.executeQuery();
-            if(rs.next()){
-                inputstream=rs.getBinaryStream(1);
-            }
-            bufferedinputstream=new BufferedInputStream(inputstream);
-            bufferedoutputstream=new BufferedOutputStream(outputstream);
-            int i=0;
-            while((i=bufferedinputstream.read())!=-1){
-                bufferedoutputstream.write(i);
-            }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("Error en listarImg");
-        }finally{
-            try{
-                rs.close();
-                ps.close();
-                cn.close();
-            }catch(SQLException ex){
-                ex.getStackTrace();
-                System.out.println(ex.getMessage());
-            }
-        }
     }
 }

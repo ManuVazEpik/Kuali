@@ -91,10 +91,12 @@ System.out.println(id_usu);
     <%  }
     }else{%>
     <h2>Registrar una cafeteria</h2>
-    <form enctype="multipart/form-data" action="RegistrarCaf" method="POST">
+    <form action="RegistrarCaf" method="POST">
+        <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
+        <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
+        <input type="text" name="fot_caf"><br>
         <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
         Ingresa el nombre de tu cafeteria<input type="text" name="nom_caf"/><br>
-        Ingresa una foto de tu local<input type="file" name="fot_caf"><br>
         Ingresa la calle de tu local<input type="text" name="calle_caf"><br>
         Ingresa la colonia de tu local<input type="text" name="col_caf"><br>
         Ingresa el numero de tu local<input type="text" name="num_caf"><br>

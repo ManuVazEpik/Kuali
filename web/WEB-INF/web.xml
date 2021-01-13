@@ -21,10 +21,6 @@
         <servlet-class>CerrarSesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>obtenerImg</servlet-name>
-        <servlet-class>obtenerImg</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Autorizar</servlet-name>
         <servlet-class>Autorizar</servlet-class>
     </servlet>
@@ -52,10 +48,6 @@
         <servlet-name>EliminarPro</servlet-name>
         <servlet-class>EliminarPro</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ObtenerImgP</servlet-name>
-        <servlet-class>ObtenerImgP</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -75,10 +67,6 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>obtenerImg</servlet-name>
-        <url-pattern>/obtenerImg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Autorizar</servlet-name>
@@ -107,10 +95,6 @@
     <servlet-mapping>
         <servlet-name>EliminarPro</servlet-name>
         <url-pattern>/EliminarPro</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ObtenerImgP</servlet-name>
-        <url-pattern>/ObtenerImgP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -46,15 +46,17 @@ if(sessionOk.getAttribute("usuario")==null){
         <h1>Datos</h1>
         <ul>
             <li>Nombre:<%=c.getNom_caf()%> <br></li>
-            <img src="obtenerImg?idI=<%=c.getId_caf()%>">
+            <img src="<%=c.getFot_caf()%>">
             <li>Direccion <%=c.getDir_caf()%><br></li>
         </ul>
         <a href="CerrarSesion">Cerrar Sesion</a>
     <h2>Modificar</h2>
-    <form enctype="multipart/form-data" action='ActualizarCaf' method='POST' name='formulario1'>
+    <form action='ActualizarCaf' method='POST' name='formulario1'>
         <input type='hidden' name='id_caf' value='<%=c.getId_caf()%>'/>
     <ul>
-        <li>Imagen<input type="file" name="fot_caf"/></li>
+        <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
+        <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
+        <input type="text" name="fot_caf" value="<%=c.getFot_caf()%>"><br>
         <li>Nombre Local: <input type='text' name='nom_caf' value='<%=c.getNom_caf()%>'/></li>
         <li>Direccion de la cafeteria: <input type='text' name='dir_caf' value='<%=c.getDir_caf()%>'/></li>
         <input type="submit" value="Aceptar"/>
@@ -67,12 +69,14 @@ if(sessionOk.getAttribute("usuario")==null){
     </form>
         
     <h2>Registrar producto nuevo</h2>
-    <form enctype="multipart/form-data" action="RegistrarPro" method="POST">
+    <form action="RegistrarPro" method="POST">
+        <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu producto</a>.
+        <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
+        <input type="text" name="fot_prod"><br>
         <input type="hidden" name="id_caf"value="<%=c.getId_caf()%>"/>
         Ingresa el nombre del producto<input type="text" name="nom_prod"/><br>
         Ingresa la descripcion del producto<input type="text" name="desc_prod"/><br>
         Ingresa el precio del producto<input type="text" name="pre_prod"/><br>
-        Ingresa una foto del producto<input type="file" name="fot_prod"/><br>
         <input type="submit" value="Aceptar"/>
     </form>
 
@@ -97,12 +101,19 @@ if(sessionOk.getAttribute("usuario")==null){
                 <td><%=p.getNom_prod()%></td>
                 <td><%=p.getDesc_prod()%></td>
                 <td><%=p.getPre_prod()%></td>
-                <td><img src="ObtenerImgP?idI=<%=p.getId_prod()%>"></td>
+                <td><img src="<%=p.getFot_prod()%>"></td>
+                <td>
+                    <form action="Disponibilidad">
                 <%if(p.getDisp_prod()==true){%>
-                <td>Disponible</td>
+                <p>Disponible</p>
+                <input type="hidden" value="Disponible" name="dis_prod"/>
+                <input type="submit" value="Cambiar a no disponible"/>
                 <%}else{%>
-                <td>NoDisponible</td>
+                <input type="hidden" value="NoDisponible" name="dis_prod"/>
+                <input type="submit" value="Cambiar a disponible"/>
                 <%}%>
+                    </form>
+                </td>
                 <td><form action="ModificarPro.jsp" method="POST">
                     <input type="hidden" name="id_pro" value="<%=p.getId_prod()%>"/>
                     <input type="submit" value="Aceptar"/>

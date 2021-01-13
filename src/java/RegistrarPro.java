@@ -64,15 +64,14 @@ public class RegistrarPro extends HttpServlet {
             id_cafS=request.getParameter("id_caf");
             int id_caf = Integer.parseInt(id_cafS);
             nom_prod = request.getParameter("nom_prod");
-            Part part=request.getPart("fot_prod");
-            InputStream inputStream=part.getInputStream();
+            String fot_prod=request.getParameter("fot_prod");
             desc_prod = request.getParameter("desc_prod");
             pre_prodS = request.getParameter("pre_prod");
             disp_prod=true;
             float pre_prod=Float.parseFloat(pre_prodS);
             Productos c = new Productos();
             Productos operC= new Productos();
-            c.setFot_prod(inputStream);
+            c.setFot_prod(fot_prod);
             c.setNom_prod(nom_prod);
             c.setDesc_prod(desc_prod);
             c.setId_caf(id_caf);

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Cafeteria {
     private int id_caf, id_usu;
     private String dir_caf,nom_caf;
-    private InputStream fot_caf;
+    private String fot_caf;
     private boolean aut_caf;
 
     public int AñadirCafeteria(Cafeteria c){
@@ -35,7 +35,7 @@ public class Cafeteria {
                 PreparedStatement ps = con.prepareStatement(q);
                 ps.setString(1, c.getNom_caf());
                 ps.setString(2, c.getDir_caf());
-                ps.setBlob(3, c.getFot_caf());
+                ps.setString(3, c.getFot_caf());
                 ps.setInt(4, c.getId_usu());
                 ps.setInt(5, 1);
                 estatus=ps.executeUpdate();
@@ -58,7 +58,7 @@ public class Cafeteria {
             ps = con.prepareStatement(sql);
             ps.setString(1, c.getNom_caf());
             ps.setString(2, c.getDir_caf());
-            ps.setBlob(3, c.getFot_caf());
+            ps.setString(3, c.getFot_caf());
             ps.setInt(4, c.getId_caf());
             estatus += ps.executeUpdate();
         }catch(Exception ed){
@@ -162,6 +162,7 @@ public class Cafeteria {
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
                     c.setId_usu(rs.getInt(4));
+                    c.setFot_caf(rs.getString(5));
                 lista.add(c);
             }            
             con.close();
@@ -188,6 +189,7 @@ public class Cafeteria {
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
                     c.setId_usu(rs.getInt(4));
+                    c.setFot_caf(rs.getString(5));
                 lista.add(c);
             }            
             con.close();
@@ -210,7 +212,7 @@ public class Cafeteria {
                 c.setId_caf(rs.getInt(1));
                 c.setNom_caf(rs.getString(2)); //rs.getBinaryStream(3)
                 c.setDir_caf(rs.getString(3));
-                c.setFot_caf(rs.getBinaryStream(5));
+                c.setFot_caf(rs.getString(5));
                 c.setAut_caf(rs.getBoolean(6));
                 break;
             }
@@ -223,45 +225,6 @@ public class Cafeteria {
             System.out.println(ed.getStackTrace());
         }
         return c;
-    }
-    
-    public void listarImg(int idP, HttpServletResponse response) throws IOException{
-        Connection cn=null;
-        PreparedStatement ps=null;
-        ResultSet rs= null;
-        InputStream inputstream=null;
-        OutputStream outputstream=null;
-        BufferedInputStream bufferedinputstream=null;
-        BufferedOutputStream bufferedoutputstream=null;
-        response.setContentType("image/*");
-        try{
-            outputstream=response.getOutputStream();
-            cn=conexion.getConexion();
-            String q="SELECT fot_caf FROM cafeteria where id_caf="+idP+"";
-            ps=cn.prepareStatement(q);
-            rs=ps.executeQuery();
-            if(rs.next()){
-                inputstream=rs.getBinaryStream(1);
-            }
-            bufferedinputstream=new BufferedInputStream(inputstream);
-            bufferedoutputstream=new BufferedOutputStream(outputstream);
-            int i=0;
-            while((i=bufferedinputstream.read())!=-1){
-                bufferedoutputstream.write(i);
-            }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("Error en listarImg");
-        }finally{
-            try{
-                rs.close();
-                ps.close();
-                cn.close();
-            }catch(SQLException ex){
-                ex.getStackTrace();
-                System.out.println(ex.getMessage());
-            }
-        }
     }
     
     
@@ -289,11 +252,11 @@ public class Cafeteria {
         this.nom_caf = nom_caf;
     }
 
-    public InputStream getFot_caf() {
+    public String getFot_caf() {
         return fot_caf;
     }
 
-    public void setFot_caf(InputStream fot_caf) {
+    public void setFot_caf(String fot_caf) {
         this.fot_caf = fot_caf;
     }
 

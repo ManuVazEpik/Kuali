@@ -62,8 +62,7 @@ public class RegistrarCaf extends HttpServlet {
                 idS=request.getParameter("id_usuC");
                 System.out.println("idS:"+idS);
                 int id_usu = Integer.parseInt(idS);
-                Part part=request.getPart("fot_caf");
-                InputStream inputStream=part.getInputStream();
+                String fot_caf=request.getParameter("fot_caf");
                 calle = request.getParameter("calle_caf");
                 col = request.getParameter("col_caf");
                 num =request.getParameter("num_caf");
@@ -71,7 +70,7 @@ public class RegistrarCaf extends HttpServlet {
                 
                 Cafeteria c = new Cafeteria();
                 Cafeteria operC= new Cafeteria();
-                c.setFot_caf(inputStream);
+                c.setFot_caf(fot_caf);
                 c.setNom_caf(nom_caf);
                 c.setDir_caf(dir_caf);
                 c.setId_usu(id_usu);

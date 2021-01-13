@@ -63,8 +63,7 @@ public class ActualizarCaf extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             String nom_caf, dir_caf;
-            Part part=request.getPart("fot_caf");
-            InputStream inputStream=part.getInputStream();
+            String fot_caf=request.getParameter("fot_caf");
             int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
             nom_caf = request.getParameter("nom_caf");
             dir_caf = request.getParameter("dir_caf");
@@ -73,14 +72,14 @@ public class ActualizarCaf extends HttpServlet {
             Cafeteria operC= new Cafeteria();
 
             c.setId_caf(id_caf);
-            c.setFot_caf(inputStream);
+            c.setFot_caf(fot_caf);
             c.setNom_caf(nom_caf);
             c.setDir_caf(dir_caf);
 
             int estado=operC.ActualizarCafeteria(c);
 
             if(estado >0){
-                response.sendRedirect("Cafeteria.jsp");
+                response.sendRedirect("ModificarCafeteria.jsp");
             }else{
                 out.println("<h1>Valio cake</h1>");
                 out.println("");

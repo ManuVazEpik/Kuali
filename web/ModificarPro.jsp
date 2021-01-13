@@ -48,16 +48,14 @@ if(sessionOk.getAttribute("usuario")==null){
     </head>
     <body>
         <h1>Modificar</h1>
-        <form enctype="multipart/form-data" action="ActualizarPro" method="POST">
-        <input type="hidden" name="id_caf"value="<%=p.getId_caf()%>"/>
+        <form action="ActualizarPro" method="POST">
+        
         Ingresa el nombre del producto<input type="text" name="nom_prod" value="<%=p.getNom_prod()%>"/><br>
         Ingresa la descripcion del producto<input type="text" name="desc_prod" value="<%=p.getDesc_prod()%>"/><br>
         Ingresa el precio del producto<input type="text" name="pre_prod" value="<%=p.getPre_prod()%>"><br>
-        <select>
-            <option>Disponible</option>
-            <option>NoDisponible</option>
-        </select><br>
-        Ingresa una foto del producto<input type="file" name="fot_prod" /><br>
+        <a href="https://postimages.org" target="_blank">Nueva foto</a>.
+        Ingresa una foto del producto<input type="text" name="fot_prod" value="<%=p.getFot_prod()%>"/><br>
+        <input type="hidden" name='id_prod' value="<%=p.getId_prod()%>">
         <input type="submit" value="Aceptar"/>
     </form>
     </body>

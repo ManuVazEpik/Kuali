@@ -8,6 +8,9 @@ import Clases.Productos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,36 +53,26 @@ public class ActualizarPro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String nom_prod, desc_prod, pre_prodS , id_cafS, dispon;
+            String nom_prod, desc_prod, pre_prodS , id_prodS, dispon;
             boolean  disp_prod=true;
             
-            id_cafS=request.getParameter("id_caf");
-            int id_caf = Integer.parseInt(id_cafS);
             nom_prod = request.getParameter("nom_prod");
-            Part part=request.getPart("fot_prod");
-            InputStream inputStream=part.getInputStream();
+            String fot_prod=request.getParameter("fot_prod");
             desc_prod = request.getParameter("desc_prod");
             pre_prodS = request.getParameter("pre_prod");
-            dispon=request.getParameter("dispon");
-            
-            if ("Disponible".equals(dispon)) {
-                disp_prod=true;
-            }else if("NoDisponible".equals(dispon)){
-                disp_prod=false;
-            }else{
-                response.sendRedirect("error.jsp");
-            }
+            id_prodS= request.getParameter("id_prod");
+            int id_prod = Integer.parseInt(id_prodS);
             
             float pre_prod=Float.parseFloat(pre_prodS);
             Productos c = new Productos();
             Productos operC= new Productos();
-            c.setFot_prod(inputStream);
+            c.setFot_prod(fot_prod);
             c.setNom_prod(nom_prod);
             c.setDesc_prod(desc_prod);
-            c.setId_caf(id_caf);
+            c.setId_prod(id_prod);
             c.setPre_prod(pre_prod);
             c.setDisp_prod(disp_prod);
-            int estado=operC.Guardar(c);
+            int estado=operC.Actualizar(c);
 
             if(estado >0){
                 response.sendRedirect("ModificarCafeteria.jsp");
@@ -87,6 +80,8 @@ public class ActualizarPro extends HttpServlet {
                 out.println("<h1>Valio cake</h1>");
                 out.println("");
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(ActualizarPro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
