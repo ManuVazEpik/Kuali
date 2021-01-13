@@ -5,66 +5,28 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Prueba Registrar Usuario</title>
+        <title>Registrar Usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-        <link rel="stylesheet" href="css/reginisesion.css">
-        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
-
     <body>
-        
-        <header>
-            <div class="letras">
-            <h1>Instant Lunch</h1>
-            <h2>¿Que comeras hoy?</h2>
-        </div>
-        </header>
-        <form class="formulario" action="RegistrarUsu" method="POST">
-            <h1>Registrate</h1>
-            <div class="contenedor">
+        <h1>Crear cuenta</h1>
+        <form action="RegistrarUsu" method="POST">
+            <p>Registrar Usuario</p>
+            <label>Ingresa tu nombre</label><input type="text" name="nom_usu"/><br>
+            <label>Ingresa tu apellido paterno</label><input type="text" name="appat_usu"/><br>
+            <label>Ingresa tu apellido materno</label><input type="text" name="apmat_usu"/><br>
+            <label>Ingresa tu numero de telefono</label><input type="text" name="tel_usu"/><br><br>
             
-                <div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="nom_usu" placeholder="Ingresa tu nombre"/><br>
-                </div>
+            <label>Ingresa tu correo</label><input type="email" name="email_usu" /><br>
+            <label>Ingresa tu contraseña</label><input type="password" name="pass_usu"/><br>
+            <input type="hidden" name="tipo" value="2"/>
+            <input type="submit" value="Aceptar"/>
 
-                <div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="appat_usu" placeholder="Ingresa tu apellido paterno"/><br>
-                </div>
 
-                <div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="apmat_usu" placeholder="Ingresa tu apellido materno"/><br>
-                </div>
-
-				<div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="tel_usu" placeholder="Ingresa tu numero de telefono"/><br>
-                </div>
-				
-				<div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="email_usu" placeholder="Ingresa tu correo"/><br>
-                </div>
-				
-				<div class="input-contenedor">
-                <i class="fas fa-user icon"></i>
-                <input type="text" name="pass_usu" placeholder="Ingresa tu contraseña"/><br>
-                </div>
-				
-		<input type="hidden" name="tipo" value="2"/>
-                <input type="submit" value="Registrate" class="button">
-                <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-                <p>¿Ya tienes una cuenta?<a class="link" href="IniciarSesion.jsp">Iniciar Sesion</a></p>
-            </div>
+            
         </form>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
         
     </body>
 </html>

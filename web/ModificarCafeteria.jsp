@@ -44,7 +44,6 @@ if(sessionOk.getAttribute("usuario")==null){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cafeteria</title>
-        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>

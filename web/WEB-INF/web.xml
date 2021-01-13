@@ -52,6 +52,14 @@
         <servlet-name>Disponibilidad</servlet-name>
         <servlet-class>Disponibilidad</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>añadirPedido</servlet-name>
+        <servlet-class>añadirPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ordenar</servlet-name>
+        <servlet-class>Ordenar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>Disponibilidad</servlet-name>
         <url-pattern>/Disponibilidad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>añadirPedido</servlet-name>
+        <url-pattern>/a_adirPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ordenar</servlet-name>
+        <url-pattern>/Ordenar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

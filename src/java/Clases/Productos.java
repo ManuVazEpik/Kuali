@@ -207,7 +207,7 @@ public class Productos {
         }
         return estatus;   
     }
-    public Productos getProductoById(int id){
+    public static Productos getProductoById(int id){
         Productos p = new Productos();
         try{
             Connection con = conexion.getConexion();

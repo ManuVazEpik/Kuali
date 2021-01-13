@@ -144,8 +144,8 @@ public class Cafeteria {
         return compro;
     }
     
-    public ArrayList<Cafeteria> getCafeteriasAutorizadas(){
-        ArrayList<Cafeteria> lista= new ArrayList<>();
+    public static ArrayList<Cafeteria> getCafeteriasAutorizadas(){
+        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
@@ -164,7 +164,6 @@ public class Cafeteria {
                     c.setFot_caf(rs.getString(5));
                 lista.add(c);
             }            
-            System.out.println("?????????????''");
             con.close();
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -172,7 +171,7 @@ public class Cafeteria {
         return lista;
     }
     
-    public ArrayList<Cafeteria> getCafeteriasPendientes(){
+    public static ArrayList<Cafeteria> getCafeteriasPendientes(){
         ArrayList<Cafeteria> lista= new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
