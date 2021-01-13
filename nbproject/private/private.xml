@@ -3,27 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/Cuentas.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/ModificarPro.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/cifrar.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Autorizar.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/RegistrarCaf.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Usuario.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Productos.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/RegistrarUsuario.html</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/conexion.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/RegistrarUsu.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/RegistrarPro.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Validar.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/ActualizarCaf.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/EliminarUsu.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/ModificarPro.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/Cuentas.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/IniciarSesion.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Disponibilidad.java</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/SesionAdmin.jsp</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Cafeteria.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/Cafeteria.jsp</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/ActualizarPro.java</file>
             <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/ModificarCafeteria.jsp</file>
-=======
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/src/java/Clases/conexion.java</file>
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/src/java/Clases/cifrar.java</file>
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/src/java/IniciarSesion.java</file>
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/web/index.html</file>
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/src/java/Clases/Usuario.java</file>
-            <file>file:/C:/Users/manua/Documents/NetBeansProjects/proyecto-LPTI3/src/java/RegistrarUsu.java</file>
->>>>>>> bb8d9e7a4c2eecf4b11eddb5dcd6da01310a3e32
+            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/ActualizarUsu.java</file>
         </group>
     </open-files>
 </project-private>
