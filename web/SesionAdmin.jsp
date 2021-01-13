@@ -53,12 +53,12 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <td><%=c.getDir_caf()%></td>
                 <td><%=c.getId_usu()%></td>
                 <td><form action="Autorizar" method="POST">
-                    <input type="hidden" name="id_usu" value="<%=c.getId_usu()%>"/>
+                    <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
                     <input type="hidden" name="tipo" value="1"/>
                     <input type="submit" value="Aceptar"/>
                 </form></td>
                 <td><form action="Autorizar" method="POST">
-                    <input type="hidden" name="id_usu" value="<%=c.getId_usu()%>"/>
+                    <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
                     <input type="hidden" name="tipo" value="2"/>
                     <input type="submit" value="Aceptar"/>
                     </form></td>
@@ -125,7 +125,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <td><%=c.getTel_usu()%></td>
                 <td><form action="EliminarUsu" method="POST">
                     <input type="hidden" name="id" value="<%=c.getId_usu()%>"/>
-                    <input type="hidden" name="tipo" value="2"/>
+                    <input type="hidden" name="tipo" value="1"/>
                     <input type="submit" value="Eliminar"/>
                 </form></td>
             </tr>

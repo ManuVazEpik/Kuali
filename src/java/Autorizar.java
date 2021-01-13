@@ -69,7 +69,7 @@ public class Autorizar extends HttpServlet {
                 if (estatus>0) {
                     response.sendRedirect("SesionAdmin.jsp");
                 }else{
-                    response.sendRedirect("Error.html");
+                    response.sendRedirect("error.html");
                 }
             }else if("2".equals(tipo)){
                 Usuario c = new Usuario();

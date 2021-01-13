@@ -5,6 +5,7 @@
  */
 
 import Clases.Cafeteria;
+import Clases.Validar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -67,23 +68,36 @@ public class ActualizarCaf extends HttpServlet {
             int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
             nom_caf = request.getParameter("nom_caf");
             dir_caf = request.getParameter("dir_caf");
+            
+            Validar val = new Validar();
+            boolean exp1=val.letrasEspacios(nom_caf);
+            
+            
+            if(exp1==true ){
+                if(nom_caf.length()<20 && dir_caf.length()<500 && fot_caf.length()<100){
+                    Cafeteria c = new Cafeteria();
+                    Cafeteria operC= new Cafeteria();
 
-            Cafeteria c = new Cafeteria();
-            Cafeteria operC= new Cafeteria();
+                    c.setId_caf(id_caf);
+                    c.setFot_caf(fot_caf);
+                    c.setNom_caf(nom_caf);
+                    c.setDir_caf(dir_caf);
 
-            c.setId_caf(id_caf);
-            c.setFot_caf(fot_caf);
-            c.setNom_caf(nom_caf);
-            c.setDir_caf(dir_caf);
+                    int estado=operC.ActualizarCafeteria(c);
 
-            int estado=operC.ActualizarCafeteria(c);
-
-            if(estado >0){
-                response.sendRedirect("ModificarCafeteria.jsp");
+                    if(estado >0){
+                        response.sendRedirect("ModificarCafeteria.jsp");
+                    }else{
+                        out.println("<h1>Valio cake</h1>");
+                        out.println("");
+                    }
+                }else{
+                    response.sendRedirect("error.html");
+                }
             }else{
-                out.println("<h1>Valio cake</h1>");
-                out.println("");
+                response.sendRedirect("error.html");
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ActualizarCaf.class.getName()).log(Level.SEVERE, null, ex);
         }

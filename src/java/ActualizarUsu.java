@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 import Clases.Usuario;
+import Clases.Validar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -56,14 +57,24 @@ public class ActualizarUsu extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String tel_usu, nom_usu, appat_usu, apmat_usu, tipo, nom_caf, dir_caf;
             int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
-            tipo=request.getParameter("tipo");
-                
-                nom_usu = request.getParameter("nom_usu");
-                appat_usu = request.getParameter("appat_usu");
-                apmat_usu = request.getParameter("apmat_usu");
-                tel_usu =request.getParameter("tel_usu");
-                
-                Usuario c = new Usuario();
+            System.out.println("id_usu: "+id_usu);
+            
+            
+            nom_usu = request.getParameter("nom_usu");
+            appat_usu = request.getParameter("appat_usu");
+            apmat_usu = request.getParameter("apmat_usu");
+            tel_usu =request.getParameter("tel_usu");
+
+            Validar val = new Validar();
+            boolean exp1=val.letras(nom_usu);
+            boolean exp2=val.letras(appat_usu);
+            boolean exp3=val.letras(apmat_usu);
+            boolean exp4=val.numerosEnteros(tel_usu);
+            
+            System.out.println(""+exp1+exp2+exp3+exp4);
+            if(exp1==true && exp2==true && exp3==true && exp4==true){
+                if(nom_usu.length()<20 && appat_usu.length()<30 && apmat_usu.length()<30 && tel_usu.length()==10 ){
+                    Usuario c = new Usuario();
                 Usuario operC= new Usuario();
 
                 c.setId_usu(id_usu);
@@ -72,7 +83,7 @@ public class ActualizarUsu extends HttpServlet {
                 c.setApmat_usu(apmat_usu);
                 c.setTel_usu(tel_usu);
 
-                int estado=operC.AñadirUsuario(c);
+                int estado=operC.ActualizarUsuario(c);
 
                 if(estado >0){
                     response.sendRedirect("Cuentas.jsp");
@@ -80,6 +91,13 @@ public class ActualizarUsu extends HttpServlet {
                     out.println("<h1>Valio cake</h1>");
                     out.println("");
                 }
+                }else{
+                    response.sendRedirect("error.html");
+                }
+            }else{
+                response.sendRedirect("error.html");
+            }
+                
             
         } catch (SQLException ex) {
             Logger.getLogger(ActualizarUsu.class.getName()).log(Level.SEVERE, null, ex);

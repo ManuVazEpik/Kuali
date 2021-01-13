@@ -162,6 +162,52 @@ public class Productos {
         }
         return estatus;   
     }
+    public boolean Disponible(int id) throws SQLException{
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        boolean estatus = false;
+        try{
+            con = conexion.getConexion();
+            q ="update producto set disp_prod=? where id_prod=?";
+            ps = con.prepareStatement(q);
+            ps.setBoolean(1, true);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            estatus= true;
+        }catch (Exception ed){
+            System.out.println("No conecto a la tabla");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return estatus;   
+    }
+    public boolean NoDisponible(int id) throws SQLException{
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        boolean estatus = false;
+        try{
+            con = conexion.getConexion();
+            q ="update producto set disp_prod=? where id_prod=?";
+            ps = con.prepareStatement(q);
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            estatus= true;
+        }catch (Exception ed){
+            System.out.println("No conecto a la tabla");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return estatus;   
+    }
     public Productos getProductoById(int id){
         Productos p = new Productos();
         try{

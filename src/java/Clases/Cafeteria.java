@@ -37,7 +37,7 @@ public class Cafeteria {
                 ps.setString(2, c.getDir_caf());
                 ps.setString(3, c.getFot_caf());
                 ps.setInt(4, c.getId_usu());
-                ps.setInt(5, 1);
+                ps.setInt(5, 2);
                 estatus=ps.executeUpdate();
             con.close();
         }catch(Exception ed){
@@ -153,7 +153,7 @@ public class Cafeteria {
             PreparedStatement ps = null;
             ResultSet rs = null;
             
-            sql="select * from cafeteria where aut_caf=true";
+            sql="select * from cafeteria where aut_caf=1";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){

@@ -58,20 +58,18 @@ System.out.println(id_usu);
     <h2>Modificar</h2>
     <form action='ActualizarUsu' method='POST' name='formulario1'>
         <input type='hidden' name='id_usu' value='<%=id_usu%>'/>
-        <input type='hidden' name='tipo' value='2'/>
-    
     <ul>
-        <li>Nombre: <input type='text' name='nomU' value='<%=u.getNom_usu()%>'/></li>
-        <li>Apellido paterno: <input type='text' name='appatU' value='<%=u.getAppat_usu()%>'/></li>
-        <li>Apellido materno: <input type='text' name='apmatU' value='<%=u.getApmat_usu()%>'/></li>
-        <li>Telefono: <input type='text' name='telU' value='<%=u.getTel_usu()%>'/></li>
+        <li>Nombre: <input type='text' name='nom_usu' value='<%=u.getNom_usu()%>'/></li>
+        <li>Apellido paterno: <input type='text' name='appat_usu' value='<%=u.getAppat_usu()%>'/></li>
+        <li>Apellido materno: <input type='text' name='apmat_usu' value='<%=u.getApmat_usu()%>'/></li>
+        <li>Telefono: <input type='text' name='tel_usu' value='<%=u.getTel_usu()%>'/></li>
         <input type="submit" value="Aceptar"/>
     </ul>
     </form>
     <h2>Eliminar</h2>
     <form action='EliminarUsu' method='POST'>
         <input type='hidden' name='id' value='<%=id_usu%>'/>
-        <input type='hidden' name='per_usu' value='<%=u.getPerm_usu()%>'/>
+        <input type='hidden' name='tipo' value='<%=u.getPerm_usu()%>'/>
         <input type="submit" value="Eliminar"/>
     </form>
     <%

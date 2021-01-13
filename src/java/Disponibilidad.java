@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Clases.Productos;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,21 +20,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bocal
  */
-public class EliminarUsu extends HttpServlet {
+public class Disponibilidad extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
 
-    
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -47,33 +44,48 @@ public class EliminarUsu extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String idS, tipoS;
-            idS = request.getParameter("id");
-            tipoS=request.getParameter("tipo");
-            int id = Integer.parseInt(idS);
-            int tipo = Integer.parseInt(tipoS);
-            
-            Usuario opc = new Usuario();
-            int estatus=opc.EliminarUsuario(id);
-            if(estatus>0){
-                if("2".equals(tipo)){
-                    response.sendRedirect("index.html");
-                }else if("1".equals(tipo)){
-                    response.sendRedirect("SesionAdmin.jsp");
-                }
+            String id_prodS=request.getParameter("id_prod");
+            String dis=request.getParameter("dis_prod");
+            int id_prod=Integer.parseInt(id_prodS);
+            if ("Disponible".equals(dis)) {
                 
+                Productos prod=new Productos();
+                boolean estatus=prod.NoDisponible(id_prod);
+                if (estatus==true) {
+                    response.sendRedirect("ModificarCafeteria.jsp");
+                }else{
+                    response.sendRedirect("error.html");
+                }
+            }else if("NoDisponible".equals(dis)){
+                Productos prod=new Productos();
+                boolean estatus=prod.Disponible(id_prod);
+                if (estatus==true) {
+                    response.sendRedirect("ModificarCafeteria.jsp");
+                }else{
+                    response.sendRedirect("error.html");
+                }
             }else{
-                response.sendRedirect("error.html");
+                out.println("<h1>No cambies nada >:|</h1>");
             }
+            
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Autorizar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

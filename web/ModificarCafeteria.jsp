@@ -23,18 +23,21 @@ if(sessionOk.getAttribute("usuario")==null){
         <jsp:param name="error" value="Es obligatorio identificarse"/>
     </jsp:forward>
 <%   
-}else if(sessionOk.getAttribute("autorizacion")==null){
+}else if("0".equals(sessionOk.getAttribute("autorizacion"))){
+
 %>
     <jsp:forward page="Cuentas.jsp">
         <jsp:param name="error" value="Es obligatorio identificarse"/>
     </jsp:forward>
 <%
 }else{
+    System.out.println(sessionOk.getAttribute("autorizacion"));
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     Cafeteria opc = new Cafeteria();
     Cafeteria c=opc.getCafeteriaById(idU);
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -103,12 +106,14 @@ if(sessionOk.getAttribute("usuario")==null){
                 <td><%=p.getPre_prod()%></td>
                 <td><img src="<%=p.getFot_prod()%>"></td>
                 <td>
-                    <form action="Disponibilidad">
+                    <form action="Disponibilidad" method="POST">
+                    <input type="hidden" value="<%=p.getId_prod()%>" name="id_prod"/>
                 <%if(p.getDisp_prod()==true){%>
                 <p>Disponible</p>
                 <input type="hidden" value="Disponible" name="dis_prod"/>
                 <input type="submit" value="Cambiar a no disponible"/>
                 <%}else{%>
+                <p>No Disponible</p>
                 <input type="hidden" value="NoDisponible" name="dis_prod"/>
                 <input type="submit" value="Cambiar a disponible"/>
                 <%}%>

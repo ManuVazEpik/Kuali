@@ -5,6 +5,7 @@
  */
 
 import Clases.Productos;
+import Clases.Validar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -61,28 +62,46 @@ public class ActualizarPro extends HttpServlet {
             desc_prod = request.getParameter("desc_prod");
             pre_prodS = request.getParameter("pre_prod");
             id_prodS= request.getParameter("id_prod");
-            int id_prod = Integer.parseInt(id_prodS);
             
-            float pre_prod=Float.parseFloat(pre_prodS);
-            Productos c = new Productos();
-            Productos operC= new Productos();
-            c.setFot_prod(fot_prod);
-            c.setNom_prod(nom_prod);
-            c.setDesc_prod(desc_prod);
-            c.setId_prod(id_prod);
-            c.setPre_prod(pre_prod);
-            c.setDisp_prod(disp_prod);
-            int estado=operC.Actualizar(c);
+            Validar val = new Validar();
+            boolean exp1=val.letras(nom_prod);
+            boolean exp2=val.numerosEnteros(id_prodS);
+            //boolean exp3=val.direccionesURL(fot_caf);
+            boolean exp4=val.direcciones(desc_prod);
+            boolean exp5=val.numerosDecimales(pre_prodS);
+            
+            if(exp1==true && exp2==true && exp4==true && exp5==true ){
+                if(nom_prod.length()<20 && desc_prod.length()<100 && pre_prodS.length()<30){
+                    int id_prod = Integer.parseInt(id_prodS);
+            
+                    float pre_prod=Float.parseFloat(pre_prodS);
+                    Productos c = new Productos();
+                    Productos operC= new Productos();
+                    c.setFot_prod(fot_prod);
+                    c.setNom_prod(nom_prod);
+                    c.setDesc_prod(desc_prod);
+                    c.setId_prod(id_prod);
+                    c.setPre_prod(pre_prod);
+                    c.setDisp_prod(disp_prod);
+                    int estado=operC.Actualizar(c);
 
-            if(estado >0){
-                response.sendRedirect("ModificarCafeteria.jsp");
+                    if(estado >0){
+                        response.sendRedirect("ModificarCafeteria.jsp");
+                    }else{
+                        out.println("<h1>Valio cake</h1>");
+                        out.println("");
+                    }
+                
+                }else{
+                    response.sendRedirect("error.html");
+                }
             }else{
-                out.println("<h1>Valio cake</h1>");
-                out.println("");
+                response.sendRedirect("error.html");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ActualizarPro.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (SQLException ex) {
+                    Logger.getLogger(ActualizarPro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
     }
 
     /**

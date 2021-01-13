@@ -7,6 +7,7 @@
 import Clases.Cafeteria;
 import Clases.Productos;
 import Clases.Usuario;
+import Clases.Validar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -62,29 +63,45 @@ public class RegistrarPro extends HttpServlet {
             boolean  disp_prod;
             
             id_cafS=request.getParameter("id_caf");
-            int id_caf = Integer.parseInt(id_cafS);
             nom_prod = request.getParameter("nom_prod");
             String fot_prod=request.getParameter("fot_prod");
             desc_prod = request.getParameter("desc_prod");
             pre_prodS = request.getParameter("pre_prod");
             disp_prod=true;
-            float pre_prod=Float.parseFloat(pre_prodS);
-            Productos c = new Productos();
-            Productos operC= new Productos();
-            c.setFot_prod(fot_prod);
-            c.setNom_prod(nom_prod);
-            c.setDesc_prod(desc_prod);
-            c.setId_caf(id_caf);
-            c.setPre_prod(pre_prod);
-            c.setDisp_prod(disp_prod);
-            int estado=operC.Guardar(c);
-
-            if(estado >0){
-                response.sendRedirect("ModificarCafeteria.jsp");
+            
+            Validar val = new Validar();
+            boolean exp1=val.letras(nom_prod);
+            boolean exp2=val.numerosEnteros(id_cafS);
+            //boolean exp3=val.direccionesURL(fot_caf);
+            boolean exp4=val.direcciones(desc_prod);
+            boolean exp5=val.numerosDecimales(pre_prodS);
+            
+            if(exp1==true && exp2==true && exp4==true && exp5==true ){
+                if(nom_prod.length()<20 && desc_prod.length()<100 && pre_prodS.length()<30){
+                    int id_caf = Integer.parseInt(id_cafS);
+                    float pre_prod=Float.parseFloat(pre_prodS);
+                    Productos c = new Productos();
+                    Productos operC= new Productos();
+                    c.setFot_prod(fot_prod);
+                    c.setNom_prod(nom_prod);
+                    c.setDesc_prod(desc_prod);
+                    c.setId_caf(id_caf);
+                    c.setPre_prod(pre_prod);
+                    c.setDisp_prod(disp_prod);
+                    int estado=operC.Guardar(c);
+                    if(estado >0){
+                        response.sendRedirect("ModificarCafeteria.jsp");
+                    }else{
+                        out.println("<h1>Valio cake</h1>");
+                        out.println("");
+                    }
+                }else{
+                    response.sendRedirect("error.html");
+                }
             }else{
-                out.println("<h1>Valio cake</h1>");
-                out.println("");
+                response.sendRedirect("error.html");
             }
+            
         }
     }
 

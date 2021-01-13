@@ -40,7 +40,7 @@ public class Usuario {
             ps1.setString(6, c.getTel_usu());
             ps1.setInt(7, 2);
             estatus=ps1.executeUpdate();
-            
+            System.out.println(estatus);
             con.close();
         }catch(Exception ed){
             System.out.println("Error al guardar usuario");
@@ -74,19 +74,20 @@ public class Usuario {
         }
         return estatus;
     }
-    public int EliminarUsuario(int id, int permisos) throws SQLException{
+    public int EliminarUsuario(int id) throws SQLException{
         Connection con = null;
         PreparedStatement ps = null;
         String q=null;
         int estatus = 0;
         try{
-            if (permisos==2) {
+            
                 con = conexion.getConexion();
-                q ="delete from usuario where id_usu=? and where perm_usu";
+                q ="delete from usuario where id_usu=?";
                 ps = con.prepareStatement(q);
                 ps.setInt(1, id);
+                
                 estatus += ps.executeUpdate();
-            }
+            
             
         
         }catch (Exception ed){
@@ -186,6 +187,7 @@ public class Usuario {
         Connection con = conexion.getConexion();
         String sql = "";
         PreparedStatement ps = null;
+        
         try{
                 sql= "update cafeteria set aut_caf = '1' where id_caf = ?";
                 ps = con.prepareStatement(sql);
