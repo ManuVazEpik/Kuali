@@ -34,9 +34,18 @@ if(sessionOk.getAttribute("usuario")==null){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cafeteria</title>
+        <link rel="StyleSheet" href="css/cafeteria.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
+        
+        <header>
+	<div class="letras">
+            <h1>Instant Lunch</h1>
+            <h2>¿Que comeras hoy?</h2>
+        </div>
+        </header
+        
         <table border="0" aling="center" width="1060px" style="font-size: 20px">
         <%
             ArrayList<Productos> lp = Productos.getProductosCaf(id_caf);
@@ -49,7 +58,7 @@ if(sessionOk.getAttribute("usuario")==null){
                             Descripcion: <%= prod.getDesc_prod()%><br>
                             Precio <%= prod.getPre_prod()%><br>
                             <input type="hidden" value="<%= prod.getDisp_prod()%>"><br>
-                            <a href="anadirPedido.jsp?id=<%= prod.getId_prod()%>" style="color:white">Añadir</a>
+                            <a href="anadirPedido.jsp?id=<%= prod.getId_prod()%>" style="color:black">Añadir</a>
                     </th>
         <%
             salto++;

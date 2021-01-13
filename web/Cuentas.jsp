@@ -43,9 +43,37 @@ System.out.println(id_usu);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cuentas</title>
+        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
-    <body>
+    <body class="hiden">
+    <header>
+        
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
+                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>
+                    <a href="index.jsp" id="enlace-" class="btn-header">Cafeterias</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776</span>
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div class="letras">
+            <h1>Instant Lunch</h1>
+            <h2>¿Que comeras hoy?</h2>
+        </div>
+    
+    </header>
+
+    <main>
 
     <h1>Datos</h1>
     <ul>

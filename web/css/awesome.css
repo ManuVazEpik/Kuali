@@ -1,0 +1,13 @@
+body{
+  font-family: 'open sans';
+  background: url("https://media.giphy.com/media/l4KhWPNyLHiB3TjVe/giphy.gif");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.texto-card{
+  height: 0px;
+  width: 100%;
+  padding: 10px 0;
+  color: white;
+}

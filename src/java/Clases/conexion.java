@@ -16,10 +16,15 @@ public class conexion {
     
         Connection con = null;
         String url, username, password;
+        url = "jdbc:mysql://localhost:3306/axolosoftwaredb";
+        username = "root";
+        password = "n0m3l0";
+        
+        /**
         url = "jdbc:mysql://us-cdbr-east-02.cleardb.com:3306/heroku_ee6731467b41755";
         username = "b1a21eb7e99a4f";
         password = "3d06b788";
-        
+        **/
         try{
         
             Class.forName("com.mysql.jdbc.Driver");

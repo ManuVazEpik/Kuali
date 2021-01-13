@@ -1,0 +1,7 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: url("https://media.giphy.com/media/3osxY9kuM2NGUfvThe/giphy.gif");
+    background-size: cover;
+    background-attachment: fixed;
+}

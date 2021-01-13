@@ -1,0 +1,52 @@
+body{
+  font-family: 'open sans';
+  background: url("https://previews.123rf.com/images/olyaw/olyaw1709/olyaw170900003/85387590-varios-desayunos-en-un-fondo-marr%C3%B3n.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#main-container{
+	margin: 150px auto;
+	width: 600px;
+}
+
+table {
+	background: transparent;
+	text-align: left;
+	width: 100%;
+}
+th{
+	padding: 20px;
+}
+
+header{
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to bottom,
+  rgb(11,194,211,0.623),
+  rgb(92, 255, 60, .6)
+  ), url(https://previews.123rf.com/images/olyaw/olyaw1709/olyaw170900003/85387590-varios-desayunos-en-un-fondo-marr%C3%B3n.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.letras{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  overflow: hidden;
+  text-align: center;
+}
+
+.letras>h1{
+  font-size: 80px;
+}
+
+.letras>h2{
+  font-size: 30px;
+  font-weight: 300;
+}
