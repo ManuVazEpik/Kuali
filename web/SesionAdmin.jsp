@@ -29,6 +29,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SesionAdmin</title>
+        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
@@ -135,6 +136,10 @@ if (sesionOk.getAttribute("usuario") == null ) {
     %>
         </table>
         <a href="CerrarSesion">Cerrar Sesion</a>
+        </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
     </body>
 </html>
 

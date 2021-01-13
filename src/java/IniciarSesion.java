@@ -86,41 +86,29 @@ public class IniciarSesion extends HttpServlet {
                         sesionOK.setAttribute("privilegio", privS);
                         response.sendRedirect("SesionAdmin.jsp");
                     }else{
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>Sesion</title>"
-                                + "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/estilos.css\">");
-                        out.println("</head>");
-                        out.println("<body>"
-                                + "<h1>No se encuentra la sesion, intentelo de nuevo</h1>"
-                                + "<a href='IniciarSesion.jsp'>Regresar</a>");
-                        out.println("</body>");
-                        out.println("</html>");    
+                        out.println("\n" +
+                    "<!DOCTYPE html>"+
+                    "<html><head><title>Error</title><meta charset='UTF-8'>"
+                    + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"+
+                    "<link rel='stylesheet' href='css/cafeteria.css'></head><body>"+
+                    "<div style='margin-left:15%; margin-top:10rem; font-size: 40pt;'>No se encuentra la sesion, intentelo de nuevo<br>"
+                                + "<a href='IniciarSesion.jsp'>Regresar</a></div>"
+                    + ""+
+                    "</body>"+
+                    "</html>"+
+                    "");
                     }
                 }else{
                     out.println("\n" +
-                    "<%@page contentType=\"text/html\" pageEncoding=\"UTF-8\"%>\n" +
-                    "<!DOCTYPE html>\n" +
-                    "<html>\n" +
-                    "    <head>\n" +
-                    "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
-                    "        <title>JSP Page</title>\n" +
-                    "        <link href=\"css/pago.css\" rel=\"stylesheet\">\n" +
-                    "        <link href=\"css/botones.css\" rel=\"stylesheet\">\n" +
-                    "    </head>\n" +
-                    "    <body>\n" +
-                    "        <div class=\"overlay\">\n" +
-                    "        <div class=\"color3\">\n" +
-                    "            <div class=\"margin\">\n" +
-                    "                <h1>Error</h1>\n" +
-                    "                <p>No se encuentra la sesion</p>\n" +
-                    "                <a href=\"index.html\"><input class=\"boton\" type=\"button\" value=\"Regresar al home\"></a>\n" +
-                    "            </div>\n" +
-                    "        </div>\n" +
-                    "        </div>    \n" +
-                    "    </body>\n" +
-                    "</html>\n" +
+                    "<!DOCTYPE html>"+
+                    "<html><head><title>Error</title><meta charset='UTF-8'>"
+                    + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"+
+                    "<link rel='stylesheet' href='css/cafeteria.css'></head><body>"+
+                    "<div style='margin-left:15%; margin-top:10rem; font-size: 40pt;'>No se encuentra la sesion, intentelo de nuevo<br>"
+                                + "<a href='IniciarSesion.jsp'>Regresar</a></div>"
+                    + ""+
+                    "</body>"+
+                    "</html>"+
                     "");
                 }
             }catch(Exception e){
@@ -129,7 +117,6 @@ public class IniciarSesion extends HttpServlet {
                 System.out.println(e.getStackTrace());
             }
             
-        
         }
         
     }

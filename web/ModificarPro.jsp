@@ -45,6 +45,7 @@ if(sessionOk.getAttribute("usuario")==null){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar</title>
+        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
@@ -59,6 +60,10 @@ if(sessionOk.getAttribute("usuario")==null){
         <input type="hidden" name='id_prod' value="<%=p.getId_prod()%>">
         <input type="submit" value="Aceptar"/>
     </form>
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
     </body>
 </html>
 <%}%>

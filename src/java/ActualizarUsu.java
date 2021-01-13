@@ -80,9 +80,10 @@ public class ActualizarUsu extends HttpServlet {
                     Usuario c = new Usuario();
                 Usuario operC= new Usuario();
 
-                c.setId_usu(id_usu);
+                
                 
                 c = cifra.AESCifrar(nom_usu, appat_usu, apmat_usu, tel_usu);
+                c.setId_usu(id_usu);
 //                c.setNom_usu(nom_usu);
 //                c.setAppat_usu(appat_usu);
 //                c.setApmat_usu(apmat_usu);

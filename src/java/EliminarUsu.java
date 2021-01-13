@@ -62,11 +62,14 @@ public class EliminarUsu extends HttpServlet {
             Usuario opc = new Usuario();
             int estatus=opc.EliminarUsuario(id);
             if(estatus>0){
-                if("2".equals(tipo)){
+               if("2".equals(tipoS)){
                     response.sendRedirect("index.html");
-                }else if("1".equals(tipo)){
+                }else if("1".equals(tipoS)){
                     response.sendRedirect("SesionAdmin.jsp");
+                }else{
+                    response.sendRedirect("error.html");
                 }
+                
                 
             }else{
                 response.sendRedirect("error.html");
