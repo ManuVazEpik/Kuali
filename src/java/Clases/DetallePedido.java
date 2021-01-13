@@ -13,6 +13,11 @@ public class DetallePedido {
     int id_detPed,id_ped,id_prod,cant_detPed;
     float sub_detPed;
 
+    public DetallePedido(int id, int cantidad, float subtotal) {
+    }
+    
+    
+
     public int getId_detPed() {
         return id_detPed;
     }
