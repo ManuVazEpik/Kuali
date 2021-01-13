@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -6,12 +5,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Prueba Registrar Usuario</title>
+        <title>Registrar Usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Prueba</h1>
+        <h1>Crear cuenta</h1>
         <form enctype="multipart/form-data" action="RegistrarUsu" method="POST">
             <p>Registrar Usuario</p>
             <label>Ingresa tu nombre</label><input type="text" name="nom_usu"/><br>
@@ -19,10 +18,12 @@ and open the template in the editor.
             <label>Ingresa tu apellido materno</label><input type="text" name="apmat_usu"/><br>
             <label>Ingresa tu numero de telefono</label><input type="text" name="tel_usu"/><br><br>
             
-            <label>Ingresa tu correo</label><input type="text" name="email_usu"/><br>
-            <label>Ingresa tu contraseña</label><input type="text" name="pass_usu"/><br>
+            <label>Ingresa tu correo</label><input type="email" name="email_usu" /><br>
+            <label>Ingresa tu contraseña</label><input type="password" name="pass_usu"/><br>
             <input type="hidden" name="tipo" value="2"/>
             <input type="submit" value="Aceptar"/>
+
+
             
         </form>
         
