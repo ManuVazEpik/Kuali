@@ -43,6 +43,7 @@ System.out.println(id_usu);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cuentas</title>
+        <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
 

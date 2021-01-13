@@ -102,6 +102,7 @@ public class Usuario {
     }
     public Usuario getUsuarioById(int id){
         Usuario c = new Usuario();
+        cifrar cifra = new cifrar();
         try{
             Connection con = conexion.getConexion();
             String sql = "Select * from usuario where id_usu = ?";
@@ -111,10 +112,13 @@ public class Usuario {
             
             while(rs.next()){
                 c.setId_usu(rs.getInt(1));
-                c.setNom_usu(rs.getString(2));
-                c.setAppat_usu(rs.getString(3));
-                c.setApmat_usu(rs.getString(4));
-                c.setTel_usu(rs.getString(7));
+                System.out.println(c.getId_usu());
+                String nombre = rs.getString(2);
+                String apPat = rs.getString(3);
+                String apMat = rs.getString(4);
+                String tel = rs.getString(7);
+                c = cifra.AESDescifrar(nombre, apPat,
+                        apMat, tel);
                 c.setEmail_usu(rs.getString(5));
                 c.setPass_usu(rs.getString(6));
                 c.setPerm_usu(rs.getInt(8));

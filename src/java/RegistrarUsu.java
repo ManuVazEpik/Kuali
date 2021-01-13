@@ -53,12 +53,40 @@ public class RegistrarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf,calle,col,num;
             tipo=request.getParameter("tipo");
             
+<<<<<<< HEAD
             nom_usu = request.getParameter("nom_usu");
             appat_usu = request.getParameter("appat_usu");
             apmat_usu = request.getParameter("apmat_usu");
             tel_usu =request.getParameter("tel_usu");
             email_usu=request.getParameter("email_usu");
             pass_usu=request.getParameter("pass_usu");
+=======
+                nom_usu = request.getParameter("nom_usu");
+                appat_usu = request.getParameter("appat_usu");
+                apmat_usu = request.getParameter("apmat_usu");
+                tel_usu =request.getParameter("tel_usu");
+                email_usu=request.getParameter("email_usu");
+                pass_usu=request.getParameter("pass_usu");
+                
+                try{
+                
+                Usuario operC= new Usuario();
+//                c.setNom_usu(nom_usu);
+//                c.setAppat_usu(appat_usu);
+//                c.setApmat_usu(apmat_usu);
+//                c.setEmail_usu(email_usu);
+//                c.setPass_usu(pass_usu);
+//                c.setTel_usu(tel_usu);
+                
+                cifrar cifra = new cifrar();
+                
+                Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu);
+                
+                u.setEmail_usu(email_usu);
+                u.setPass_usu(pass_usu);
+                
+                int estado=operC.AñadirUsuario(u);
+>>>>>>> 0f789d90cca6b272e9faac25a8dbded59a92c3c5
             
             Validar val = new Validar();
             boolean exp1=val.letras(nom_usu);
