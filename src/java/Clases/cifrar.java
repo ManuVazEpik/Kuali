@@ -100,6 +100,12 @@ public class cifrar {
             cifrado.init(Cipher.DECRYPT_MODE, key);
             System.out.println("Iniciamos cifrado en modo decrypt");
             
+            /* Revisamos el llenado de datos */
+            System.out.println(nombre);
+            System.out.println(apellidoPat);
+            System.out.println(apellidoMat);
+            System.out.println(tel);
+            
             /*Recuperamos primero con BASE64*/
             byte nomB[] = decodeBase64(nombre);
             byte appatB[] = decodeBase64(apellidoPat);

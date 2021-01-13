@@ -73,8 +73,8 @@ public class RegistrarUsu extends HttpServlet {
                 
                 Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu);
                 
-                operC.setEmail_usu(email_usu);
-                operC.setPass_usu(pass_usu);
+                u.setEmail_usu(email_usu);
+                u.setPass_usu(pass_usu);
                 
                 int estado=operC.AñadirUsuario(u);
             
