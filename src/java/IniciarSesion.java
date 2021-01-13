@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Clases.cifrar;
 import Clases.Cafeteria;
 import Clases.Usuario;
 import java.io.IOException;
@@ -49,7 +50,13 @@ public class IniciarSesion extends HttpServlet {
             
             try{
                 Usuario opc = new Usuario();
+                cifrar cifra = new cifrar();
+                
                 Usuario c = opc.encontrarUsuario(noms, cons);
+                
+                c = cifra.AESDescifrar(c.getNom_usu(), c.getAppat_usu(), c.getApmat_usu(),
+                        c.getTel_usu());
+                
                 nivel = c.getId_usu();
                 int perm= c.getPerm_usu();
                 String nivelS = String.valueOf(nivel);
