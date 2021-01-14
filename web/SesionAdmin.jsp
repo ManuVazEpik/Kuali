@@ -62,7 +62,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <td><form action="Autorizar" method="POST">
                     <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
                     <input type="hidden" name="tipo" value="2"/>
-                    <input type="submit" value="Aceptar"/>
+                    <input type="submit" value="Rechazar"/>
                     </form></td>
             </tr>
     <%
