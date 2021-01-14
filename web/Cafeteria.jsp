@@ -26,8 +26,18 @@ if(sessionOk.getAttribute("usuario")==null){
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     
-    String id_cafS=request.getParameter("id");
-    int id_caf=Integer.parseInt(id_cafS);
+    try{
+    
+        String id_cafS=request.getParameter("id");
+        int id_caf=Integer.parseInt(id_cafS);
+        
+    }catch(Exception e){
+    
+        System.out.println("Error " + e);
+        response.sendRedirect("e500.html");
+        
+    }
+    
 %>
 <!DOCTYPE html>
 <html>
