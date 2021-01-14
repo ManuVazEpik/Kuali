@@ -36,16 +36,6 @@ public class Pedido {
         }catch(SQLException ex){
             ex.printStackTrace();
          
-        }finally{
-            try{
-                rs.close();
-                pr.close();
-                cn.close();
-                
-            }catch(SQLException ex){
-                ex.printStackTrace();
-                System.out.println(ex.getMessage());
-            }
         }
         return codigo;
     }
@@ -59,7 +49,7 @@ public class Pedido {
         
         try{
             cn = conexion.getConexion();
-            String q = "insert into pedido(fecha_ped, id_usu, tot_ped, status)"
+            String q = "insert into pedido(fecha_ped, id_usu, tot_ped, status_ped)"
                     + "values (?, ?, ?, ?)";
             pr = cn.prepareStatement(q);
             pr.setString(1, p.getFecha_ped());
@@ -79,17 +69,7 @@ public class Pedido {
             ex.printStackTrace();
             registro = false;
             
-        }finally{
-            try{
-                pr.close();
-                cn.close();
-                
-            }catch(SQLException ex){
-                ex.printStackTrace();
-                System.out.println(ex.getMessage());
-            }
         }
-        
         return registro;
         
     }
@@ -103,9 +83,9 @@ public class Pedido {
                 String q = "insert into DetallePedido (id_ped, id_prod, cant_detPed, sub_detPed) values (?, ?, ?, ?)";
                 pr = cn.prepareStatement(q);
                 pr.setInt(1, codigo);
-                pr.setInt(3, dp.getId_prod());
-                pr.setInt(4, dp.getCant_detPed());
-                pr.setFloat(5, dp.getSub_detPed());
+                pr.setInt(2, dp.getId_prod());
+                pr.setInt(3, dp.getCant_detPed());
+                pr.setFloat(4, dp.getSub_detPed());
                 
                 if (pr.executeUpdate() == 1) {
                     

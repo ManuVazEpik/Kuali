@@ -30,9 +30,9 @@ if(sessionOk.getAttribute("usuario")==null){
     String id_cafS=""; 
     
     try{
-    
-        id_cafS=request.getParameter("id");
-        id_caf=Integer.parseInt(id_cafS);
+        
+        id_caf = Integer.parseInt(request.getParameter("id"));
+        
         
     }catch(Exception e){
     
@@ -48,8 +48,34 @@ if(sessionOk.getAttribute("usuario")==null){
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cafeteria </title>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <link rel="stylesheet" type="text/css" href="css\cafeteria.css">
     </head>
     <body>
+        <header>
+        
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <!--<a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
+                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>-->
+                    <a href="index.jsp" id="enlace-" class="btn-header">Cafeterias</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776</span>
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div class="letras">
+            <h1>Instant Lunch</h1>
+            <h2>¿Que comeras hoy?</h2>
+        </div>
+    
+    </header>
         <table border="0" aling="center" width="1060px" style="font-size: 20px">
         <%
     
@@ -60,7 +86,7 @@ if(sessionOk.getAttribute("usuario")==null){
             for (Productos prod: lp) {
         %>                        
                     <th>
-                        <img src="<%=prod.getFot_prod()%>" href="anadirPedido.jsp?id=<%= prod.getId_prod()%>"><p>
+                        <a href="añadirPedido.jsp?id=<%= prod.getId_prod()%>"><img src="<%=prod.getFot_prod()%>" ></a><p>
                             <%= prod.getNom_prod()%><br>
                             Descripcion: <%= prod.getDesc_prod()%><br>
                             Precio <%= prod.getPre_prod()%><br>

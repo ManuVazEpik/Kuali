@@ -75,7 +75,7 @@ and open the template in the editor.
                     <div class="texto-card">
                         <h3><%=c.getNom_caf()%></h3>
                         <p><%=c.getDir_caf()%></p>
-                        <a href="Cafeteria.jsp?id='<%=c.getId_caf()%>'">Visitar</a>
+                        <a href="Cafeteria.jsp?id=<%=c.getId_caf()%>">Visitar</a>
                     </div>
                 </div>
                 

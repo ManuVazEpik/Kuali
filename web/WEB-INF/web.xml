@@ -54,11 +54,23 @@
     </servlet>
     <servlet>
         <servlet-name>añadirPedido</servlet-name>
-        <servlet-class>añadirPedido</servlet-class>
+        <servlet-class>anadirPedido</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Ordenar</servlet-name>
         <servlet-class>Ordenar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>añadiralPedido</servlet-name>
+        <servlet-class>anadirPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pedido</servlet-name>
+        <servlet-class>Pedidos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>eliminarPedido</servlet-name>
+        <servlet-class>eliminarPedido</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
@@ -119,6 +131,18 @@
     <servlet-mapping>
         <servlet-name>Ordenar</servlet-name>
         <url-pattern>/Ordenar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>añadiralPedido</servlet-name>
+        <url-pattern>/a_adiralPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pedido</servlet-name>
+        <url-pattern>/Pedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarPedido</servlet-name>
+        <url-pattern>/eliminarPedido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

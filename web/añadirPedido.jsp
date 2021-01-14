@@ -11,20 +11,19 @@
 <%
     Productos prod = Productos.getProductoById(Integer.parseInt(request.getParameter("id")));
     Cafeteria caf = new Cafeteria();
+    
 %>
 <html>
     <head>
         <title>Añadir Producto a tu pedido</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css\estilos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css\cafeteria.css">
     </head>
     <body>
         <% 
             String usuario = "";
             HttpSession sessionOk = request.getSession();
-            if (sessionOk.getAttribute("usuario")== null || (Integer) sessionOk.getAttribute("privilegio") != 0) {
-                
-            
+            if (sessionOk.getAttribute("usuario")== null) {
         %>
         
         <jsp:forward page="index.jsp">
@@ -36,13 +35,39 @@
                 usuario = (String)sessionOk.getAttribute("usuario");
             }
         %>
+        <header>
+        
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <!--<a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
+                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>-->
+                    <a href="index.jsp" id="enlace-" class="btn-header">Cafeterias</a>
+                    <a href="Pedido.jsp" id="enlace-" class="btn-header">Canasta</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776</span>
+                </div>
+                
+            </div>
+        </nav>
+        
+        <div class="letras">
+            <h1>Instant Lunch</h1>
+            <h2>¿Que comeras hoy?</h2>
+        </div>
+    
+    </header>
         <h1 aling="center">Añadir Producto al Carrito</h1>
                     <table border="0" width="1060" aling="center">
                         
-                        <form method="post" action="anadirPedido">
+                        <form method="post" action="Pedido">
                             <tr>
-                                <th rowspan="5"><img src="images/<%= prod.getFot_prod()%>" width="140px" height="140px"></th> 
-                                <th><input hidden="" type="text" name="idtxt" value="<%= prod.getId_prod()%>" readonly=""></th>
+                                <th rowspan="5"><img src="<%= prod.getFot_prod()%>" width="140px" height="140px"></th> 
+                                <th><input hidden="" type="number" name="idtxt" value="<%= prod.getId_prod()%>" readonly=""></th>
                             </tr>
                             <tr>
                                 <th>Nombre</th>

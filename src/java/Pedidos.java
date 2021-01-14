@@ -5,13 +5,9 @@
  */
 
 import Clases.DetallePedido;
-import Clases.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author user
  */
-public class Ordenar extends HttpServlet {
+public class Pedidos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,29 +30,44 @@ public class Ordenar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String fecha = request.getParameter("fecha");
-           float total = Float.parseFloat(request.getParameter("total"));
-           int id = Integer.parseInt(request.getParameter("id"));
-           
-           Pedido p = new Pedido(id, fecha, total);
-           HttpSession session = request.getSession(true);
-           ArrayList<DetallePedido> productos = session.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList) session.getAttribute("carrito") ;
-        
+            int cantidad = Integer.parseInt(request.getParameter("cantidadtxt"));
+            System.out.println(cantidad);
+            int id = Integer.parseInt(request.getParameter("idtxt"));
+            System.out.println(id);
+            float subtotal= Float.parseFloat(request.getParameter("preciotxt"));
+            System.out.println(subtotal);
+            
+            HttpSession session = request.getSession(true);
+            ArrayList<DetallePedido> productos = session.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList) session.getAttribute("carrito") ;
+            boolean flag = false;
+            
             if (productos.size() > 0) {
-                
-                boolean flag = p.registrarPedido(p, productos);
-                
-                if (flag) {
-                    response.sendRedirect("index.jsp");
-                }else{
-                    response.sendRedirect("error.html");
+                for (DetallePedido a: productos) {
+                    if(id == a.getId_prod()){
+                        a.setCant_detPed(a.getCant_detPed() + cantidad);
+                        a.setSub_detPed(subtotal*a.getCant_detPed());
+                        flag = true;
+                        break;
+                    }
                 }
             }
-        
+            
+            if (!flag) {
+                subtotal = subtotal * cantidad;
+                DetallePedido pedido = new DetallePedido(id, cantidad, subtotal);
+                productos.add(pedido);
+            }
+            
+            session.setAttribute("carrito", productos);
+            
+            response.sendRedirect("Pedido.jsp");
+
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -72,13 +83,7 @@ public class Ordenar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ordenar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Ordenar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -92,13 +97,7 @@ public class Ordenar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Ordenar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Ordenar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

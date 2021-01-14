@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/cifrar.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Pedido.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/RegistrarUsuario.html</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Validar.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/index.html</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/EliminarUsu.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/Cuentas.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/IniciarSesion.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/pago.html</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Disponibilidad.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/SesionAdmin.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/Cafeteria.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Autorizar.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Usuario.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Productos.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/error.html</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/conexion.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/RegistrarUsu.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/index.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/IniciarSesion.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/ModificarPro.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/css/style.css</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/Clases/Cafeteria.java</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/web/ModificarCafeteria.jsp</file>
-            <file>file:/C:/Users/bocal/Desktop/ProyectoGit/proyecto-LPTI3/src/java/ActualizarUsu.java</file>
-        </group>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -42,11 +6,9 @@
             <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/web/index.jsp</file>
             <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/src/java/Clases/Cafeteria.java</file>
             <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/web/Pedido.jsp</file>
-            <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/web/añadirPedido.jsp</file>
+            <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/src/java/Ordenar.java</file>
             <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/web/Cafeteria.jsp</file>
-            <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/src/java/añadirPedido.java</file>
             <file>file:/C:/Users/user/Desktop/Escuela/5to%20Semestre/Proyecto%20Aula/proyecto-LPTI3-master/src/java/Clases/Pedido.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> 96ffb20203723c57927ab331e02e0ff0aa632dc2

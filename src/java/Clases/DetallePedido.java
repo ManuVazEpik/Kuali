@@ -14,6 +14,10 @@ public class DetallePedido {
     float sub_detPed;
 
     public DetallePedido(int id, int cantidad, float subtotal) {
+        
+        this.id_prod = id;
+        this.cant_detPed = cantidad;
+        this.sub_detPed = subtotal;
     }
     
     

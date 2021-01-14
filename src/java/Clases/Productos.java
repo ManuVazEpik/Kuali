@@ -218,11 +218,17 @@ public class Productos {
             
             while(rs.next()){
                 p.setId_prod(rs.getInt(1));
+                System.out.println(p.getId_prod());
                 p.setNom_prod(rs.getString(2));
+                System.out.println(p.getNom_prod());
                 p.setDesc_prod(rs.getString(3));
+                System.out.println(p.getDesc_prod());
                 p.setPre_prod(rs.getFloat(4));
+                System.out.println(p.getPre_prod());
                 p.setDisp_prod(rs.getBoolean(5));
+                System.out.println(p.getDisp_prod());
                 p.setFot_prod(rs.getString(6));
+                System.out.println(p.getFot_prod());
                 p.setId_caf(rs.getInt(7));
                 break;
             }
