@@ -77,7 +77,7 @@ public class IniciarSesion extends HttpServlet {
                             sesionOK.setAttribute("autorizacion","0");
                         }
                         
-                        response.sendRedirect("Cuentas.jsp");
+                        response.sendRedirect("index.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);

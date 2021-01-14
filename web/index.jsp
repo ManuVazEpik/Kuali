@@ -40,8 +40,8 @@ and open the template in the editor.
                     <img src="" alt="">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
-                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>
+                    <!--<a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
+                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>-->
                     <a href="Cuentas.jsp" id="enlace-" class="btn-header">Cuenta</a>
                 </div>
                 <div class="icono" id="open">

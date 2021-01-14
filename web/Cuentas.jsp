@@ -55,8 +55,6 @@ System.out.println(id_usu);
                     <img src="" alt="">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
-                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>
                     <a href="index.jsp" id="enlace-" class="btn-header">Cafeterias</a>
                 </div>
                 <div class="icono" id="open">
