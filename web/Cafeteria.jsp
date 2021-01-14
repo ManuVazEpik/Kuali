@@ -26,10 +26,13 @@ if(sessionOk.getAttribute("usuario")==null){
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     
+    int id_caf=0;
+    String id_cafS=""; 
+    
     try{
     
-        String id_cafS=request.getParameter("id");
-        int id_caf=Integer.parseInt(id_cafS);
+        id_cafS=request.getParameter("id");
+        id_caf=Integer.parseInt(id_cafS);
         
     }catch(Exception e){
     
@@ -49,6 +52,9 @@ if(sessionOk.getAttribute("usuario")==null){
     <body>
         <table border="0" aling="center" width="1060px" style="font-size: 20px">
         <%
+    
+    try{
+    
             ArrayList<Productos> lp = Productos.getProductosCaf(id_caf);
             int salto=0;            
             for (Productos prod: lp) {
@@ -69,6 +75,13 @@ if(sessionOk.getAttribute("usuario")==null){
                 salto=0;
             }
            }
+            
+            }catch(Exception e){
+            
+                System.out.println("Error" + e);
+                response.sendRedirect("e500.jsp");
+            
+            }
         %>
         </table>
     </body>
