@@ -33,7 +33,7 @@
 
                 <div class="input-contenedor">
                     <i class="fas fa-envelope icon"></i>
-                    <input type="text" name="corU" placeholder="Correo Electronico">
+                    <input type="email" name="corU" placeholder="Correo Electronico">
 
                 </div>
 
