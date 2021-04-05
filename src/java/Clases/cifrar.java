@@ -19,7 +19,8 @@ import java.util.ArrayList;
  */
 public class cifrar {
     
-    public Usuario AESCifrar(String nombre, String apellidoPat, String apellidoMat, String tel){
+    public Usuario AESCifrar(String nombre, String apellidoPat, String apellidoMat, String tel,
+            String correo, String pass){
     
         Usuario usuario = new Usuario();
         
@@ -49,6 +50,8 @@ public class cifrar {
             byte campoApellidoPat[] = cifrado.doFinal(apellidoPat.getBytes());
             byte campoApellidoMat[] = cifrado.doFinal(apellidoMat.getBytes());
             byte campoTel[] = cifrado.doFinal(tel.getBytes());
+            byte campoCorreo[] = cifrado.doFinal(correo.getBytes());
+            byte campoPass[] = cifrado.doFinal(pass.getBytes());
             
             
             /* Recuperacion mediante BASE64 para la legibilidad */
@@ -56,6 +59,8 @@ public class cifrar {
             String apellidoPatB64 = new String(encodeBase64(campoApellidoPat));
             String apellidoMatB64 = new String(encodeBase64(campoApellidoMat));
             String telB64 = new String(encodeBase64(campoTel));
+            String correoB64 = new String(encodeBase64(campoCorreo));
+            String passB64 = new String(encodeBase64(campoPass));
             
             
             /*Comprobación de los datos cifrados*/
@@ -69,6 +74,8 @@ public class cifrar {
             usuario.setAppat_usu(apellidoPatB64);
             usuario.setApmat_usu(apellidoMatB64);
             usuario.setTel_usu(telB64);
+            usuario.setEmail_usu(correoB64);
+            usuario.setPass_usu(passB64);
             
             
         }catch(Exception e){
@@ -139,7 +146,34 @@ public class cifrar {
         return u;
     }
     
-    
+    public ArrayList verificarUsuario(String correo, String password){
+        
+        ArrayList al = new ArrayList();
+        String llaveS = "AxolosoftwareWin";
+        
+        SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
+        
+        Cipher cifrado;
+        
+        try {
+            
+            cifrado = Cipher.getInstance("AES");
+            System.out.println("Creado cifrado con AES");
+            cifrado.init(Cipher.DECRYPT_MODE, key);
+            System.out.println("Iniciamos cifrado en modo decrypt");
+            
+            /* Comenzamos el cifrado */
+            byte[] cifradoC = cifrado.doFinal(correo.getBytes());
+            byte[] cifradoP = cifrado.doFinal(password.getBytes());
+            
+            
+            
+        } catch (Exception e) {
+        }
+        
+        
+        return al;
+    }
     
     
     

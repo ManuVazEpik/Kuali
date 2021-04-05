@@ -57,7 +57,8 @@ public class ActualizarUsu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String tel_usu, nom_usu, appat_usu, apmat_usu, tipo, nom_caf, dir_caf;
+            String tel_usu, nom_usu, appat_usu, apmat_usu,
+                    email_usu, pass_usu, tipo, nom_caf, dir_caf;
             int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
             System.out.println("id_usu: "+id_usu);
             cifrar cifra = new cifrar();
@@ -67,6 +68,8 @@ public class ActualizarUsu extends HttpServlet {
             appat_usu = request.getParameter("appat_usu");
             apmat_usu = request.getParameter("apmat_usu");
             tel_usu =request.getParameter("tel_usu");
+            email_usu = request.getParameter("email_usu");
+            pass_usu = request.getParameter("pass_usu");
 
             Validar val = new Validar();
             boolean exp1=val.letras(nom_usu);
@@ -82,7 +85,7 @@ public class ActualizarUsu extends HttpServlet {
 
                 
                 
-                c = cifra.AESCifrar(nom_usu, appat_usu, apmat_usu, tel_usu);
+                c = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu,email_usu,pass_usu);
                 c.setId_usu(id_usu);
 //                c.setNom_usu(nom_usu);
 //                c.setAppat_usu(appat_usu);

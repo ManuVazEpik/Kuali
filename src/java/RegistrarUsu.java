@@ -77,9 +77,7 @@ public class RegistrarUsu extends HttpServlet {
                     //                c.setPass_usu(pass_usu);
                     //                c.setTel_usu(tel_usu);
                     cifrar cifra = new cifrar();
-                    Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu);
-                    u.setEmail_usu(email_usu);
-                    u.setPass_usu(pass_usu);
+                    Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu,email_usu,pass_usu);
                     int estado=operC.AñadirUsuario(u);
                     if(estado >0){
                         response.sendRedirect("index.html");
