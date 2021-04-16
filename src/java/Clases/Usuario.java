@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import Clases.cifrar;
 
 /**
  *
@@ -139,10 +140,15 @@ public class Usuario {
     public Usuario encontrarUsuario(String correo, String contr) throws SQLException{
         Usuario c = new Usuario ();
             Connection con = conexion.getConexion();
+            
+            cifrar cifra = new cifrar();
+            
+            ArrayList<String> ul = cifra.verificarUsuario(correo, contr);
+            
             String sql="select * from Usuario where email_usu = ? and pass_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, correo);
-            ps.setString(2, contr);
+            ps.setString(1, ul.get(1));
+            ps.setString(2, ul.get(2));
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){

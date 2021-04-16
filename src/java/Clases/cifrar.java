@@ -91,7 +91,7 @@ public class cifrar {
     }
     
     public Usuario AESDescifrar(String nombre, String apellidoPat,
-            String apellidoMat, String tel){
+            String apellidoMat, String tel, String correo, String pass){
     
         Usuario u = new Usuario();
         String llaveS = "AxolosoftwareWin";
@@ -118,21 +118,29 @@ public class cifrar {
             byte appatB[] = decodeBase64(apellidoPat);
             byte apmatB[] = decodeBase64(apellidoMat);
             byte telB[] = decodeBase64(tel);
+            byte corB[] = decodeBase64(correo);
+            byte pasB[] = decodeBase64(pass);
             
             byte nombreD[] = cifrado.doFinal(nomB);
             byte apellidoPatD[] = cifrado.doFinal(appatB);
             byte apellidoMatD[] = cifrado.doFinal(apmatB);
             byte telD[] = cifrado.doFinal(telB);
+            byte corD[] = cifrado.doFinal(corB);
+            byte pasD[] = cifrado.doFinal(pasB);
             
             String nombreRec = new String(nombreD);
             String apellidoPatRec = new String(apellidoPatD);
             String apellidoMatRec = new String(apellidoMatD);
             String telRec = new String(telD);
+            String corRec = new String(corD);
+            String pasRec = new String(pasD);
             
             u.setNom_usu(nombreRec);
             u.setAppat_usu(apellidoPatRec);
             u.setApmat_usu(apellidoMatRec);
             u.setTel_usu(telRec);
+            u.setEmail_usu(corRec);
+            u.setPass_usu(pasRec);
             
         }catch(Exception e){
         
@@ -166,6 +174,11 @@ public class cifrar {
             byte[] cifradoC = cifrado.doFinal(correo.getBytes());
             byte[] cifradoP = cifrado.doFinal(password.getBytes());
             
+            String cBase = new String(encodeBase64(cifradoC));
+            String pBase = new String(encodeBase64(cifradoP));
+            
+            al.add(cBase);
+            al.add(pBase);
             
             
         } catch (Exception e) {
