@@ -24,7 +24,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/reginisesion.css">
 </head>
 <%
-    System.out.println("????????'''''''''''''''''''''");
+    System.out.println("???????'''''''''''''''''''''");
     
     Cafeteria operc=new Cafeteria();
     ArrayList<Cafeteria> listacaf = operc.getCafeteriasAutorizadas();
