@@ -3,10 +3,6 @@
     width: 100%;
     height: 100vh;
     position: fixed;
-}
-
-li, h2, a {
-    color: #F6F4F4;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -29,7 +25,7 @@ li, h2, a {
 }
 
 .contenedor_principal .menu .indice a {
-    color: #fff;
+    color: #F6F4F4;
 	font-size: 20px;
 	font-weight: 300;
 	display: inline-block;
@@ -94,7 +90,63 @@ li, h2, a {
 }
 
 
+/************ Contenido FAQ **********/
+.contenedor_principal .contenido_faq {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contenedor_principal .contenido_faq h2{
+    color: #CF9635
+}
+
+
 /************ FAQ Usuarios **********/
+.contenedor_principal .contenido_faq .faq_usuarios {
+    width: 50%;
+    height: 100vh;
+    padding: 50px 150px;
+}
+
+.contenedor_principal .contenido_faq .faq_usuarios .preguntas {
+    margin-top: 50px;
+}
+
+.contenedor_principal .contenido_faq .faq_usuarios .preguntas .pregunta {
+    margin-bottom: 50px;
+}
+
+.contenedor_principal .contenido_faq .faq_usuarios .preguntas p{
+    color: #F6F4F4;
+}
+
+.contenedor_principal .contenido_faq .faq_usuarios .preguntas hr{
+    border: 1px solid #CF9635;
+}
 
 
 /************ FAQ Cafeterías **********/
+.contenedor_principal .contenido_faq .faq_cafeterias {
+    width: 50%;
+    height: 100vh;
+    padding: 50px 150px;
+}
+
+.contenedor_principal .contenido_faq .faq_cafeterias .preguntas {
+    margin-top: 50px;
+}
+
+.contenedor_principal .contenido_faq .faq_cafeterias .preguntas .pregunta {
+    margin-bottom: 50px;
+}
+
+.contenedor_principal .contenido_faq .faq_cafeterias .preguntas p{
+    color: #F6F4F4;
+}
+
+.contenedor_principal .contenido_faq .faq_cafeterias .preguntas hr{
+    border: 1px solid #CF9635;
+}
