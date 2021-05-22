@@ -8,81 +8,27 @@ and open the template in the editor.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
-    <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-        <link rel="stylesheet" href="css/reginisesion.css">
+    <title>Inicio | KUALI</title>
+    <link rel="StyleSheet" href="css/externals/normalize.css" type="text/css" MEDIA=screen>
+    <link rel="StyleSheet" href="css/landingPage_style.css" type="text/css" MEDIA=screen>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;1,300&display=swap" rel="stylesheet">
 </head>
-<body class="hiddn">
-    <header>
-        <!--Comentario de prueba @EmilianoRivasMX-->
-        <nav id="nav" class="nav1">
-            <div class="contenedor-nav">
-                <div class="logo">
-                    <img src="" alt="">
-                </div>
-                <div class="enlaces" id="enlaces">
-                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>
-                    <a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
-                    <a href="preguntasFrecuentes.html" id="enlace-" class="btn-header">Soporte</a>
-                </div>
-                <div class="icono" id="open">
-                    <span>&#9776</span>
-                </div>
-                
+<body style="background-color: black;">
+    <div class="contenedor-principal">
+        <nav class="menu">
+            <img src="Images/Logo_blanco.png" alt="Logotipo de KUALI color blanco">
+
+            <div class="indice">
+                <a href="RegistrarUsuario.html">Registrate</a>
+                <a href="">Iniciar Sesión</a>
+                <a href="preguntasFrecuentes.html">Soporte</a>
             </div>
         </nav>
-        
-        <div class="letras">
-            <h1>Instant Lunch</h1>
-            <h2>¿Que comeras hoy?</h2>
-        </div>
-    
-    </header>
+    </div>
 
-    <main>
-        <section class="destacados" id="destacados">
-            <h3>DESTACADOS</h3>
-            <p class="after">Las mejores opciones para tu paladar</p>
-            <div class="card">
-                <!-- Primer destacado, primera card -->
-                <div class="content-card">
-                    <div class="banner">
-                        <img src="Images/destacado1.jpg" alt="">
-                    </div>
-                    <div class="texto-card">
-                        <h3>Cafe Kowlaan</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in voluptas sint velit, dolore aperiam at pariatur, quam error quisquam molestias ea nam distinctio, beatae vero hic molestiae. Veniam, nobis!</p>
-                    </div>
-                </div>
-                <!-- Segundo destacado, segunda "card" -->
-                <div class="content-card">
-                    <div class="banner">
-                        <img src="Images/destacado1.jpg" alt="">
-                    </div>
-                    <div class="texto-card">
-                        <h3>Cafeteria un nuevo amanecer</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in voluptas sint velit, dolore aperiam at pariatur, quam error quisquam molestias ea nam distinctio, beatae vero hic molestiae. Veniam, nobis!</p>
-                    </div>
-                </div>
-                <!-- Tercer destacado, tercera card -->
-                <div class="content-card">
-                    <div class="banner">
-                        <img src="Images/destacado1.jpg" alt="">
-                    </div>
-                    <div class="texto-card">
-                        <h3>Desayunos el solecito</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in voluptas sint velit, dolore aperiam at pariatur, quam error quisquam molestias ea nam distinctio, beatae vero hic molestiae. Veniam, nobis!</p>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        
-    </main>
-
+    <!-- SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

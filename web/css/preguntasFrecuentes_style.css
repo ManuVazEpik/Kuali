@@ -1,152 +1,90 @@
-.contenedor_principal {
-    background: linear-gradient(90deg, #00000F 10%, #075523 100%);
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    font-family: 'Poppins', sans-serif;
+.contenedor-principal .menu {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+.contenedor-principal .menu img {
+  width: 160px;
+  padding: 20px 50px;
+  float: left;
+}
+.contenedor-principal .menu .indice {
+  float: right;
+  padding-right: 50px;
+}
+.contenedor-principal .menu .indice a {
+  color: #F6F4F4;
+  font-size: 20px;
+  font-weight: 300;
+  display: inline-block;
+  margin: 40px 20px;
+  text-decoration: none;
+  position: relative;
+}
+.contenedor-principal .menu .indice a:hover {
+  color: #E99F20;
+  transition: 0.5s;
 }
 
-/************ MENÚ ************/
-.contenedor_principal .menu {
-    position: relative;
-	width: 100%;
-    height: 100px;
+.contenedor-principal {
+  background: linear-gradient(90deg, #00000F 10%, #0D3012 100%);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  font-family: "Poppins", sans-serif;
+}
+.contenedor-principal .contenido_faq {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.contenedor-principal .contenido_faq h2 {
+  color: #E99F20;
+}
+.contenedor-principal .contenido_faq .faq_usuarios, .contenedor-principal .contenido_faq .faq_cafeterias {
+  width: 50%;
+  height: 100vh;
+  padding: 50px 150px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas {
+  margin-top: 50px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta p {
+  color: #F6F4F4;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta i {
+  color: #E99F20;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta button[respuesta-desplegada=true], .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta button[respuesta-desplegada=true] {
+  background-color: red;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta button[respuesta-desplegada=true] + .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta button[respuesta-desplegada=true] + .respuesta {
+  background-color: #9b7fff;
+  opacity: 1;
+  overflow: visible;
+  max-height: 100%;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .respuesta {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+.contenedor-principal .contenido_faq .faq_usuarios hr, .contenedor-principal .contenido_faq .faq_cafeterias hr {
+  border: 1px solid #E99F20;
+  margin-bottom: 50px;
 }
 
-.contenedor_principal .menu img {
-    width: 160px;
-    padding: 20px 50px;
-    float: left;
-}
-
-.contenedor_principal .menu .indice {
-    float: right;
-    padding-right: 50px;
-}
-
-.contenedor_principal .menu .indice a {
-    color: #F6F4F4;
-	font-size: 20px;
-	font-weight: 300;
-	display: inline-block;
-	margin: 40px 20px;
-	text-decoration: none;
-	position: relative;
-}
-
-.contenedor_principal .menu .indice a:hover {
-    color: #CF9635;
-    transition: 0.5s;
-}
-
-
-
-/************ CUADROS DE BUSQUEDA **********/
-.caja_busqueda {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #CF9635;
-    height: 40px;
-    border-radius: 40px;
-    padding: 10px;
-}
-
-.boton_buscar {
-    text-decoration: none;
-    color: #000000;
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background:  #CF9635;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-}
-
-.texto_busqueda {
-    border: none;
-    background: none;
-    outline: none;
-    float: left;
-    color: #000000;
-    font-size: 16px;
-    transition: 0.5s;
-    line-height: 40px;
-    width: 0px;
-    padding: 0px;
-}
-
-.caja_busqueda:hover > .texto_busqueda {
-    width: 240px;
-    padding: 0px 10px;
-}
-
-.caja_busqueda:hover > .boton_buscar {
-    background: #075523;
-}
-
-
-/************ Contenido FAQ **********/
-.contenedor_principal .contenido_faq {
-    width: 100%;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.contenedor_principal .contenido_faq h2{
-    color: #CF9635
-}
-
-
-/************ FAQ Usuarios **********/
-.contenedor_principal .contenido_faq .faq_usuarios {
-    width: 50%;
-    height: 100vh;
-    padding: 50px 150px;
-}
-
-.contenedor_principal .contenido_faq .faq_usuarios .preguntas {
-    margin-top: 50px;
-}
-
-.contenedor_principal .contenido_faq .faq_usuarios .preguntas .pregunta {
-    margin-bottom: 50px;
-}
-
-.contenedor_principal .contenido_faq .faq_usuarios .preguntas p{
-    color: #F6F4F4;
-}
-
-.contenedor_principal .contenido_faq .faq_usuarios .preguntas hr{
-    border: 1px solid #CF9635;
-}
-
-
-/************ FAQ Cafeterías **********/
-.contenedor_principal .contenido_faq .faq_cafeterias {
-    width: 50%;
-    height: 100vh;
-    padding: 50px 150px;
-}
-
-.contenedor_principal .contenido_faq .faq_cafeterias .preguntas {
-    margin-top: 50px;
-}
-
-.contenedor_principal .contenido_faq .faq_cafeterias .preguntas .pregunta {
-    margin-bottom: 50px;
-}
-
-.contenedor_principal .contenido_faq .faq_cafeterias .preguntas p{
-    color: #F6F4F4;
-}
-
-.contenedor_principal .contenido_faq .faq_cafeterias .preguntas hr{
-    border: 1px solid #CF9635;
-}
+/*# sourceMappingURL=preguntasFrecuentes_style.css.map */
