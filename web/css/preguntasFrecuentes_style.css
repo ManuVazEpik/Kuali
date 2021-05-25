@@ -64,21 +64,11 @@
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta i {
   color: #E99F20;
 }
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta button[respuesta-desplegada=true], .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta button[respuesta-desplegada=true] {
-  background-color: red;
-}
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta button[respuesta-desplegada=true] + .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta button[respuesta-desplegada=true] + .respuesta {
-  background-color: #9b7fff;
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .respuesta {
+  background-color: #a157f5;
   opacity: 1;
   overflow: visible;
   max-height: 100%;
-  transition: all 200ms linear;
-  will-change: opacity, max-height;
-}
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .respuesta {
-  opacity: 0;
-  overflow: hidden;
-  max-height: 0;
   transition: opacity 200ms linear, max-height 200ms linear;
   will-change: opacity, max-height;
 }

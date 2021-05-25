@@ -6,8 +6,8 @@
 .contenedor-principal {
     background: linear-gradient(195deg, color.$negro-kuali 20%, color.$verde-kuali 100%);
     width: 100%;
-    height: 100vh;
-    position: fixed;
+    height: 100%;
+    position: relative;
     font-family: 'Poppins', sans-serif;
 
     .header {
@@ -30,39 +30,96 @@
     }
 
     form {
-        width: 100%;
         padding: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
 
         h2 {
             color: color.$amarillo-kuali;
+            padding-left: 20px;
         }
 
         .datos_de_contacto {
+            order: 1;
             width: 50%;
-            display: flex;
-            flex-flow: column;
-        }
 
-        input {
-            height: 50px;
-            border-radius: 50px;
-            border-style: none;
-            margin: 20px 10px 20px 10px;
-            padding-left: 20px;
-            background-color: rgba(94, 94, 94, 0.35);
-        }
-
-        .experiencia {
-            width: 50%;
             display: flex;
-            flex-flow: column;
-            
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 50px;
+                border-radius: 50px;
+                border-style: none;
+                margin: 20px 10px 20px 10px;
+                padding: 0px 40px;
+                background-color: rgba(color.$blanco-kuali, 0.1);
+                color: color.$blanco-kuali;
+            }
         }
 
         .mensaje {
-            width: 50%;
+            order: 3;
+            width: 100%;
+
             display: flex;
-            flex-flow: column;
+            flex-direction: column;
+
+            textarea {
+                resize: none;
+                height: 150px;
+                width: 95%;
+                align-self: center;
+                padding: 20px 20px;
+                border-radius: 20px;
+                border-style: none;
+                background-color: rgba(color.$blanco-kuali, 0.1);
+                color: color.$blanco-kuali;
+                margin-bottom: 20px;
+            }
+
+            input[type='submit'] {
+                align-self: center;
+                width: 30%;
+                height: 70px;
+                border-radius: 50px;
+                border-style: none;
+                margin: 20px 10px 20px 10px;
+                padding-left: 40px;
+                background-color: color.$amarillo-kuali;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .experiencia {
+            order: 2;
+            width: 50%;
+            
+            .caras {
+                margin-top: 50px;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-around;
+                
+                button {
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                }
+
+                i{
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+
+        input:focus, textarea:focus {
+            background-color: rgba(color.$negro-kuali, 0.5);
+            outline: none;
         }
     }
 }

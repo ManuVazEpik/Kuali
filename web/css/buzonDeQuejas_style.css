@@ -1,5 +1,3 @@
-@charset "UTF-8";
-/************ MENÚ ************/
 .contenedor-principal .menu {
   position: relative;
   width: 100%;
@@ -24,15 +22,15 @@
   position: relative;
 }
 .contenedor-principal .menu .indice a:hover {
-  color: #CF9635;
+  color: #E99F20;
   transition: 0.5s;
 }
 
 .contenedor-principal {
   background: linear-gradient(195deg, #000000 20%, #0D3012 100%);
   width: 100%;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: relative;
   font-family: "Poppins", sans-serif;
 }
 .contenedor-principal .header {
@@ -52,34 +50,84 @@
   text-align: center;
 }
 .contenedor-principal form {
-  width: 100%;
   padding: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 .contenedor-principal form h2 {
   color: #E99F20;
+  padding-left: 20px;
 }
 .contenedor-principal form .datos_de_contacto {
+  order: 1;
   width: 50%;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 }
-.contenedor-principal form input {
+.contenedor-principal form .datos_de_contacto input {
+  width: 90%;
   height: 50px;
   border-radius: 50px;
   border-style: none;
   margin: 20px 10px 20px 10px;
-  padding-left: 20px;
-  background-color: rgba(94, 94, 94, 0.35);
-}
-.contenedor-principal form .experiencia {
-  width: 50%;
-  display: flex;
-  flex-flow: column;
+  padding: 0px 40px;
+  background-color: rgba(246, 244, 244, 0.1);
+  color: #F6F4F4;
 }
 .contenedor-principal form .mensaje {
-  width: 50%;
+  order: 3;
+  width: 100%;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
+}
+.contenedor-principal form .mensaje textarea {
+  resize: none;
+  height: 150px;
+  width: 95%;
+  align-self: center;
+  padding: 20px 20px;
+  border-radius: 20px;
+  border-style: none;
+  background-color: rgba(246, 244, 244, 0.1);
+  color: #F6F4F4;
+  margin-bottom: 20px;
+}
+.contenedor-principal form .mensaje input[type=submit] {
+  align-self: center;
+  width: 30%;
+  height: 70px;
+  border-radius: 50px;
+  border-style: none;
+  margin: 20px 10px 20px 10px;
+  padding-left: 40px;
+  background-color: #E99F20;
+  font-size: 20px;
+  font-weight: 600;
+}
+.contenedor-principal form .experiencia {
+  order: 2;
+  width: 50%;
+}
+.contenedor-principal form .experiencia .caras {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+.contenedor-principal form .experiencia .caras button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.contenedor-principal form .experiencia .caras i {
+  color: #E99F20;
+}
+.contenedor-principal form input:focus, .contenedor-principal form textarea:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
 /*# sourceMappingURL=buzonDeQuejas_style.css.map */

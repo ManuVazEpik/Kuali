@@ -42,25 +42,13 @@
                     i {
                         color: color.$amarillo-kuali;
                     }   
-    
-                    button[respuesta-desplegada = 'true'] {
-                        background-color: red;
-
-                        + .respuesta {
-                            background-color: rgb(155, 127, 255);
-                            opacity: 1;
-                            overflow: visible;
-                            max-height: 100%;
-                            transition: all 200ms linear;
-                            will-change: opacity, max-height;
-                        }    
-                    } 
                 }
-            
+
                 .respuesta {
-                    opacity: 0;
-                    overflow: hidden;
-                    max-height: 0;
+                    background-color: rgb(161, 87, 245);
+                    opacity: 1;
+                    overflow: visible;
+                    max-height: 100%;
                     transition: opacity 200ms linear, max-height 200ms linear;
                     will-change: opacity, max-height;
                 }
