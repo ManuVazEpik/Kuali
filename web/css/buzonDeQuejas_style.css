@@ -112,7 +112,7 @@
   width: 50%;
 }
 .contenedor-principal form .experiencia .caras {
-  margin-top: 50px;
+  margin-top: 70px;
   display: flex;
   flex-flow: row;
   justify-content: space-around;
@@ -122,12 +122,35 @@
   background: none;
   cursor: pointer;
 }
-.contenedor-principal form .experiencia .caras i {
-  color: #E99F20;
+.contenedor-principal form .experiencia .caras .fa-grin-beam {
+  color: #090;
+}
+.contenedor-principal form .experiencia .caras .fa-meh {
+  color: #005c99;
+}
+.contenedor-principal form .experiencia .caras .fa-angry {
+  color: #990000;
 }
 .contenedor-principal form input:focus, .contenedor-principal form textarea:focus {
   background-color: rgba(0, 0, 0, 0.5);
   outline: none;
+}
+.contenedor-principal .botones-flotantes {
+  position: fixed;
+  bottom: 50px;
+  right: 70px;
+}
+.contenedor-principal .botones-flotantes a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 100px;
+  background: #E99F20;
+  color: #281A0C;
 }
 
 /*# sourceMappingURL=buzonDeQuejas_style.css.map */

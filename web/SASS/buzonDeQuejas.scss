@@ -100,7 +100,7 @@
             width: 50%;
             
             .caras {
-                margin-top: 50px;
+                margin-top: 70px;
                 display: flex;
                 flex-flow: row;
                 justify-content: space-around;
@@ -111,8 +111,16 @@
                     cursor: pointer;
                 }
 
-                i{
-                    color: color.$amarillo-kuali;
+                .fa-grin-beam{
+                    color:#090;
+                }
+
+                .fa-meh{
+                    color:rgb(0, 92, 153);
+                }
+
+                .fa-angry{
+                    color:rgb(153, 0, 0);
                 }
             }
         }
@@ -120,6 +128,25 @@
         input:focus, textarea:focus {
             background-color: rgba(color.$negro-kuali, 0.5);
             outline: none;
+        }
+    }
+
+    .botones-flotantes {
+        position: fixed;
+        bottom: 50px;
+        right: 70px;
+
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 100px;
+            background: color.$amarillo-kuali;
+            color: color.$cafe-kuali;
         }
     }
 }

@@ -29,52 +29,94 @@
 .contenedor-principal {
   background: linear-gradient(90deg, #00000F 10%, #0D3012 100%);
   width: 100%;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: relative;
   font-family: "Poppins", sans-serif;
 }
 .contenedor-principal .contenido_faq {
   width: 100%;
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .contenedor-principal .contenido_faq h2 {
   color: #E99F20;
+  font-size: 30px;
+  padding-left: 40px;
 }
 .contenedor-principal .contenido_faq .faq_usuarios, .contenedor-principal .contenido_faq .faq_cafeterias {
   width: 50%;
   height: 100vh;
-  padding: 50px 150px;
+  padding: 50px 30px;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas {
   margin-top: 50px;
 }
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta {
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta {
+  padding: 0px 40px;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .pregunta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .pregunta {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding-right: 30px;
+  font-size: 23px;
 }
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta p {
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .pregunta p {
   color: #F6F4F4;
 }
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .pregunta i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .pregunta i {
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .pregunta i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .pregunta i {
   color: #E99F20;
 }
-.contenedor-principal .contenido_faq .faq_usuarios .preguntas .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .respuesta {
-  background-color: #a157f5;
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .respuesta {
+  color: #F6F4F4;
+  font-style: 20px;
+  line-height: 30px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.3s ease all;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa .pregunta p {
+  color: #E99F20;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa .respuesta {
+  max-height: 100%;
   opacity: 1;
   overflow: visible;
-  max-height: 100%;
-  transition: opacity 200ms linear, max-height 200ms linear;
-  will-change: opacity, max-height;
+  transition: 0.3s ease all;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa i {
+  transform: rotate(180deg);
 }
 .contenedor-principal .contenido_faq .faq_usuarios hr, .contenedor-principal .contenido_faq .faq_cafeterias hr {
   border: 1px solid #E99F20;
   margin-bottom: 50px;
+}
+.contenedor-principal .botones-flotantes {
+  position: fixed;
+  bottom: 50px;
+  right: 70px;
+}
+.contenedor-principal .botones-flotantes a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 100px;
+  background: #E99F20;
+  color: #281A0C;
 }
 
 /*# sourceMappingURL=preguntasFrecuentes_style.css.map */
