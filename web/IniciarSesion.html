@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/externals/normalize.css">
+        <link rel="stylesheet" href="css/iniciarSesion_style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <title>Iniciar Sesión | KUALI</title>
+    </head>
+    <body>
+        <div class="contenedor-principal">
+            <nav class="menu">
+                <a href="index.html"><img src="Images/Logo_blanco.png" alt="Logotipo de KUALI color blanco"></a>
+                
+                <div class="indice">
+                    <a href="#">Registrate</a>
+                    <a href="iniciarSesion.html">Iniciar Sesión</a>
+                    <a href="preguntasFrecuentes.html">Soporte</a>
+                </div>
+            </nav>
+
+
+        </div>
+
+        <!-- PANALES DE CAMBIO DE FORMULARIO -->
+        <div class="contenedor-paneles">
+            <div class="cambiar-a-registro">
+                <div class="contenido">
+                    <h3>¿Aún no tienes cuenta?</h3>
+                    <p>Únete a Kuali para conocer la nueva experiencia de consumo de café. Sin espera, sin filas.</p>
+                    <button class="btn transparent" id="sign-up-btn">Crear cuenta</button>
+                </div>
+
+                <img src="Images/svg/cafecito.svg" alt="Dibujo de café animado">
+            </div>
+
+            <div class="cambiar-a-iniciarSesion">
+                <div class="contenido">
+                    <h3>¿Ya tienes cuenta?</h3>
+                    <p>Inicia sesión para comenzar a usar Kuali.</p>
+                    <button class="btn transparent" id="sign-up-btn">Iniciar Sesión</button>
+                </div>
+
+                <img src="Images/svg/usuario_y_celular.svg" alt="Dibujo de café animado">
+            </div>
+        </div>
+
+        <!-- FORMULARIO ORIGINAL INSTANT LAUNCH -->
+        <form class="formulario" action="IniciarSesion" method="POST">
+
+            <h1>Inicie Sesión</h1>
+            <div class="contenedor">
+
+
+
+                <div class="input-contenedor">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" name="corU" placeholder="Correo Electronico">
+
+                </div>
+
+                <div class="input-contenedor">
+                    <i class="fas fa-key icon"></i>
+                    <input type="password" name="conU" placeholder="Contraseña">
+
+                </div>
+                <input type="submit" value="Iniciar Sesión" class="button">
+                <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                <p>¿No tienes una cuenta? <a class="link" href="RegistrarUsuario.html">Registrate </a></p>
+            </div>
+        </form>
+
+        <footer>
+            
+        </footer>
+
+        <!-- SCRIPTS -->
+        <script src="js/inicarSesion.js"></script>
+        <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    </body>
+</html>

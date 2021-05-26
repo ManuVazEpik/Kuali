@@ -1,0 +1,50 @@
+@use '../abstracts/colors' as color;
+
+footer {
+    background: linear-gradient(150deg, color.$negro-kuali 15%, color.$verde-kuali 80%);
+    max-height: 300px;
+    height: 300px;
+    
+    .presentacion-kuali {
+        height: 75%;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        h3 {
+            color: color.$amarillo-kuali;
+            font-weight: 800;
+            font-size: 30px;
+        }
+
+        p {
+            color: color.$blanco-kuali;
+            font-size: 18px;
+        }
+    }
+
+    .derechos {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        color: color.$blanco-kuali;
+
+        p {
+            margin: 0px 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: color.$blanco-kuali;
+            margin: 0px 20px;
+        }
+
+        a:hover {
+            color: color.$amarillo-kuali;
+        }
+    }
+}
