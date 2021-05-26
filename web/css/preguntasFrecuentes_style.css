@@ -39,15 +39,63 @@
   flex-direction: row;
   justify-content: center;
 }
-.contenedor-principal .contenido_faq h2 {
-  color: #E99F20;
-  font-size: 30px;
-  padding-left: 40px;
-}
 .contenedor-principal .contenido_faq .faq_usuarios, .contenedor-principal .contenido_faq .faq_cafeterias {
   width: 50%;
   height: 100vh;
   padding: 50px 30px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 50px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios h2, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias h2, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios h2, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias h2 {
+  color: #E99F20;
+  font-size: 30px;
+  padding-left: 40px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda {
+  background: #E99F20;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda .boton_buscar, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda .boton_buscar, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda .boton_buscar, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda .boton_buscar {
+  text-decoration: none;
+  color: #00000F;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #E99F20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda .card-filter, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda .card-filter, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda .card-filter, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda .card-filter {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  color: #00000F;
+  font-size: 16px;
+  transition: 0.5s;
+  line-height: 40px;
+  width: 0px;
+  padding: 0px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda .card-filter::placeholder, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda .card-filter::placeholder, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda .card-filter::placeholder, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda .card-filter::placeholder {
+  color: rgba(0, 0, 15, 0.7);
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda:hover .card-filter, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda:hover .card-filter, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda:hover .card-filter, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda:hover .card-filter {
+  width: 240px;
+  padding: 0px 10px;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .header_usuarios .caja_busqueda:hover .boton_busqueda, .contenedor-principal .contenido_faq .faq_usuarios .header_cafeterias .caja_busqueda:hover .boton_busqueda, .contenedor-principal .contenido_faq .faq_cafeterias .header_usuarios .caja_busqueda:hover .boton_busqueda, .contenedor-principal .contenido_faq .faq_cafeterias .header_cafeterias .caja_busqueda:hover .boton_busqueda {
+  background: #ddd;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas {
   margin-top: 50px;
@@ -64,12 +112,19 @@
   justify-content: space-between;
   padding-right: 30px;
   font-size: 23px;
+  order: 0;
+  transition: all 0.3s ease-out;
+  border-bottom: 2px solid #E99F20;
+  margin-bottom: 50px;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .pregunta p {
   color: #F6F4F4;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .pregunta i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .pregunta i {
   color: #E99F20;
+}
+.contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .filter, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .filter {
+  display: none;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta .respuesta, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta .respuesta {
   color: #F6F4F4;
@@ -78,12 +133,12 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: 0.3s ease all;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa .pregunta p, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa .pregunta p {
   color: #E99F20;
@@ -96,10 +151,6 @@
 }
 .contenedor-principal .contenido_faq .faq_usuarios .preguntas .contenedor-pregunta.activa i, .contenedor-principal .contenido_faq .faq_cafeterias .preguntas .contenedor-pregunta.activa i {
   transform: rotate(180deg);
-}
-.contenedor-principal .contenido_faq .faq_usuarios hr, .contenedor-principal .contenido_faq .faq_cafeterias hr {
-  border: 1px solid #E99F20;
-  margin-bottom: 50px;
 }
 .contenedor-principal .botones-flotantes {
   position: fixed;
