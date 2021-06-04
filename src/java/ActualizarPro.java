@@ -54,7 +54,7 @@ public class ActualizarPro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String nom_prod, desc_prod, pre_prodS , id_prodS, dispon;
+            String nom_prod, desc_prod, pre_prodS , id_prodS, dispon, id_cafS;
             boolean  disp_prod=true;
             
             nom_prod = request.getParameter("nom_prod");
@@ -62,14 +62,15 @@ public class ActualizarPro extends HttpServlet {
             desc_prod = request.getParameter("desc_prod");
             pre_prodS = request.getParameter("pre_prod");
             id_prodS= request.getParameter("id_prod");
+            id_cafS= request.getParameter("id_caf");
             
             Validar val = new Validar();
-            boolean exp1=val.letras(nom_prod);
+            boolean exp1=val.letrasEspacios(nom_prod);
             boolean exp2=val.numerosEnteros(id_prodS);
             //boolean exp3=val.direccionesURL(fot_caf);
             boolean exp4=val.direcciones(desc_prod);
             boolean exp5=val.numerosDecimales(pre_prodS);
-            
+            System.out.println(exp1);
             if(exp1==true && exp2==true && exp4==true && exp5==true ){
                 if(nom_prod.length()<20 && desc_prod.length()<100 && pre_prodS.length()<30){
                     int id_prod = Integer.parseInt(id_prodS);
@@ -86,7 +87,7 @@ public class ActualizarPro extends HttpServlet {
                     int estado=operC.Actualizar(c);
 
                     if(estado >0){
-                        response.sendRedirect("ModificarCafeteria.jsp");
+                        response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
                     }else{
                         out.println("<h1>Valio cake</h1>");
                         out.println("");

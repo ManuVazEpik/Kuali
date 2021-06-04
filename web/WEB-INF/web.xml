@@ -53,24 +53,36 @@
         <servlet-class>Disponibilidad</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>añadirPedido</servlet-name>
-        <servlet-class>anadirPedido</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Ordenar</servlet-name>
         <servlet-class>Ordenar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>añadiralPedido</servlet-name>
-        <servlet-class>anadirPedido</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Pedido</servlet-name>
+        <servlet-name>Pedidos</servlet-name>
         <servlet-class>Pedidos</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>eliminarPedido</servlet-name>
         <servlet-class>eliminarPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelarPedido</servlet-name>
+        <servlet-class>CancelarPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarDelCarro</servlet-name>
+        <servlet-class>EliminarDelCarro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinalizarPedido</servlet-name>
+        <servlet-class>FinalizarPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarQueja</servlet-name>
+        <servlet-class>RegistrarQueja</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConcluirQueja</servlet-name>
+        <servlet-class>ConcluirQueja</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
@@ -125,28 +137,40 @@
         <url-pattern>/Disponibilidad</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>añadirPedido</servlet-name>
-        <url-pattern>/a_adirPedido</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Ordenar</servlet-name>
         <url-pattern>/Ordenar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>añadiralPedido</servlet-name>
-        <url-pattern>/a_adiralPedido</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Pedido</servlet-name>
-        <url-pattern>/Pedido</url-pattern>
+        <servlet-name>Pedidos</servlet-name>
+        <url-pattern>/Pedidos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliminarPedido</servlet-name>
         <url-pattern>/eliminarPedido</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelarPedido</servlet-name>
+        <url-pattern>/CancelarPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarDelCarro</servlet-name>
+        <url-pattern>/EliminarDelCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinalizarPedido</servlet-name>
+        <url-pattern>/FinalizarPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarQueja</servlet-name>
+        <url-pattern>/RegistrarQueja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConcluirQueja</servlet-name>
+        <url-pattern>/ConcluirQueja</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            -1
         </session-timeout>
     </session-config>
 </web-app>

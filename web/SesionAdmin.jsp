@@ -4,6 +4,7 @@
     Author     : bocal
 --%>
 
+<%@page import="Clases.Queja"%>
 <%@page import="Clases.Cafeteria"%>
 <%@page import="Clases.Usuario"%>
 <%@page import="java.util.*"%>
@@ -99,7 +100,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
     %>
         </table>
         
-        <h3>Cafeterias Autorizadas</h3>
+        <h3>Usuarios</h3>
         <%
         Usuario u = new Usuario();
         ArrayList<Usuario> listaUsu=u.getUsuarios();
@@ -135,9 +136,58 @@ if (sesionOk.getAttribute("usuario") == null ) {
         }
     %>
         </table>
+        
+        <br><br><br><br><br><br><br><br><br>
+        <h2>Quejas</h2>
+        <table>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Queja o sugerencia</th>
+            <th>Satisfacción</th>
+            <th></th>
+        <%
+            Queja opq = new Queja();
+            ArrayList <Queja> listaq= opq.getQuejas();
+            
+            String satisfaccionS="";
+            for(Queja q:listaq){
+                int satisfaccion = q.getSatisfaccion();
+                if (satisfaccion==3) {
+                    satisfaccionS="Buena";
+                }else if (satisfaccion==2) {
+                    satisfaccionS="Normal";
+                }else if (satisfaccion==1) {
+                    satisfaccionS="Mala";
+                }else{
+                    satisfaccionS="Occurio un error";
+                }
+                
+                
+                
+        %>
+        <tr>
+            <td><%=q.getId_que()%></td>
+            <td><%=q.getNom_que()%></td>
+            <td><%=q.getEmail_que()%></td>
+            <td><%=q.getTel_que()%></td>
+            <td><%=q.getQueja()%></td>
+            <td><%=satisfaccionS%></td>
+            <td>
+                <form action="ConcluirQueja" method="POST">
+                    <input type="hidden" name="id_que" value="<%=q.getId_que()%>"/>
+                    <input type="submit" value="Concluir"/>
+                </form>
+            </td>
+        </tr>
+        <%
+            }
+        %>
+        </table>
         <a href="CerrarSesion">Cerrar Sesion</a>
         </main>
-
+        
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
     </body>

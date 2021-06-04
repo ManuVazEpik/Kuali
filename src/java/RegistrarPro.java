@@ -70,7 +70,7 @@ public class RegistrarPro extends HttpServlet {
             disp_prod=true;
             
             Validar val = new Validar();
-            boolean exp1=val.letras(nom_prod);
+            boolean exp1=val.letrasEspacios(nom_prod);
             boolean exp2=val.numerosEnteros(id_cafS);
             //boolean exp3=val.direccionesURL(fot_caf);
             boolean exp4=val.direcciones(desc_prod);
@@ -90,7 +90,7 @@ public class RegistrarPro extends HttpServlet {
                     c.setDisp_prod(disp_prod);
                     int estado=operC.Guardar(c);
                     if(estado >0){
-                        response.sendRedirect("ModificarCafeteria.jsp");
+                        response.sendRedirect("ModificarCafeteria.jsp?admrs="+Integer.parseInt(id_cafS));
                     }else{
                         out.println("<h1>Valio cake</h1>");
                         out.println("");

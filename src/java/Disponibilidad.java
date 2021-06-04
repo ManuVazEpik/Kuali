@@ -50,6 +50,7 @@ public class Disponibilidad extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String id_prodS=request.getParameter("id_prod");
+            String id_cafS=request.getParameter("admrs");
             String dis=request.getParameter("dis_prod");
             int id_prod=Integer.parseInt(id_prodS);
             if ("Disponible".equals(dis)) {
@@ -57,7 +58,7 @@ public class Disponibilidad extends HttpServlet {
                 Productos prod=new Productos();
                 boolean estatus=prod.NoDisponible(id_prod);
                 if (estatus==true) {
-                    response.sendRedirect("ModificarCafeteria.jsp");
+                    response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
                 }else{
                     response.sendRedirect("error.html");
                 }
@@ -65,7 +66,7 @@ public class Disponibilidad extends HttpServlet {
                 Productos prod=new Productos();
                 boolean estatus=prod.Disponible(id_prod);
                 if (estatus==true) {
-                    response.sendRedirect("ModificarCafeteria.jsp");
+                    response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
                 }else{
                     response.sendRedirect("error.html");
                 }

@@ -89,7 +89,7 @@ public class Productos {
         try{
             
             Connection con = conexion.getConexion();
-            String q = "insert into Producto (nom_prod,desc_prod,pre_prod,disp_prod,fot_prod,id_caf) values (?,?,?,?,?,?)";
+            String q = "insert into MProducto (nom_prod,desc_prod,pre_prod,disp_prod,fot_prod,id_caf) values (?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(q);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getDesc_prod());
@@ -114,7 +114,7 @@ public class Productos {
         PreparedStatement ps = null;
         try{
 
-            sql= "update Producto set nom_prod=?, desc_prod=?, pre_prod=?, fot_prod=? where id_prod=?";
+            sql= "update MProducto set nom_prod=?, desc_prod=?, pre_prod=?, fot_prod=? where id_prod=?";
             ps = con.prepareStatement(sql);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getDesc_prod());
@@ -146,7 +146,7 @@ public class Productos {
         try{
             
             con = conexion.getConexion();
-            q ="delete from Producto where id_prod=?";
+            q ="delete from MProducto where id_prod=?";
             ps = con.prepareStatement(q);
             ps.setInt(1, id);
             estatus += ps.executeUpdate();
@@ -168,7 +168,7 @@ public class Productos {
         boolean estatus = false;
         try{
             con = conexion.getConexion();
-            q ="update producto set disp_prod=? where id_prod=?";
+            q ="update Mproducto set disp_prod=? where id_prod=?";
             ps = con.prepareStatement(q);
             ps.setBoolean(1, true);
             ps.setInt(2, id);
@@ -191,7 +191,7 @@ public class Productos {
         boolean estatus = false;
         try{
             con = conexion.getConexion();
-            q ="update producto set disp_prod=? where id_prod=?";
+            q ="update Mproducto set disp_prod=? where id_prod=?";
             ps = con.prepareStatement(q);
             ps.setBoolean(1, false);
             ps.setInt(2, id);
@@ -207,28 +207,44 @@ public class Productos {
         }
         return estatus;   
     }
-    public static Productos getProductoById(int id){
+    public int getIdCafeteriaProducto(int id){
+        int id_cafPro=0;
+        try{
+            Connection con = conexion.getConexion();
+            String sql = "Select id_caf from MProducto where id_prod = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                id_cafPro=rs.getInt(1);
+                break;
+            }
+            con.close();
+            
+        }catch(Exception ed){
+            System.out.println("error en get usuario by id");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        }
+        return id_cafPro;
+    }
+    public Productos getProductoById(int id){
         Productos p = new Productos();
         try{
             Connection con = conexion.getConexion();
-            String sql = "Select * from Producto where id_prod = ?";
+            String sql = "Select * from MProducto where id_prod = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
                 p.setId_prod(rs.getInt(1));
-                System.out.println(p.getId_prod());
                 p.setNom_prod(rs.getString(2));
-                System.out.println(p.getNom_prod());
                 p.setDesc_prod(rs.getString(3));
-                System.out.println(p.getDesc_prod());
                 p.setPre_prod(rs.getFloat(4));
-                System.out.println(p.getPre_prod());
                 p.setDisp_prod(rs.getBoolean(5));
-                System.out.println(p.getDisp_prod());
                 p.setFot_prod(rs.getString(6));
-                System.out.println(p.getFot_prod());
                 p.setId_caf(rs.getInt(7));
                 break;
             }
@@ -247,7 +263,39 @@ public class Productos {
         ArrayList<Productos> listap = new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
-            String sql = "Select * from Producto where id_caf = ?";
+            String sql = "Select * from MProducto where id_caf = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Productos p = new Productos();
+                p.setId_prod(rs.getInt(1));
+                p.setNom_prod(rs.getString(2));
+                p.setDesc_prod(rs.getString(3));
+                p.setPre_prod(rs.getFloat(4));
+                p.setDisp_prod(rs.getBoolean(5));
+                p.setFot_prod(rs.getString(6));
+                p.setId_caf(rs.getInt(7));
+                listap.add(p);
+            }
+            
+            con.close();
+            
+        }catch(Exception ed){
+            System.out.println("error en get usuario by id");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        
+        }
+        return listap;
+    }
+    
+    public static ArrayList<Productos> getProductosDisCaf(int id){
+        ArrayList<Productos> listap = new ArrayList<>();
+        try{
+            Connection con = conexion.getConexion();
+            String sql = "Select * from MProducto where id_caf = ? and disp_prod=1";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

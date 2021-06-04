@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Cafeteria;
+import Clases.Queja;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,31 +19,38 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bocal
  */
-public class EliminarCaf extends HttpServlet {
+public class RegistrarQueja extends HttpServlet {
+
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String idS, tipoS;
-            idS = request.getParameter("id");
+            String nombre = request.getParameter("nombre");
+            String correo = request.getParameter("correo");
+            String tel = request.getParameter("tel");
+            String queja = request.getParameter("queja");
+            int satisfaccion = Integer.parseInt(request.getParameter("satisfaccion").trim());
             
-            int id = Integer.parseInt(idS);
-            
-            
-            Cafeteria opc = new Cafeteria();
-            int estatus=opc.EliminarCafeteria(id);
-            if(estatus>0){
-                response.sendRedirect("index.jsp");
+            Queja q = new Queja();
+            q.setNom_que(nombre);
+            q.setEmail_que(correo);
+            q.setTel_que(tel);
+            q.setQueja(queja);
+            q.setSatisfaccion(satisfaccion);
+            int estatus = Queja.RegistrarQueja(q);
+            if(estatus >0){
+                response.sendRedirect("preguntasFrecuentes.html");
             }else{
-                response.sendRedirect("error.jsp");
+                out.println("<h1>Valio cake</h1>");
+                out.println("");
             }
+            
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistrarQueja.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**

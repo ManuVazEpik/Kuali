@@ -39,7 +39,7 @@ public class Usuario {
             ps1.setString(4, c.getEmail_usu());
             ps1.setString(5, c.getPass_usu());
             ps1.setString(6, c.getTel_usu());
-            ps1.setInt(7, 2);
+            ps1.setInt(7, c.getPerm_usu());
             estatus=ps1.executeUpdate();
             System.out.println(estatus);
             con.close();
@@ -51,7 +51,7 @@ public class Usuario {
         return estatus;
 
     }
-    public int ActualizarUsuario(Usuario c) throws SQLException{
+   public int ActualizarUsuario(Usuario c) throws SQLException{
         int estatus = 0;
         Connection con = conexion.getConexion();
         String sql = "";
@@ -81,16 +81,11 @@ public class Usuario {
         String q=null;
         int estatus = 0;
         try{
-            
-                con = conexion.getConexion();
-                q ="delete from usuario where id_usu=?";
-                ps = con.prepareStatement(q);
-                ps.setInt(1, id);
-                
-                estatus += ps.executeUpdate();
-            
-            
-        
+            con = conexion.getConexion();
+            q ="delete from usuario where id_usu=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id);
+            estatus += ps.executeUpdate();
         }catch (Exception ed){
             System.out.println("No conecto a la tabla");
             System.out.println(ed.getMessage());
@@ -112,16 +107,16 @@ public class Usuario {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                c.setId_usu(rs.getInt(1));
-                System.out.println(c.getId_usu());
+                
                 String nombre = rs.getString(2);
                 String apPat = rs.getString(3);
                 String apMat = rs.getString(4);
+                String correo = rs.getString(5);
+                String cont = rs.getString(6);
                 String tel = rs.getString(7);
                 c = cifra.AESDescifrar(nombre, apPat,
-                        apMat, tel);
-                c.setEmail_usu(rs.getString(5));
-                c.setPass_usu(rs.getString(6));
+                        apMat, tel, correo, cont);
+                c.setId_usu(rs.getInt(1));
                 c.setPerm_usu(rs.getInt(8));
                 break;
             }
@@ -143,19 +138,18 @@ public class Usuario {
             
             cifrar cifra = new cifrar();
             
-            ArrayList<String> ul = cifra.verificarUsuario(correo, contr);
-            
+            Usuario ul = cifra.verificarUsuario(correo, contr);
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            System.out.println(ul.getEmail_usu());
             String sql="select * from Usuario where email_usu = ? and pass_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ul.get(1));
-            ps.setString(2, ul.get(2));
+            ps.setString(1, ul.getEmail_usu());
+            ps.setString(2, ul.getPass_usu());
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                
+                c = cifra.AESDescifrarSesion(rs.getString(2), rs.getString(3));
                 c.setId_usu(rs.getInt(1));
-                c.setEmail_usu(rs.getString(2));
-                c.setPass_usu(rs.getString(3));
                 c.setPerm_usu(rs.getInt(8));
                 break;
             }
@@ -165,24 +159,28 @@ public class Usuario {
     
     public ArrayList<Usuario> getUsuarios(){
         ArrayList<Usuario> lista = new ArrayList<>();
+        cifrar cifra = new cifrar();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
             
-            sql="select * from usuario where perm_usu=2";
+            sql="select * from usuario where perm_usu=2 or perm_usu=3";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 Usuario c = new Usuario();
+                    String nombre = rs.getString(2);
+                    String apPat = rs.getString(3);
+                    String apMat = rs.getString(4);
+                    String tel = rs.getString(7);
+                    String correo = rs.getString(5);
+                    String cont = rs.getString(6);
+                    c = cifra.AESDescifrar(nombre, apPat,
+                        apMat, tel, correo, cont);
                     c.setId_usu(rs.getInt(1));
-                    c.setNom_usu(rs.getString(2));
-                    c.setAppat_usu(rs.getString(3));
-                    c.setApmat_usu(rs.getString(4));
-                    c.setEmail_usu(rs.getString(5));
-                    c.setPass_usu(rs.getString(6));
-                    c.setTel_usu(rs.getString(7));
+                    c.setPerm_usu(rs.getInt(8));
                 lista.add(c);
             }            
             con.close();

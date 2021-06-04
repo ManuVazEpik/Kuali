@@ -30,13 +30,15 @@ public class Cafeteria {
         int estatus = -1;
         try{
             Connection con = conexion.getConexion();
-                String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu,aut_caf) values (?,?,?,?,?)";
+                String q = "insert into cafeteria (nom_caf,dir_caf,fot_caf,id_usu,aut_caf,dest_caf,calificacion_caf) values (?,?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(q);
                 ps.setString(1, c.getNom_caf());
                 ps.setString(2, c.getDir_caf());
                 ps.setString(3, c.getFot_caf());
                 ps.setInt(4, c.getId_usu());
                 ps.setInt(5, 2);
+                ps.setBoolean(6, false);
+                ps.setInt(7, 4);
                 estatus=ps.executeUpdate();
             con.close();
         }catch(Exception ed){
@@ -106,8 +108,7 @@ public class Cafeteria {
             ps.setInt(1, id_usu);
             ResultSet rs=ps.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getInt(6));
-                compro=rs.getInt(6);
+                compro=rs.getInt(5);
                 break;
             }
         }catch(Exception e){
@@ -120,6 +121,7 @@ public class Cafeteria {
     }
     
     public boolean comprobarCafExiste(int id_usu) throws SQLException{
+        
         boolean compro = true;
         Connection con = null;
         PreparedStatement ps = null;
@@ -160,8 +162,8 @@ public class Cafeteria {
                     c.setId_caf(rs.getInt(1));
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
-                    c.setId_usu(rs.getInt(4));
-                    c.setFot_caf(rs.getString(5));
+                    c.setFot_caf(rs.getString(4));
+                    c.setId_usu(rs.getInt(6));
                 lista.add(c);
             }            
             con.close();
@@ -187,8 +189,8 @@ public class Cafeteria {
                     c.setId_caf(rs.getInt(1));
                     c.setNom_caf(rs.getString(2));
                     c.setDir_caf(rs.getString(3));
-                    c.setId_usu(rs.getInt(4));
-                    c.setFot_caf(rs.getString(5));
+                    c.setFot_caf(rs.getString(4));
+                    c.setId_usu(rs.getInt(6));
                 lista.add(c);
             }            
             con.close();
@@ -198,8 +200,8 @@ public class Cafeteria {
         return lista;
     }
     
-    public Cafeteria getCafeteriaById(int id){
-        Cafeteria c = new Cafeteria();
+    public static ArrayList<Cafeteria> getCafeteriaById(int id){
+         ArrayList<Cafeteria> lista= new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
             String sql = "Select * from cafeteria where id_usu = ?";
@@ -208,11 +210,39 @@ public class Cafeteria {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
+                Cafeteria c = new Cafeteria();
                 c.setId_caf(rs.getInt(1));
                 c.setNom_caf(rs.getString(2)); //rs.getBinaryStream(3)
                 c.setDir_caf(rs.getString(3));
-                c.setFot_caf(rs.getString(5));
-                c.setAut_caf(rs.getBoolean(6));
+                c.setFot_caf(rs.getString(4));
+                c.setAut_caf(rs.getBoolean(5));
+                lista.add(c);
+            }
+            ps.close();
+            con.close();
+            
+        }catch(Exception ed){
+            System.out.println("error en get cafeteria by id");
+            System.out.println(ed.getMessage());
+            System.out.println(ed.getStackTrace());
+        }
+        return lista;
+    }
+    public Cafeteria getCafeteriaByIdCaf(int id_caf){
+        Cafeteria c = new Cafeteria();
+        try{
+            Connection con = conexion.getConexion();
+            String sql = "Select * from cafeteria where id_caf = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id_caf);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                c.setId_caf(rs.getInt(1));
+                c.setNom_caf(rs.getString(2)); //rs.getBinaryStream(3)
+                c.setDir_caf(rs.getString(3));
+                c.setFot_caf(rs.getString(4));
+                c.setAut_caf(rs.getBoolean(5));
                 break;
             }
             ps.close();

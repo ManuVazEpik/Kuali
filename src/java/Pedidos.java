@@ -5,6 +5,7 @@
  */
 
 import Clases.DetallePedido;
+import Clases.Productos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -35,17 +36,30 @@ public class Pedidos extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int cantidad = Integer.parseInt(request.getParameter("cantidadtxt"));
-            System.out.println(cantidad);
             int id = Integer.parseInt(request.getParameter("idtxt"));
-            System.out.println(id);
-            float subtotal= Float.parseFloat(request.getParameter("preciotxt"));
-            System.out.println(subtotal);
+            double subtotal= Double.parseDouble(request.getParameter("preciotxt"));
             
             HttpSession session = request.getSession(true);
             ArrayList<DetallePedido> productos = session.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList) session.getAttribute("carrito") ;
             boolean flag = false;
-            
+            boolean comp = false;
+            Productos opP = new Productos();
             if (productos.size() > 0) {
+                
+                System.out.println("Aqui");
+                for (DetallePedido p: productos) {
+                    int id_caf1 = opP.getIdCafeteriaProducto(id);
+                    int id_caf2 = opP.getIdCafeteriaProducto(p.getId_prod());
+                    System.out.println("Cafe 1: "+id_caf1+"\nCafe 2:"+id_caf2);
+                    if (id_caf1 == id_caf2) {
+                        comp=true;
+                    }else{
+                        System.out.println("ewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+                        comp=false;
+                        break;
+                    }
+                }
+
                 for (DetallePedido a: productos) {
                     if(id == a.getId_prod()){
                         a.setCant_detPed(a.getCant_detPed() + cantidad);
@@ -54,17 +68,22 @@ public class Pedidos extends HttpServlet {
                         break;
                     }
                 }
+                
+            }else{
+                comp=true;
             }
             
-            if (!flag) {
-                subtotal = subtotal * cantidad;
-                DetallePedido pedido = new DetallePedido(id, cantidad, subtotal);
-                productos.add(pedido);
-            }
-            
-            session.setAttribute("carrito", productos);
-            
-            response.sendRedirect("Pedido.jsp");
+            if (comp==true) {
+                if (!flag) {
+                    subtotal = subtotal * cantidad;
+                    DetallePedido pedido = new DetallePedido(id, cantidad, subtotal);
+                    productos.add(pedido);
+                    session.setAttribute("carrito", productos);
+                }
+                response.sendRedirect("Pedido.jsp");
+            }else{
+                    response.sendRedirect("error.html");
+                }
 
         }catch(Exception e){
             e.printStackTrace();

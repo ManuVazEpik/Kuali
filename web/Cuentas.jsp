@@ -3,6 +3,7 @@
     Created on : 10/12/2020, 12:22:20 PM
     Author     : bocal
 --%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Cafeteria"%>
 <%@page import="Clases.Usuario"%>
 <%@page import="java.util.Vector"%>
@@ -14,8 +15,8 @@
 String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
-
-if(sessionOk.getAttribute("usuario")==null){
+System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+if(sessionOk.getAttribute("id")==null){
    
 %>
         <jsp:forward page="index.html">
@@ -27,15 +28,10 @@ if(sessionOk.getAttribute("usuario")==null){
     idUS = (String)session.getAttribute("id");
 
     int id_usu=Integer.parseInt(idUS);
-System.out.println(id_usu);
+    System.out.println(id_usu);
     Usuario opc = new Usuario();
     Usuario u=opc.getUsuarioById(id_usu);
     String tipo="";
-    if(u.getPerm_usu()==2){
-        tipo="cliente";
-    }
-    Cafeteria operC=new Cafeteria();
-    boolean caftener=operC.comprobarCafExiste(id_usu);
     
 %>
 <!DOCTYPE html>
@@ -77,8 +73,8 @@ System.out.println(id_usu);
     <ul>
         <li>Nombre completo:<%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%> <br></li>
         <li>Telefono: <%=u.getTel_usu()%></li>
-        <li>Email_usu <%=u.getEmail_usu()%><br></li>
-        <li>Pass_usu: <%=u.getPass_usu()%><br></li>
+        <li>Email: <%=u.getEmail_usu()%><br></li>
+        <li>Password: <%=u.getPass_usu()%><br></li>
     </ul>
     
     <a href="CerrarSesion">Cerrar Sesion</a>
@@ -100,21 +96,67 @@ System.out.println(id_usu);
         <input type="submit" value="Eliminar"/>
     </form>
     <%
-    if (caftener==true){
-        int autorizacion=operC.comprobarAutorizacion(id_usu);
-        if (autorizacion==1) {%>
-        <h2>Ingresa a los datos de tu cafeteria</h2>
-        <form action="ModificarCafeteria.jsp">
-            <input type="hidden" name="id_usu" value='<%=id_usu%>'/>
-            <input type="submit" value="Ingresar"/>
-        </form>
-    <%
-        }else if(autorizacion==2){%>
-        <h2>Su cafeteria sigue en proceso de autorizacion</h2>
-    <%  }else if(autorizacion==3){%>
-        <h2>La solicitud de su cafeteria ha sido rechazada</h2>
+        Cafeteria operC=new Cafeteria();
+    boolean caftener=operC.comprobarCafExiste(id_usu);
+    if (u.getPerm_usu()==3 && caftener==true){
+        ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);
+        
+    %>
+            <br><br>
+            <h2>Cafeterias Registradas</h2>
+            <table>
+                <th>Nombre</th>
+                <th>Autorizacion</th>
+                <%
+                for (Cafeteria caf : listacaf) {
+                    int autorizacion=operC.comprobarAutorizacion(id_usu);
+                    if (autorizacion==1) {
+                %>
+                <tr>
+                    <td><%=caf.getNom_caf()%></td>
+                    <td>
+                        <h3>Ingresa a los datos de tu cafeteria</h3>
+                        <form action="ModificarCafeteria.jsp" method="POST">
+                            <input type="hidden" name="admrs" value='<%=caf.getId_caf()%>'/>
+                            <input type="submit" value="Ingresar"/>
+                        </form>
+                    </td>
+                </tr>
+            <%  }else if(autorizacion==2){%>
+                <tr>
+                    <td><%=caf.getNom_caf()%></td>
+                    <td>
+                        Sigue en proceso de autorización
+                    </td>
+                </tr>
+            <%  }else if(autorizacion==3){%>
+                <tr>
+                    <td><%=caf.getNom_caf()%></td>
+                    <td>
+                        <h2>Su cafeteria ha sido rechazada</h2>
+                        <form action="EliminarCaf" method="POST">
+                            <input type="hidden" name="id" value='<%=caf.getId_caf()%>'/>
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    </td>
+                </tr>
+            <%  }   %>
+            </table>
+            <br><br>
+            <h2>Registrar una cafeteria</h2>
+            <form action="RegistrarCaf" method="POST">
+                <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
+                <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
+                <input type="text" name="fot_caf"><br>
+                <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
+                Ingresa el nombre de tu cafeteria<input type="text" name="nom_caf"/><br>
+                Ingresa la calle de tu local<input type="text" name="calle_caf"><br>
+                Ingresa la colonia de tu local<input type="text" name="col_caf"><br>
+                Ingresa el numero de tu local<input type="text" name="num_caf"><br>
+                <input type="submit" value='Aceptar'/>
+            </form>
     <%  }
-    }else{%>
+    }else if(u.getPerm_usu()==3){%>
     <h2>Registrar una cafeteria</h2>
     <form action="RegistrarCaf" method="POST">
         <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.

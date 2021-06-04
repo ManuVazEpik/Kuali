@@ -58,7 +58,7 @@ public class IniciarSesion extends HttpServlet {
                 String nivelS = String.valueOf(nivel);
                 String privS = String.valueOf(perm);
                 if(c != null){
-                    if(perm==2){
+                    if(perm==2 || perm==3){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);
                         HttpSession sesionOK = request.getSession();

@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Productos;
-import Clases.Usuario;
+import Clases.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bocal
  */
-public class EliminarPro extends HttpServlet {
+public class FinalizarPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +30,22 @@ public class EliminarPro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-  
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String Sid_pedido=request.getParameter("id_pedido");
+            int id_pedido = Integer.parseInt(Sid_pedido);
+            boolean exp2 = Pedido.Finalizar(id_pedido);
+                if (exp2==true) {
+                    response.sendRedirect("PedidosCafeterias.jsp");
+                }else{
+                    out.println("<p>Ocurrio algo</p>");
+                }
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -41,11 +54,7 @@ public class EliminarPro extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
+   
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -58,26 +67,11 @@ public class EliminarPro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String idS, id_cafS;
-            idS = request.getParameter("id_prod");
-            id_cafS = request.getParameter("id");
-            int id = Integer.parseInt(idS);
-            
-            Productos opc = new Productos();
-            int estatus=opc.Eliminar(id);
-            if(estatus>0){
-                response.sendRedirect("ModificarCafeteria.jsp?admrs="+Integer.parseInt(id_cafS));
-            }else{
-                response.sendRedirect("error.jsp");
-            }
+        try {
+            processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FinalizarPedido.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-    
     }
 
     /**

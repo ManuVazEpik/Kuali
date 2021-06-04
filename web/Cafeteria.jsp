@@ -3,10 +3,9 @@
     Created on : 17/12/2020, 11:06:38 AM
     Author     : bocal
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Clases.Productos"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.List"%>
 <%@ page session="true" %>
@@ -15,30 +14,25 @@ String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
 
+boolean ex=true;
 if(sessionOk.getAttribute("usuario")==null){
 %>
         <jsp:forward page="index.html">
             <jsp:param name="error" value="Es obligatorio identificarse"/>
-        </jsp:forward>}
+        </jsp:forward>
 <%   
 }else{
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
-    int idU=Integer.parseInt(idUS);
-    
     int id_caf=0;
-    String id_cafS=""; 
     
     try{
-        
-        id_caf = Integer.parseInt(request.getParameter("id"));
-        
-        
+
+        id_caf = Integer.parseInt(request.getParameter("id_caf"));
+
     }catch(Exception e){
-    
         System.out.println("Error " + e);
         response.sendRedirect("e500.html");
-        
     }
     
 %>
@@ -81,12 +75,12 @@ if(sessionOk.getAttribute("usuario")==null){
     
     try{
     
-            ArrayList<Productos> lp = Productos.getProductosCaf(id_caf);
+            ArrayList<Productos> lp = Productos.getProductosDisCaf(id_caf);
             int salto=0;            
             for (Productos prod: lp) {
         %>                        
                     <th>
-                        <a href="añadirPedido.jsp?id=<%= prod.getId_prod()%>"><img src="<%=prod.getFot_prod()%>" ></a><p>
+                        <a href="añadirPedido.jsp?id_prod=<%= prod.getId_prod()%>"><img src="<%=prod.getFot_prod()%>" ></a><p>
                             <%= prod.getNom_prod()%><br>
                             Descripcion: <%= prod.getDesc_prod()%><br>
                             Precio <%= prod.getPre_prod()%><br>

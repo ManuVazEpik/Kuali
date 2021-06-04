@@ -9,7 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    Productos prod = Productos.getProductoById(Integer.parseInt(request.getParameter("id")));
+    Productos oprod = new Productos();
+    Productos prod = oprod.getProductoById(Integer.parseInt(request.getParameter("id_prod")));
     Cafeteria caf = new Cafeteria();
     
 %>
@@ -64,7 +65,7 @@
         <h1 aling="center">Añadir Producto al Carrito</h1>
                     <table border="0" width="1060" aling="center">
                         
-                        <form method="post" action="Pedido">
+                        <form method="post" action="Pedidos">
                             <tr>
                                 <th rowspan="5"><img src="<%= prod.getFot_prod()%>" width="140px" height="140px"></th> 
                                 <th><input hidden="" type="number" name="idtxt" value="<%= prod.getId_prod()%>" readonly=""></th>

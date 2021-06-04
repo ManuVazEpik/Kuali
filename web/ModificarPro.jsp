@@ -33,7 +33,8 @@ if(sessionOk.getAttribute("usuario")==null){
     idUS = (String)session.getAttribute("id");
     int idU=Integer.parseInt(idUS);
     Cafeteria opc = new Cafeteria();
-    Cafeteria c=opc.getCafeteriaById(idU);
+    int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
+    Cafeteria c=opc.getCafeteriaByIdCaf(id_caf);
     
     String id_proS=request.getParameter("id_pro");
     int id_prod=Integer.parseInt(id_proS);
@@ -58,6 +59,7 @@ if(sessionOk.getAttribute("usuario")==null){
         <a href="https://postimages.org" target="_blank">Nueva foto</a>.
         Ingresa una foto del producto<input type="text" name="fot_prod" value="<%=p.getFot_prod()%>"/><br>
         <input type="hidden" name='id_prod' value="<%=p.getId_prod()%>">
+        <input type="hidden" name='id_caf' value="<%=c.getId_caf()%>">
         <input type="submit" value="Aceptar"/>
     </form>
         

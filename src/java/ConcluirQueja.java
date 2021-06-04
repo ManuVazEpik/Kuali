@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Clases.Cafeteria;
+import Clases.Queja;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,31 +19,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bocal
  */
-public class EliminarCaf extends HttpServlet {
+public class ConcluirQueja extends HttpServlet {
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String idS, tipoS;
-            idS = request.getParameter("id");
-            
-            int id = Integer.parseInt(idS);
-            
-            
-            Cafeteria opc = new Cafeteria();
-            int estatus=opc.EliminarCafeteria(id);
-            if(estatus>0){
-                response.sendRedirect("index.jsp");
+            int id_que = Integer.parseInt(request.getParameter("id_que").trim());
+            int estatus = Queja.ConcluirQueja(id_que);
+            if (estatus>0) {
+                response.sendRedirect("SesionAdmin.jsp");
             }else{
-                response.sendRedirect("error.jsp");
+                out.println("Error");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConcluirQueja.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**

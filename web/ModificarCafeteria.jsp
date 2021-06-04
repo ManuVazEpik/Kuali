@@ -31,12 +31,14 @@ if(sessionOk.getAttribute("usuario")==null){
     </jsp:forward>
 <%
 }else{
-    System.out.println(sessionOk.getAttribute("autorizacion"));
+
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
+
     int idU=Integer.parseInt(idUS);
+    int id_caf=Integer.parseInt(request.getParameter("admrs").trim());
     Cafeteria opc = new Cafeteria();
-    Cafeteria c=opc.getCafeteriaById(idU);
+    Cafeteria c=opc.getCafeteriaByIdCaf(id_caf);
     
 %>
 <!DOCTYPE html>
@@ -48,13 +50,19 @@ if(sessionOk.getAttribute("usuario")==null){
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
-        <h1>Datos</h1>
-        <ul>
-            <li>Nombre:<%=c.getNom_caf()%> <br></li>
-            <img src="<%=c.getFot_caf()%>">
-            <li>Direccion <%=c.getDir_caf()%><br></li>
-        </ul>
-        <a href="CerrarSesion">Cerrar Sesion</a>
+    <h1>Datos</h1>
+    <ul>
+        <li>Nombre:<%=c.getNom_caf()%> <br></li>
+        <img src="<%=c.getFot_caf()%>" width="37%">
+        <li>Direccion <%=c.getDir_caf()%><br></li>
+    </ul>
+    <a href="CerrarSesion">Cerrar Sesion</a>
+    <br><br>
+    <h1>
+        Ver Pedidos<br>
+        <a href="PedidosCafeterias.jsp">Pedidos</a>
+    </h2>
+    <br><br>
     <h2>Modificar</h2>
     <form action='ActualizarCaf' method='POST' name='formulario1'>
         <input type='hidden' name='id_caf' value='<%=c.getId_caf()%>'/>
@@ -98,6 +106,7 @@ if(sessionOk.getAttribute("usuario")==null){
         <%
         Productos opP = new Productos();
         ArrayList<Productos> listap=opP.getProductosCaf(c.getId_caf());
+        
         for(Productos p:listap){
             
     %>
@@ -110,6 +119,7 @@ if(sessionOk.getAttribute("usuario")==null){
                 <td>
                     <form action="Disponibilidad" method="POST">
                     <input type="hidden" value="<%=p.getId_prod()%>" name="id_prod"/>
+                    <input type="hidden" value="<%=c.getId_caf()%>" name="admrs"/>
                 <%if(p.getDisp_prod()==true){%>
                 <p>Disponible</p>
                 <input type="hidden" value="Disponible" name="dis_prod"/>
@@ -123,10 +133,12 @@ if(sessionOk.getAttribute("usuario")==null){
                 </td>
                 <td><form action="ModificarPro.jsp" method="POST">
                     <input type="hidden" name="id_pro" value="<%=p.getId_prod()%>"/>
+                    <input type="hidden" name="id_caf" value="<%=c.getId_caf()%>"/>
                     <input type="submit" value="Aceptar"/>
                 </form></td>
                 <td><form action="EliminarPro" method="POST">
                     <input type="hidden" name="id_prod" value="<%=p.getId_prod()%>"/>
+                    <input type='hidden' name='id' value='<%=c.getId_caf()%>'/>
                     <input type="submit" value="Aceptar"/>
                     </form></td>
             </tr>
@@ -134,7 +146,7 @@ if(sessionOk.getAttribute("usuario")==null){
         }
     %>
     </table>
-                
+    
     </body>
 </html>
 <%

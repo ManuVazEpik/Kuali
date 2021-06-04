@@ -154,38 +154,73 @@ public class cifrar {
         return u;
     }
     
-    public ArrayList verificarUsuario(String correo, String password){
-        
-        ArrayList al = new ArrayList();
+    public Usuario AESDescifrarSesion(String correo, String pass){
+    
+        Usuario u = new Usuario();
         String llaveS = "AxolosoftwareWin";
         
         SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
         
         Cipher cifrado;
         
-        try {
+        try{
             
             cifrado = Cipher.getInstance("AES");
-            System.out.println("Creado cifrado con AES");
             cifrado.init(Cipher.DECRYPT_MODE, key);
-            System.out.println("Iniciamos cifrado en modo decrypt");
             
-            /* Comenzamos el cifrado */
-            byte[] cifradoC = cifrado.doFinal(correo.getBytes());
-            byte[] cifradoP = cifrado.doFinal(password.getBytes());
+            byte corB[] = decodeBase64(correo);
+            byte pasB[] = decodeBase64(pass);
             
-            String cBase = new String(encodeBase64(cifradoC));
-            String pBase = new String(encodeBase64(cifradoP));
+            byte corD[] = cifrado.doFinal(corB);
+            byte pasD[] = cifrado.doFinal(pasB);
             
-            al.add(cBase);
-            al.add(pBase);
+            String corRec = new String(corD);
+            String pasRec = new String(pasD);
             
+            u.setEmail_usu(corRec);
+            u.setPass_usu(pasRec);
             
-        } catch (Exception e) {
+        }catch(Exception e){
+        
+            System.out.println("Fallo en el descifrado");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        
         }
         
         
-        return al;
+        return u;
+    }
+    
+    public Usuario verificarUsuario(String correo, String password){
+        
+        Usuario usuario = new Usuario();
+        String llaveS = "AxolosoftwareWin";
+        SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
+        Cipher cifrado;
+        
+        try{
+            cifrado = Cipher.getInstance("AES");
+            cifrado.init(Cipher.ENCRYPT_MODE,key);
+            
+            byte campoCorreo[] = cifrado.doFinal(correo.getBytes());
+            byte campoPass[] = cifrado.doFinal(password.getBytes());
+            
+            String correoB64 = new String(encodeBase64(campoCorreo));
+            String passB64 = new String(encodeBase64(campoPass));
+            
+            usuario.setEmail_usu(correoB64);
+            usuario.setPass_usu(passB64);
+            
+            
+        }catch(Exception e){
+        
+            System.out.println("Error, murió la cosa esta UnU");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+            
+        }
+        return usuario;
     }
     
     
