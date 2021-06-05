@@ -1,0 +1,124 @@
+// Archivos parciales
+@use '../abstracts/colors' as color;
+@use '../abstracts/fonts';
+
+.contenedor-dashboard {
+    display: flex;
+    flex-direction: row;
+
+    .menu-lateral {
+        background: linear-gradient(90deg, color.$azul-kuali 10%, color.$verde-kuali 80%);
+        width: 23%;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+
+
+        img {
+            width: 160px;
+            padding: 20px 50px;
+            float: left;
+        }
+
+        .opciones-cafeteria, .salir {
+            padding: 100px 50px;
+
+            a {
+                text-decoration: none;;
+                color: color.$blanco-kuali;
+                
+                
+                i {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    padding-bottom: 20px;
+
+                    .titulo-terciario {
+                        padding-left: 20px;
+                    }
+                }
+            }
+
+            a:hover {
+                color: color.$amarillo-kuali;
+            }
+
+            .active {
+                color: color.$amarillo-kuali;
+            }
+        }
+    }
+
+    .contenido {
+        width: 78%;
+        background: color.$blanco-kuali;
+
+        .menu-administrador {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+
+            img {
+                max-width: 80px;
+                width: 100px;
+                border-radius: 50%;
+                padding: 20px 50px;
+            }
+
+            .caja_busqueda {
+                background: color.$azul-kuali;
+                height: 40px;
+                border-radius: 40px;
+                padding: 10px;
+
+                .boton_buscar {
+                    text-decoration: none;
+                    color: color.$amarillo-kuali;
+                    float: right;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background:  color.$azul-kuali;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: 0.5s;
+                }
+
+                .card-filter {
+                    border: none;
+                    background: none;
+                    outline: none;
+                    float: left;
+                    color: color.$amarillo-kuali;
+                    font-size: 16px;
+                    transition: 0.5s;
+                    line-height: 40px;
+                    width: 0px;
+                    padding: 0px;
+                }
+
+                .card-filter::placeholder {
+                    color: rgba(color.$amarillo-kuali, $alpha: 0.7);
+                }
+            }
+
+            .caja_busqueda:hover {
+                .card-filter {
+                    width: 240px;
+                    padding: 0px 10px;
+                }
+
+                .boton_busqueda {
+                    background: #ddd;
+                }
+            }
+        }
+    }
+}

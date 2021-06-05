@@ -1,0 +1,77 @@
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    width: 100%;
+    height: 100vh;
+    background: color.$blanco-kuali;
+
+    .pedidos {
+        width: 95%;
+        margin: 50px auto;
+
+        .contenedor-pedido {
+            border-radius: 10px;
+            transition: 0.3s ease all;
+            cursor: pointer;
+
+            .pedido {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0px 30px;
+                background: color.$verde-kuali;
+                border-bottom: 3px solid color.$amarillo-kuali;
+                border-radius: 10px 10px 0px 0px;
+                transition: all 0.3s ease-out;
+                order: 0;
+
+                i {
+                    color: color.$amarillo-kuali;
+                }
+
+                p {
+                    color: color.$amarillo-kuali;
+                }
+            }
+
+            .filter {
+                display: none;
+            }
+
+            .descripcion {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 30px;
+                color: color.$blanco-kuali;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+
+                a {
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+
+        .contenedor-pedido.activa {
+            background:  rgb(color.$cafe-kuali, 1);
+
+            .descripcion {
+                max-height: 100%;
+                opacity: 1;
+                overflow: visible;
+                transition: 0.3s ease all;
+            }
+
+            i {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

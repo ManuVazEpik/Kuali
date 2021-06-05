@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/externals/normalize.css">
+    <link rel="stylesheet" href="../css/registroUsuarios.css">
+    <title>Regístrate | KUALI</title>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="990" height="1000" viewBox="0 0 990 1000">
+            <path id="Trazado_2" data-name="Trazado 2" d="M8159.14,987.41s210.709-6.77,279.456-145.151c4.309-8.674,58.068-107.358-38.108-253.2-203.239-311.946,96.375-434.81,176.021-419.3,312.119,60.768,167.8-181.665,166.947-181.707-28.667-1.429-955.951,0-955.951,0V987.41Z" transform="translate(8777.505 987.41) rotate(180)" fill="#0d3012"/>
+          </svg>          
+          
+        <nav class="menu">
+            <a href="../index.html"><img src="../img/logos/Logo_blanco.png" alt="Logotipo de KUALI color blanco"></a>
+            
+            <div class="indice">
+                <a href="">Registrate</a>
+                <a href="../IniciarSesion.html">Iniciar Sesión</a>
+                <a href="../soporte/preguntasFrecuentes.html">Soporte</a>
+            </div>
+        </nav>
+        
+        <div class="contenido">
+            <div class="cambiar-a-iniciarSesion">
+                <h2 class="titulo-terciario">¿Ya tienes cuenta?</h2>
+                <p class="texto">Inicia sesión para comenzar a usar kuali.</p>
+                <a href="../IniciarSesion.html">Iniciar Sesión</a>
+            </div>
+            <div class="contenedor-login">
+                <h1 class="titulo-secundario">Regístrate</h1>
+                <form class="formulario" action="../RegistrarUsu" method="POST">
+                    <div class="mitad-ancho">
+                        <input type="text" name="nom_usu" placeholder="Nombre" required/>
+                        <input type="text" name="appat_usu" placeholder="Apellido Paterno" required/><br>
+                        <input type="text" name="apmat_usu" placeholder="Apellido Materno" required/><br>
+                    </div>
+                    <input type="number" name="tel_usu" placeholder="Teléfono" required/><br>
+                    <input type="text" name="email_usu" placeholder="Correo electrónico" required/><br>
+                    <input type="password" name="pass_usu" placeholder="Contraseña" required/><br>
+                    <select name="tipo">
+                        <option>Cliente</option>
+                        <option>Dueño</option>
+                    </select>
+                    <input type="submit" value="Regístrarme">
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="imagen-usuario">
+            <img src="../img/svg/usuario_y_celular.svg" alt="Usuario seleccionando su producto en el celular">
+        </div>
+    </div>
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

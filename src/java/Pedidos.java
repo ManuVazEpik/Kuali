@@ -46,15 +46,13 @@ public class Pedidos extends HttpServlet {
             Productos opP = new Productos();
             if (productos.size() > 0) {
                 
-                System.out.println("Aqui");
                 for (DetallePedido p: productos) {
                     int id_caf1 = opP.getIdCafeteriaProducto(id);
                     int id_caf2 = opP.getIdCafeteriaProducto(p.getId_prod());
-                    System.out.println("Cafe 1: "+id_caf1+"\nCafe 2:"+id_caf2);
+                    
                     if (id_caf1 == id_caf2) {
                         comp=true;
                     }else{
-                        System.out.println("ewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
                         comp=false;
                         break;
                     }
@@ -80,7 +78,7 @@ public class Pedidos extends HttpServlet {
                     productos.add(pedido);
                     session.setAttribute("carrito", productos);
                 }
-                response.sendRedirect("Pedido.jsp");
+                response.sendRedirect("usuario/carritoCompras.jsp");
             }else{
                     response.sendRedirect("error.html");
                 }

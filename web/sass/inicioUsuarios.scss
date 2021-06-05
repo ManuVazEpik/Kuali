@@ -1,0 +1,131 @@
+// Archivos Parciales
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    background: color.$blanco-kuali;
+    padding-bottom: 50px;
+
+    .contenedor-promociones, .contenedor-favoritos, .contenedor-destacados, .menus-cafeterias {
+        margin: 0px 50px 50px 50px;
+
+        .contenedor-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            justify-content: space-between;
+
+            .contenedor-producto {
+                width: 370px;
+
+                .imagen {
+                    width: 100%;
+                    height: 234px;
+                    display: inline-block;
+                    position: relative;
+                    background: rgb(22, 23, 24) url('../img/Productos/Cafe\ 1.jpg');
+                    background-size: cover;
+                    border-radius: 10px;
+    
+                    .texto-promocion {
+                        position: absolute;
+                        width: 35%;
+                        right: 0px;
+                        top: 10px;
+                    }
+                }
+    
+                .descripcion {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                    .producto {
+                        margin-left: 5px;
+
+                        hr {
+                            width: 100%;
+                            border-radius: 50px;
+                            border: 1px solid color.$verde-kuali;
+                        }
+                    }
+
+                    .boton > a {
+                        text-decoration: none;
+                        background: color.$verde-kuali;
+                        color: color.$blanco-kuali;
+                        padding: 10px 25px;
+                        border-radius: 50px;
+                        cursor: pointer;
+                        font-size: 13px;
+                        transition: ease 0.5s;
+                    }
+    
+                    .boton > a:hover {
+                        background: color.$azul-kuali;
+                        color: color.$amarillo-kuali;
+                    }
+                }
+            }
+        }
+    }
+
+    .divisor {
+        width: 95%;
+        border-radius: 50px;
+        border: 2px solid color.$verde-kuali;
+        margin: 50px auto;
+    }
+
+
+    .contenedor-cafeterias, .cafeterias {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        
+    }
+
+    .contenedor-cafeterias {
+        
+        .cafeteria {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px;
+
+            // .texto {
+            //     border-radius: 50px;
+            //     background: color.$status-activo;
+            //     padding: 5px 20px;
+            // }
+
+            img {
+                border-radius: 10px;
+            }
+
+            a {
+                margin-top: 20px;
+                text-decoration: none;
+                background: color.$verde-kuali;
+                color: color.$blanco-kuali;
+                padding: 10px 25px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 13px;
+                transition: ease 0.5s;
+            }
+
+            a:hover {
+                background: color.$azul-kuali;
+                color: color.$amarillo-kuali;
+            }
+        }
+    }
+}

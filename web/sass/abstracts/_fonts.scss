@@ -1,0 +1,58 @@
+//Archivos Parciales
+@use './colors' as color;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;1,300&display=swap");
+
+.contenedor-principal, .contenedor-dashboard {
+    font-family: 'Poppins', sans-serif;
+
+    .titulo-principal {
+        font-size: 50px;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .titulo-secundario {
+        font-size: 35px;
+        font-weight: 400;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .titulo-terciario {
+        font-size: 25px;
+        font-weight: 400;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .titulo-cuarto {
+        font-size: 20px;
+        font-weight: 300;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .texto {
+        font-size: 18px;
+        font-weight: 300;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .texto-promocion {
+        font-size: 13px;
+        text-align: center;
+        color: color.$amarillo-kuali;
+        background: color.$verde-kuali;
+        padding: 10px;
+        border-radius: 50px 0px 0px 50px;
+    }
+
+    .texto-producto {
+        font-size: 14px;
+        font-weight: 400;
+        color: color.$negro-kuali;
+    }
+
+    .texto-etiquetas {
+        font-size: 11px;
+        font-weight: 300;
+        color: color.$negro-kuali;
+    }
+}

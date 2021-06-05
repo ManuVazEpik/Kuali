@@ -1,0 +1,10 @@
+// Archivos Parciales
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    width: 100%;
+    height: 100vh;
+}

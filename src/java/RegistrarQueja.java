@@ -42,7 +42,7 @@ public class RegistrarQueja extends HttpServlet {
             q.setSatisfaccion(satisfaccion);
             int estatus = Queja.RegistrarQueja(q);
             if(estatus >0){
-                response.sendRedirect("preguntasFrecuentes.html");
+                response.sendRedirect("soporte/preguntasFrecuentes.html");
             }else{
                 out.println("<h1>Valio cake</h1>");
                 out.println("");

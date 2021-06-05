@@ -50,6 +50,7 @@ public class RegistrarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf,calle,col,num;
             tipo=request.getParameter("tipo");
             
+            
             nom_usu = request.getParameter("nom_usu");
             appat_usu = request.getParameter("appat_usu");
             apmat_usu = request.getParameter("apmat_usu");
@@ -65,22 +66,23 @@ public class RegistrarUsu extends HttpServlet {
             boolean exp5=val.Correo(email_usu);
             boolean exp6=val.Contrasenas(pass_usu);
             
-            System.out.println(""+exp1+exp2+exp3+exp4+exp5+exp6);
-            if(exp1==true && exp2==true && exp3==true && exp4==true && exp5==true && exp6==true ){
+            int perm=0;
+            if (tipo.equals("Cliente")) {
+                perm=2;
+            }else if (tipo.equals("Dueño")) {
+                perm=3;
+            }
+            
+            if(exp1==true && exp2==true && exp3==true && exp4==true && exp5==true && exp6==true && perm!=0 ){
                 if(nom_usu.length()<20 && appat_usu.length()<30 && apmat_usu.length()<30 && tel_usu.length()==10 && 
                         email_usu.length()<50 && pass_usu.length()<30){
                     Usuario operC= new Usuario();
-                    //                c.setNom_usu(nom_usu);
-                    //                c.setAppat_usu(appat_usu);
-                    //                c.setApmat_usu(apmat_usu);
-                    //                c.setEmail_usu(email_usu);
-                    //                c.setPass_usu(pass_usu);
-                    //                c.setTel_usu(tel_usu);
                     cifrar cifra = new cifrar();
                     Usuario u = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu,email_usu,pass_usu);
+                    u.setPerm_usu(perm);
                     int estado=operC.AñadirUsuario(u);
                     if(estado >0){
-                        response.sendRedirect("index.html");
+                        response.sendRedirect("IniciarSesion.html");
                     }else{
                         out.println("<h1>Valio cake</h1>");
                         out.println("");

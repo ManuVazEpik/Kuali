@@ -50,13 +50,13 @@ public class IniciarSesion extends HttpServlet {
             
             try{
                 Usuario opc = new Usuario();
-                
                 Usuario c = opc.encontrarUsuario(noms, cons);
                 
                 nivel = c.getId_usu();
                 int perm= c.getPerm_usu();
                 String nivelS = String.valueOf(nivel);
                 String privS = String.valueOf(perm);
+                
                 if(c != null){
                     if(perm==2 || perm==3){
                         HttpSession sesion = request.getSession(true);
@@ -77,7 +77,7 @@ public class IniciarSesion extends HttpServlet {
                             sesionOK.setAttribute("autorizacion","0");
                         }
                         
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("usuario/inicioUsuarios.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);

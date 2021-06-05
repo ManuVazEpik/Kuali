@@ -5,78 +5,58 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/externals/normalize.css">
-        <link rel="stylesheet" href="css/iniciarSesion_style.css">
+        <link rel="stylesheet" href="css/iniciarSesion.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <title>Iniciar Sesión | KUALI</title>
     </head>
     <body>
         <div class="contenedor-principal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="990" height="895.846" viewBox="0 0 990 895.846">
+                <path id="Trazado_2" data-name="Trazado 2" d="M8159.14,883.255S8369.85,877.19,8438.6,753.222c4.309-7.77,58.068-96.176-38.107-226.831-203.24-279.455,96.374-389.523,176.021-375.631,312.119,54.439,167.8-162.744,166.946-162.782-28.666-1.279-955.95,0-955.95,0V883.255Z" transform="translate(-7787.505 12.591)" fill="#0d3012"/>
+            </svg>
+
             <nav class="menu">
-                <a href="index.html"><img src="Images/Logo_blanco.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="index.html"><img src="img/logos/Logo_blanco.png" alt="Logotipo de KUALI color blanco"></a>
                 
                 <div class="indice">
-                    <a href="RegistrarUsuario.html">Registrate</a>
-                <a href="IniciarSesion.html">Iniciar Sesión</a>
-                <a href="preguntasFrecuentes.html">Soporte</a>
+                    <a href="usuario/RegistrarUsuario.html">Registrate</a>
+                    <a href="IniciarSesion.html">Iniciar Sesión</a>
+                    <a href="soporte/preguntasFrecuentes.html">Soporte</a>
                 </div>
             </nav>
-
-
-        </div>
-
-        <!-- PANALES DE CAMBIO DE FORMULARIO -->
-        <div class="contenedor-paneles">
-            <div class="cambiar-a-registro">
-                <div class="contenido">
-                    <h3>¿Aún no tienes cuenta?</h3>
-                    <p>Únete a Kuali para conocer la nueva experiencia de consumo de café. Sin espera, sin filas.</p>
-                    <button class="btn transparent" id="sign-up-btn">Crear cuenta</button>
-                </div>
-
-                <img src="Images/svg/cafecito.svg" alt="Dibujo de café animado">
-            </div>
-
-            <div class="cambiar-a-iniciarSesion">
-                <div class="contenido">
-                    <h3>¿Ya tienes cuenta?</h3>
-                    <p>Inicia sesión para comenzar a usar Kuali.</p>
-                    <button class="btn transparent" id="sign-up-btn">Iniciar Sesión</button>
-                </div>
-
-                <img src="Images/svg/usuario_y_celular.svg" alt="Dibujo de café animado">
-            </div>
-        </div>
-
-        <!-- FORMULARIO ORIGINAL INSTANT LAUNCH -->
-        <form class="formulario" action="IniciarSesion" method="POST">
-
-            <h1>Inicie Sesión</h1>
-            <div class="contenedor">
-
-                <div class="input-contenedor">
-                    <i class="fas fa-envelope icon"></i>
-                    <input type="email" name="corU" placeholder="Correo Electronico">
-
-                </div>
-
-                <div class="input-contenedor">
-                    <i class="fas fa-key icon"></i>
-                    <input type="password" name="conU" placeholder="Contraseña">
-
-                </div>
-                <input type="submit" value="Iniciar Sesión" class="button">
-                <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-                <p>¿No tienes una cuenta? <a class="link" href="RegistrarUsuario.html">Registrate </a></p>
-            </div>
-        </form>
-
-        <footer>
             
-        </footer>
+            <div class="contenido">
+                <div class="cambiar-a-registro">
+                    <h2 class="titulo-terciario">¿Aún no tienes cuenta?</h2>
+                    <p class="texto">Únete a Kuali para conocer la nueva experiencia de consumo de café. Sin espera, sin filas.</p>
+                    <a href="usuario/RegistrarUsuario.html">Crear cuenta </a>
+                    <!-- <img src="../img/svg/cafecito.svg" alt="Café animado"> -->
+                </div>
+    
+                <div class="contenedor-login">
+                    <h1 class="titulo-secundario">Bienvenido</h1>
+                    <form class="formulario" action="IniciarSesion" method="POST">
+                        <input type="text"  name="corU" placeholder="Correo electrónico" required>
+                        <input type="password" name="conU" placeholder="Contraseña" required>
+                        <label class="texto"><input type="checkbox" value="Mantener sesión iniciada"> Mantener sesión iniciada</label>
+                        <input type="submit" value="Ingresar">
+                    </form>
+                </div> 
+            </div>
+            
+            <div class="imagen-adolescente">
+                <img src="img/svg/adolescente.svg" alt="adolescente bebiendo café">
+            </div>
+            
+            <div class="imagen-cafe">
+                <img src="img/svg/cafecito.svg" alt="Cafecito animado feliz">
+            </div>
+        </div>
+        
 
         <!-- SCRIPTS -->
-        <script src="js/inicarSesion.js"></script>
+        <script src="js/iniciarSesion.js"></script>
         <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -1,1 +1,0 @@
-{"version":3,"sourceRoot":"","sources":["../SASS/components/_menu.scss","../SASS/abstracts/colors.scss","../SASS/iniciarSesion.scss"],"names":[],"mappings":"AAIA;EACI;EACH;EACG;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;EACA;;AAEA;EACI,OCRG;EDSH;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI,OCpBK;EDqBL;;;AE5BZ;EACI;EACA;;AAEA;EACI,ODIO;ECHP,YDDM;;ACGN;EACI;EACA;EACA","file":"iniciarSesion_style.css"}

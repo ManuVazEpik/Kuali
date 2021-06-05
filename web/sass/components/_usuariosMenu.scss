@@ -1,0 +1,115 @@
+// Archivos Parciales
+@use '../abstracts/colors' as color;
+@use '../abstracts/fonts';
+
+.menu {
+    position: relative;
+	width: 100%;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+    color: color.$negro-kuali;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+
+    .logo {
+        //background: #564;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+        img {
+            width: 160px;
+            padding: 20px 50px;
+        }
+    }
+
+    .ubicacion, .pedidos-agendados {
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        a {
+            color: color.$negro-kuali;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .opciones-usuario {
+        //background: rgba(153, 0, 8, 0.467);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+         img {
+            width: 75px;
+            border-radius: 50%;
+            margin: 10px 50px;
+            border: 2px solid color.$azul-kuali;
+        }
+
+        .caja_busqueda {
+            background: color.$azul-kuali;
+            height: 40px;
+            border-radius: 40px;
+            padding: 10px;
+
+            .boton_buscar {
+                text-decoration: none;
+                color: color.$amarillo-kuali;
+                float: right;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background:  color.$azul-kuali;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+            }
+
+            .card-filter {
+                border: none;
+                background: none;
+                outline: none;
+                float: left;
+                color: color.$amarillo-kuali;
+                font-size: 16px;
+                transition: 0.5s;
+                line-height: 40px;
+                width: 0px;
+                padding: 0px;
+            }
+
+            .card-filter::placeholder {
+                color: rgba(color.$amarillo-kuali, $alpha: 0.7);
+            }
+        }
+
+        .caja_busqueda:hover {
+            .card-filter {
+                width: 240px;
+                padding: 0px 10px;
+            }
+
+            .boton_busqueda {
+                background: #ddd;
+            }
+        }
+    }
+}

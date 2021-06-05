@@ -1,0 +1,66 @@
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    width: 100%;
+    height: 100vh;
+
+    .header {
+        width: 100%;
+        height: 500px;
+        background: rgb(185, 6, 6);
+        //background-repeat: no-repeat;
+        //background-size: contain;
+        position: relative;
+        z-index: 0;
+
+        img {
+            position: absolute;
+            margin: 0% 45%;
+            bottom: -50px;
+            border-radius: 20px;
+            border: solid 2px color.$negro-kuali;
+        }
+    }
+
+    .menu-cafeteria {
+        background: color.$blanco-kuali;
+        border-radius: 20px 20px 0px 0px;
+        padding: 50px;
+        z-index: 1;
+
+        .texto-principal {
+            text-align: center;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            justify-content: center;
+            align-items: center;
+
+            .producto {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .texto {
+                    padding-left: 30px;
+                }
+
+                button {
+                    border-radius: 50px;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    background: color.$verde-kuali;
+                    padding: 10px 30px;
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+    }
+}

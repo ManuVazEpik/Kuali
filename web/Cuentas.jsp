@@ -15,7 +15,6 @@
 String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
-System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 if(sessionOk.getAttribute("id")==null){
    
 %>
@@ -96,7 +95,7 @@ if(sessionOk.getAttribute("id")==null){
         <input type="submit" value="Eliminar"/>
     </form>
     <%
-        Cafeteria operC=new Cafeteria();
+    Cafeteria operC=new Cafeteria();
     boolean caftener=operC.comprobarCafExiste(id_usu);
     if (u.getPerm_usu()==3 && caftener==true){
         ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);

@@ -1,0 +1,10 @@
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    background: color.$blanco-kuali;
+    width: 100%;
+    height: 100vh;
+}

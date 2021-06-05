@@ -10,7 +10,7 @@
 
             document.querySelectorAll(selector).forEach((element) =>
                 //Convertimos la entrada a minusculas
-                element.textContent.toLowerCase().includes(tecla.target.value)
+                element.textContent.toLowerCase().includes(tecla.target.value.toLowerCase())
                     //Evaluamos si se cumple o no y agregamos o quitamos la clase filter
                     ? element.classList.remove('filter')
                     : element.classList.add('filter')

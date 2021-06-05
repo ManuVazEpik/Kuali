@@ -69,10 +69,6 @@
         <servlet-class>CancelarPedido</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EliminarDelCarro</servlet-name>
-        <servlet-class>EliminarDelCarro</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FinalizarPedido</servlet-name>
         <servlet-class>FinalizarPedido</servlet-class>
     </servlet>
@@ -83,6 +79,10 @@
     <servlet>
         <servlet-name>ConcluirQueja</servlet-name>
         <servlet-class>ConcluirQueja</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarDelCarro</servlet-name>
+        <servlet-class>EliminarDelCarro</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
@@ -153,10 +153,6 @@
         <url-pattern>/CancelarPedido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EliminarDelCarro</servlet-name>
-        <url-pattern>/EliminarDelCarro</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>FinalizarPedido</servlet-name>
         <url-pattern>/FinalizarPedido</url-pattern>
     </servlet-mapping>
@@ -167,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>ConcluirQueja</servlet-name>
         <url-pattern>/ConcluirQueja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarDelCarro</servlet-name>
+        <url-pattern>/EliminarDelCarro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
