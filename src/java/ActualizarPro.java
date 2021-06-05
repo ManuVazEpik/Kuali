@@ -9,6 +9,7 @@ import Clases.Validar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,7 +88,8 @@ public class ActualizarPro extends HttpServlet {
                     int estado=operC.Actualizar(c);
 
                     if(estado >0){
-                        response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
+                        String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                        response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
                     }else{
                         out.println("<h1>Valio cake</h1>");
                         out.println("");

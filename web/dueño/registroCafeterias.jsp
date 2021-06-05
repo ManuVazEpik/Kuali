@@ -78,17 +78,21 @@ if(sessionOk.getAttribute("id")==null){
         </div>
         <div class="contenido">
             <div class="menu-administrador">
-                <div class="caja_busqueda">
-                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
-                    
-                    <a class="boton_buscar">
-                        <i class="fas fa-search"></i>
-                    </a>
+                
+                
+
+                <div >
+                    <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
                 </div>
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del administrador">
+
+                <div >
+                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                </div>
+                
+                
             </div>
             <h2>Registrar una cafeteria</h2>
-            <form action="RegistrarCaf" method="POST">
+            <form action="../RegistrarCaf" method="POST">
                 <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
                 <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
                 <input type="text" name="fot_caf"><br>

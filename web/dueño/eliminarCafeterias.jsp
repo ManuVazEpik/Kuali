@@ -1,4 +1,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Clases.Cafeteria"%>
+<%@page import="Clases.Usuario"%>
+<%@page import="java.util.Vector"%>
+<%@page import="java.util.List"%>
+<%@ page session="true" %>
+
+<%
+String idUS = "";
+String usuario="";
+HttpSession sessionOk = request.getSession();
+if(sessionOk.getAttribute("id")==null){
+   
+%>
+    <jsp:forward page="../index.html">
+        <jsp:param name="error" value="Es obligatorio identificarse"/>
+    </jsp:forward>}
+<%   
+}else{
+    usuario = (String)sessionOk.getAttribute("usuario");
+    idUS = (String)session.getAttribute("id");
+
+    int id_usu=Integer.parseInt(idUS);
+    Usuario opc = new Usuario();
+    Usuario u=opc.getUsuarioById(id_usu);
+    String tipo="";
+
+    Cafeteria operC=new Cafeteria();
+    if (u.getPerm_usu()==3){
+        ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,42 +77,44 @@
 
         <div class="contenido">
             <div class="menu-administrador">
-                <div class="caja_busqueda">
-                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
-                    
-                    <a class="boton_buscar">
-                        <i class="fas fa-search"></i>
-                    </a>
+                <div >
+                    <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
                 </div>
-                
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del administrador">    
+                <div >
+                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                </div>
             </div>
 
             <!-- AQUI EMPIEZA TU CÓDIGO URIEL -->
             <div class="cafeterias">
-                <div class="cafeteria">
-                    <h1 class="titulo-terciario">Cafetería</h1>
-                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
-                    <a href=""><i class="fas fa-trash-alt fa-x"></i> Eliminar</a>
-                </div>
+                <%
+                for (Cafeteria caf : listacaf) {
+                    int autorizacion=operC.comprobarAutorizacion(id_usu);
+                %>
+                    <div class="cafeteria">
+                        <h1 class="titulo-terciario"><%=caf.getNom_caf()%></h1>
+                    <%
+                        if (autorizacion==1) {
+                    %>
+                        <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
+                        <form action="../EliminarCaf" method="POST">
+                            <input type="hidden" name="id" value='<%=caf.getId_caf()%>'/>
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    <%  }else if(autorizacion==2){%>
+                        <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
+                    <%  }else if(autorizacion==3){%>
+                        <p class="texto">Estatus: Inactivo <i class="fas fa-circle"></i></p>
+                        <form action="../EliminarCaf" method="POST">
+                            <input type="hidden" name="id" value='<%=caf.getId_caf()%>'/>
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    <%  }   %>
+                    </div>
+                <%
+                }
+                %>
                 
-                <div class="cafeteria">
-                    <h1 class="titulo-terciario">Cafetería</h1>
-                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
-                    <a href=""><i class="fas fa-trash-alt fa-x"></i> Editar</a>
-                </div>
-
-                <div class="cafeteria">
-                    <h1 class="titulo-terciario">Cafetería</h1>
-                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
-                    <a href=""><i class="fas fa-trash-alt fa-x"></i> Editar</a>
-                </div>
-
-                <div class="cafeteria">
-                    <h1 class="titulo-terciario">Cafetería</h1>
-                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
-                    <a href=""><i class="fas fa-trash-alt fa-x"></i> Editar</a>
-                </div>
 
             </div>
         </div>
@@ -92,3 +125,8 @@
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
 </body>
 </html>
+<%
+    }
+
+}
+%>

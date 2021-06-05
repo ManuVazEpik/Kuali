@@ -38,12 +38,31 @@ if(sessionOk.getAttribute("id")==null){
 </head>
 <body>
     <div class="contenedor-principal">
+        <%
+        if(u.getPerm_usu()==3){
+        %>
         <nav class="menu">
            <div class="logo">
                 <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             
+            <div class="ubicacion">
+                <a href="../dueño/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
+            </div>
             
+            <div class="pedidos-agendados">
+                <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+            </div>
+            
+        </nav>
+        <%
+            }else{
+        %>
+        <nav class="menu">
+           <div class="logo">
+                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+            </div>
+
             <div class="ubicacion">
                 <a href="./carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
             </div>
@@ -57,11 +76,12 @@ if(sessionOk.getAttribute("id")==null){
             </div>
     
             <div class="opciones-usuario">
-                
-                
                 <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
             </div>
         </nav>
+        <%
+            }
+        %>
     <h1>Datos</h1>
     <ul>
         <li>Nombre completo:<%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%> <br></li>
@@ -88,15 +108,7 @@ if(sessionOk.getAttribute("id")==null){
         <input type="submit" value="Eliminar"/>
     </form>
         <br>  
-    <%
-    Cafeteria operC=new Cafeteria();
-    boolean caftener=operC.comprobarCafExiste(id_usu);
-    if (u.getPerm_usu()==3){
-    %>
-    <a href="../dueño/verCafeterias.jsp">Ver cafeterias</a>
-    <%
-    }
-    %>
+   
     
     </div>
     

@@ -27,6 +27,7 @@ public class RegistrarQueja extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String nombre = request.getParameter("nombre");
             String correo = request.getParameter("correo");

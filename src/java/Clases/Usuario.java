@@ -139,8 +139,6 @@ public class Usuario {
             cifrar cifra = new cifrar();
             
             Usuario ul = cifra.verificarUsuario(correo, contr);
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            System.out.println(ul.getEmail_usu());
             String sql="select * from Usuario where email_usu = ? and pass_usu = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ul.getEmail_usu());
@@ -218,10 +216,10 @@ public class Usuario {
         String sql = "";
         PreparedStatement ps = null;
         try{
-                sql= "update cafeteria set aut_caf = '3' where id_caf = ?";
-                ps = con.prepareStatement(sql);
-                ps.setInt(1, id);
-                estatus += ps.executeUpdate();
+            sql= "update cafeteria set aut_caf = '3' where id_caf = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            estatus += ps.executeUpdate();
         }catch(Exception ed){
             System.out.println("No conecto a la tabla");
             System.out.println(ed.getMessage());

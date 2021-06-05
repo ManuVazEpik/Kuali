@@ -8,6 +8,7 @@ import Clases.Productos;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,7 +70,8 @@ public class EliminarPro extends HttpServlet {
             Productos opc = new Productos();
             int estatus=opc.Eliminar(id);
             if(estatus>0){
-                response.sendRedirect("ModificarCafeteria.jsp?admrs="+Integer.parseInt(id_cafS));
+                String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
             }else{
                 response.sendRedirect("error.jsp");
             }

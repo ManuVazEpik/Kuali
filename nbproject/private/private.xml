@@ -3,9 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/manua/OneDrive/Documentos/NetBeansProjects/proyecto-LPTI3/src/java/RegistrarUsu.java</file>
-            <file>file:/C:/Users/manua/OneDrive/Documentos/NetBeansProjects/proyecto-LPTI3/src/java/Clases/cifrar.java</file>
-            <file>file:/C:/Users/manua/OneDrive/Documentos/NetBeansProjects/proyecto-LPTI3/src/java/Clases/Usuario.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/Clases/Usuario.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/RegistrarUsuario.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/ajustesUsuarios.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/Pedidos.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/inicioUsuarios.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/Cuentas.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/ModificarCafeteria.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/IniciarSesion.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/EliminarDelCarro.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/dueño/registroCafeterias.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/IniciarSesion.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/menuCafeteria.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/dueño/modificarCafeterias.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/sobrenosotros.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/avisoPrivacidad.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/RegistrarQueja.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/dueño/verCafeterias.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/index.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/soporte/buzonDeQuejas.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/RegistrarUsu.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/terminosyCondiciones.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/carritoCompras.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/RegistrarCaf.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/dueño/eliminarCafeterias.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/src/java/Clases/conexion.java</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/usuario/añadirPedido.jsp</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/error.html</file>
+            <file>file:/C:/Users/bocal/Desktop/Kuali/Kuali/web/js/satisfaccion.js</file>
         </group>
     </open-files>
 </project-private>

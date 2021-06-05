@@ -9,6 +9,7 @@ import Clases.Cafeteria;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,7 @@ public class IniciarSesion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int nivel=0;
             String noms, cons;
@@ -58,7 +60,7 @@ public class IniciarSesion extends HttpServlet {
                 String privS = String.valueOf(perm);
                 
                 if(c != null){
-                    if(perm==2 || perm==3){
+                    if(perm==3){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);
                         HttpSession sesionOK = request.getSession();
@@ -76,15 +78,23 @@ public class IniciarSesion extends HttpServlet {
                         }else{
                             sesionOK.setAttribute("autorizacion","0");
                         }
-                        
-                        response.sendRedirect("usuario/inicioUsuarios.jsp");
+                        String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                        response.sendRedirect(direccion+"/verCafeterias.jsp");
+                    }else if (perm==2) {
+                        HttpSession sesion = request.getSession(true);
+                        sesion.setAttribute("usuario", c);
+                        HttpSession sesionOK = request.getSession();
+                        sesionOK.setAttribute("usuario", noms);
+                        sesionOK.setAttribute("id", nivelS);
+                        sesionOK.setAttribute("privilegio", privS);
+                        response.sendRedirect("usuario/ajustesUsuarios.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);
                         HttpSession sesionOK = request.getSession();
                         sesionOK.setAttribute("usuario", noms);
                         sesionOK.setAttribute("privilegio", privS);
-                        response.sendRedirect("SesionAdmin.jsp");
+                        response.sendRedirect("administradorGeneral/administrarUsuarios.jsp");
                     }else{
                         out.println("\n" +
                     "<!DOCTYPE html>"+

@@ -7,6 +7,7 @@
 import Clases.Cafeteria;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +37,8 @@ public class EliminarCaf extends HttpServlet {
             Cafeteria opc = new Cafeteria();
             int estatus=opc.EliminarCafeteria(id);
             if(estatus>0){
-                response.sendRedirect("index.jsp");
+                String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                        response.sendRedirect(direccion+"/eliminarCafeterias.jsp");
             }else{
                 response.sendRedirect("error.jsp");
             }

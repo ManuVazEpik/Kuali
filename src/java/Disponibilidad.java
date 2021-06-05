@@ -8,6 +8,7 @@ import Clases.Productos;
 import Clases.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,7 +59,8 @@ public class Disponibilidad extends HttpServlet {
                 Productos prod=new Productos();
                 boolean estatus=prod.NoDisponible(id_prod);
                 if (estatus==true) {
-                    response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
+                    String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                    response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
                 }else{
                     response.sendRedirect("error.html");
                 }
@@ -66,7 +68,8 @@ public class Disponibilidad extends HttpServlet {
                 Productos prod=new Productos();
                 boolean estatus=prod.Disponible(id_prod);
                 if (estatus==true) {
-                    response.sendRedirect("ModificarCafeteria.jsp?admrs="+id_cafS);
+                    String direccion = URLEncoder.encode ("dueño", "UTF-8");
+                        response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
                 }else{
                     response.sendRedirect("error.html");
                 }

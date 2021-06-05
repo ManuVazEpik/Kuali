@@ -1,8 +1,3 @@
-<%-- 
-    Document   : ModificarPro
-    Created on : 6/01/2021, 07:08:23 PM
-    Author     : bocal
---%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Productos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,7 +19,7 @@ if(sessionOk.getAttribute("usuario")==null){
 <%   
 }else if(sessionOk.getAttribute("autorizacion")==null){
 %>
-    <jsp:forward page="Cuentas.jsp">
+    <jsp:forward page="">
         <jsp:param name="error" value="Es obligatorio identificarse"/>
     </jsp:forward>
 <%
@@ -46,12 +41,10 @@ if(sessionOk.getAttribute("usuario")==null){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar</title>
-        <link rel="StyleSheet" href="css/style.css" type="text/css" MEDIA=screen>
-        <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
         <h1>Modificar</h1>
-        <form action="ActualizarPro" method="POST">
+        <form action="../ActualizarPro" method="POST">
         
         Ingresa el nombre del producto<input type="text" name="nom_prod" value="<%=p.getNom_prod()%>"/><br>
         Ingresa la descripcion del producto<input type="text" name="desc_prod" value="<%=p.getDesc_prod()%>"/><br>
@@ -62,10 +55,6 @@ if(sessionOk.getAttribute("usuario")==null){
         <input type="hidden" name='id_caf' value="<%=c.getId_caf()%>">
         <input type="submit" value="Aceptar"/>
     </form>
-        
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
     </body>
 </html>
 <%}%>
