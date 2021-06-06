@@ -18,7 +18,15 @@ import java.util.GregorianCalendar;
  */
 public class Pedido {
     int id_ped,id_usu, id_hora, id_min, hora, status_ped, id_caf;
-    String fecha_ped, min;
+    String fecha_ped, min, nom_caf;
+
+    public String getNom_caf() {
+        return nom_caf;
+    }
+
+    public void setNom_caf(String nom_caf) {
+        this.nom_caf = nom_caf;
+    }
     double tot_ped;
     
     private int ultimoCodigoInsertado(Connection cn){
@@ -51,65 +59,67 @@ public class Pedido {
         ResultSet rs = null;
         
         int id_h;
+        System.out.println("eeeeeeeeeeeeeeeeeeeee"+p.getHora());
         if(p.getHora()==7){
-            id_h=1;
-        }else if(p.getHora()==8){
-            id_h=2;
-        }else if(p.getHora()==9){
-            id_h=3;
-        }else if(p.getHora()==10){
             id_h=4;
-        }else if(p.getHora()==11){
-            id_h=5;
-        }else if(p.getHora()==12){
-            id_h=6;
-        }else if(p.getHora()==13){
-            id_h=7;
-        }else if(p.getHora()==14){
-            id_h=8;
-        }else if(p.getHora()==15){
-            id_h=9;
-        }else if(p.getHora()==16){
-            id_h=10;
-        }else if(p.getHora()==17){
-            id_h=11;
-        }else if(p.getHora()==18){
-            id_h=12;
-        }else if(p.getHora()==19){
-            id_h=13;
-        }else if(p.getHora()==20){
+        }else if(p.getHora()==8){
             id_h=14;
+        }else if(p.getHora()==9){
+            id_h=24;
+        }else if(p.getHora()==10){
+            id_h=34;
+        }else if(p.getHora()==11){
+            id_h=44;
+        }else if(p.getHora()==12){
+            id_h=54;
+        }else if(p.getHora()==13){
+            id_h=64;
+        }else if(p.getHora()==14){
+            id_h=74;
+        }else if(p.getHora()==15){
+            id_h=84;
+        }else if(p.getHora()==16){
+            id_h=94;
+        }else if(p.getHora()==17){
+            id_h=104;
+        }else if(p.getHora()==18){
+            id_h=114;
+        }else if(p.getHora()==19){
+            id_h=124;
+        }else if(p.getHora()==20){
+            id_h=134;
         }else{
             return registro;
         }
         
         int id_m;
         if("15".equals(p.getMin())){
-            id_m=1;
-        }else if("30".equals(p.getMin())){
-            id_m=2;
-        }else if("45".equals(p.getMin())){
-            id_m=3;
-        }else if("00".equals(p.getMin())){
             id_m=4;
+        }else if("30".equals(p.getMin())){
+            id_m=14;
+        }else if("45".equals(p.getMin())){
+            id_m=24;
+        }else if("00".equals(p.getMin())){
+            id_m=34;
         }else{
             return registro;
         }
         
         try{
             cn = conexion.getConexion();
-            String q = "insert into mpedido(id_usu, id_chora, id_minuto, fecha_ped, status_ped, total_ped)"
+            String q = "insert into mpedido(id_usu, id_chora, id_minuto, fecha_ped, status_ped, total_ped) "
                     + "values (?, ?, ?, ?, ?, ?)";
             pr = cn.prepareStatement(q);
             pr.setInt(1, p.getId_usu());
             pr.setInt(2, id_h);
             pr.setInt(3, id_m);
             pr.setString(4, p.getFecha_ped());
-            pr.setInt(5, 3);
+            pr.setInt(5, 24);
             pr.setDouble(6, p.getTot_ped());
             
-            
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             if (pr.executeUpdate() == 1) {
+                System.out.println("bbbbbbbbbbbbbbb");
                 int codigo = this.ultimoCodigoInsertado(cn);
                 registro = this.registrarDetalleVenta(codigo, ldp, cn);
                 
@@ -548,7 +558,7 @@ public class Pedido {
                     
                     if(Integer.parseInt(año)==Integer.parseInt(añoactual) && Integer.parseInt(mes)==Integer.parseInt(mesactual)
                             && Integer.parseInt(dia)==Integer.parseInt(diaactual)){
-                        System.out.println("ssssssssssssssssssssssssssssssssss");
+                        
                         Hora h= oh.getHoraById(p.getId_hora());
                         Minuto m=om.getMinutoById(p.getId_min());
 
@@ -582,6 +592,115 @@ public class Pedido {
         }
         
     }
+    
+    public static ArrayList<Cafeteria> pedidosEn15Min(int id){
+        ArrayList <Cafeteria> listaCafeteria = new ArrayList<>();
+        ArrayList <Pedido> listaPedidos = new ArrayList<>();
+        try{
+            
+            Connection con = conexion.getConexion();
+            String sql=null;
+            sql="select id_chora, id_minuto, fecha_ped, status_ped, total_ped, cafeteria.nom_caf from mpedido, dpedido, mproducto, cafeteria "
+                    + "where mpedido.id_ped=dpedido.id_ped and dpedido.id_prod=mproducto.id_prod and "
+                    + "mproducto.id_caf=cafeteria.id_caf and cafeteria.id_usu=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Pedido p = new Pedido();
+                p.setId_hora(rs.getInt(1));
+                p.setId_min(rs.getInt(2));
+                p.setFecha_ped(rs.getString(3));
+                p.setStatus_ped(rs.getInt(4));
+                p.setTot_ped(rs.getDouble(5));
+                p.setNom_caf(rs.getString(6));
+                listaPedidos.add(p);
+            }
+            
+            for(Pedido p:listaPedidos){
+                if(p.getStatus_ped()==3){
+                    String fecha=p.getFecha_ped();
+                    String año="", mes="", dia="";
+                    int contador=0;
+
+                    for(int i=0; i<fecha.length(); i++){
+                        char letra=fecha.charAt(i);
+
+                        if(contador<4){
+                            año=año+letra;
+                        }else if(contador<7 && contador>4){
+                            mes= mes+letra;
+                        }else if(contador>7 && contador<10){
+                            dia=dia+letra;
+                        }
+                        contador++;
+                    }
+
+                    Date fechaactual = new Date();
+                    String strDateFormat = "yyyy-MM-dd";
+
+                    SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+
+                    String añoactual="", mesactual="", diaactual="";
+                    int contador2=0;
+                    String fechaact=sdf.format(fechaactual);
+                    for(int i=0; i<fechaact.length(); i++){
+                        char letra=fechaact.charAt(i);
+
+                        if(contador2<4){
+                            añoactual=añoactual+letra;
+                        }else if(contador2<7 && contador2>4){
+                            mesactual= mesactual+letra;
+                        }else if(contador2>7 && contador2<10){
+                            diaactual=diaactual+letra;
+                        }
+                        contador2++;
+                    }
+
+                    Hora oh=new Hora();
+                    Minuto om=new Minuto();
+                    int horaactual=fechaactual.getHours();
+                    int minactual = fechaactual.getMinutes();
+
+                    
+                    if(Integer.parseInt(año)==Integer.parseInt(añoactual) && Integer.parseInt(mes)==Integer.parseInt(mesactual)
+                            && Integer.parseInt(dia)==Integer.parseInt(diaactual)){
+                        
+                        Hora h= oh.getHoraById(p.getId_hora());
+                        Minuto m=om.getMinutoById(p.getId_min());
+
+                        
+                        String min =m.getMinuto();
+                        if (min.equals("00")) {
+                            if(Integer.parseInt(h.getHora())-1==horaactual){
+                                if (minactual>=45 && minactual<=59) {
+                                    Cafeteria c = new Cafeteria();
+                                    c.setNom_caf(p.getNom_caf());
+                                    listaCafeteria.add(c);
+                                }
+                            }
+                        }else{
+                            if (Integer.parseInt(h.getHora())==horaactual) {
+                                int resta = Integer.parseInt(m.getMinuto())-15;
+                                if (minactual>=resta && minactual<=resta) {
+                                    Cafeteria c = new Cafeteria();
+                                    c.setNom_caf(p.getNom_caf());
+                                    listaCafeteria.add(c);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Error comprobacion pedido");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+        return listaCafeteria;
+    }
+    
     
     public static boolean Finalizar(int id_pedido) throws SQLException{
         boolean comp=false;

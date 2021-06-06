@@ -106,7 +106,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
             <td><%=q.getQueja()%></td>
             <td><%=satisfaccionS%></td>
             <td>
-                <form action="ConcluirQueja" method="POST">
+                <form action="../ConcluirQueja" method="POST">
                     <input type="hidden" name="id_que" value="<%=q.getId_que()%>"/>
                     <input type="submit" value="Concluir"/>
                 </form>

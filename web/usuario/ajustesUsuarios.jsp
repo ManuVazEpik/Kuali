@@ -68,7 +68,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="pedidos-agendados">
-                <a href="./pedidosAgendados.html"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+                <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
             </div>
             
             <div class="ubicacion">

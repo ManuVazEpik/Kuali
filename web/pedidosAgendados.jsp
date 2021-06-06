@@ -29,18 +29,25 @@ if(sessionOk.getAttribute("usuario")==null){
     boolean caftener = opcaf.comprobarCafExiste(Integer.parseInt(idUS));
     if(caftener==true){
     
-    
+
     Cafeteria caf= opcaf.getCafeteriaByIdCaf(Integer.parseInt(idUS));
-    int id_caf=caf.getId_caf();
-    Pedido.checkoutPendientes(id_caf, false);
+    caf.getId_caf();
+    int id_caf=Integer.parseInt(request.getParameter("admrs").trim());
+    
 %>
 <!DOCTYPE html>
+
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PedidosPendientes</title>
+        
     </head>
     <body>
+        
+        
+
         <h1>Pedidos Pendientes</h1>
         <%
         DetallePedido odp = new DetallePedido();

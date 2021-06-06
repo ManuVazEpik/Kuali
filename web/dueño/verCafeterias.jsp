@@ -1,3 +1,4 @@
+<%@page import="Clases.Pedido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Cafeteria"%>
@@ -29,10 +30,24 @@ if(sessionOk.getAttribute("id")==null){
     Cafeteria operC=new Cafeteria();
     boolean caftener=operC.comprobarCafExiste(id_usu);
     if (u.getPerm_usu()==3){
+
         ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);
+        ArrayList<Cafeteria> listaaviso = Pedido.pedidosEn15Min(id_usu);
 %>
 <!DOCTYPE html>
 <html lang="es">
+    <script>
+        function avisar(){
+            <%
+                for (Cafeteria c:listaaviso){
+                    
+            %>
+                alert("Tiene un pedido pronto de la cafeteria: "+<%=c.getNom_caf()%>)
+            <%
+                }
+            %>
+        }
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +56,7 @@ if(sessionOk.getAttribute("id")==null){
     <link rel="stylesheet" href="../css/modificarCafeterias.css">
     <title>Dashboard | KUALI</title>
 </head>
-<body>
+<body onload="avisar()">
     <div class="contenedor-dashboard">
         <div class="menu-lateral">
             <img src="../img/logos/Logo_blanco.png" alt="Logo Kuali en color blanco">
@@ -108,6 +123,10 @@ if(sessionOk.getAttribute("id")==null){
                         <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
                         <input type="submit" value="Menú"/>
                     </form>
+                    <form action="../pedidosAgendados.jsp" method="POST">
+                        <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                        <input type="submit" value="Pedidos"/>
+                    </form>
                 <%  }else if(autorizacion==2){%>
                     <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
                 <%  }else if(autorizacion==3){%>
@@ -125,7 +144,7 @@ if(sessionOk.getAttribute("id")==null){
     </div>
 
     <!-- SCRIPTS -->
-    <script type="module" src="../../js/dashboard.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
 </body>
 </html>

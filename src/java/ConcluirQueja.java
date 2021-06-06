@@ -30,7 +30,7 @@ public class ConcluirQueja extends HttpServlet {
             int id_que = Integer.parseInt(request.getParameter("id_que").trim());
             int estatus = Queja.ConcluirQueja(id_que);
             if (estatus>0) {
-                response.sendRedirect("SesionAdmin.jsp");
+                response.sendRedirect("administradorGeneral/administrarQuejas.jsp");
             }else{
                 out.println("Error");
             }

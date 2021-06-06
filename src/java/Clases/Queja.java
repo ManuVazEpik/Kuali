@@ -31,7 +31,7 @@ public class Queja {
             ps1.setString(2, q.getEmail_que());
             ps1.setString(3, q.getTel_que());
             ps1.setString(4, q.getQueja());
-            ps1.setInt(5, 3);
+            ps1.setInt(5, 24);
             ps1.setInt(6, q.getSatisfaccion());
             estatus=ps1.executeUpdate();
             System.out.println(estatus);
@@ -52,7 +52,7 @@ public class Queja {
             
             String sq1="update queja set status_que=? where id_que=?";
             PreparedStatement ps1 = con.prepareStatement(sq1);
-            ps1.setInt(1, 1);
+            ps1.setInt(1, 4);
             ps1.setInt(2, id);
             estatus=ps1.executeUpdate();
             con.close();
@@ -74,7 +74,7 @@ public class Queja {
             PreparedStatement ps = null;
             ResultSet rs = null;
             
-            sql="select * from queja where status_que=3";
+            sql="select * from queja where status_que=24";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
