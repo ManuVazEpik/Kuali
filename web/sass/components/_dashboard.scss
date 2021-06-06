@@ -10,7 +10,7 @@
         background: linear-gradient(90deg, color.$azul-kuali 10%, color.$verde-kuali 80%);
         width: 23%;
         height: 100vh;
-
+        
         display: flex;
         flex-direction: column;
         justify-content: left;
@@ -55,7 +55,8 @@
     }
 
     .contenido {
-        width: 78%;
+        width: 100%;
+        height: 100vh;
         background: color.$blanco-kuali;
 
         .menu-administrador {

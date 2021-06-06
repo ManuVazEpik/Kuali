@@ -56,3 +56,177 @@
         color: color.$negro-kuali;
     }
 }
+
+// Media Queries
+
+// Laptop
+@media screen and (max-width: 1400px) {
+    
+    .contenedor-principal, .contenedor-dashboard {
+        .titulo-principal {
+            font-size: 40px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-secundario {
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-terciario {
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-cuarto {
+            font-size: 16px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .texto {
+            font-size: 14px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        .texto-promocion {
+            font-size: 13px;
+            text-align: center;
+            color: color.$amarillo-kuali;
+            background: color.$verde-kuali;
+            padding: 10px;
+            border-radius: 50px 0px 0px 50px;
+        }
+    
+        .texto-producto {
+            font-size: 14px;
+            font-weight: 400;
+            color: color.$negro-kuali;
+        }
+    
+        .texto-etiquetas {
+            font-size: 11px;
+            font-weight: 300;
+            color: color.$negro-kuali;
+        }
+    }
+}
+
+// Tablet
+@media screen and (max-width: 992px) {
+ 
+    .contenedor-principal, .contenedor-dashboard {
+        .titulo-principal {
+            font-size: 30px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-secundario {
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-terciario {
+            font-size: 25px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-cuarto {
+            font-size: 20px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .texto {
+            font-size: 17px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        .texto-promocion {
+            font-size: 13px;
+            text-align: center;
+            color: color.$amarillo-kuali;
+            background: color.$verde-kuali;
+            padding: 10px;
+            border-radius: 50px 0px 0px 50px;
+        }
+    
+        .texto-producto {
+            font-size: 14px;
+            font-weight: 400;
+            color: color.$negro-kuali;
+        }
+    
+        .texto-etiquetas {
+            font-size: 11px;
+            font-weight: 300;
+            color: color.$negro-kuali;
+        }
+    }
+}
+
+
+// Phone
+@media screen and (max-width: 688px) {
+ 
+    .contenedor-principal, .contenedor-dashboard {
+        .titulo-principal {
+            font-size: 30px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-secundario {
+            font-size: 25px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-terciario {
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .titulo-cuarto {
+            font-size: 18px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .texto {
+            font-size: 15px;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        .texto-promocion {
+            font-size: 13px;
+            text-align: center;
+            color: color.$amarillo-kuali;
+            background: color.$verde-kuali;
+            padding: 10px;
+            border-radius: 50px 0px 0px 50px;
+        }
+    
+        .texto-producto {
+            font-size: 14px;
+            font-weight: 400;
+            color: color.$negro-kuali;
+        }
+    
+        .texto-etiquetas {
+            font-size: 11px;
+            font-weight: 300;
+            color: color.$negro-kuali;
+        }
+    }
+}
