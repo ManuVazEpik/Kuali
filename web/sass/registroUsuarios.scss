@@ -8,7 +8,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 1;
 
     .contenido {
@@ -131,6 +131,8 @@
 //Laptop 
 @media screen and (max-width: 1600px) {
     .contenedor-principal {
+        height: 100%;
+        
         svg {
             width: 50%;
             top: -25%;
