@@ -1,3 +1,285 @@
-@use 'components/menu';
+@use 'abstracts/fonts';
 @use 'abstracts/colors.scss' as color;
+@use 'components/menu';
 @use 'components/footer';
+
+.contenedor-principal {
+    width: 100%;
+    background: color.$verde-kuali url('../img/cafeteria-landing\ page.png');
+    // background: color.$blanco-kuali url('./img/coffee\ shop\ 1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .menu {
+        position: fixed;
+        background-color: rgba(color.$negro-kuali, $alpha: 0.4);
+        color: color.$blanco-kuali;
+    }
+
+    .presentacion {
+        width: 100%;
+        height: 1200px;
+
+        .titulo-principal, .titulo-secundario {
+            color: color.$amarillo-kuali;
+        }
+
+        .texto {
+            color: color.$blanco-kuali;
+        }
+
+        .principal {
+            width: 100%;
+            height: 730px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            h1 {
+                width: 30%;
+            }
+
+            p {
+                width: 20%;
+            }
+        }
+
+        .que-es-kuali {
+            background: linear-gradient(90deg, color.$verde-kuali 20%, color.$negro-kuali 60%);
+            width: 60%;
+            margin: 0% auto;
+            padding: 50px;
+            border-radius: 5px 50px 5px 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            transition: ease 0.5s;
+
+            .video {
+                background: #675867;
+                width: 50%;
+                margin-right: 50px;
+            }
+
+            .contenido {
+                width: 50%;
+            }
+        }
+
+        .que-es-kuali:hover {
+            //No se que poner xdd
+        }
+    }
+     
+    .concepto {
+        width: 100%;
+        background: color.$blanco-kuali;
+        padding: 100px 0px;
+        margin: auto;
+
+        .tarjetas {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .tarjeta {
+                width: 60%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+
+                .contenido {
+                    padding: 30px;
+
+                    .titulo-terciario {
+                        color: color.$verde-kuali;
+                    }
+                }
+                
+                img {
+                    max-width: 300px;
+                    opacity: 0.8;
+                    transition: ease-in-out 0.3s;
+                }
+
+                .img-top {
+                    border-radius: 5px 80px 5px 5px;
+                }
+                
+                .img-middle {
+                    border-radius: 40px 5px 5px 40px;
+                    margin-left: 30px;
+                }
+
+                .img-bottom {
+                    border-radius: 5px 5px 80px 5px;
+                }
+
+
+                img:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    
+    .contenedor-caracteristicas {
+        background: color.$verde-kuali;
+        width: 100%;
+        padding: 100px 0px;
+
+        .encabezado {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+
+            .titulo-principal {
+                margin: 10px 0px;
+            }
+        }
+
+        .titulo-principal {
+            color: color.$amarillo-kuali;
+        }
+
+        .texto {
+            color: color.$blanco-kuali;
+        }
+
+        .caracteristicas{
+            padding: 0% 10%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            .caracteristica {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                i {
+                    background: color.$amarillo-kuali;
+                    border-radius: 50%;
+                    color: color.$cafe-kuali;
+                    padding: 35px;
+                    margin-right: 10px;
+                }
+
+                .descripcion {
+                    width: 60%;
+
+                    h3 {
+                        color: color.$amarillo-kuali;
+                    }
+
+                    p {
+                        text-align: justify;
+                        color: color.$blanco-kuali;
+                    }
+                }
+            }
+
+            // .bottom {
+            //     margin-top: 250px;
+            // }
+        }
+    }
+
+    .cafeterias-destacadas { 
+        background: color.$blanco-kuali;
+        padding: 100px 0px;
+
+        .encabezado {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+
+            .titulo-principal {
+                margin: 10px 0px;
+            }
+        }
+
+        .titulo-principal {
+            color: color.$verde-kuali;
+        }
+
+        .texto {
+            color: color.$negro-kuali;
+        }
+
+        .cafeterias {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            transition: ease-out 0.3s;
+
+            .cafeteria {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    max-width: 300px;
+                    width: 300px;
+                    height: 200px;
+                    border-radius: 5px;
+                }
+
+                .texto {
+                    width: 300px;
+                    text-align: justify;
+                }
+
+                a {
+                    text-decoration: none;
+                    background: color.$verde-kuali;
+                    color: color.$blanco-kuali;
+                    padding: 15px 30px;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    font-size: 13px;
+                    transition: ease 0.5s;
+                }
+
+                a:hover {
+                    background: color.$azul-kuali;
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+    } 
+}
+
+// Media Queries
+
+// Laptop
+@media screen and (max-width: 1300px) {
+    
+}
+
+// Tablet
+@media screen and (max-width: 1220px) {
+
+}
+
+
+// Phone
+@media screen and (max-width: 688px) {
+
+}

@@ -7,8 +7,10 @@
 function satisfaccion1(){
     
     document.querySelector('.caras').innerHTML = '<input type="hidden" value="3" name="satisfaccion"/><button onclick="return satisfaccion1()"><i class="far fa-grin-beam fa-10x"></i></button><button onclick="return satisfaccion2()"><i class="far fa-meh fa-10x"></i></button><button onclick="return satisfaccion3()"><i class="far fa-angry fa-10x"></i></button>';
+    
     return false;
 }
+
 function satisfaccion2(){
     
     document.querySelector('.caras').innerHTML = '<input type="hidden" value="2" name="satisfaccion"/><button onclick="return satisfaccion1()"><i class="far fa-grin-beam fa-10x"></i></button><button onclick="return satisfaccion2()"><i class="far fa-meh fa-10x"></i></button><button onclick="return satisfaccion3()"><i class="far fa-angry fa-10x"></i></button>';
