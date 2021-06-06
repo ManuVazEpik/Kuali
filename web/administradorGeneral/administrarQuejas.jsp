@@ -20,13 +20,13 @@ if (sesionOk.getAttribute("usuario") == null ) {
 }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/verCafeteria.css">
+    <link rel="stylesheet" href="../css/administrarQuejas.css">
     <title>Administrador | KUALI</title>
     </head>
     <body>
@@ -68,55 +68,59 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 </div>
                 <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del administrador">
             </div>
-        </div>
-        <h2>Quejas</h2>
-        <table>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Telefono</th>
-            <th>Queja o sugerencia</th>
-            <th>Satisfacción</th>
-            <th></th>
-        <%
-            Queja opq = new Queja();
-            ArrayList <Queja> listaq= opq.getQuejas();
-            
-            String satisfaccionS="";
-            for(Queja q:listaq){
-                int satisfaccion = q.getSatisfaccion();
-                if (satisfaccion==3) {
-                    satisfaccionS="Buena";
-                }else if (satisfaccion==2) {
-                    satisfaccionS="Normal";
-                }else if (satisfaccion==1) {
-                    satisfaccionS="Mala";
-                }else{
-                    satisfaccionS="Occurio un error";
-                }
-                
-                
-                
-        %>
-        <tr>
-            <td><%=q.getId_que()%></td>
-            <td><%=q.getNom_que()%></td>
-            <td><%=q.getEmail_que()%></td>
-            <td><%=q.getTel_que()%></td>
-            <td><%=q.getQueja()%></td>
-            <td><%=satisfaccionS%></td>
-            <td>
-                <form action="ConcluirQueja" method="POST">
-                    <input type="hidden" name="id_que" value="<%=q.getId_que()%>"/>
-                    <input type="submit" value="Concluir"/>
-                </form>
-            </td>
-        </tr>
-        <%
-            }
-        %>
-        </table>
+
+            <div class="quejas">
+                <h2 class="titulo-secundario">Quejas</h2>
+                <table>
+                    <thead>
+                        <th class="titulo-terciario borderI">ID</th>
+                        <th class="titulo-terciario">Nombre</th>
+                        <th class="titulo-terciario">Correo</th>
+                        <th class="titulo-terciario">Telefono</th>
+                        <th class="titulo-terciario">Queja o sugerencia</th>
+                        <th class="titulo-terciario">Satisfacción</th>
+                        <th class="titulo-terciario borderF">Concluir Queja</th>
+                    </thead>
+                <%
+                    Queja opq = new Queja();
+                    ArrayList <Queja> listaq= opq.getQuejas();
+                    
+                    String satisfaccionS="";
+                    for(Queja q:listaq){
+                        int satisfaccion = q.getSatisfaccion();
+                        if (satisfaccion==3) {
+                            satisfaccionS="Buena";
+                        }else if (satisfaccion==2) {
+                            satisfaccionS="Normal";
+                        }else if (satisfaccion==1) {
+                            satisfaccionS="Mala";
+                        }else{
+                            satisfaccionS="Occurio un error";
+                        }
+                              
+                %>
+                    <tr>
+                        <td class="texto"><%=q.getId_que()%></td>
+                        <td class="texto"><%=q.getNom_que()%></td>
+                        <td class="texto"><%=q.getEmail_que()%></td>
+                        <td class="texto"><%=q.getTel_que()%></td>
+                        <td class="texto"><%=q.getQueja()%></td>
+                        <td class="texto"><%=satisfaccionS%></td>
+                        <td class="texto">
+                            <form action="ConcluirQueja" method="POST">
+                                <input type="hidden" name="id_que" value="<%=q.getId_que()%>"/>
+                                <input type="submit" value="Concluir"/>
+                            </form>
+                        </td>
+                    </tr>
+                <%
+                    }
+                %>
+                </table>
        
+            </div>
+        </div>
+        
         </div>
         <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>

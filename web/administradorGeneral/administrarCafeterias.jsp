@@ -20,13 +20,13 @@ if (sesionOk.getAttribute("usuario") == null ) {
 }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/verCafeteria.css">
+    <link rel="stylesheet" href="../css/administrarCafeteria.css">
     <title>Administrador | KUALI</title>
     </head>
     <body>
@@ -68,72 +68,83 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 </div>
                 <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del administrador">
             </div>
+
+            <div class="cafeterias-por-autorizar">
+                <h3 class="titulo-secundario">Cafeterias por autorizar</h3>
+                <%
+                Cafeteria operC=new Cafeteria();
+                ArrayList<Cafeteria> listaNoAut=operC.getCafeteriasPendientes();
+                %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="titulo-terciario borderI">ID de Cafetería</th>
+                            <th class="titulo-terciario">Nombre</th>
+                            <th class="titulo-terciario">Direccion</th>
+                            <th class="titulo-terciario">ID de Usuario</th>
+                            <th class="titulo-terciario">Autorizar</th>
+                            <th class="titulo-terciario borderF">Rechazar</th>
+                        </tr>
+                    </thead>
+                <%
+                    for(Cafeteria c:listaNoAut){
+                %>
+                    <tr>
+                        <td class="texto"><%=c.getId_caf()%></td>
+                        <td class="texto"><%=c.getNom_caf()%></td>
+                        <td class="texto"><%=c.getDir_caf()%></td>
+                        <td class="texto"><%=c.getId_usu()%></td>
+                        <td class="texto"><form action="Autorizar" method="POST">
+                            <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
+                            <input type="hidden" name="tipo" value="1"/>
+                            <input type="submit" value="Aceptar" class="aceptar"/>
+                        </form></td>
+                        <td class="texto"><form action="Autorizar" method="POST">
+                            <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
+                            <input type="hidden" name="tipo" value="2"/>
+                            <input type="submit" value="Rechazar" class="rechazar"/>
+                            </form></td>
+                    </tr>
+                <%
+                    }
+                %>
+                </table>
+            </div>
+        
+            <div class="cafeterias-autorizadas">
+                <h3 class="titulo-secundario">Cafeterias Autorizadas</h3>
+                <%
+                ArrayList<Cafeteria> listaAut=operC.getCafeteriasAutorizadas();
+                %>
+                <table>
+                    <thead>
+                        <th class="titulo-terciario borderI">ID de cafetería</th>
+                        <th class="titulo-terciario">Nombre</th>
+                        <th class="titulo-terciario">Direccion</th>
+                        <th class="titulo-terciario">ID de Usuario</th>
+                        <th class="titulo-terciario borderF">Eliminar</th>
+                    </thead>
+                <%
+                    for(Cafeteria c:listaAut){
+                %>
+                    <tr>
+                        <td><%=c.getId_caf()%></td>
+                        <td><%=c.getNom_caf()%></td>
+                        <td><%=c.getDir_caf()%></td>
+                        <td><%=c.getId_usu()%></td>
+                        <td><form action="EliminarUsu" method="POST">
+                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                            <input type="hidden" name="tipo" value="3"/>
+                            <input type="submit" value="Eliminar" class="rechazar"/>
+                        </form></td>
+                    </tr>
+                <%
+                    }
+                %>
+                </table>
+            </div>
         </div>
-                <h3>Cafeterias por autorizar</h3>
-        <%
-        Cafeteria operC=new Cafeteria();
-        ArrayList<Cafeteria> listaNoAut=operC.getCafeteriasPendientes();
-        %>
-        <table>
-            <th>Id_caf</th>
-            <th>Nombre_caf</th>
-            <th>Direccion_caf</th>
-            <th>Id Usuario</th>
-            <th>Autorizar</th>
-            <th>Rechazar</th>
-    <%
-        for(Cafeteria c:listaNoAut){
-    %>
-            <tr>
-                <td><%=c.getId_caf()%></td>
-                <td><%=c.getNom_caf()%></td>
-                <td><%=c.getDir_caf()%></td>
-                <td><%=c.getId_usu()%></td>
-                <td><form action="Autorizar" method="POST">
-                    <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
-                    <input type="hidden" name="tipo" value="1"/>
-                    <input type="submit" value="Aceptar"/>
-                </form></td>
-                <td><form action="Autorizar" method="POST">
-                    <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
-                    <input type="hidden" name="tipo" value="2"/>
-                    <input type="submit" value="Rechazar"/>
-                    </form></td>
-            </tr>
-    <%
-        }
-    %>
-        </table>
-        
-        <h3>Cafeterias Autorizadas</h3>
-        <%
-        ArrayList<Cafeteria> listaAut=operC.getCafeteriasAutorizadas();
-        %>
-        <table>
-            <th>Id_caf</th>
-            <th>Nombre_caf</th>
-            <th>Direccion_caf</th>
-            <th>Id Usuario</th>
-            <th>Eliminar</th>
-    <%
-        for(Cafeteria c:listaAut){
-    %>
-            <tr>
-                <td><%=c.getId_caf()%></td>
-                <td><%=c.getNom_caf()%></td>
-                <td><%=c.getDir_caf()%></td>
-                <td><%=c.getId_usu()%></td>
-                <td><form action="EliminarUsu" method="POST">
-                    <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
-                    <input type="hidden" name="tipo" value="3"/>
-                    <input type="submit" value="Eliminar"/>
-                </form></td>
-            </tr>
-    <%
-        }
-    %>
-        </table>
-        
+
         </div>
         <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
