@@ -180,7 +180,7 @@
 // Media Queries
 
 // Laptop 
-@media screen and (max-width: 1420px) {
+@media screen and (max-width: 1600px) {
     .contenedor-principal {
 
         .contenido_faq {
@@ -196,16 +196,12 @@
                         border-radius: 40px;
                         padding: 10px;
                     }
-
-                    .caja_busqueda:hover {
-                        width: 170px;
-                        padding-left: 0px;
-
-                        .card-filter {
-                            width: 75%;
-                        }
+                }
+                
+                .preguntas {
+                    .contenedor-pregunta.activa {
+                        margin: 0px 20px 20px 20px;
                     }
-
                 }
             }
         }
@@ -231,7 +227,7 @@
             align-items: center;
             
             .faq_usuarios, .faq_cafeterias {
-                width: 95%;
+                width: 100%;
                 height: auto;
 
                 .caja_busqueda {
