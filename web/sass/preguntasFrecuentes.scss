@@ -3,10 +3,13 @@
 @use 'abstracts/colors.scss' as color;
 @use 'components/menu';
 
-.contenedor-principal {
+body {
     background: linear-gradient(90deg, color.$azul-kuali 10%, color.$verde-kuali 100%);
     width: 100%;
     height: 100%;
+}
+
+.contenedor-principal {
     position: relative;
     font-family: 'Poppins', sans-serif;
 
@@ -15,6 +18,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        margin-bottom: 50px;
 
         .faq_usuarios, .faq_cafeterias {
             width: 50%;

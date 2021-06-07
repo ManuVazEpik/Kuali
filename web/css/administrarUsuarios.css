@@ -6,7 +6,7 @@
  * 7   | @use 'components/dashboard';
  *     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^ new @use
  *     '
- *   sass\administrarUsuarios.scss 7:1  root stylesheet */
+ *   sass/administrarUsuarios.scss 7:1  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -16,5 +16,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: There's already a module with namespace \"dashboard\".\a     \2577 \a 2   \2502  @use 'components/dashboard';\d\a     \2502  \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  original @use\a... \2502 \a 7   \2502  @use 'components/dashboard';\d\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^ new @use\a     \2575 \a   sass\\administrarUsuarios.scss 7:1  root stylesheet";
+  content: "Error: There's already a module with namespace \"dashboard\".\a     \2577 \a 2   \2502  @use 'components/dashboard';\a     \2502  \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  original @use\a... \2502 \a 7   \2502  @use 'components/dashboard';\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^ new @use\a     \2575 \a   sass/administrarUsuarios.scss 7:1  root stylesheet";
 }
