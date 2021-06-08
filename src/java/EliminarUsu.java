@@ -65,14 +65,12 @@ public class EliminarUsu extends HttpServlet {
                if("2".equals(tipoS) || "3".equals(tipoS)){
                     response.sendRedirect("index.html");
                 }else if("1".equals(tipoS)){
-                    response.sendRedirect("SesionAdmin.jsp");
+                    response.sendRedirect("administradorGeneral/administrarUsuarios.jsp");
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
-                
-                
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
         } catch (SQLException ex) {
             Logger.getLogger(EliminarUsu.class.getName()).log(Level.SEVERE, null, ex);

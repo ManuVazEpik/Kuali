@@ -60,7 +60,7 @@ public class ActualizarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu,
                     email_usu, pass_usu, tipo, nom_caf, dir_caf;
             int id_usu = Integer.parseInt(request.getParameter("id_usu").trim());
-            System.out.println("id_usu: "+id_usu);
+            
             cifrar cifra = new cifrar();
             
             
@@ -77,14 +77,11 @@ public class ActualizarUsu extends HttpServlet {
             boolean exp3=val.letras(apmat_usu);
             boolean exp4=val.numerosEnteros(tel_usu);
             
-            System.out.println(""+exp1+exp2+exp3+exp4);
             if(exp1==true && exp2==true && exp3==true && exp4==true){
                 if(nom_usu.length()<20 && appat_usu.length()<30 && apmat_usu.length()<30 && tel_usu.length()==10 ){
                     Usuario c = new Usuario();
                 Usuario operC= new Usuario();
 
-                
-                
                 c = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu,email_usu,pass_usu);
                 c.setId_usu(id_usu);
 //                c.setNom_usu(nom_usu);
@@ -95,16 +92,15 @@ public class ActualizarUsu extends HttpServlet {
                 int estado=operC.ActualizarUsuario(c);
 
                 if(estado >0){
-                    response.sendRedirect("Cuentas.jsp");
+                    response.sendRedirect("usuario/ajustesUsuarios.jsp");
                 }else{
-                    out.println("<h1>Valio cake</h1>");
-                    out.println("");
+                    response.sendRedirect("error.jsp");
                 }
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
                 
             

@@ -38,9 +38,9 @@ public class FinalizarPedido extends HttpServlet {
             int id_pedido = Integer.parseInt(Sid_pedido);
             boolean exp2 = Pedido.Finalizar(id_pedido);
                 if (exp2==true) {
-                    response.sendRedirect("PedidosCafeterias.jsp");
+                    response.sendRedirect("pedidosAgendados.jsp");
                 }else{
-                    out.println("<p>Ocurrio algo</p>");
+                    response.sendRedirect("error.jsp");
                 }
         }
     }

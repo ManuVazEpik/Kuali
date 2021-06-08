@@ -21,16 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Autorizar extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
+  
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -67,20 +58,20 @@ public class Autorizar extends HttpServlet {
                 Usuario c = new Usuario();
                 int estatus=c.AutorizarCafeteria(id);
                 if (estatus>0) {
-                    response.sendRedirect("SesionAdmin.jsp");
+                    response.sendRedirect("administradorGeneral/administrarCafeterias.jsp");
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else if("2".equals(tipo)){
                 Usuario c = new Usuario();
                 int estatus=c.RechazarCafeteria(id);
                 if (estatus>0) {
-                    response.sendRedirect("SesionAdmin.jsp");
+                    response.sendRedirect("administradorGeneral/administrarCafeterias.jsp");
                 }else{
-                    response.sendRedirect("Error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                out.println("<h1>No cambies nada >:|</h1>");
+                response.sendRedirect("error.jsp");
             }
             
         } catch (SQLException ex) {

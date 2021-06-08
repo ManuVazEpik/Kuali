@@ -59,22 +59,20 @@ public class Disponibilidad extends HttpServlet {
                 Productos prod=new Productos();
                 boolean estatus=prod.NoDisponible(id_prod);
                 if (estatus==true) {
-                    String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                    response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
+                    response.sendRedirect("dueno/"+"operacionProductos.jsp?admrs="+id_cafS);
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else if("NoDisponible".equals(dis)){
                 Productos prod=new Productos();
                 boolean estatus=prod.Disponible(id_prod);
                 if (estatus==true) {
-                    String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                        response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
+                    response.sendRedirect("dueno/"+"operacionProductos.jsp?admrs="+id_cafS);
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                out.println("<h1>No cambies nada >:|</h1>");
+                response.sendRedirect("error.jsp");
             }
             
         } catch (SQLException ex) {

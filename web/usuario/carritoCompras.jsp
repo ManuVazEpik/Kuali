@@ -18,13 +18,7 @@
         String usuario = "";
         HttpSession sessionOk = request.getSession();
         if (sessionOk.getAttribute("id")== null){
-    %>
-
-    <jsp:forward page="../index.html">
-        <jsp:param name="error" value="es obligatorio identificarse"></jsp:param>
-    </jsp:forward>
-
-    <%
+            response.sendRedirect("../error.jsp?admrs=2"); 
         }else{
             usuario = (String)sessionOk.getAttribute("usuario");
         }
@@ -38,6 +32,20 @@
             <div class="ubicacion">
                 <a href="./inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
             </div>
+            <%
+                String id_cafS = request.getParameter("admrs");
+                int id_caf = 0;
+                if(id_cafS!=null){
+                    id_caf = Integer.parseInt(id_cafS);
+            %>
+            
+            <div class="ubicacion">
+                <a href="./menuCafeteria.jsp?qwer=<%=id_caf%>"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
+            </div>
+            
+            <%    
+                }
+            %>
             
             <div class="pedidos-agendados">
                 <a href="./pedidosAgendados.html"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
@@ -123,6 +131,7 @@
         Min<input type="number" name="minuto"/><br>
         <%--<input hidden="" name="fecha" value="<%date.toString();%>">--%>
         <input type="hidden" name="id_usu" value="<%= sessionOk.getAttribute("id") %>">
+        <input type="hidden" name="id_caf" value="<%= id_caf %>">
         <input type="submit" value="Ordenar">
     </form>
     <%

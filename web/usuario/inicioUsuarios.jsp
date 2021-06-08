@@ -317,7 +317,7 @@
                         %>        
                         <div class="cafeteria">
                             <img src="<%=c.getFot_caf()%>" alt="Logo Cafeteria">
-                            <a href="menuCafeteria.jsp?id_caf=<%=c.getId_caf()%>">Ver menú</a>
+                            <a href="menuCafeteria.jsp?qwer=<%=c.getId_caf()%>">Ver menú</a>
                         </div>
 
                         <%

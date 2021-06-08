@@ -78,8 +78,8 @@ public class IniciarSesion extends HttpServlet {
                         }else{
                             sesionOK.setAttribute("autorizacion","0");
                         }
-                        String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                        response.sendRedirect(direccion+"/verCafeterias.jsp");
+
+                        response.sendRedirect("dueno"+"/verCafeterias.jsp");
                     }else if (perm==2) {
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);
@@ -87,7 +87,7 @@ public class IniciarSesion extends HttpServlet {
                         sesionOK.setAttribute("usuario", noms);
                         sesionOK.setAttribute("id", nivelS);
                         sesionOK.setAttribute("privilegio", privS);
-                        response.sendRedirect("usuario/ajustesUsuarios.jsp");
+                        response.sendRedirect("usuario/inicioUsuarios.jsp");
                     }else if(perm==1 && nivel!=0){
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("usuario", c);
@@ -96,30 +96,12 @@ public class IniciarSesion extends HttpServlet {
                         sesionOK.setAttribute("privilegio", privS);
                         response.sendRedirect("administradorGeneral/administrarUsuarios.jsp");
                     }else{
-                        out.println("\n" +
-                    "<!DOCTYPE html>"+
-                    "<html><head><title>Error</title><meta charset='UTF-8'>"
-                    + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"+
-                    "<link rel='stylesheet' href='css/cafeteria.css'></head><body>"+
-                    "<div style='margin-left:15%; margin-top:10rem; font-size: 40pt;'>No se encuentra la sesion, intentelo de nuevo<br>"
-                                + "<a href='IniciarSesion.jsp'>Regresar</a></div>"
-                    + ""+
-                    "</body>"+
-                    "</html>"+
-                    "");
+                        String error = "1";
+                        response.sendRedirect("error.jsp?admrs="+error);
                     }
                 }else{
-                    out.println("\n" +
-                    "<!DOCTYPE html>"+
-                    "<html><head><title>Error</title><meta charset='UTF-8'>"
-                    + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"+
-                    "<link rel='stylesheet' href='css/cafeteria.css'></head><body>"+
-                    "<div style='margin-left:15%; margin-top:10rem; font-size: 40pt;'>No se encuentra la sesion, intentelo de nuevo<br>"
-                                + "<a href='IniciarSesion.jsp'>Regresar</a></div>"
-                    + ""+
-                    "</body>"+
-                    "</html>"+
-                    "");
+                    String error = "1";
+                    response.sendRedirect("error.jsp?admrs="+error);
                 }
             }catch(Exception e){
                 System.out.println("Que pedo que pedo");

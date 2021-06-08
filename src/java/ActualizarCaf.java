@@ -25,16 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ActualizarCaf extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-    /**
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
@@ -86,19 +76,20 @@ public class ActualizarCaf extends HttpServlet {
                     int estado=operC.ActualizarCafeteria(c);
 
                     if(estado >0){
-                        String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                        response.sendRedirect(direccion+"/operacionCafeteria.jsp?admrs="+id_caf);
+                        
+                        response.sendRedirect("dueno"+"/operacionCafeteria.jsp?admrs="+id_caf);
                     }else{
-                        out.println("<h1>Valio cake</h1>");
+                        response.sendRedirect("error.jsp");
                     }
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
             
         } catch (SQLException ex) {
+            response.sendRedirect("error.jsp");
             Logger.getLogger(ActualizarCaf.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -1,9 +1,4 @@
-<%-- 
-    Document   : registroCafeterias
-    Created on : 5/06/2021, 02:03:34 AM
-    Author     : bocal
---%>
-
+<%@page import="Clases.Pedido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Cafeteria"%>
@@ -17,12 +12,9 @@ String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
 if(sessionOk.getAttribute("id")==null){
-   
-%>
-    <jsp:forward page="../index.html">
-        <jsp:param name="error" value="Es obligatorio identificarse"/>
-    </jsp:forward>}
-<%   
+
+    response.sendRedirect("../error.jsp?admrs=2"); 
+
 }else{
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
@@ -30,31 +22,49 @@ if(sessionOk.getAttribute("id")==null){
     int id_usu=Integer.parseInt(idUS);
     Usuario opc = new Usuario();
     Usuario u=opc.getUsuarioById(id_usu);
+    String tipo="";
+
+    Cafeteria operC=new Cafeteria();
+    boolean caftener=operC.comprobarCafExiste(id_usu);
     if (u.getPerm_usu()==3){
+
         ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);
+        ArrayList<Cafeteria> listaaviso = Pedido.pedidosEn15Min(id_usu);
 %>
 <!DOCTYPE html>
 <html lang="es">
+    <script>
+        function avisar(){
+            <%
+                for (Cafeteria c:listaaviso){
+                    
+            %>
+                alert("Tiene un pedido pronto de la cafeteria: "+<%=c.getNom_caf()%>)
+            <%
+                }
+            %>
+        }
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/verCafeteria.css">
+    <link rel="stylesheet" href="../css/modificarCafeterias.css">
     <title>Dashboard | KUALI</title>
 </head>
-<body>
+<body onload="avisar()">
     <div class="contenedor-dashboard">
         <div class="menu-lateral">
             <img src="../img/logos/Logo_blanco.png" alt="Logo Kuali en color blanco">
-            
+
             <div class="opciones-cafeteria">
-                <a href="./verCafeterias.jsp">
+                <a class="active" href="./verCafeterias.jsp">
                     <i class="fas fa-mug-hot fa-2x">
                         <h1 class="titulo-terciario">Ver Cafeterías</h1>
                     </i>
                 </a>
-                <a class="active"href="./registroCafeterias.jsp">
+                <a href="./registroCafeterias.jsp">
                     <i class="fas fa-mug-hot fa-2x">
                         <h1 class="titulo-terciario">Registrar Cafetería</h1>
                     </i>
@@ -69,16 +79,17 @@ if(sessionOk.getAttribute("id")==null){
                         <h2 class="titulo-terciario">Eliminar Cafeterías</h2>
                     </i>
                 </a>
-                <a href="../usuario/inicioUsuarios.jsp">
+                
+                <a href="../CerrarSesion">
                     <i class="fas fa-door-open fa-2x">
                         <h2 class="titulo-terciario">Regresar</h2>
                     </i>
                 </a>
             </div>
         </div>
+
         <div class="contenido">
             <div class="menu-administrador">
-                
                 
 
                 <div >
@@ -91,31 +102,57 @@ if(sessionOk.getAttribute("id")==null){
                 
                 
             </div>
-            <h2>Registrar una cafeteria</h2>
-            <form action="../RegistrarCaf" method="POST">
-                <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
-                <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
-                <input type="text" name="fot_caf"><br>
-                <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
-                Ingresa el nombre de tu cafeteria<input type="text" name="nom_caf"/><br>
-                Ingresa la calle de tu local<input type="text" name="calle_caf"><br>
-                Ingresa la colonia de tu local<input type="text" name="col_caf"><br>
-                Ingresa el numero de tu local<input type="text" name="num_caf"><br>
-                <input type="submit" value='Aceptar'/>
-            </form>
+            <div class="cafeterias">
+                
+            <%
+            for (Cafeteria caf : listacaf) {
+                int autorizacion=operC.comprobarAutorizacion(id_usu);
+            %>
+                <div class="cafeteria">
+                    <h1 class="titulo-terciario"><%=caf.getNom_caf()%></h1>
+                    <p class="texto"><%=caf.getDir_caf()%></p>
+                    
+                <%
+                    if (autorizacion==1) {
+                %>
+                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
+                    <form action="./operacionProductos.jsp" method="POST">
+                        <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                        <input type="submit" value="Menú"/>
+                    </form>
+                    <form action="../pedidosAgendados.jsp" method="POST">
+                        <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                        <input type="submit" value="Pedidos"/>
+                    </form>
+                <%  }else if(autorizacion==2){%>
+                    <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
+                <%  }else if(autorizacion==3){%>
+                    <p class="texto">Estatus: Inactivo <i class="fas fa-circle"></i></p>
+                <%  }   %>
+                </div>
+                <img src="<%=caf.getFot_caf()%>" width="300pt">
+            <%
+            }
+            %>
+                
+            </div>
+            <!-- AQUI EMPIEZA TU CÓDIGO URIEL XD -->
         </div>
+    </div>
+
     <!-- SCRIPTS -->
+    <script type="module" src="../js/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
 <%
+    }else if(u.getPerm_usu()==2){
+        response.sendRedirect("../usuario/inicioUsuarios.jsp");
+    }else if(u.getPerm_usu()==1){
+        response.sendRedirect("../administradorGeneral/administrarUsuarios.jsp");
     }else{
-%>        
-    <jsp:forward page="../index.html">
-        <jsp:param name="error" value="Es obligatorio identificarse"/>
-    </jsp:forward>}
-<%
+        response.sendRedirect("../index.html");
     }
+
 }
 %>

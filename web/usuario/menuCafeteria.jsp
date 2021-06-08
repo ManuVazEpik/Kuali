@@ -23,49 +23,28 @@ if(sessionOk.getAttribute("usuario")==null){
     
     try{
 
-        id_caf = Integer.parseInt(request.getParameter("id_caf"));
+        id_caf = Integer.parseInt(request.getParameter("qwer"));
 
     }catch(Exception e){
         System.out.println("Error " + e);
-        response.sendRedirect("e500.html");
+        response.sendRedirect("../error.jsp");
     }
     
 %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cafeteria </title>
+        <title>Menú | Kuali </title>
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <link rel="stylesheet" type="text/css" href="css\cafeteria.css">
     </head>
     <body>
-        <header>
+    <header>
         
-        <nav id="nav" class="nav1">
-            <div class="contenedor-nav">
-                <div class="logo">
-                    <img src="" alt="">
-                </div>
-                <div class="enlaces" id="enlaces">
-                    <!--<a href="IniciarSesion.jsp" id="enlace-" class="btn-header">Inicio de sesión</a>
-                    <a href="RegistrarUsuario.html" id="enlace-" class="btn-header">Registrarse</a>-->
-                    <a href="index.jsp" id="enlace-" class="btn-header">Cafeterias</a>
-                </div>
-                <div class="icono" id="open">
-                    <span>&#9776</span>
-                </div>
-                
-            </div>
-        </nav>
         
-        <div class="letras">
-            <h1>Instant Lunch</h1>
-            <h2>¿Que comeras hoy?</h2>
-        </div>
-    
+        <a href="inicioUsuarios.jsp" >Inicio</a>
     </header>
-        <table border="0" aling="center" width="1060px" style="font-size: 20px">
+        <table>
         <%
     
     try{
@@ -74,13 +53,13 @@ if(sessionOk.getAttribute("usuario")==null){
             int salto=0;            
             for (Productos prod: lp) {
         %>                        
-                    <th>
-                        <a href="añadirPedido.jsp?id_prod=<%= prod.getId_prod()%>"><img src="<%=prod.getFot_prod()%>" ></a><p>
-                            <%= prod.getNom_prod()%><br>
-                            Descripcion: <%= prod.getDesc_prod()%><br>
-                            Precio <%= prod.getPre_prod()%><br>
-                            <input type="hidden" value="<%= prod.getDisp_prod()%>"><br>
-                    </th>
+            <th>
+                <a href="añadirPedido.jsp?admrs=<%= prod.getId_prod()%>&ewewe=<%=id_caf%>"><img src="<%=prod.getFot_prod()%>" width="200pt" ></a><p>
+                    <%= prod.getNom_prod()%><br>
+                    Descripcion: <%= prod.getDesc_prod()%><br>
+                    Precio <%= prod.getPre_prod()%><br>
+                    <input type="hidden" value="<%= prod.getDisp_prod()%>"><br>
+            </th>
         <%
             salto++;
             if (salto == 4) {
@@ -94,7 +73,7 @@ if(sessionOk.getAttribute("usuario")==null){
             }catch(Exception e){
             
                 System.out.println("Error" + e);
-                
+                response.sendRedirect("../error.jsp");
             
             }
         %>

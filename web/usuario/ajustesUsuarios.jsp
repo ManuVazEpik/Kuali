@@ -10,12 +10,7 @@ String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
 if(sessionOk.getAttribute("id")==null){
-   
-%>
-        <jsp:forward page="../index.html">
-            <jsp:param name="error" value="Es obligatorio identificarse"/>
-        </jsp:forward>}
-<%   
+    response.sendRedirect("../error.jsp?admrs=2");  
 }else{
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");

@@ -88,16 +88,16 @@ public class RegistrarCaf extends HttpServlet {
                     int estado=operC.AñadirCafeteria(c);
 
                     if(estado >0){
-                        response.sendRedirect("dueño/verCafeterias.jsp");
+                        response.sendRedirect("dueno/verCafeterias.jsp");
                     }else{
-                        System.out.println("todo bien");
+                        response.sendRedirect("error.jsp");
                     }
 
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
         }
     }

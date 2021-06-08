@@ -22,16 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author bocal
  */
 public class EliminarPro extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     
   
     /**
@@ -70,8 +60,7 @@ public class EliminarPro extends HttpServlet {
             Productos opc = new Productos();
             int estatus=opc.Eliminar(id);
             if(estatus>0){
-                String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
+                response.sendRedirect("dueno/"+"operacionProductos.jsp?admrs="+id_cafS);
             }else{
                 response.sendRedirect("error.jsp");
             }
