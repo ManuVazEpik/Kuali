@@ -84,6 +84,10 @@
         <servlet-name>EliminarDelCarro</servlet-name>
         <servlet-class>EliminarDelCarro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarTodoCarro</servlet-name>
+        <servlet-class>EliminarTodoCarro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrarUsu</servlet-name>
         <url-pattern>/RegistrarUsu</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>EliminarDelCarro</servlet-name>
         <url-pattern>/EliminarDelCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarTodoCarro</servlet-name>
+        <url-pattern>/EliminarTodoCarro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

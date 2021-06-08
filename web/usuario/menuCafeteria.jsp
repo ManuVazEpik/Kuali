@@ -40,8 +40,6 @@ if(sessionOk.getAttribute("usuario")==null){
     </head>
     <body>
     <header>
-        
-        
         <a href="inicioUsuarios.jsp" >Inicio</a>
     </header>
         <table>

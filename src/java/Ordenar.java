@@ -63,7 +63,7 @@ public class Ordenar extends HttpServlet {
 
                             boolean flag = p.registrarPedido(p, productos);
                             if (flag) {
-                                response.sendRedirect("index.jsp");
+                                response.sendRedirect("EliminarTodoCarro");
                             }else{
                                 response.sendRedirect("error.jsp");
                             }

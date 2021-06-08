@@ -35,7 +35,7 @@ if(sessionOk.getAttribute("usuario")==null){
         }else{
             id_caf=Integer.parseInt(id_cafS);
         }
-    
+        Pedido.checkoutPendientes(id_caf, false);
 %>
 <!DOCTYPE html>
 <html>
