@@ -43,7 +43,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="ubicacion">
-                <a href="../dueño/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
+                <a href="../dueno/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
             </div>
             
             <div class="pedidos-agendados">

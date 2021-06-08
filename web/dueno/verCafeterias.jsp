@@ -22,10 +22,8 @@ if(sessionOk.getAttribute("id")==null){
     int id_usu=Integer.parseInt(idUS);
     Usuario opc = new Usuario();
     Usuario u=opc.getUsuarioById(id_usu);
-    String tipo="";
 
     Cafeteria operC=new Cafeteria();
-    boolean caftener=operC.comprobarCafExiste(id_usu);
     if (u.getPerm_usu()==3){
 
         ArrayList<Cafeteria> listacaf = Cafeteria.getCafeteriaById(id_usu);
@@ -35,11 +33,12 @@ if(sessionOk.getAttribute("id")==null){
 <html lang="es">
     <script>
         function avisar(){
+            console.log("Se hace?");
             <%
                 for (Cafeteria c:listaaviso){
                     
             %>
-                alert("Tiene un pedido pronto de la cafeteria: "+<%=c.getNom_caf()%>)
+                alert("Tiene un pedido pronto de la cafeteria: <%=c.getNom_caf()%>")
             <%
                 }
             %>

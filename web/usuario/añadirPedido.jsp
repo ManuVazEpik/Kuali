@@ -62,15 +62,18 @@
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <th><input type="text" name="nomtxt" value="<%= prod.getNom_prod()%>" readonly=""></th>
+                        <th><%= prod.getNom_prod()%>
+                            <input type="hidden" name="nomtxt" value="<%= prod.getNom_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
                         <th>Descripcion</th>
-                        <th><input type="text" name="desctxt" value="<%= prod.getDesc_prod()%>" readonly=""></th>
+                        <th><%= prod.getDesc_prod()%>
+                            <input type="hidden" name="desctxt" value="<%= prod.getDesc_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
                         <th>Precio</th>
-                        <th><input type="text" name="preciotxt" value="<%= prod.getPre_prod()%>" readonly=""></th>
+                        <th>$<%= prod.getPre_prod()%>
+                            <input type="hidden" name="preciotxt" value="<%= prod.getPre_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
                         <th>Cantidad</th>

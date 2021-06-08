@@ -134,13 +134,14 @@
             <option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option>
             <option>19</option><option>20</option>
         </select><br>
+        Min
         <select name='minuto'>
             <option>00</option>
             <option>15</option>
             <option>30</option>
             <option>45</option>
         </select>
-        Min<input type="number" name="minuto"/><br>
+        <br>
         <%--<input hidden="" name="fecha" value="<%date.toString();%>">--%>
         <input type="hidden" name="id_usu" value="<%= sessionOk.getAttribute("id") %>">
         <input type="hidden" name="id_caf" value="<%= id_caf %>">

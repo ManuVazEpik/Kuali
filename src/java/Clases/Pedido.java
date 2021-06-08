@@ -117,9 +117,7 @@ public class Pedido {
             pr.setInt(5, 24);
             pr.setDouble(6, p.getTot_ped());
             
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             if (pr.executeUpdate() == 1) {
-                System.out.println("bbbbbbbbbbbbbbb");
                 int codigo = this.ultimoCodigoInsertado(cn);
                 registro = this.registrarDetalleVenta(codigo, ldp, cn);
                 
@@ -145,7 +143,6 @@ public class Pedido {
             for (DetallePedido dp : ldp) {
                 String q = "insert into DPedido (id_ped, id_prod, cant_prod, sub_dped) values (?, ?, ?, ?)";
                 pr = cn.prepareStatement(q);
-                System.out.println("Codigo"+codigo);
                 pr.setInt(1, codigo);
                 pr.setInt(2, dp.getId_prod());
                 pr.setInt(3, dp.getCant_detPed());
@@ -389,7 +386,6 @@ public class Pedido {
                         comp=false;
                     }
                 }
-                
             }else{
                 comp = false;
             }
@@ -488,7 +484,6 @@ public class Pedido {
             if(usu==false){
                 sql="select mpedido.id_ped, id_chora, id_minuto, fecha_ped, status_ped, total_ped from mpedido, dpedido, mproducto where "
                         + "mpedido.id_ped=dpedido.id_ped and dpedido.id_prod=mproducto.id_prod and id_caf=?";
-                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
             }else if(usu==true){
                 sql="select id_ped, id_chora, id_minuto, fecha_ped, status_ped, total_ped from mpedido where id_usu=?";
             }
@@ -552,10 +547,10 @@ public class Pedido {
                     int horaactual=fechaactual.getHours();
                     int minactual = fechaactual.getMinutes();
 
-                    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+                    
                     if(Integer.parseInt(año)==Integer.parseInt(añoactual) && Integer.parseInt(mes)==Integer.parseInt(mesactual)
                             && Integer.parseInt(dia)==Integer.parseInt(diaactual)){
-                        System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+                        
                         Hora h= oh.getHoraById(p.getId_hora());
                         Minuto m=om.getMinutoById(p.getId_min());
 
@@ -616,7 +611,9 @@ public class Pedido {
             }
             
             for(Pedido p:listaPedidos){
-                if(p.getStatus_ped()==3){
+                
+                if(p.getStatus_ped()==24){
+                    
                     String fecha=p.getFecha_ped();
                     String año="", mes="", dia="";
                     int contador=0;
@@ -660,13 +657,11 @@ public class Pedido {
                     int horaactual=fechaactual.getHours();
                     int minactual = fechaactual.getMinutes();
 
-                    
                     if(Integer.parseInt(año)==Integer.parseInt(añoactual) && Integer.parseInt(mes)==Integer.parseInt(mesactual)
                             && Integer.parseInt(dia)==Integer.parseInt(diaactual)){
                         
                         Hora h= oh.getHoraById(p.getId_hora());
                         Minuto m=om.getMinutoById(p.getId_min());
-
                         
                         String min =m.getMinuto();
                         if (min.equals("00")) {
@@ -680,7 +675,8 @@ public class Pedido {
                         }else{
                             if (Integer.parseInt(h.getHora())==horaactual) {
                                 int resta = Integer.parseInt(m.getMinuto())-15;
-                                if (minactual>=resta && minactual<=resta) {
+                                int suma = Integer.parseInt(m.getMinuto());
+                                if (minactual>=resta && minactual<=suma) {
                                     Cafeteria c = new Cafeteria();
                                     c.setNom_caf(p.getNom_caf());
                                     listaCafeteria.add(c);

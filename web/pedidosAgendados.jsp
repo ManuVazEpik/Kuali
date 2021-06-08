@@ -18,15 +18,12 @@ if(sessionOk.getAttribute("usuario")==null){
     response.sendRedirect("../error.jsp?admrs=2");
 }else{
 
-    String usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");    
     Cafeteria opcaf= new Cafeteria();
     Pedido opP = new Pedido();
     boolean caftener = opcaf.comprobarCafExiste(Integer.parseInt(idUS));
     
     if(caftener==true){
-        Cafeteria caf= opcaf.getCafeteriaByIdCaf(Integer.parseInt(idUS));
-        caf.getId_caf();
         String id_cafS=request.getParameter("admrs");
         
         int id_caf=0;

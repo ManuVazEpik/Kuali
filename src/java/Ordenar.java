@@ -59,8 +59,7 @@ public class Ordenar extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         ArrayList<DetallePedido> productos = session.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList) session.getAttribute("carrito") ;
 
-                        if (productos.size() > 0) {
-
+                        if (productos.size() > 0 && productos.size()<=5) {
                             boolean flag = p.registrarPedido(p, productos);
                             if (flag) {
                                 response.sendRedirect("EliminarTodoCarro");

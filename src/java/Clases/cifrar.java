@@ -28,18 +28,10 @@ public class cifrar {
         
         SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
         
-        System.out.println("Llave: "+key);
-        
         Cipher cifrado;
         
         try{
         
-            System.out.println("Verificamos el llenado de datos");
-            System.out.println(nombre);
-            System.out.println(apellidoPat);
-            System.out.println(apellidoMat);
-            System.out.println(tel);
-            System.out.println("***********************************");
             
             cifrado = Cipher.getInstance("AES");
             
@@ -62,13 +54,6 @@ public class cifrar {
             String correoB64 = new String(encodeBase64(campoCorreo));
             String passB64 = new String(encodeBase64(campoPass));
             
-            
-            /*Comprobación de los datos cifrados*/
-            System.out.println("Esto pertenece a la clase cifrado");
-            System.out.println("Nombre: "+nombreB64);
-            System.out.println("Apellido Paterno: "+apellidoPatB64);
-            System.out.println("Apellido Materno: " + apellidoMatB64);
-            System.out.println("Telefono: "+ telB64);
             
             usuario.setNom_usu(nombreB64);
             usuario.setAppat_usu(apellidoPatB64);
@@ -103,15 +88,10 @@ public class cifrar {
         try{
             
             cifrado = Cipher.getInstance("AES");
-            System.out.println("Creado cifrado con AES");
-            cifrado.init(Cipher.DECRYPT_MODE, key);
-            System.out.println("Iniciamos cifrado en modo decrypt");
             
-            /* Revisamos el llenado de datos */
-            System.out.println(nombre);
-            System.out.println(apellidoPat);
-            System.out.println(apellidoMat);
-            System.out.println(tel);
+            cifrado.init(Cipher.DECRYPT_MODE, key);
+            
+            
             
             /*Recuperamos primero con BASE64*/
             byte nomB[] = decodeBase64(nombre);
