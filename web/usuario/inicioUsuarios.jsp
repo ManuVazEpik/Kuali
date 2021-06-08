@@ -23,7 +23,7 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
+                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
             
             <div class="pedidos-agendados">
@@ -31,17 +31,17 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
             </div>
     
             <div class="opciones-usuario">
-                <div class="caja_busqueda">
+                <!-- <div class="caja_busqueda">
                     <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
                     
                     <a class="boton_buscar">
                         <i class="fas fa-search"></i>
                     </a>
-                </div>
+                </div> -->
                 
                 <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
             </div>
@@ -134,7 +134,7 @@
     
         <div class="contenedor-favoritos">
             <div class="encabezado">
-                <h2 class="titulo-terciario">Tus Favoritos</h2>
+                <h2 class="titulo-terciario">Bebidas Especiales</h2>
                 <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
             </div>
 

@@ -43,7 +43,9 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="ubicacion">
+
                 <a href="../dueno/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
+
             </div>
             
             <div class="pedidos-agendados">
@@ -60,7 +62,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
 
             <div class="ubicacion">
-                <a href="./carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
+                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
             
             <div class="pedidos-agendados">
@@ -68,7 +70,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="ubicacion">
-                <a href="./inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
+                <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
             </div>
     
             <div class="opciones-usuario">

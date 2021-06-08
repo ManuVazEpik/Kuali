@@ -24,7 +24,7 @@
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
     <link rel="stylesheet" href="../css/ajustesUsuarios.css">
-    <title>Ajustes | KUALI</title>
+    <title>Agregar Producto | KUALI</title>
     </head>
     <body>
     <% 
@@ -43,7 +43,12 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-map-marker-alt fa-lg"></i>Regresar al Menú</a>
+                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
+            </div>
+            
+            <div class="ubicacion">
+                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-store-alt fa-lg"></i>Regresar al Menú</a>
+
             </div>
     
             <div class="opciones-usuario">

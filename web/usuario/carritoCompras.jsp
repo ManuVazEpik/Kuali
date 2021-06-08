@@ -12,7 +12,7 @@
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
     <link rel="stylesheet" href="../css/ajustesUsuarios.css">
-    <title>Ajustes | KUALI</title>
+    <title>Mi carrito | KUALI</title>
 </head>
 <body>
     <%
@@ -31,7 +31,7 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
+                <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
             </div>
             <%
                 String id_cafS = request.getParameter("admrs");
@@ -53,7 +53,7 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
             </div>
     
             <div class="opciones-usuario">
