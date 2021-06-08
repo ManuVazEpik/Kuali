@@ -124,6 +124,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
                         <th class="titulo-terciario">Nombre</th>
                         <th class="titulo-terciario">Direccion</th>
                         <th class="titulo-terciario">ID de Usuario</th>
+                        <th class="titulo-terciario">Cambiar a Destacada</th>
                         <th class="titulo-terciario borderF">Eliminar</th>
                     </thead>
                 <%
@@ -134,11 +135,28 @@ if (sesionOk.getAttribute("usuario") == null ) {
                         <td><%=c.getNom_caf()%></td>
                         <td><%=c.getDir_caf()%></td>
                         <td><%=c.getId_usu()%></td>
-                        <td><form action="EliminarUsu" method="POST">
+                        <td><form action="../EliminarCaf" method="POST">
                             <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
                             <input type="hidden" name="tipo" value="3"/>
                             <input type="submit" value="Eliminar" class="rechazar"/>
                         </form></td>
+                        <%
+                            if(c.getDest_caf()==false){
+                        %>
+                        <td><form action="../Destacada" method="POST">
+                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                            <input type="submit" value="Autorizar Destacada" class="rechazar"/>
+                        </form></td>
+                        <%
+                            }else{
+                        %>
+                        <td><form action="../NoDestacada" method="POST">
+                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                            <input type="submit" value="Quitar Destacada" class="rechazar"/>
+                        </form></td>
+                        <%
+                            }
+                        %>
                     </tr>
                 <%
                     }

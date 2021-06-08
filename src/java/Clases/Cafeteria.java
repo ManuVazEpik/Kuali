@@ -25,6 +25,15 @@ public class Cafeteria {
     private String dir_caf,nom_caf;
     private String fot_caf;
     private boolean aut_caf;
+    private boolean dest_caf;
+
+    public boolean getDest_caf() {
+        return dest_caf;
+    }
+
+    public void setDest_caf(boolean dest_caf) {
+        this.dest_caf = dest_caf;
+    }
 
     public int AñadirCafeteria(Cafeteria c){
         int estatus = -1;
@@ -120,6 +129,81 @@ public class Cafeteria {
         return compro;
     }
     
+    public static ArrayList<Cafeteria> getCafeteriasDestacadas(){
+        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
+        try{
+            Connection con = conexion.getConexion();
+            String sql = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            
+            sql="select * from cafeteria where aut_caf=1 and dest_caf=true";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Cafeteria c = new Cafeteria();
+                    c.setId_caf(rs.getInt(1));
+                    c.setNom_caf(rs.getString(2));
+                    c.setDir_caf(rs.getString(3));
+                    c.setFot_caf(rs.getString(4));
+                    c.setId_usu(rs.getInt(6));
+                lista.add(c);
+            }            
+            con.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return lista;
+    }
+    
+    public static boolean cambiarCafNoDestacada(int id_caf) throws SQLException{
+        
+        boolean compro = true;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        try{
+            con = conexion.getConexion();
+            q ="update cafeteria set dest_caf=false where id_caf=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id_caf);
+            ps.executeUpdate();
+            compro=true;
+            
+        }catch(Exception e){
+            compro=false;
+            System.out.println(e.getMessage());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return compro;
+    }
+    
+    public static boolean cambiarCafDestacada(int id_caf) throws SQLException{
+        
+        boolean compro = true;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String q=null;
+        try{
+            con = conexion.getConexion();
+            q ="update cafeteria set dest_caf=true where id_caf=?";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, id_caf);
+            ps.executeUpdate();
+            compro=true;
+            
+        }catch(Exception e){
+            compro=false;
+            System.out.println(e.getMessage());
+        }finally{
+            ps.close();
+            con.close();
+        }
+        return compro;
+    }
+    
     public boolean comprobarCafExiste(int id_usu) throws SQLException{
         
         boolean compro = true;
@@ -164,6 +248,7 @@ public class Cafeteria {
                     c.setDir_caf(rs.getString(3));
                     c.setFot_caf(rs.getString(4));
                     c.setId_usu(rs.getInt(6));
+                    c.setDest_caf(rs.getBoolean(7));
                 lista.add(c);
             }            
             con.close();
