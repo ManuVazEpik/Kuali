@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
     <link rel="stylesheet" href="../css/inicioUsuarios.css">
     <title>Inicio | KUALI</title>
@@ -54,18 +55,18 @@
                 <div class="contenedor-grid">
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                             <p class="texto-promocion">Solo $40.00 MXM</p>
                         </div>
 
                         <div class="descripcion">
                             <div class="producto">
-                                <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                                <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                                 <hr />
-                                <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                                <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                             </div>
                             <div class="boton">
-                                <a href="">¡ Lo quiero !</a>
+                                <a href="">ï¿½ Lo quiero !</a>
                             </div>
 
                         </div>
@@ -73,18 +74,18 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                             <p class="texto-promocion">Solo $40.00 MXM</p>
                         </div>
 
                         <div class="descripcion">
                             <div class="producto">
-                                <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                                <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                                 <hr />
-                                <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                                <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                             </div>
                             <div class="boton">
-                                <a href="">¡ Lo quiero !</a>
+                                <a href="">ï¿½ Lo quiero !</a>
                             </div>
 
                         </div>
@@ -92,18 +93,18 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                             <p class="texto-promocion">Solo $40.00 MXM</p>
                         </div>
 
                         <div class="descripcion">
                             <div class="producto">
-                                <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                                <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                                 <hr />
-                                <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                                <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                             </div>
                             <div class="boton">
-                                <a href="">¡ Lo quiero !</a>
+                                <a href="">ï¿½ Lo quiero !</a>
                             </div>
 
                         </div>
@@ -111,18 +112,18 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                            <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                             <p class="texto-promocion">Solo $40.00 MXM</p>
                         </div>
 
                         <div class="descripcion">
                             <div class="producto">
-                                <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                                <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                                 <hr />
-                                <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                                <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                             </div>
                             <div class="boton">
-                                <a href="">¡ Lo quiero !</a>
+                                <a href="">ï¿½ Lo quiero !</a>
                             </div>
 
                         </div>
@@ -140,18 +141,18 @@
             <div class="contenedor-grid">
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -159,18 +160,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -178,18 +179,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -197,18 +198,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -225,18 +226,18 @@
             <div class="contenedor-grid">
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -244,18 +245,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -263,18 +264,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -282,18 +283,18 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Café"> -->
+                        <!-- <img src="../../img/productos/Cafe 1.jpg" alt="Primer Cafï¿½"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
                     <div class="descripcion">
                         <div class="producto">
-                            <p class="texto-producto">Capuchino de Moka | Cafetería 1</p>
+                            <p class="texto-producto">Capuchino de Moka | Cafeterï¿½a 1</p>
                             <hr />
-                            <p class="texto-etiquetas">Capuchino | Café | Promociones | Moka</p>
+                            <p class="texto-etiquetas">Capuchino | Cafï¿½ | Promociones | Moka</p>
                         </div>
                         <div class="boton">
-                            <a href="">¡ Lo quiero !</a>
+                            <a href="">ï¿½ Lo quiero !</a>
                         </div>
 
                     </div>
@@ -305,7 +306,7 @@
     
         <div class="menus-cafeterias">
             <div class="encabezado">
-                <h2 class="titulo-terciario">Cafeterías</h2>
+                <h2 class="titulo-terciario">Cafeterï¿½as</h2>
                 <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
                 
                 <div class="contenedor-cafeterias">
@@ -317,7 +318,7 @@
                         %>        
                         <div class="cafeteria">
                             <img src="<%=c.getFot_caf()%>" alt="Logo Cafeteria">
-                            <a href="menuCafeteria.jsp?id_caf=<%=c.getId_caf()%>">Ver menú</a>
+                            <a href="menuCafeteria.jsp?id_caf=<%=c.getId_caf()%>">Ver menï¿½</a>
                         </div>
 
                         <%
@@ -336,7 +337,7 @@
     <footer>
         <div class="presentacion-kuali">
             <h3>KUALI</h3>
-            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
+            <p>El ï¿½nico sistema de servicio instantï¿½neo y reservaciones en la CDMX.</p>
         </div>
 
         <div class="redes-sociales">
@@ -344,9 +345,9 @@
         </div>
 
         <div class="derechos">
-            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
+            <p>ï¿½ 2021 Axolo Software. Todos los derechos reservados.</p>
             <div class="enlacer">
-                <a href="../avisoPrivacidad.html">Política de privacidad</a>
+                <a href="../avisoPrivacidad.html">Polï¿½tica de privacidad</a>
                 <a href="../terminosyCondiciones.html">Terminos y Condiciones</a>
             </div>
         </div>

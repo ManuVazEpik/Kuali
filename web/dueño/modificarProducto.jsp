@@ -40,6 +40,7 @@ if(sessionOk.getAttribute("usuario")==null){
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
         <title>Editar</title>
     </head>
     <body>
