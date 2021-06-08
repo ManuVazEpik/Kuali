@@ -37,6 +37,7 @@ public class Pedidos extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             int cantidad = Integer.parseInt(request.getParameter("cantidadtxt"));
             int id = Integer.parseInt(request.getParameter("idtxt"));
+            int id_caf = Integer.parseInt(request.getParameter("id_caftxt"));
             double subtotal= Double.parseDouble(request.getParameter("preciotxt"));
             
             HttpSession session = request.getSession(true);
@@ -78,9 +79,9 @@ public class Pedidos extends HttpServlet {
                     productos.add(pedido);
                     session.setAttribute("carrito", productos);
                 }
-                response.sendRedirect("usuario/carritoCompras.jsp");
+                response.sendRedirect("usuario/carritoCompras.jsp?admrs="+id_caf);
             }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
 
         }catch(Exception e){

@@ -8,13 +8,14 @@ String usuario = "";
 HttpSession sesionOk = request.getSession();
 String priv=(String)sesionOk.getAttribute("privilegio");
 if (sesionOk.getAttribute("usuario") == null ) {
-%>
-<jsp:forward page="../IniciarSesion.jsp">
-<jsp:param name="error" value="Es obligatorio identificarse"/>
-</jsp:forward>
-<%
-} else if("2".equals(priv) || "3".equals(priv)){
-    response.sendRedirect("../usuario/ajustesUsuarios.jsp");
+    
+    response.sendRedirect("../error.jsp?admrs=2");
+} else if("2".equals(priv)){
+    
+    response.sendRedirect("../usuario/inicioUsuarios.jsp");
+} else if("3".equals(priv)){
+    
+    response.sendRedirect("../dueno/verCafeterias.jsp");
 } else {
     usuario = (String)sesionOk.getAttribute("usuario");
 }

@@ -37,7 +37,7 @@ public class Ordenar extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            System.out.println("------------------------");
+            String id_cafS=request.getParameter("id_caf");
             String fecha = request.getParameter("fecha");
             int hora = Integer.parseInt(request.getParameter("hora"));
             String min = request.getParameter("minuto");
@@ -45,10 +45,10 @@ public class Ordenar extends HttpServlet {
             
             if(hora!=7 && hora!=8 && hora!=9 && hora!=10 && hora!=11 && hora!=12 && hora!=13 && hora!=14 && 
                 hora!=15 && hora!=16 && hora!=17 && hora!=18 && hora!=19 && hora!=20){
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }else{
                 if(!"00".equals(min) && !"15".equals(min) && !"30".equals(min) && !"45".equals(min)){
-                   response.sendRedirect("error.html");
+                   response.sendRedirect("error.jsp");
                 }else{
                     
                     int id = Integer.parseInt(request.getParameter("id_usu"));
@@ -63,15 +63,15 @@ public class Ordenar extends HttpServlet {
 
                             boolean flag = p.registrarPedido(p, productos);
                             if (flag) {
-                                response.sendRedirect("index.jsp");
+                                response.sendRedirect("EliminarTodoCarro");
                             }else{
-                                response.sendRedirect("error.html");
+                                response.sendRedirect("error.jsp");
                             }
                         }else{
-                            response.sendRedirect("index.html");
+                            response.sendRedirect("error.jsp");
                         }
                     }else{
-                        out.println("<p>Lo sentimos, la fecha elegida ya está ocupada. Por favor, escoja otro horario</p>");
+                        response.sendRedirect("error.jsp?admrs=3&ewewe="+id_cafS);
                     }
                 }
             }

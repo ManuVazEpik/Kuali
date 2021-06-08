@@ -15,11 +15,7 @@ String idUS = "";
 HttpSession sessionOk = request.getSession();
 
 if(sessionOk.getAttribute("usuario")==null){
-%>
-        <jsp:forward page="index.html">
-            <jsp:param name="error" value="Es obligatorio identificarse"/>
-        </jsp:forward>
-<%
+    response.sendRedirect("../error.jsp?admrs=2");
 }else{
 
     String usuario = (String)sessionOk.getAttribute("usuario");
@@ -27,34 +23,55 @@ if(sessionOk.getAttribute("usuario")==null){
     Cafeteria opcaf= new Cafeteria();
     Pedido opP = new Pedido();
     boolean caftener = opcaf.comprobarCafExiste(Integer.parseInt(idUS));
+    
     if(caftener==true){
-    
-
-    Cafeteria caf= opcaf.getCafeteriaByIdCaf(Integer.parseInt(idUS));
-    caf.getId_caf();
-    int id_caf=Integer.parseInt(request.getParameter("admrs").trim());
-    
+        Cafeteria caf= opcaf.getCafeteriaByIdCaf(Integer.parseInt(idUS));
+        caf.getId_caf();
+        String id_cafS=request.getParameter("admrs");
+        
+        int id_caf=0;
+        if (id_cafS==null) {
+            response.sendRedirect("dueno/verCafeterias.jsp");
+        }else{
+            id_caf=Integer.parseInt(id_cafS);
+        }
+        Pedido.checkoutPendientes(id_caf, false);
 %>
 <!DOCTYPE html>
-
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PedidosPendientes</title>
-        
+        <title>Pedidos Pendientes</title>
+        <script>
+            function aviso(){
+            <%
+                String confS = request.getParameter("kik");
+                if(confS !=null)  {
+                    int conf = Integer.parseInt(confS);
+                    if (conf==1) {
+            %>
+                    alert("Se ha cancelado");
+            <%  
+                    }else if(conf==2){
+            %>
+                    alert("No se ha cancelado");
+            <%
+                    }
+                }
+            %>
+            }
+        </script>
     </head>
-    <body>
+    <body onload="aviso()">
         
-        
-
+        <a href="./dueno/verCafeterias.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Administrar Cafeterias</a>
+        <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
         <h1>Pedidos Pendientes</h1>
         <%
         DetallePedido odp = new DetallePedido();
         Pedido op = new Pedido();
         ArrayList<Pedido> listap= op.getPedidosCaf(id_caf);
-        System.out.println(id_caf);
-        System.out.println("Lista?"+listap.size());
+        
         //ArrayList<DetallePedido> listadp = odp.getDetallePedidoCaf(id_caf);
         //for(DetallePedido dp:listadp){
         int contador=0;
@@ -112,7 +129,7 @@ if(sessionOk.getAttribute("usuario")==null){
         }
 
         %>
-        <a href="ModificarCafeteria.jsp">Regresar</a>
+        
     </body>
 </html>
 <%
@@ -123,10 +140,34 @@ if(sessionOk.getAttribute("usuario")==null){
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pedidos Próximos</title>
+        <title>Pedidos Agendados</title>
+    <script>
+            function aviso(){
+            <%
+                String confS = request.getParameter("kik");
+                if(confS !=null)  {
+                    int conf = Integer.parseInt(confS);
+                    if (conf==1) {
+            %>
+                    alert("Se ha cancelado");
+            <%  
+                    }else if(conf==2){
+            %>
+                    alert("No se ha cancelado");
+            <%
+                    }
+                }
+            %>
+            }
+        </script>
     </head>
-    <body>
-        <h1>Pedidos Próximos</h1>
+    <body onload="aviso()">
+        
+            <a href="./index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+            <a href="./usuario/carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
+            <a href="./pedidosAgendados.html"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+            <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+        <h1>Pedidos Agendos</h1>
         <%
         DetallePedido odp = new DetallePedido();
         Pedido op = new Pedido();
@@ -174,7 +215,7 @@ if(sessionOk.getAttribute("usuario")==null){
             contador=p.getId_ped();
         }
         %>
-        <a href="index.jsp">Regresar</a>
+        
     </body>
 </html>
 

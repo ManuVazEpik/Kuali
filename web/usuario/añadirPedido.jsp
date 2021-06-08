@@ -1,13 +1,20 @@
-
 <%@page import="Clases.Cafeteria"%>
 <%@page import="Clases.Productos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     Productos oprod = new Productos();
-    Productos prod = oprod.getProductoById(Integer.parseInt(request.getParameter("id_prod")));
-    Cafeteria caf = new Cafeteria();
     
+    Cafeteria caf = new Cafeteria();
+    int id_prod=0;
+    int id_caf=0;
+    try{
+        id_prod = Integer.parseInt(request.getParameter("admrs").trim());
+        id_caf = Integer.parseInt(request.getParameter("ewewe").trim());
+    }catch(Exception e){
+        response.sendRedirect("../error.jsp");
+    }
+    Productos prod = oprod.getProductoById(id_prod);
 %>
 <html lang="es">
     <head>
@@ -24,13 +31,7 @@
         String usuario = "";
         HttpSession sessionOk = request.getSession();
         if (sessionOk.getAttribute("usuario")== null) {
-    %>
-
-    <jsp:forward page="../index.html">
-        <jsp:param name="error" value="es obligatorio identificarse"></jsp:param>
-    </jsp:forward>
-
-    <%
+            response.sendRedirect("../error.jsp?admrs=2"); 
         }else{
             usuario = (String)sessionOk.getAttribute("usuario");
         }
@@ -46,7 +47,8 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
+                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-store-alt fa-lg"></i>Regresar al Menú</a>
+
             </div>
     
             <div class="opciones-usuario">
@@ -59,7 +61,9 @@
                 <form method="POST" action="../Pedidos">
                     <tr>
                         <th rowspan="5"><img src="<%= prod.getFot_prod()%>" width="140px" height="140px"></th> 
-                        <th><input hidden="" type="number" name="idtxt" value="<%= prod.getId_prod()%>" readonly=""></th>
+                        <th><input hidden="" type="number" name="idtxt" value="<%= prod.getId_prod()%>" readonly="">
+                        <input hidden="" type="number" name="id_caftxt" value="<%=id_caf%>" readonly=""></th>
+                        </th>
                     </tr>
                     <tr>
                         <th>Nombre</th>
@@ -96,8 +100,8 @@
         <div class="derechos">
             <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
             <div class="enlacer">
-                <a href="./avisoPrivacidad.html">Política de privacidad</a>
-                <a href="./terminosyCondiciones.html">Terminos y Condiciones</a>
+                <a href="../avisoPrivacidad.html">Política de privacidad</a>
+                <a href="../terminosyCondiciones.html">Terminos y Condiciones</a>
             </div>
         </div>
     </footer>

@@ -91,17 +91,16 @@ public class RegistrarPro extends HttpServlet {
                     c.setDisp_prod(disp_prod);
                     int estado=operC.Guardar(c);
                     if(estado >0){
-                        String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                        response.sendRedirect(direccion+"operacionProductos.jsp?admrs="+id_cafS);
+                        
+                        response.sendRedirect("dueno/"+"operacionProductos.jsp?admrs="+id_cafS);
                     }else{
-                        out.println("<h1>Valio cake</h1>");
-                        out.println("");
+                        response.sendRedirect("error.jsp");
                     }
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
             
         }

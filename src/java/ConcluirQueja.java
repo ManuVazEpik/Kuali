@@ -32,7 +32,7 @@ public class ConcluirQueja extends HttpServlet {
             if (estatus>0) {
                 response.sendRedirect("administradorGeneral/administrarQuejas.jsp");
             }else{
-                out.println("Error");
+                response.sendRedirect("error.jsp");
             }
         } catch (SQLException ex) {
             Logger.getLogger(ConcluirQueja.class.getName()).log(Level.SEVERE, null, ex);

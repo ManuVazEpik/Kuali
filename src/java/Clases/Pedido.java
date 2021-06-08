@@ -59,7 +59,7 @@ public class Pedido {
         ResultSet rs = null;
         
         int id_h;
-        System.out.println("eeeeeeeeeeeeeeeeeeeee"+p.getHora());
+        
         if(p.getHora()==7){
             id_h=4;
         }else if(p.getHora()==8){
@@ -298,13 +298,11 @@ public class Pedido {
         PreparedStatement ps=null;
         try{
             con = conexion.getConexion();
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            //"update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
-            String sql="update mpedido set status_ped=2 where id_ped=?";
+            
+            String sql="update mpedido set status_ped=14 where id_ped=?";
             ps = con.prepareStatement(sql);
             ps.setInt(1, id_pedido);
             ps.executeUpdate();
-            System.out.println("sssssssssssssssssssssssssssssssssssss");
             comp=true;
         }catch(Exception e){
             System.out.println("Error comprobacion pedido");
@@ -411,52 +409,52 @@ public class Pedido {
         
         int id_h;
         if(p.getHora()==7){
-            id_h=1;
-        }else if(p.getHora()==8){
-            id_h=2;
-        }else if(p.getHora()==9){
-            id_h=3;
-        }else if(p.getHora()==10){
             id_h=4;
-        }else if(p.getHora()==11){
-            id_h=5;
-        }else if(p.getHora()==12){
-            id_h=6;
-        }else if(p.getHora()==13){
-            id_h=7;
-        }else if(p.getHora()==14){
-            id_h=8;
-        }else if(p.getHora()==15){
-            id_h=9;
-        }else if(p.getHora()==16){
-            id_h=10;
-        }else if(p.getHora()==17){
-            id_h=11;
-        }else if(p.getHora()==18){
-            id_h=12;
-        }else if(p.getHora()==19){
-            id_h=13;
-        }else if(p.getHora()==20){
+        }else if(p.getHora()==8){
             id_h=14;
+        }else if(p.getHora()==9){
+            id_h=24;
+        }else if(p.getHora()==10){
+            id_h=34;
+        }else if(p.getHora()==11){
+            id_h=44;
+        }else if(p.getHora()==12){
+            id_h=54;
+        }else if(p.getHora()==13){
+            id_h=64;
+        }else if(p.getHora()==14){
+            id_h=74;
+        }else if(p.getHora()==15){
+            id_h=84;
+        }else if(p.getHora()==16){
+            id_h=94;
+        }else if(p.getHora()==17){
+            id_h=104;
+        }else if(p.getHora()==18){
+            id_h=114;
+        }else if(p.getHora()==19){
+            id_h=124;
+        }else if(p.getHora()==20){
+            id_h=134;
         }else{
             return exp;
         }
         
         int id_m;
         if("15".equals(p.getMin())){
-            id_m=1;
-        }else if("30".equals(p.getMin())){
-            id_m=2;
-        }else if("45".equals(p.getMin())){
-            id_m=3;
-        }else if("00".equals(p.getMin())){
             id_m=4;
+        }else if("30".equals(p.getMin())){
+            id_m=14;
+        }else if("45".equals(p.getMin())){
+            id_m=24;
+        }else if("00".equals(p.getMin())){
+            id_m=34;
         }else{
             return exp;
         }
         try{
             con = conexion.getConexion();
-            String sql="select * from mpedido where fecha_ped=? and id_chora=? and id_minuto=? and status_ped=3";
+            String sql="select * from mpedido where fecha_ped=? and id_chora=? and id_minuto=? and status_ped=24";
             ps = con.prepareStatement(sql);
             ps.setString(1, p.getFecha_ped());
             ps.setInt(2, id_h);
@@ -467,7 +465,6 @@ public class Pedido {
             while(rs.next()){
                 contador++;
             }
-            System.out.println("Contador"+contador);
             if (contador<=3) {
                 exp=true;
             }else{
@@ -491,7 +488,7 @@ public class Pedido {
             if(usu==false){
                 sql="select mpedido.id_ped, id_chora, id_minuto, fecha_ped, status_ped, total_ped from mpedido, dpedido, mproducto where "
                         + "mpedido.id_ped=dpedido.id_ped and dpedido.id_prod=mproducto.id_prod and id_caf=?";
-                
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
             }else if(usu==true){
                 sql="select id_ped, id_chora, id_minuto, fecha_ped, status_ped, total_ped from mpedido where id_usu=?";
             }
@@ -511,7 +508,7 @@ public class Pedido {
             }
             
             for(Pedido p:listaPedidos){
-                if(p.getStatus_ped()==3){
+                if(p.getStatus_ped()==24){
                     String fecha=p.getFecha_ped();
                     String año="", mes="", dia="";
                     int contador=0;
@@ -555,30 +552,30 @@ public class Pedido {
                     int horaactual=fechaactual.getHours();
                     int minactual = fechaactual.getMinutes();
 
-                    
+                    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
                     if(Integer.parseInt(año)==Integer.parseInt(añoactual) && Integer.parseInt(mes)==Integer.parseInt(mesactual)
                             && Integer.parseInt(dia)==Integer.parseInt(diaactual)){
-                        
+                        System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
                         Hora h= oh.getHoraById(p.getId_hora());
                         Minuto m=om.getMinutoById(p.getId_min());
 
                         int limite = Integer.parseInt(m.getMinuto())+20;
                         if(Integer.parseInt(h.getHora())==horaactual){
                             if(minactual>limite){
-                                String sql2="update mpedido set status_ped=4 where id_ped=?";
+                                String sql2="update mpedido set status_ped=34 where id_ped=?";
                                 PreparedStatement ps2 = con.prepareStatement(sql2);
                                 ps2.setInt(1, p.getId_ped());
                                 ps2.executeUpdate();
                             }
                         }else if(Integer.parseInt(h.getHora())<horaactual){
-                            String sql2="update mpedido set status_ped=4 where id_ped=?";
+                            String sql2="update mpedido set status_ped=34 where id_ped=?";
                             PreparedStatement ps2 = con.prepareStatement(sql2);
                             ps2.setInt(1, p.getId_ped());
                             ps2.executeUpdate();
                         }
                     }else if(Integer.parseInt(año)<=Integer.parseInt(añoactual) && Integer.parseInt(mes)<=Integer.parseInt(mesactual)
-                            && Integer.parseInt(dia)<=Integer.parseInt(diaactual)){
-                        String sql2="update mpedido set status_ped=4 where id_ped=?";
+                            && Integer.parseInt(dia)<Integer.parseInt(diaactual)){
+                        String sql2="update mpedido set status_ped=34 where id_ped=?";
                         PreparedStatement ps2 = con.prepareStatement(sql2);
                         ps2.setInt(1, p.getId_ped());
                         ps2.executeUpdate();
@@ -709,7 +706,7 @@ public class Pedido {
         try{
             con = conexion.getConexion();
             //"update cafeteria set nom_caf=?, dir_caf=?, fot_caf=? where id_caf=?";
-            String sql="update mpedido set status_ped=1 where id_ped=?";
+            String sql="update mpedido set status_ped=4 where id_ped=?";
             ps = con.prepareStatement(sql);
             ps.setInt(1, id_pedido);
             ps.executeUpdate();
@@ -731,7 +728,7 @@ public class Pedido {
             Connection con = conexion.getConexion();
             String sql = "select mpedido.id_ped, id_usu, id_chora, id_minuto"
                     + ", fecha_ped, status_ped, total_ped from mpedido, dpedido, mproducto where"
-                    + " id_caf=? and mpedido.id_ped=dpedido.id_ped and dpedido.id_prod=mproducto.id_prod and mpedido.status_ped=3";
+                    + " id_caf=? and mpedido.id_ped=dpedido.id_ped and dpedido.id_prod=mproducto.id_prod and mpedido.status_ped=24";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id_caf);
             ResultSet rs = ps.executeQuery();
@@ -766,7 +763,7 @@ public class Pedido {
             
             Connection con = conexion.getConexion();
             String sql = "select mpedido.id_ped, id_usu, id_chora, id_minuto, fecha_ped, status_ped, total_ped, "
-                    + "id_caf from mpedido, dpedido, mproducto where id_usu=? and mpedido.id_ped=dpedido.id_ped and mpedido.status_ped=3 "
+                    + "id_caf from mpedido, dpedido, mproducto where id_usu=? and mpedido.id_ped=dpedido.id_ped and mpedido.status_ped=24 "
                     + "and dpedido.id_prod=mproducto.id_prod";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id_usu);

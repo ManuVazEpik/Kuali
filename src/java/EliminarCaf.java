@@ -37,8 +37,7 @@ public class EliminarCaf extends HttpServlet {
             Cafeteria opc = new Cafeteria();
             int estatus=opc.EliminarCafeteria(id);
             if(estatus>0){
-                String direccion = URLEncoder.encode ("dueño", "UTF-8");
-                        response.sendRedirect(direccion+"/eliminarCafeterias.jsp");
+                response.sendRedirect("dueno"+"/eliminarCafeterias.jsp");
             }else{
                 response.sendRedirect("error.jsp");
             }

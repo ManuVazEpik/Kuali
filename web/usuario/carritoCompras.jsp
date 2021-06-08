@@ -19,13 +19,7 @@
         String usuario = "";
         HttpSession sessionOk = request.getSession();
         if (sessionOk.getAttribute("id")== null){
-    %>
-
-    <jsp:forward page="../index.html">
-        <jsp:param name="error" value="es obligatorio identificarse"></jsp:param>
-    </jsp:forward>
-
-    <%
+            response.sendRedirect("../error.jsp?admrs=2"); 
         }else{
             usuario = (String)sessionOk.getAttribute("usuario");
         }
@@ -39,6 +33,20 @@
             <div class="ubicacion">
                 <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
             </div>
+            <%
+                String id_cafS = request.getParameter("admrs");
+                int id_caf = 0;
+                if(id_cafS!=null){
+                    id_caf = Integer.parseInt(id_cafS);
+            %>
+            
+            <div class="ubicacion">
+                <a href="./menuCafeteria.jsp?qwer=<%=id_caf%>"><i class="fas fa-map-marker-alt fa-lg"></i>Menú</a>
+            </div>
+            
+            <%    
+                }
+            %>
             
             <div class="pedidos-agendados">
                 <a href="./pedidosAgendados.html"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
@@ -120,10 +128,22 @@
     <form action="../Ordenar" method="POST">
         Total a pagar: <input type="text" name="total" value="<%= total%>" readonly=""><br>
         Fecha<input type="date" name="fecha"/><br>
-        Hora<input type="number" name="hora"/><br>
+        Hora
+        <select name='hora'>
+            <option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+            <option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option>
+            <option>19</option><option>20</option>
+        </select><br>
+        <select name='minuto'>
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+        </select>
         Min<input type="number" name="minuto"/><br>
         <%--<input hidden="" name="fecha" value="<%date.toString();%>">--%>
         <input type="hidden" name="id_usu" value="<%= sessionOk.getAttribute("id") %>">
+        <input type="hidden" name="id_caf" value="<%= id_caf %>">
         <input type="submit" value="Ordenar">
     </form>
     <%

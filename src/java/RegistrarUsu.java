@@ -50,7 +50,6 @@ public class RegistrarUsu extends HttpServlet {
             String tel_usu, nom_usu, appat_usu, apmat_usu, email_usu, pass_usu, tipo, nom_caf, dir_caf, aut_caf,calle,col,num;
             tipo=request.getParameter("tipo");
             
-            
             nom_usu = request.getParameter("nom_usu");
             appat_usu = request.getParameter("appat_usu");
             apmat_usu = request.getParameter("apmat_usu");
@@ -84,17 +83,14 @@ public class RegistrarUsu extends HttpServlet {
                     if(estado >0){
                         response.sendRedirect("IniciarSesion.html");
                     }else{
-                        out.println("<h1>Valio cake</h1>");
-                        out.println("");
+                        response.sendRedirect("error.jsp");
                     }
                 }else{
-                    response.sendRedirect("error.html");
+                    response.sendRedirect("error.jsp");
                 }
             }else{
-                response.sendRedirect("error.html");
+                response.sendRedirect("error.jsp");
             }
-        
-            
         
     }   catch (SQLException ex) {
             Logger.getLogger(RegistrarUsu.class.getName()).log(Level.SEVERE, null, ex);

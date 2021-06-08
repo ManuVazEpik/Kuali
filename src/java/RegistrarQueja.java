@@ -45,8 +45,7 @@ public class RegistrarQueja extends HttpServlet {
             if(estatus >0){
                 response.sendRedirect("soporte/preguntasFrecuentes.html");
             }else{
-                out.println("<h1>Valio cake</h1>");
-                out.println("");
+                response.sendRedirect("error.jsp");
             }
             
         } catch (SQLException ex) {

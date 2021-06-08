@@ -1,3 +1,4 @@
+<%@page import="Clases.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Productos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,24 +11,21 @@ String idUS = "";
 String usuario="";
 HttpSession sessionOk = request.getSession();
 if(sessionOk.getAttribute("usuario")==null){
-%>
-    <jsp:forward page="index.html">
-        <jsp:param name="error" value="Es obligatorio identificarse"/>
-    </jsp:forward>
-<%   
+    response.sendRedirect("../error.jsp?admrs=2"); 
 }else if("0".equals(sessionOk.getAttribute("autorizacion"))){
-%>
-    <jsp:forward page="verCafeterias.jsp">
-        <jsp:param name="error" value="Es obligatorio identificarse"/>
-    </jsp:forward>
-<%
+    response.sendRedirect("../dueno/verCafeterias.jsp");
 }else{
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
-    int idU=Integer.parseInt(idUS);
+    int id_usu=Integer.parseInt(idUS);
     int id_caf=Integer.parseInt(request.getParameter("admrs").trim());
     Cafeteria opc = new Cafeteria();
     Cafeteria c=opc.getCafeteriaByIdCaf(id_caf);
+    
+    Usuario opu = new Usuario();
+    Usuario u=opu.getUsuarioById(id_usu);
+    
+    if (u.getPerm_usu()==3){
 %>
 <!DOCTYPE html>
 <html>
@@ -51,13 +49,7 @@ if(sessionOk.getAttribute("usuario")==null){
                 <a href="./verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
             </div>
             
-            <div class="pedidos-agendados">
-                <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
-            </div>
             
-            <div class="ubicacion">
-                <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
-            </div>
         </nav>
             <h2>Registrar producto nuevo</h2>
             <form action="RegistrarPro" method="POST">
@@ -130,5 +122,13 @@ if(sessionOk.getAttribute("usuario")==null){
     </body>
 </html>
 <%
+    }else if(u.getPerm_usu()==2){
+        response.sendRedirect("../usuario/inicioUsuarios.jsp");
+    }else if(u.getPerm_usu()==1){
+        response.sendRedirect("../administradorGeneral/administrarUsuarios.jsp");
+    }else{
+        response.sendRedirect("../index.html");
     }
+
+}
 %>

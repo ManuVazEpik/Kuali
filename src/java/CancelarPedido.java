@@ -41,14 +41,13 @@ public class CancelarPedido extends HttpServlet {
             if(exp==true){
                 boolean exp2 = Pedido.Cancelar(id_pedido);
                 if (exp2==true) {
-                    response.sendRedirect("PedidosCafeterias.jsp");
+                    response.sendRedirect("pedidosAgendados.jsp?kik="+1);
                 }else{
-                    out.println("<p>Ocurrio algo</p>");
+                    response.sendRedirect("error.jsp");
                 }
 
-                out.println("<p>Se ha cancelado</p>");
             }else{
-                out.println("<p>No se ha cancelado</p>");
+                response.sendRedirect("pedidosAgendados.jsp?kik="+2);
             }
         }
     }
