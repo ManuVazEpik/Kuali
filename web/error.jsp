@@ -30,6 +30,12 @@
             <br><a href='usuario/CarritoCompras.jsp?admrs=<%=id_caf%>'>Regresar</a>
         </div>
         <%
+                }else if(parametro.equals("4")){
+        %>
+        <div>No se pueden hacer pedidos con productos de distintas cafeterias
+            <br><a href='usuario/inicioUsuarios.jsp'>Regresar</a>
+        </div>
+        <%
                 }
             }
         %>

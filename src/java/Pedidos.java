@@ -81,7 +81,7 @@ public class Pedidos extends HttpServlet {
                 }
                 response.sendRedirect("usuario/carritoCompras.jsp?admrs="+id_caf);
             }else{
-                    response.sendRedirect("error.jsp");
+                    response.sendRedirect("error.jsp?admrs=4");
                 }
 
         }catch(Exception e){

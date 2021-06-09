@@ -102,7 +102,7 @@ if(sessionOk.getAttribute("usuario")==null){
         <br>
         <form action="CancelarPedido" method="POST" >
         <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
-        <input type="submit" value="Cancelar Pedido"/>
+        <input onclick="return confirmacion()" type="submit" value="Cancelar Pedido"/>
         </form>
         <br>
         <%
@@ -126,7 +126,7 @@ if(sessionOk.getAttribute("usuario")==null){
         }
 
         %>
-        
+        <script src="js/Cancelacion.js"></script>
     </body>
 </html>
 <%
@@ -204,7 +204,7 @@ if(sessionOk.getAttribute("usuario")==null){
         <br>
         <form action="CancelarPedido" method="POST" >
         <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
-        <input type="submit" value="Cancelar Pedido"/>
+        <input onclick="return confirmacion()" type="submit" value="Cancelar Pedido"/>
         </form>
         <br><br><br>
         <%
@@ -212,7 +212,7 @@ if(sessionOk.getAttribute("usuario")==null){
             contador=p.getId_ped();
         }
         %>
-        
+        <script src="js/Cancelacion.js"></script>
     </body>
 </html>
 
