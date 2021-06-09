@@ -7,3 +7,12 @@ function confirmacion(){
   }
     
 }
+
+function confirmacion2(){
+    if(confirm("Está seguro de que desea eliminar su cuenta?")){
+        return true;
+    }else{
+        return false;
+  }
+    
+}

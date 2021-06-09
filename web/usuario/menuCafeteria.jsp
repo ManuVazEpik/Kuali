@@ -42,10 +42,13 @@ if(sessionOk.getAttribute("usuario")==null){
     <div class="contenedor-principal">
         <nav class="menu">
             <div class="logo">
-                <a href="./inicioUsuarios.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             <div class="ubicacion">
-                <a href="inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Regresar</a>
+                <a href="inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
+            </div>
+            <div class="ubicacion">
+                <a href="carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
             </div>
             <div class="opciones-usuario">
                 <div class="caja_busqueda">

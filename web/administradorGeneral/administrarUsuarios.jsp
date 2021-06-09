@@ -93,7 +93,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
                         <td class="texto"><%=c.getEmail_usu()%></td>
                         <td class="texto"><%=c.getPass_usu()%></td>
                         <td class="texto"><%=c.getTel_usu()%></td>
-                        <td class="texto"><form action="EliminarUsu" method="POST">
+                        <td class="texto"><form action="../EliminarUsu" method="POST">
                             <input type="hidden" name="id" value="<%=c.getId_usu()%>"/>
                             <input type="hidden" name="tipo" value="1"/>
                             <input type="submit" value="Eliminar"/>

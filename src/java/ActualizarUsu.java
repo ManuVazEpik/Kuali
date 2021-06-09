@@ -68,21 +68,19 @@ public class ActualizarUsu extends HttpServlet {
             appat_usu = request.getParameter("appat_usu");
             apmat_usu = request.getParameter("apmat_usu");
             tel_usu =request.getParameter("tel_usu");
-            email_usu = request.getParameter("email_usu");
-            pass_usu = request.getParameter("pass_usu");
 
             Validar val = new Validar();
-            boolean exp1=val.letras(nom_usu);
-            boolean exp2=val.letras(appat_usu);
-            boolean exp3=val.letras(apmat_usu);
+            boolean exp1=val.letrasEspacios(nom_usu);
+            boolean exp2=val.letrasEspacios(appat_usu);
+            boolean exp3=val.letrasEspacios(apmat_usu);
             boolean exp4=val.numerosEnteros(tel_usu);
             
             if(exp1==true && exp2==true && exp3==true && exp4==true){
-                if(nom_usu.length()<20 && appat_usu.length()<30 && apmat_usu.length()<30 && tel_usu.length()==10 ){
+                if(nom_usu.length()<=20 && appat_usu.length()<=30 && apmat_usu.length()<=30 && tel_usu.length()==10 ){
                     Usuario c = new Usuario();
                 Usuario operC= new Usuario();
 
-                c = cifra.AESCifrar(nom_usu,appat_usu,apmat_usu,tel_usu,email_usu,pass_usu);
+                c = cifra.AESCifrarActu(nom_usu,appat_usu,apmat_usu,tel_usu);
                 c.setId_usu(id_usu);
 //                c.setNom_usu(nom_usu);
 //                c.setAppat_usu(appat_usu);

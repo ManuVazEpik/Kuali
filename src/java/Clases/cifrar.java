@@ -23,7 +23,7 @@ public class cifrar {
             String correo, String pass){
     
         Usuario usuario = new Usuario();
-        
+        System.out.println("cifra"+nombre);
         String llaveS = "AxolosoftwareWin";
         
         SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
@@ -61,6 +61,57 @@ public class cifrar {
             usuario.setTel_usu(telB64);
             usuario.setEmail_usu(correoB64);
             usuario.setPass_usu(passB64);
+            
+            
+        }catch(Exception e){
+        
+            System.out.println("Error, murió la cosa esta UnU");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+            
+        }
+        
+        
+        return usuario;
+    }
+    
+    public Usuario AESCifrarActu(String nombre, String apellidoPat, String apellidoMat, String tel){
+    
+        Usuario usuario = new Usuario();
+        String llaveS = "AxolosoftwareWin";
+        
+        SecretKeySpec key = new SecretKeySpec(llaveS.getBytes(), "AES");
+        
+        Cipher cifrado;
+        
+        try{
+        
+            
+            cifrado = Cipher.getInstance("AES");
+            
+            cifrado.init(Cipher.ENCRYPT_MODE,key);
+            
+            /*Declaracion de los bytes para cada campo*/
+            byte campoNombre[] = cifrado.doFinal(nombre.getBytes());
+            byte campoApellidoPat[] = cifrado.doFinal(apellidoPat.getBytes());
+            byte campoApellidoMat[] = cifrado.doFinal(apellidoMat.getBytes());
+            byte campoTel[] = cifrado.doFinal(tel.getBytes());
+            
+            
+            
+            /* Recuperacion mediante BASE64 para la legibilidad */
+            String nombreB64 = new String(encodeBase64(campoNombre));
+            String apellidoPatB64 = new String(encodeBase64(campoApellidoPat));
+            String apellidoMatB64 = new String(encodeBase64(campoApellidoMat));
+            String telB64 = new String(encodeBase64(campoTel));
+           
+            
+            
+            usuario.setNom_usu(nombreB64);
+            usuario.setAppat_usu(apellidoPatB64);
+            usuario.setApmat_usu(apellidoMatB64);
+            usuario.setTel_usu(telB64);
+           
             
             
         }catch(Exception e){

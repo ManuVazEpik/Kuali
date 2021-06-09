@@ -47,7 +47,7 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-mug-hot fa-lg"></i>Regresar al Menú</a>
+                <a href="./menuCafeteria.jsp?qwer=<%=id_caf%>"><i class="fas fa-mug-hot fa-lg"></i>Regresar al Menú</a>
 
             </div>
     
@@ -89,7 +89,7 @@
                     </tr>
                     <tr class="boton">
                         <th></th><th colspan="3"><input type="submit" value="Añadir" name="btnAñadir"></th>
-                    </tr class="boton">
+                    </tr>
                 </form>
             </table>
         </div>
