@@ -30,6 +30,7 @@ if(sessionOk.getAttribute("id")==null){
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
     <link rel="stylesheet" href="../css/ajustesUsuarios.css">
+    <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <title>Ajustes | KUALI</title>
 </head>
 <body>

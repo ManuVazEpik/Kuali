@@ -51,6 +51,7 @@ if(sessionOk.getAttribute("id")==null){
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
     <link rel="stylesheet" href="../css/verCafeteria.css">
+    <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <title>Dashboard | KUALI</title>
 </head>
 <body onload="avisar()">
