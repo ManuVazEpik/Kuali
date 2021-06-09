@@ -83,7 +83,7 @@
                         <img src="<%=prod.getFot_prod()%>">
                     </td>
                     <td>
-                        <input type="text" name="nombre" value="<%=prod.getNom_prod()%>" autocomplete="off" size="2" readonly>
+                        <input type="text" name="nombre" value="<%=prod.getNom_prod()%>" autocomplete="off"  readonly>
                     </td>
                     <td>
                         <input type="text" name="precio" value="<%=prod.getPre_prod()%>" autocomplete="off" size="2" readonly>

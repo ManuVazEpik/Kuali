@@ -18,25 +18,25 @@
 <body>
     <div class="contenedor-principal">
         <nav class="menu">
-            <div class="logo">
-                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
-            </div>
-            
-            <div class="ubicacion">
-                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
-            </div>
-            
-            <div class="pedidos-agendados">
-                <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
-            </div>
-            
-            <div class="ubicacion">
-                <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
-            </div>
-    
-            <div class="opciones-usuario">         
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
-            </div>
+                <div class="logo">
+                    <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                </div>
+
+                <div class="ubicacion">
+                    <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
+                </div>
+
+                <div class="pedidos-agendados">
+                    <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+                </div>
+
+                <div class="ubicacion">
+                    <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
+                </div>
+
+                <div class="opciones-usuario">         
+                    <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+                </div>
         </nav>
     
         <div class="contenedor-promociones">

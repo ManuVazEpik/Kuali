@@ -13,6 +13,7 @@
             if (parametro==null) {
         %>
         <div>Se ha presentado un error inesperado</div>
+        <a href='index.html'>Regresar</a>
         <%
             }else{
                 if (parametro.equals("1")) {

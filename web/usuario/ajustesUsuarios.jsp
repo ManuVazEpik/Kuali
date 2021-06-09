@@ -131,7 +131,7 @@ if(sessionOk.getAttribute("id")==null){
                     <form action='../EliminarUsu' method='POST'>
                         <input type='hidden' name='id' value='<%=id_usu%>'/>
                         <input type='hidden' name='tipo' value='<%=u.getPerm_usu()%>'/>
-                        <input type="submit" value="Eliminar"/>
+                        <input onclick="return confirmacion2()" type="submit" value="Eliminar"/>
                     </form>
                </div>
             </div>
@@ -159,6 +159,7 @@ if(sessionOk.getAttribute("id")==null){
 
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script src="../js/Cancelacion.js"></script>
 </body>
 </html>
 <%
