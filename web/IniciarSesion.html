@@ -33,13 +33,12 @@
     
                 <div class="contenedor-login">
                     <h1 class="titulo-secundario">Bienvenido</h1>
-                    <form class="formulario" action="IniciarSesion" method="POST">
+                    <form name="formInicioSesion" class="formulario" action="IniciarSesion" method="POST">
                         <input type="text"  name="corU" placeholder="Correo electrónico" required>
                         <input type="password" name="conU" placeholder="Contraseña" required>
-                        <label class="texto"><input type="checkbox" value="Mantener sesión iniciada"> Mantener sesión iniciada</label>
-                        <input type="submit" value="Ingresar">
+                        <input onclick="return validar()" type="submit" value="Ingresar">
                     </form>
-                </div> 
+                </div>
             </div>
             
             <div class="imagen-adolescente">
@@ -53,7 +52,7 @@
         
 
         <!-- SCRIPTS -->
-        <script src="js/iniciarSesion.js"></script>
+        <script src="js/validarIniciarSesion.js"></script>
         <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
     </body>
 </html>

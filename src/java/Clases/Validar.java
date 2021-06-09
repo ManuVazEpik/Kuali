@@ -67,7 +67,7 @@ public class Validar {
     public boolean direcciones(String var){
         boolean test= false;
         try{
-            Pattern p = Pattern.compile("^[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1]+$");
+            Pattern p = Pattern.compile("^[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-]+(\\s*[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-]*)*[a-zA-ZÀ-ÿ0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-]+$");
             Matcher m = p.matcher(var);
             if(!m.find()){
                 test=false;
@@ -85,7 +85,8 @@ public class Validar {
     public boolean Contrasenas(String var){ //Fechas
         boolean test=false;
         try{
-            Pattern p = Pattern.compile("^[a-zA-Z0-9]+$");
+            //a-zA-Z0-9\u00f1\u00d1\?\¿\!\¡.#$%&*+/=?_;{|}~-
+            Pattern p = Pattern.compile("^[a-zA-Z0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-]*[a-zA-Z0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-][a-zA-Z0-9\\u00f1\\u00d1\\?\\¿\\!\\¡.#$%&*+/=?_;{|}~-]+$");
             Matcher m = p.matcher(var);
             if(!m.find()){
                 test=false;

@@ -52,7 +52,7 @@ if(sessionOk.getAttribute("usuario")==null){
             
         </nav>
             <h2>Registrar producto nuevo</h2>
-            <form action="RegistrarPro" method="POST">
+            <form name="formRegistroProducto" action="RegistrarPro" method="POST">
                 <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu producto</a>.
                 <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
                 <input type="text" name="fot_prod"><br>
@@ -119,6 +119,7 @@ if(sessionOk.getAttribute("usuario")==null){
         </div>
         <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script src="validarRegistroProducto.js"></script>
     </body>
 </html>
 <%

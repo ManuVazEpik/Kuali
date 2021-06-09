@@ -65,7 +65,7 @@ if(sessionOk.getAttribute("id")==null){
                         <h2 class="titulo-terciario">Eliminar Cafeterías</h2>
                     </i>
                 </a>
-                <a href="../usuario/inicioUsuarios.jsp">
+                <a href="../CerrarSesion">
                     <i class="fas fa-door-open fa-2x">
                         <h2 class="titulo-terciario">Regresar</h2>
                     </i>
@@ -88,7 +88,7 @@ if(sessionOk.getAttribute("id")==null){
                 
             </div>
             <h2>Registrar una cafeteria</h2>
-            <form action="../RegistrarCaf" method="POST">
+            <form name="formRegistroCafeteria" action="../RegistrarCaf" method="POST">
                 <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
                 <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
                 <input type="text" name="fot_caf"><br>
@@ -97,11 +97,12 @@ if(sessionOk.getAttribute("id")==null){
                 Ingresa la calle de tu local<input type="text" name="calle_caf"><br>
                 Ingresa la colonia de tu local<input type="text" name="col_caf"><br>
                 Ingresa el numero de tu local<input type="text" name="num_caf"><br>
-                <input type="submit" value='Aceptar'/>
+                <input onclick="return validar()" type="submit" value='Aceptar'/>
             </form>
         </div>
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script src="../js/validarRegistroCafeteria.js"></script>
 </body>
 </html>
 

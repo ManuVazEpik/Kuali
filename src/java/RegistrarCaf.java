@@ -67,15 +67,15 @@ public class RegistrarCaf extends HttpServlet {
             num =request.getParameter("num_caf");
             
             Validar val = new Validar();
-            boolean exp1=val.letrasEspacios(nom_caf);
+            boolean exp1=val.direcciones(nom_caf);
             boolean exp2=val.numerosEnteros(idS);
-            //boolean exp3=val.direccionesURL(fot_caf);
+            boolean exp3=this.comprobarURL(fot_caf);
             boolean exp4=val.direcciones(calle);
             boolean exp5=val.direcciones(col);
             boolean exp6=val.numerosEnteros(num);
             
-            if(exp1==true && exp2==true && exp4==true && exp5==true && exp6==true){
-                if(nom_caf.length()<20 && calle.length()<30 && col.length()<30 && num.length()<4 && fot_caf.length()<100){
+            if(exp1==true && exp2==true && exp4==true && exp5==true && exp6==true && exp3==true){
+                if(nom_caf.length()<=20 && calle.length()<=30 && col.length()<=30 && num.length()<4 && fot_caf.length()<3000){
                     dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
                     int id_usu = Integer.parseInt(idS);
                     Cafeteria c = new Cafeteria();
@@ -101,7 +101,23 @@ public class RegistrarCaf extends HttpServlet {
             }
         }
     }
-
+    
+    public boolean comprobarURL(String parametro){
+        String fot_caf=parametro;
+        String delante="";
+        String atras="";
+        for (int i = 0; i < 8; i++) {
+            delante+=fot_caf.charAt(i);
+        }
+        for (int i = fot_caf.length()-4; i < fot_caf.length(); i++) {
+            atras+=fot_caf.charAt(i);
+        }
+        if (delante!="https://" || (atras!=".jpg" && atras!=".png")) {
+            return false;
+        }else{
+            return true;
+        }
+    }
     /**
      * Returns a short description of the servlet.
      *
