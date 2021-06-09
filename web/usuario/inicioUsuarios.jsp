@@ -298,7 +298,7 @@
     
         <div class="menus-cafeterias">
             <div class="encabezado">
-                <h2 class="titulo-terciario">CafeterÃ­as</h2>
+                <h2 class="titulo-terciario">Cafeterías</h2>
                 <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
                 
                 <div class="contenedor-cafeterias">
@@ -311,7 +311,7 @@
                         <div class="cafeteria">
                             <img src="<%=c.getFot_caf()%>" alt="Logo Cafeteria">
 
-                            <a href="menuCafeteria.jsp?qwer=<%=c.getId_caf()%>">Ver menÃº</a>
+                            <a href="menuCafeteria.jsp?qwer=<%=c.getId_caf()%>">Ver menú</a>
 
                         <%
                         }
@@ -329,13 +329,13 @@
     <footer>
         <div class="presentacion-kuali">
             <h3>KUALI</h3>
-            <p>El Ãºnico sistema de servicio instantÃ¡neo y reservaciones en la CDMX.</p>
+            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
         </div>
 
         <div class="derechos">
-            <p>Â© 2021 Axolo Software. Todos los derechos reservados.</p>
+            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
             <div class="enlacer">
-                <a href="../avisoPrivacidad.html">PolÃ­tica de privacidad</a>
+                <a href="../avisoPrivacidad.html">Política de privacidad</a>
                 <a href="../terminosyCondiciones.html">Terminos y Condiciones</a>
             </div>
         </div>

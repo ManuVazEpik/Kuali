@@ -1,3 +1,4 @@
+<%@page import="Clases.Cafeteria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Clases.Productos"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,11 +12,7 @@ HttpSession sessionOk = request.getSession();
 
 boolean ex=true;
 if(sessionOk.getAttribute("usuario")==null){
-%>
-        <jsp:forward page="../index.html">
-            <jsp:param name="error" value="Es obligatorio identificarse"/>
-        </jsp:forward>
-<%   
+    response.sendRedirect("../error.jsp?admrs=2");  
 }else{
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
@@ -34,48 +31,95 @@ if(sessionOk.getAttribute("usuario")==null){
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menú | Kuali </title>
-        <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/externals/normalize.css">
+    <link rel="stylesheet" href="../css/menuCafeteria.css">
+    <title>Menú | KUALI</title>
     </head>
     <body>
-    <header>
-        <a href="inicioUsuarios.jsp" >Inicio</a>
-    </header>
-        <table>
+    <div class="contenedor-principal">
+        <nav class="menu">
+            <div class="logo">
+                <a href="./inicioUsuarios.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+            </div>
+            <div class="ubicacion">
+                <a href="inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Regresar</a>
+            </div>
+            <div class="opciones-usuario">
+                <div class="caja_busqueda">
+                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
+                    
+                    <a class="boton_buscar">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+                
+                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+            </div>
+        </nav>
+
+        <div class="header">
+            <img src="../img/logos-cafeterias/logo cafeteria test.jpg" alt="Logo cafeteria">
+        </div>
         <%
-    
-    try{
-    
+        try{
             ArrayList<Productos> lp = Productos.getProductosDisCaf(id_caf);
-            int salto=0;            
+            Cafeteria opc = new Cafeteria();
+            Cafeteria c = opc.getCafeteriaByIdCaf(id_caf);
+        %>
+            <div class="menu-cafeteria">
+                <h1 class="texto-principal"><%=c.getNom_caf()%> <%=c.getDir_caf()%> </h1>
+                <div class="grid-menu">
+        <%
             for (Productos prod: lp) {
         %>                        
-            <th>
-                <a href="añadirPedido.jsp?admrs=<%= prod.getId_prod()%>&ewewe=<%=id_caf%>"><img src="<%=prod.getFot_prod()%>" width="200pt" ></a><p>
-                    <%= prod.getNom_prod()%><br>
-                    Descripcion: <%= prod.getDesc_prod()%><br>
-                    Precio <%= prod.getPre_prod()%><br>
-                    <input type="hidden" value="<%= prod.getDisp_prod()%>"><br>
-            </th>
+                    <div class="producto">
+                        <div class="descripcion">
+                            <p class="texto"><%=prod.getNom_prod()%></p>
+                            <p class="texto"><%= prod.getDesc_prod()%></p>
+                            <p class="texto"><%=prod.getPre_prod()%></p>
+                            <form action="añadirPedido.jsp" method="POST">
+                                <input type="hidden" name="admrs" value="<%=prod.getId_prod()%>"/>
+                                <input type="hidden" name="ewewe" value="<%=id_caf%>"/>
+                                <button type="submit"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+                            </form>
+                        </div>
+                        <div class="imagen-producto">
+                            <img src="<%=prod.getFot_prod()%>" alt="Imagen del cafe de moka">
+                        </div>
+                    </div>
         <%
-            salto++;
-            if (salto == 4) {
-        %>
-        <tr>
-        <%
-                salto=0;
             }
-           }
-            
-            }catch(Exception e){
-            
-                System.out.println("Error" + e);
-                response.sendRedirect("../error.jsp");
-            
-            }
+        }catch(Exception e){
+            System.out.println("Error" + e);
+            response.sendRedirect("../error.jsp");
+        }
         %>
-        </table>
+                </div>
+        </div>
+    </div>
+    <footer>
+        <div class="presentacion-kuali">
+            <h3>KUALI</h3>
+            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+
+        <div class="derechos">
+            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
+            <div class="enlacer">
+                <a href="./avisoPrivacidad.html">Política de privacidad</a>
+                <a href="./terminosyCondiciones.html">Terminos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>            
     </body>
 </html>
 <%

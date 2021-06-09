@@ -231,7 +231,7 @@ public class Cafeteria {
     }
     
     public static ArrayList<Cafeteria> getCafeteriasAutorizadas(){
-        ArrayList<Cafeteria> lista= new ArrayList<Cafeteria>();
+        ArrayList<Cafeteria> lista= new ArrayList<>();
         try{
             Connection con = conexion.getConexion();
             String sql = null;
