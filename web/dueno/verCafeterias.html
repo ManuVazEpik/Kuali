@@ -50,7 +50,7 @@ if(sessionOk.getAttribute("id")==null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/modificarCafeterias.css">
+    <link rel="stylesheet" href="../css/verCafeteria.css">
     <title>Dashboard | KUALI</title>
 </head>
 <body onload="avisar()">
@@ -102,41 +102,50 @@ if(sessionOk.getAttribute("id")==null){
                 
                 
             </div>
+
             <div class="cafeterias">
                 
-            <%
-            for (Cafeteria caf : listacaf) {
-                int autorizacion=operC.comprobarAutorizacion(id_usu);
-            %>
+                <%
+                for (Cafeteria caf : listacaf) {
+                    int autorizacion=operC.comprobarAutorizacion(id_usu);
+                %>
                 <div class="cafeteria">
                     <h1 class="titulo-terciario"><%=caf.getNom_caf()%></h1>
-                    <p class="texto"><%=caf.getDir_caf()%></p>
+                    <!-- <p class="texto"><%=caf.getDir_caf()%></p> -->
                     
                 <%
                     if (autorizacion==1) {
                 %>
-                    <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
-                    <form action="./operacionProductos.jsp" method="POST">
-                        <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
-                        <input type="submit" value="Menú"/>
-                    </form>
-                    <form action="../pedidosAgendados.jsp" method="POST">
-                        <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
-                        <input type="submit" value="Pedidos"/>
+                    <div class="estado">
+                        <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
+                    </div>
+
+                    <img src="<%=caf.getFot_caf()%>" alt="Logo Cafetería">
+
+                    <div class="opciones-cafeteria">
+                        <form action="./operacionProductos.jsp" method="POST">
+                            <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                            <input type="submit" value="Menú"/>
+                        </form>
+                        <form action="../pedidosAgendados.jsp" method="POST">
+                            <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                            <input type="submit" value="Pedidos"/>
+                    </div>
                     </form>
                 <%  }else if(autorizacion==2){%>
-                    <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
+                    <div class="estado">
+                        <p class="texto">Estatus: Pendiente <i class="fas fa-circle pendiente"></i></p>
+                    </div>
                 <%  }else if(autorizacion==3){%>
-                    <p class="texto">Estatus: Inactivo <i class="fas fa-circle"></i></p>
+                    <div class="estado">
+                        <p class="texto">Estatus: Inactivo <i class="fas fa-circle inactivo"></i></p>
+                    </div>
                 <%  }   %>
                 </div>
-                <img src="<%=caf.getFot_caf()%>" width="300pt">
-            <%
-            }
-            %>
-                
+                <%
+                }
+                %>
             </div>
-            <!-- AQUI EMPIEZA TU CÓDIGO URIEL XD -->
         </div>
     </div>
 

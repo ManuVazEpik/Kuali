@@ -1,5 +1,83 @@
-// Archivos parciales
-@use 'components/dashboard';
+// Archivos Parciales
 @use 'abstracts/colors' as color;
 @use 'abstracts/fonts';
+@use 'components/dashboard';
 
+.cafeterias {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: center;
+    align-items: center;
+
+    .cafeteria {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .titulo-terciario, .texto {
+            color: color.$verde-kuali;
+        }
+
+        .estado {
+            background: color.$cafe-kuali;
+            border-radius: 30px 30px 0px 0px;
+            width: 250px;
+
+            p {
+                color: color.$blanco-kuali;
+                text-align: center;
+            }
+
+            .fa-circle {
+                width: 5px;
+                border-radius: 50px;
+                color: color.$status-activo;
+                margin-left: 10px;
+            }
+    
+            .pendiente {
+                color: color.$amarillo-kuali;
+            }
+    
+            .inactivo {
+                color: color.$status-inactivo;
+            }
+        }
+
+        img {
+            background-color: color.$verde-kuali;
+            max-height: 200px;
+            max-width: 250px;
+            width: 250px;
+            height: 200px;
+            border-radius: 0px 0px 30px 30px;
+        }
+
+        .opciones-cafeteria {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px auto;
+
+            input[type='submit'] {
+                border: none;
+                text-decoration: none;
+                background: none;
+                color: color.$blanco-kuali;
+                background: color.$verde-kuali;
+                padding: 10px 25px;
+                border-radius: 50px;
+                margin-right: 10px;                
+                outline: none;
+            }
+
+            input[type='submit']:hover {
+                color: color.$amarillo-kuali;
+                background: color.$azul-kuali;
+            }
+        }
+    }
+}
