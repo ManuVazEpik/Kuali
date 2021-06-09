@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/ajustesUsuarios.css">
+    <link rel="stylesheet" href="../css/anadirpedido.css">
     <title>Agregar Producto | KUALI</title>
     </head>
     <body>
@@ -47,7 +47,7 @@
             </div>
             
             <div class="ubicacion">
-                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-store-alt fa-lg"></i>Regresar al Menú</a>
+                <a href="./menuCafeteria.jsp?admrs=<%=id_caf%>"><i class="fas fa-mug-hot fa-lg"></i>Regresar al Menú</a>
 
             </div>
     
@@ -56,40 +56,45 @@
                 <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
             </div>
         </nav>
-        <h1>Añadir Producto al Carrito</h1>
+
+        <div class="agregar-pedido">
+            <h1 class="titulo-principal">Añadir Producto al Carrito</h1>
+
             <table>
                 <form method="POST" action="../Pedidos">
                     <tr>
-                        <th rowspan="5"><img src="<%= prod.getFot_prod()%>" width="140px" height="140px"></th> 
+                        <th rowspan="5"><img src="<%= prod.getFot_prod()%>" width="150px" height="150px"></th> 
                         <th><input hidden="" type="number" name="idtxt" value="<%= prod.getId_prod()%>" readonly="">
                         <input hidden="" type="number" name="id_caftxt" value="<%=id_caf%>" readonly=""></th>
                         </th>
                     </tr>
                     <tr>
-                        <th>Nombre</th>
-                        <th><%= prod.getNom_prod()%>
+                        <th class="texto">Nombre</th>
+                        <th class="texto"><%= prod.getNom_prod()%>
                             <input type="hidden" name="nomtxt" value="<%= prod.getNom_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
-                        <th>Descripcion</th>
-                        <th><%= prod.getDesc_prod()%>
+                        <th class="texto">Descripcion</th>
+                        <th class="texto"><%= prod.getDesc_prod()%>
                             <input type="hidden" name="desctxt" value="<%= prod.getDesc_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
-                        <th>Precio</th>
-                        <th>$<%= prod.getPre_prod()%>
+                        <th class="texto">Precio</th>
+                        <th class="texto">$<%= prod.getPre_prod()%>
                             <input type="hidden" name="preciotxt" value="<%= prod.getPre_prod()%>" readonly=""></th>
                     </tr>
                     <tr>
-                        <th>Cantidad</th>
-                        <th><input type="number" value="1" min="1" max="5" name="cantidadtxt"></th>
+                        <th class="texto">Cantidad</th>
+                        <th class="texto"><input type="number" value="1" min="1" max="5" name="cantidadtxt"></th>
                     </tr>
-                    <tr>
-                        <th colspan="3"><input type="submit" value="Añadir" name="btnAñadir"></th>
-                    </tr>
+                    <tr class="boton">
+                        <th></th><th colspan="3"><input type="submit" value="Añadir" name="btnAñadir"></th>
+                    </tr class="boton">
                 </form>
             </table>
         </div>
+    </div>
+
     <footer>
         <div class="presentacion-kuali">
             <h3>KUALI</h3>

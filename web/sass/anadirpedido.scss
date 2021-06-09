@@ -1,0 +1,59 @@
+// Archivos Parciales
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/usuariosMenu';
+@use 'components/footer';
+
+.contenedor-principal {
+    width: 100%;
+    height: 100vh;
+
+    .agregar-pedido {
+        width: 100%;
+        height: 70vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            color: color.$verde-kuali;
+        }
+
+        table {
+            padding: 3% 5%;
+            background: color.$cafe-kuali;
+            border-radius: 30px;
+
+            th {
+                text-align: left;
+                color: color.$blanco-kuali;
+            }
+
+            img {
+                margin-right: 50px;
+            }
+
+            .boton {
+                margin: 10px auto;
+                width: 100%;
+
+                th {
+                    text-align: right;
+                    
+                    input {
+                        border-radius: 50px;
+                        padding: 15px 40px;
+                        cursor: pointer;
+                        border: none;
+                        color: color.$blanco-kuali;
+                        margin-top: 20px;
+                        background: linear-gradient(125deg, color.$azul-kuali 20%, color.$verde-kuali 90%);
+                    }
+                }
+
+            }
+        }
+    }
+}

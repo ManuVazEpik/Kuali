@@ -43,15 +43,16 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="ubicacion">
-
-                <a href="../dueno/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
-
+                <a href="../dueno/verCafeterias.jsp"><i class="fas fa-mug-hot fa-lg"></i>Cafeterias</a>
             </div>
             
             <div class="pedidos-agendados">
                 <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
             </div>
             
+            <div class="opciones-usuario">
+                <img src="../img/administrador-perfil.png" alt="imagen de perfil del usuario actual">
+            </div>
         </nav>
         <%
             }else{
@@ -80,37 +81,62 @@ if(sessionOk.getAttribute("id")==null){
         <%
             }
         %>
-    <h1>Datos</h1>
-    <ul>
-        <li>Nombre completo:<%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%> <br></li>
-        <li>Telefono: <%=u.getTel_usu()%></li>
-        <li>Email: <%=u.getEmail_usu()%><br></li>
-        <li>Password: <%=u.getPass_usu()%><br></li>
-    </ul>
-    <a href="../CerrarSesion">Cerrar Sesion</a>
-    <h2>Modificar</h2>
-    <form action='../ActualizarUsu' method='POST' name='formulario1'>
-        <input type='hidden' name='id_usu' value='<%=id_usu%>'/>
-    <ul>
-        <li>Nombre: <input type='text' name='nom_usu' value='<%=u.getNom_usu()%>'/></li>
-        <li>Apellido paterno: <input type='text' name='appat_usu' value='<%=u.getAppat_usu()%>'/></li>
-        <li>Apellido materno: <input type='text' name='apmat_usu' value='<%=u.getApmat_usu()%>'/></li>
-        <li>Telefono: <input type='text' name='tel_usu' value='<%=u.getTel_usu()%>'/></li>
-        <input type="submit" value="Aceptar"/>
-    </ul>
-    </form>
-    <h2>Eliminar</h2>
-    <form action='../EliminarUsu' method='POST'>
-        <input type='hidden' name='id' value='<%=id_usu%>'/>
-        <input type='hidden' name='tipo' value='<%=u.getPerm_usu()%>'/>
-        <input type="submit" value="Eliminar"/>
-    </form>
-        <br>  
-   
+        <div class="perfil">
+            <div class="mis-datos">
+                <h1 class="titulo-principal">Mis Datos</h1>
+
+                <div class="datos-actuales">
+                    <p class="texto"><span>completo:</span> <%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%></p>
+                    <p class="texto"><span>Telefono:</span> <%=u.getTel_usu()%></p>
+                    <p class="texto"><span>Email:</span> <%=u.getEmail_usu()%></p>
+                    <p class="texto"><span>Password:</span> <%=u.getPass_usu()%></p>
+                </div>
+            </div>
     
+            <a href="../CerrarSesion">Cerrar Sesion</a>
+            
+            <div class="under">
+                <div class="modificar-datos">
+                    <h2 class="titulo-secundario">Modificar</h2>
+
+                    <form action='../ActualizarUsu' method='POST' name='formulario1'>
+                        <input type='hidden' name='id_usu' value='<%=id_usu%>'/>
+                        
+                        <div class="nombre">
+                            <p class="texto">Nombre: </p>
+                            <input class="campo" type='text' name='nom_usu' value='<%=u.getNom_usu()%>'/>
+                        </div>
+                        
+                        <div class="apellido-p">
+                            <p class="texto">Apellido paterno: </p>
+                            <input class="campo" type='text' name='appat_usu' value='<%=u.getAppat_usu()%>'/>
+                        </div>
+                        
+                        <div class="apellido-m">
+                            <p class="texto">Apellido materno: </p>
+                            <input class="campo" type='text' name='apmat_usu' value='<%=u.getApmat_usu()%>'/>
+                        </div>
+                        
+                        <div class="telefono">
+                            <p class="texto">Telefono: </p>
+                            <input class="campo" type='text' name='tel_usu' value='<%=u.getTel_usu()%>'/>
+                        </div>
+                        
+                        <input type="submit" value="Aceptar"/>
+                    </form>
+                </div>
+        
+               <div class="eliminar-datos">
+                    <h2 class="titulo-secundario">Eliminar Perfil</h2>
+                    <form action='../EliminarUsu' method='POST'>
+                        <input type='hidden' name='id' value='<%=id_usu%>'/>
+                        <input type='hidden' name='tipo' value='<%=u.getPerm_usu()%>'/>
+                        <input type="submit" value="Eliminar"/>
+                    </form>
+               </div>
+            </div>
+        </div>
     </div>
-    
-    
     
     <footer>
         <div class="presentacion-kuali">

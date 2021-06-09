@@ -82,7 +82,7 @@ if(sessionOk.getAttribute("id")==null){
                 
                 <a href="../CerrarSesion">
                     <i class="fas fa-door-open fa-2x">
-                        <h2 class="titulo-terciario">Regresar</h2>
+                        <h2 class="titulo-terciario">Cerrrar Sesión</h2>
                     </i>
                 </a>
             </div>
@@ -90,17 +90,17 @@ if(sessionOk.getAttribute("id")==null){
 
         <div class="contenido">
             <div class="menu-administrador">
-                
-
-                <div >
-                    <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+                <div class="enlace primero">
+                    <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Pedidos Solicitados</a>
                 </div>
 
-                <div >
-                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                <div class="enlace">
+                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
                 </div>
-                
-                
+                    
+                <div class="opciones-usuario">         
+                    <img src="../img/dueno-perfil.png" alt="imagen de perfil del usuario actual">
+                </div>
             </div>
 
             <div class="cafeterias">
@@ -120,8 +120,7 @@ if(sessionOk.getAttribute("id")==null){
                         <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
                     </div>
 
-                    <!-- <img src="<%=caf.getFot_caf()%>" alt="Logo Cafetería"> -->
-                    <img src="./coffee.jpg" alt="Logo Cafetería">
+                    <img src="<%=caf.getFot_caf()%>" alt="Logo Cafetería">
 
                     <div class="opciones-cafeteria">
                         <form action="./operacionProductos.jsp" method="POST">

@@ -6,5 +6,178 @@
 .contenedor-principal {
     background: color.$blanco-kuali;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+
+    .perfil {
+        margin: 0px 25px;
+
+        .mis-datos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 25px;
+            border-radius: 30px;
+            
+            .titulo-principal {
+                margin-right: 25px;
+                color: color.$verde-kuali;
+            }
+
+            .datos-actuales {
+                padding-left: 25px;
+                border-left: 2px solid color.$verde-kuali;
+
+                span {
+                    font-weight: 400;
+                    color: color.$verde-kuali;
+                }
+            }
+        }
+
+        .mis-datos:hover {
+            background: color.$verde-kuali;
+            color: color.$blanco-kuali;
+
+            .titulo-principal {
+                color: color.$amarillo-kuali;
+            }
+
+            .datos-actuales {
+                border-color: color.$amarillo-kuali;
+                
+                span {
+                    font-weight: 400;
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+
+        .under {
+            margin: 10px 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        
+            .titulo-secundario {
+                color: color.$verde-kuali;
+            }
+
+            .modificar-datos {
+                width: 40%;
+                padding: 10px 25px;
+                border-radius: 30px;
+
+                .titulo-secundario {
+                    margin-right: 25px;
+                }
+
+                form {
+                    padding-top: 25px;
+                    border-top: 2px solid color.$verde-kuali;
+                    
+                    .campo {
+                        width: 50%;
+                        outline: none;
+                        border: none;
+                        border-bottom: 1px solid color.$verde-kuali;
+                        background: none;
+                    }
+                    
+                    input[type='submit'] {
+                        width: 50%;
+                        margin-top: 20px;
+                        float: right;
+                        border-radius: 50px;
+                        padding: 15px 40px;
+                        cursor: pointer;
+                        border: none;
+                        border-bottom: none;
+                        color: color.$amarillo-kuali;
+                        background: color.$azul-kuali;
+                    }
+
+                    input[type='submit']:hover {
+                        color: color.$azul-kuali;
+                        background: color.$amarillo-kuali;
+                    }
+                }
+
+                .nombre, .apellido-p, .apellido-m, .telefono {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    p {
+                        font-weight: 400;
+                        color: color.$verde-kuali;
+                    }
+                }
+            }
+
+            .modificar-datos:hover {
+                background: color.$verde-kuali;
+                color: color.$blanco-kuali;
+
+                form {
+                    border-top: 2px solid color.$amarillo-kuali;  
+                    
+                    .campo {
+                        outline: none;
+                        border-bottom: 1px solid color.$amarillo-kuali;
+                        color: color.$blanco-kuali;
+                    }
+                }
+
+                .nombre, .apellido-p, .apellido-m, .telefono {
+
+                    p {
+                        color: color.$amarillo-kuali;
+                    }
+                }
+
+                .titulo-secundario {
+                    color: color.$amarillo-kuali;
+                }
+            }
+
+            .eliminar-datos {
+                width: 40%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 25px 50px;
+                border-radius: 30px;
+
+                form {
+                    margin-bottom: 5px;
+
+                    input[type='submit'] {
+                        outline: none;
+                        border: none;
+                        background: color.$azul-kuali;
+                        color: color.$amarillo-kuali;
+                        padding: 15px 40px;
+                        border-radius: 50px;
+                        margin-left: 25px;
+                    }
+    
+                    input[type='submit']:hover {
+                        background: color.$status-inactivo;
+                        color: color.$blanco-kuali;
+                    }
+                }
+            }
+
+            .eliminar-datos:hover {
+                background: color.$verde-kuali;
+
+                .titulo-secundario {
+                    color: color.$amarillo-kuali;
+                }
+            }
+        }
+    }
 }

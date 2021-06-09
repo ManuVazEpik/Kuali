@@ -75,15 +75,17 @@ if(sessionOk.getAttribute("id")==null){
         <div class="contenido">
             <div class="menu-administrador">
                 
-                <div >
+                <div class="enlace primero">
                     <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
                 </div>
 
-                <div >
-                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
+                <div class="enlace">
+                    <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
                 </div>
                 
-                
+                <div class="opciones-usuario">         
+                    <img src="../img/dueno-perfil.png" alt="imagen de perfil del usuario actual">
+                </div>
             </div>
 
            <div class="nueva-cafeteria">
@@ -94,7 +96,7 @@ if(sessionOk.getAttribute("id")==null){
                 
                 <div class="directLink">
                     <p class="texto">Copia y pega tu enlace de DirectLink aquí</p>
-                    <input type="text" name="fot_caf" placeholder="Link de DirectLink"><br>
+                    <input type="text" name="fot_caf" autocomplete="off" placeholder="Link de DirectLink"><br>
                 </div>
 
                 <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>

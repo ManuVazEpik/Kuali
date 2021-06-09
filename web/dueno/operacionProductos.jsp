@@ -46,10 +46,12 @@ if(sessionOk.getAttribute("usuario")==null){
             </div>
             
             <div class="ubicacion">
-                <a href="./verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterias</a>
+                <a href="./verCafeterias.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterias</a>
             </div>
             
-            
+            <div class="opciones-usuario">         
+                <img src="../img/dueno-perfil.png" alt="imagen de perfil del usuario actual">
+            </div>
         </nav>
             <h2>Registrar producto nuevo</h2>
             <form name="formRegistroProducto" action="RegistrarPro" method="POST">

@@ -4,7 +4,144 @@
 @use 'components/usuariosMenu';
 @use 'components/footer';
 
+body {
+    background: color.$blanco-kuali;
+}
+
 .contenedor-principal {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+
+    .carrito {
+        margin: 10px 50px;
+
+        .table-header, .ordenar-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            p {
+                margin-left: 50px;
+                padding: 15px 0px;
+                border-bottom: 3px solid color.$cafe-kuali;
+            }
+        }
+
+        table, tr, td {
+            border: none;
+            outline: none;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 50px;
+
+            tr {
+                //border-radius: 10px;
+            
+                td {
+                    padding: 30px 40px;
+                }
+
+                img {
+                    width: 150px;
+                    height: 100px;
+                }
+    
+                input {
+                    color: color.$negro-kuali;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    text-align: center;
+                }
+    
+                input[name='cantidad'] {
+                    border-radius: 50px;
+                    border: 1px solid color.$amarillo-kuali;
+                    padding: 10px 0px;
+                }
+    
+                .cancelar {
+                    border-radius: 50%;
+                    padding: 15px 20px;
+                    color: color.$amarillo-kuali;
+                    background: color.$azul-kuali;
+                    cursor: pointer;
+                }
+    
+                .cancelar:hover {
+                    color: color.$blanco-kuali;
+                    background: color.$status-inactivo;
+                }
+            }
+    
+            tr:hover {
+                background: rgba(color.$verde-kuali, 0.9);
+            }
+        }
+
+        .ordenar {
+            width: 35%;
+            align-self: right;
+            background: color.$cafe-kuali;
+            color: color.$blanco-kuali;
+            padding: 30px 50px;
+            border-radius: 5px;
+
+            .ordenar-header {
+                .titulo-secundario {
+                    color: color.$blanco-kuali;
+                }
+
+                p {
+                    border-bottom: 3px solid color.$verde-kuali;
+                }
+            }
+
+            .total, .fecha, .hora, .minutos {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                input, select {
+                    width: 50%;
+                    background: none;
+                    border: none;
+                    color: color.$blanco-kuali;
+                    border-bottom: 2px solid rgba(color.$verde-kuali, 0.5);
+                    outline: none;
+                    appearance: none;
+                }
+
+                option {
+                    border: none;
+                    background: color.$cafe-kuali;
+                }
+
+                option:hover {
+                    background: color.$amarillo-kuali;
+                }
+
+                p {
+                    width: 50%;
+                }
+            }
+
+            .boton {
+                display: flex;
+                justify-content: center;
+                margin: 10px auto;
+
+                input {
+                    border-radius: 50px;
+                    padding: 15px 40px;
+                    cursor: pointer;
+                    border: none;
+                    color: color.$blanco-kuali;
+                    background: linear-gradient(125deg, color.$azul-kuali 20%, color.$verde-kuali 90%);
+                }
+            }
+        }
+    }
 }

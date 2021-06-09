@@ -61,14 +61,8 @@ if (sesionOk.getAttribute("usuario") == null ) {
         </div>
         <div class="contenido">
             <div class="menu-administrador">
-                <div class="caja_busqueda">
-                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
-                    
-                    <a class="boton_buscar">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del administrador">
+                <div></div>
+                <img src="../img/administrador-perfil.png" alt="imagen de perfil del administrador">
             </div>
 
             <div class="cafeterias-por-autorizar">
