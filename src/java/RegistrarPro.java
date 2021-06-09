@@ -71,14 +71,14 @@ public class RegistrarPro extends HttpServlet {
             disp_prod=true;
             
             Validar val = new Validar();
-            boolean exp1=val.letrasEspacios(nom_prod);
+            boolean exp1=val.direcciones(nom_prod);
             boolean exp2=val.numerosEnteros(id_cafS);
-            //boolean exp3=val.direccionesURL(fot_caf);
+            boolean exp3=this.comprobarURL(fot_prod);
             boolean exp4=val.direcciones(desc_prod);
             boolean exp5=val.numerosDecimales(pre_prodS);
             
             if(exp1==true && exp2==true && exp4==true && exp5==true ){
-                if(nom_prod.length()<20 && desc_prod.length()<100 && pre_prodS.length()<30){
+                if(nom_prod.length()<=20 && desc_prod.length()<=100 && pre_prodS.length()<30 && fot_prod.length()<1000){
                     int id_caf = Integer.parseInt(id_cafS);
                     float pre_prod=Float.parseFloat(pre_prodS);
                     Productos c = new Productos();
@@ -91,7 +91,6 @@ public class RegistrarPro extends HttpServlet {
                     c.setDisp_prod(disp_prod);
                     int estado=operC.Guardar(c);
                     if(estado >0){
-                        
                         response.sendRedirect("dueno/"+"operacionProductos.jsp?admrs="+id_cafS);
                     }else{
                         response.sendRedirect("error.jsp");
@@ -105,7 +104,22 @@ public class RegistrarPro extends HttpServlet {
             
         }
     }
-
+    public boolean comprobarURL(String parametro){
+        String fot_caf=parametro;
+        String delante="";
+        String atras="";
+        for (int i = 0; i < 8; i++) {
+            delante+=fot_caf.charAt(i);
+        }
+        for (int i = fot_caf.length()-4; i < fot_caf.length(); i++) {
+            atras+=fot_caf.charAt(i);
+        }
+        if (delante!="https://" || (atras!=".jpg" && atras!=".png")) {
+            return false;
+        }else{
+            return true;
+        }
+    }
     /**
      * Returns a short description of the servlet.
      *

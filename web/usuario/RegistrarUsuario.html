@@ -29,7 +29,7 @@
             </div>
             <div class="contenedor-login">
                 <h1 class="titulo-secundario">Regístrate</h1>
-                <form class="formulario" action="../RegistrarUsu" method="POST">
+                <form name="formRegistroUsuario" class="formulario" action="../RegistrarUsu" method="POST">
                     <input type="text" name="nom_usu" placeholder="Nombre" required/>
                     <div class="mitad-ancho">
                         <input type="text" name="appat_usu" placeholder="Apellido Paterno" required/>
@@ -47,8 +47,7 @@
                         <option>Cliente</option>
                         <option>Dueño</option>
                     </select>
-
-                    <input type="submit" value="Regístrarme">
+                    <input onclick="return validar()" type="submit" value="Regístrarme">
                     
                 </form>
             </div>
@@ -60,6 +59,7 @@
     </div>
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script src="../js/validarRegistroUsuario.js"></script>
 </body>
 </html>
 

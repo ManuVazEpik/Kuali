@@ -65,7 +65,7 @@ if(sessionOk.getAttribute("id")==null){
                         <h2 class="titulo-terciario">Eliminar Cafeterías</h2>
                     </i>
                 </a>
-                <a href="../usuario/inicioUsuarios.jsp">
+                <a href="../CerrarSesion">
                     <i class="fas fa-door-open fa-2x">
                         <h2 class="titulo-terciario">Cerrar Sesión</h2>
                     </i>
@@ -102,12 +102,14 @@ if(sessionOk.getAttribute("id")==null){
                 <input type="text" name="calle_caf" placeholder="Calle del local"><br>
                 <input type="text" name="col_caf" placeholder="Colonia del local"><br>
                 <input type="text" name="num_caf" placeholder="Numero de tu local"><br>
-                <input type="submit" value='Registrar cafetería'/>
+                <input onclick="return validar()" type="submit" value='Registrar cafetería'/>
+            
             </form>
            </div>
         </div>
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script src="../js/validarRegistroCafeteria.js"></script>
 </body>
 </html>
 
