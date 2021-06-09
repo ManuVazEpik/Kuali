@@ -306,7 +306,7 @@
     
         <div class="menus-cafeterias">
             <div class="encabezado">
-                <h2 class="titulo-terciario">Cafeterï¿½as</h2>
+                <h2 class="titulo-terciario">Cafeterías</h2>
                 <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
                 
                 <div class="contenedor-cafeterias">
