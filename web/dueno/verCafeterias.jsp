@@ -120,7 +120,8 @@ if(sessionOk.getAttribute("id")==null){
                         <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
                     </div>
 
-                    <img src="<%=caf.getFot_caf()%>" alt="Logo Cafetería">
+                    <!-- <img src="<%=caf.getFot_caf()%>" alt="Logo Cafetería"> -->
+                    <img src="./coffee.jpg" alt="Logo Cafetería">
 
                     <div class="opciones-cafeteria">
                         <form action="./operacionProductos.jsp" method="POST">
