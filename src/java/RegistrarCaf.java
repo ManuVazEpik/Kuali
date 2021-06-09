@@ -76,7 +76,7 @@ public class RegistrarCaf extends HttpServlet {
             
             if(exp1==true && exp2==true && exp4==true && exp5==true && exp6==true && exp3==true){
                 if(nom_caf.length()<=20 && calle.length()<=30 && col.length()<=30 && num.length()<4 && fot_caf.length()<3000){
-                    dir_caf="Calle: "+calle+" Colonia: "+col+" Numero: "+num;
+                    dir_caf="Calle. "+calle+" Col. "+col+" Num. "+num;
                     int id_usu = Integer.parseInt(idS);
                     Cafeteria c = new Cafeteria();
                     Cafeteria operC= new Cafeteria();
@@ -112,10 +112,15 @@ public class RegistrarCaf extends HttpServlet {
         for (int i = fot_caf.length()-4; i < fot_caf.length(); i++) {
             atras+=fot_caf.charAt(i);
         }
-        if (delante!="https://" || (atras!=".jpg" && atras!=".png")) {
+        System.out.println(delante+atras);
+        if (!"https://".equals(delante)) {
             return false;
         }else{
-            return true;
+            if (!".jpg".equals(atras) && !".png".equals(atras)) {
+                return false;
+            }else{
+                return true;
+            }
         }
     }
     /**

@@ -39,10 +39,8 @@ if(sessionOk.getAttribute("usuario")==null){
     </head>
     <body>
         <a href="modificarCafeterias.jsp">Regresar</a>
-    
-    
     <h2>Modificar</h2>
-    <form action='../ActualizarCaf' method='POST' name='formulario1'>
+    <form name='formModificarCafeteria' action='../ActualizarCaf' method='POST' name='formModificarCafeteria'>
         <input type='hidden' name='id_caf' value='<%=c.getId_caf()%>'/>
     <ul>
         <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
@@ -50,11 +48,10 @@ if(sessionOk.getAttribute("usuario")==null){
         <input type="text" name="fot_caf" value="<%=c.getFot_caf()%>"><br>
         <li>Nombre Local: <input type='text' name='nom_caf' value='<%=c.getNom_caf()%>'/></li>
         <li>Direccion de la cafeteria: <input type='text' name='dir_caf' value='<%=c.getDir_caf()%>'/></li>
-        <input type="submit" value="Aceptar"/>
+        <input onclick="return validar()"type="submit" value="Aceptar"/>
     </ul>
     </form>
-    
-    
+        <script src="../js/validarModificarCafeteria.js"></script>
     </body>
 </html>
 <%

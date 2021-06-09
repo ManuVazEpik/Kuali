@@ -77,8 +77,8 @@ public class RegistrarPro extends HttpServlet {
             boolean exp4=val.direcciones(desc_prod);
             boolean exp5=val.numerosDecimales(pre_prodS);
             
-            if(exp1==true && exp2==true && exp4==true && exp5==true ){
-                if(nom_prod.length()<=20 && desc_prod.length()<=100 && pre_prodS.length()<30 && fot_prod.length()<1000){
+            if(exp1==true && exp2==true && exp4==true && exp5==true && exp3==true ){
+                if(nom_prod.length()<=20 && desc_prod.length()<=100 && pre_prodS.length()<=30 && fot_prod.length()<1000){
                     int id_caf = Integer.parseInt(id_cafS);
                     float pre_prod=Float.parseFloat(pre_prodS);
                     Productos c = new Productos();
@@ -114,10 +114,14 @@ public class RegistrarPro extends HttpServlet {
         for (int i = fot_caf.length()-4; i < fot_caf.length(); i++) {
             atras+=fot_caf.charAt(i);
         }
-        if (delante!="https://" || (atras!=".jpg" && atras!=".png")) {
+        if (!"https://".equals(delante)) {
             return false;
         }else{
-            return true;
+            if (!".jpg".equals(atras) && !".png".equals(atras)) {
+                return false;
+            }else{
+                return true;
+            }
         }
     }
     /**

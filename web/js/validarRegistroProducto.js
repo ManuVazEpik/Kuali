@@ -29,13 +29,13 @@ function validar(){
             alert("El nombre de la cafeteria no puede contener comillas o algunos otros caracteres especiales, favor de evitar acabar la queja con algún espacio ");
             return false;
         }else if(exp2===false ){
-            alert("La calle de la cafeteria no puede contener comillas o algunos otros caracteres especiales, favor de evitar acabar la queja con algún espacio ");
+            alert("La descripción no puede contener comillas o algunos otros caracteres especiales, favor de evitar acabar la queja con algún espacio ");
             return false;
         }else if(exp3===false){
-            alert("La colonia de la cafeteria no puede contener comillas o algunos otros caracteres especiales, favor de evitar acabar la queja con algún espacio ");
+            alert("El precio puede contener números enteros y decimales");
             return false;
         }else if(exp4===false){
-            alert("El número de la dirección de la cafeteria debe contener unicamente dígitos");
+            alert("La dirección URL debe de empezar con https:// y acabar con .jpg o .png");
             return false;
         }else{
 
@@ -45,16 +45,16 @@ function validar(){
             var lofot_prod=fot_prod.length;
 
             if (lonom_prod>20) {
-                alert("El nombre no puede contener mas de 45 caracteres");
+                alert("El nombre no puede contener mas de 20 caracteres");
                 return false;
             }else if (lodesc_prod>100 ) {
-                alert("La calle no pueden tener mas de 30 carácteres");
+                alert("La descripción no pueden tener mas de 100 carácteres");
                 return false;
             }else if(lopre_prod>30){
-                alert("La colonia no pueden tener mas de 30 carácteres");
+                alert("El precio no puede tener mas de 30 dígitos");
                 return false;
             }else if(lofot_prod>=1000) {
-                alert("La url de la cafeteria es demasiado extensa");
+                alert("La url de la img del producto es demasiado extensa");
                 return false;
             }else{
                 alert("Registro exitoso");

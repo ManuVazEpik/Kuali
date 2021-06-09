@@ -41,7 +41,7 @@ if(sessionOk.getAttribute("usuario")==null){
     <body>
         <a href='operacionProductos.jsp?admrs=<%=id_caf%>'>Regresar</a>
         <h1>Modificar</h1>
-        <form action="../ActualizarPro" method="POST">
+        <form name="formRegistroProducto" action="../ActualizarPro" method="POST">
         
         Ingresa el nombre del producto<input type="text" name="nom_prod" value="<%=p.getNom_prod()%>"/><br>
         Ingresa la descripcion del producto<input type="text" name="desc_prod" value="<%=p.getDesc_prod()%>"/><br>
@@ -50,8 +50,9 @@ if(sessionOk.getAttribute("usuario")==null){
         Ingresa una foto del producto<input type="text" name="fot_prod" value="<%=p.getFot_prod()%>"/><br>
         <input type="hidden" name='id_prod' value="<%=p.getId_prod()%>">
         <input type="hidden" name='id_caf' value="<%=c.getId_caf()%>">
-        <input type="submit" value="Aceptar"/>
+        <input onclick="return validar()" type="submit" value="Aceptar"/>
     </form>
+        <script src="../js/validarRegistroProducto.js"></script>
     </body>
 </html>
 <%

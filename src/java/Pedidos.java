@@ -85,6 +85,7 @@ public class Pedidos extends HttpServlet {
                 }
 
         }catch(Exception e){
+            response.sendRedirect("error.jsp");
             e.printStackTrace();
         }
     }

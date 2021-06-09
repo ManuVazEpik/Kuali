@@ -76,8 +76,7 @@ public class ActualizarCaf extends HttpServlet {
                     int estado=operC.ActualizarCafeteria(c);
 
                     if(estado >0){
-                        
-                        response.sendRedirect("dueno"+"/operacionCafeteria.jsp?admrs="+id_caf);
+                        response.sendRedirect("dueno"+"/modificarCafeterias.jsp");
                     }else{
                         response.sendRedirect("error.jsp");
                     }
