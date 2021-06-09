@@ -29,6 +29,14 @@
             margin-left: 10px;
         }
 
+        .pendiente {
+            color: color.$amarillo-kuali;
+        }
+
+        .inactivo {
+            color: color.$status-inactivo;
+        }
+
         a {
             text-decoration: none;
             cursor: pointer;
@@ -39,6 +47,19 @@
         }
 
         a:hover {
+            background: color.$azul-kuali;
+            color: color.$amarillo-kuali;
+        }
+
+        input[type='submit'] {
+            background: color.$amarillo-kuali;
+            color: color.$azul-kuali;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+
+        input[type='submit']:hover {
             background: color.$azul-kuali;
             color: color.$amarillo-kuali;
         }

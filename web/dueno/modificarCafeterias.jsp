@@ -101,12 +101,13 @@ if(sessionOk.getAttribute("id")==null){
                     <p class="texto">Estatus: Activo <i class="fas fa-circle"></i></p>
                     <form action="./operacionCafeteria.jsp" method="POST">
                         <input type="hidden" name="admrs" value="<%=caf.getId_caf()%>"/>
+                        
                         <input type="submit" value="Modificar"/>
                     </form>
                 <%  }else if(autorizacion==2){%>
-                    <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
+                    <p class="texto">Estatus: Pendiente <i class="fas fa-circle pendiente"></i></p>
                 <%  }else if(autorizacion==3){%>
-                    <p class="texto">Estatus: Inactivo <i class="fas fa-circle"></i></p>
+                    <p class="texto">Estatus: Inactivo <i class="fas fa-circle inactivo"></i></p>
                 <%  }   %>
                 </div>
             <%

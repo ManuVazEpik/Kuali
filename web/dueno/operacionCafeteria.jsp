@@ -35,7 +35,7 @@ if(sessionOk.getAttribute("usuario")==null){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
-        <title>Cafeteria</title>
+        <title>Modificar Cafeteria | KUALI</title>
     </head>
     <body>
         <a href="modificarCafeterias.jsp">Regresar</a>

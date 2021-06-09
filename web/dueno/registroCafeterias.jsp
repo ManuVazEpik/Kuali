@@ -36,7 +36,7 @@ if(sessionOk.getAttribute("id")==null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/verCafeteria.css">
+    <link rel="stylesheet" href="../css/registroCafeterias.css">
     <title>Dashboard | KUALI</title>
 </head>
 <body>
@@ -67,7 +67,7 @@ if(sessionOk.getAttribute("id")==null){
                 </a>
                 <a href="../CerrarSesion">
                     <i class="fas fa-door-open fa-2x">
-                        <h2 class="titulo-terciario">Regresar</h2>
+                        <h2 class="titulo-terciario">Cerrar Sesión</h2>
                     </i>
                 </a>
             </div>
@@ -75,8 +75,6 @@ if(sessionOk.getAttribute("id")==null){
         <div class="contenido">
             <div class="menu-administrador">
                 
-                
-
                 <div >
                     <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
                 </div>
@@ -87,18 +85,27 @@ if(sessionOk.getAttribute("id")==null){
                 
                 
             </div>
-            <h2>Registrar una cafeteria</h2>
-            <form name="formRegistroCafeteria" action="../RegistrarCaf" method="POST">
-                <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
-                <p>Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
-                <input type="text" name="fot_caf"><br>
+
+           <div class="nueva-cafeteria">
+            <h2 class="titulo-principal">Registrar una cafetería</h2>
+
+            <form action="../RegistrarCaf" method="POST">
+                <a class="texto" href="https://postimages.org" target="_blank">Haz click aquí para subir la foto de tu cafeteria</a>
+                
+                <div class="directLink">
+                    <p class="texto">Copia y pega tu enlace de DirectLink aquí</p>
+                    <input type="text" name="fot_caf" placeholder="Link de DirectLink"><br>
+                </div>
+
                 <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
-                Ingresa el nombre de tu cafeteria<input type="text" name="nom_caf"/><br>
-                Ingresa la calle de tu local<input type="text" name="calle_caf"><br>
-                Ingresa la colonia de tu local<input type="text" name="col_caf"><br>
-                Ingresa el numero de tu local<input type="text" name="num_caf"><br>
-                <input onclick="return validar()" type="submit" value='Aceptar'/>
+                <input type="text" name="nom_caf" placeholder="Nombre de la cafetería"/><br>
+                <input type="text" name="calle_caf" placeholder="Calle del local"><br>
+                <input type="text" name="col_caf" placeholder="Colonia del local"><br>
+                <input type="text" name="num_caf" placeholder="Numero de tu local"><br>
+                <input onclick="return validar()" type="submit" value='Registrar cafetería'/>
+            
             </form>
+           </div>
         </div>
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
@@ -106,7 +113,7 @@ if(sessionOk.getAttribute("id")==null){
 </body>
 </html>
 
-<%
+<!-- <%
     }else if(u.getPerm_usu()==2){
         response.sendRedirect("../usuario/inicioUsuarios.jsp");
     }else if(u.getPerm_usu()==1){
@@ -116,4 +123,4 @@ if(sessionOk.getAttribute("id")==null){
     }
 
 }
-%>
+%> -->
