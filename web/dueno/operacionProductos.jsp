@@ -60,7 +60,7 @@ if(sessionOk.getAttribute("usuario")==null){
                 Ingresa el nombre del producto<input type="text" name="nom_prod"/><br>
                 Ingresa la descripcion del producto<input type="text" name="desc_prod"/><br>
                 Ingresa el precio del producto<input type="text" name="pre_prod"/><br>
-                <input type="submit" value="Aceptar"/>
+                <input onclick="return validar()" type="submit" value="Aceptar"/>
             </form>
                 <br>
             <h2>Producto cafeteria</h2>
@@ -119,7 +119,7 @@ if(sessionOk.getAttribute("usuario")==null){
         </div>
         <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
-    <script src="validarRegistroProducto.js"></script>
+    <script src="../js/validarRegistroProducto.js"></script>
     </body>
 </html>
 <%

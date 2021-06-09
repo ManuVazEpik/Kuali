@@ -55,6 +55,8 @@ public class ActualizarPro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            
             String nom_prod, desc_prod, pre_prodS , id_prodS, dispon, id_cafS;
             boolean  disp_prod=true;
             
@@ -65,15 +67,18 @@ public class ActualizarPro extends HttpServlet {
             id_prodS= request.getParameter("id_prod");
             id_cafS= request.getParameter("id_caf");
             
+            System.out.println(fot_prod);
+            
             Validar val = new Validar();
-            boolean exp1=val.letrasEspacios(nom_prod);
+            boolean exp1=val.direcciones(nom_prod);
             boolean exp2=val.numerosEnteros(id_prodS);
-            //boolean exp3=val.direccionesURL(fot_caf);
+            boolean exp3=this.comprobarURL(fot_prod);
             boolean exp4=val.direcciones(desc_prod);
             boolean exp5=val.numerosDecimales(pre_prodS);
-            System.out.println(exp1);
-            if(exp1==true && exp2==true && exp4==true && exp5==true ){
-                if(nom_prod.length()<20 && desc_prod.length()<100 && pre_prodS.length()<30){
+            System.out.println(":"+exp1+exp2+exp3+exp4+exp5);
+            if(exp1==true && exp2==true && exp4==true && exp5==true && exp3==true ){
+                
+                if(nom_prod.length()<=20 && desc_prod.length()<=100 && pre_prodS.length()<=30 && fot_prod.length()<1000){
                     int id_prod = Integer.parseInt(id_prodS);
             
                     float pre_prod=Float.parseFloat(pre_prodS);
@@ -85,12 +90,14 @@ public class ActualizarPro extends HttpServlet {
                     c.setId_prod(id_prod);
                     c.setPre_prod(pre_prod);
                     c.setDisp_prod(disp_prod);
+                    
                     int estado=operC.Actualizar(c);
-
+                    
                     if(estado >0){
                         
                         response.sendRedirect("dueno"+"/operacionProductos.jsp?admrs="+id_cafS);
                     }else{
+                        
                         response.sendRedirect("error.jsp");
                     }
                 
@@ -100,12 +107,34 @@ public class ActualizarPro extends HttpServlet {
             }else{
                 response.sendRedirect("error.jsp");
             }
-            } catch (SQLException ex) {
-                    Logger.getLogger(ActualizarPro.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        } catch (SQLException ex) {
+            response.sendRedirect("error.jsp");
+            Logger.getLogger(ActualizarPro.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
     }
 
+    public boolean comprobarURL(String parametro){
+        String fot_caf=parametro;
+        String delante="";
+        String atras="";
+        for (int i = 0; i < 8; i++) {
+            delante+=fot_caf.charAt(i);
+        }
+        for (int i = fot_caf.length()-4; i < fot_caf.length(); i++) {
+            atras+=fot_caf.charAt(i);
+        }
+        System.out.println(delante);
+        if (!"https://".equals(delante)) {
+            return false;
+        }else{
+            if (!".jpg".equals(atras) && !".png".equals(atras)) {
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
     /**
      * Returns a short description of the servlet.
      *
