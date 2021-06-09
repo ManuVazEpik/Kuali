@@ -35,10 +35,16 @@ if(sessionOk.getAttribute("usuario")==null){
         Pedido.checkoutPendientes(id_caf, false);
 %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pedidos Pendientes</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/externals/normalize.css">
+        <link rel="stylesheet" href="css/pedidosAgendados.css">
+        
+        <title>Pedidos Agendados | KUALI</title>
+        
         <script>
             function aviso(){
             <%
@@ -60,10 +66,35 @@ if(sessionOk.getAttribute("usuario")==null){
         </script>
     </head>
     <body onload="aviso()">
-        
-        <a href="./dueno/verCafeterias.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Administrar Cafeterias</a>
-        <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
-        <h1>Pedidos Pendientes</h1>
+    <div class="contenedor-principal">
+        <nav class="menu">
+            <div class="logo">
+                <a href="../usuario/inicioUsuarios.jsp"><img src="../../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+            </div>
+            
+            <div class="ubicacion">
+                <a href="./dueno/verCafeterias.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Administrar Cafeterias</a>
+            </div>
+    
+            <div class="pedidos-agendados">
+                <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Perfil</a>
+            </div>
+    
+            <div class="opciones-usuario">
+                <div class="caja_busqueda">
+                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
+                    
+                    <a class="boton_buscar">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+                
+                <img src="../../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+            </div>
+        </nav>
+        <h1 align="center">Pedidos Agendados</h1>
+        <div class="pedidos">
+            <div class="contenedor-pedido">
         <%
         DetallePedido odp = new DetallePedido();
         Pedido op = new Pedido();
@@ -84,49 +115,74 @@ if(sessionOk.getAttribute("usuario")==null){
                 Minuto om=new Minuto();
                 Minuto m=om.getMinutoById(p.getId_min());
         %>
-        <label>Nombre del Cliente: <%=u.getNom_usu()%> <%=u.getAppat_usu()%> <%=u.getApmat_usu()%></label><br>
-        <label>Fecha: <%=p.getFecha_ped()%></label><br>
-        <label>Hora: <%=h.getHora()%>:<%=m.getMinuto()%></label><br>
-        <label>Costo Total: <%=p.getTot_ped()%></label><br><br>
-        
-        <%
-            for(DetallePedido dp: listadp){
-                Productos oprod = new Productos();
-                Productos prod = oprod.getProductoById(dp.getId_prod());
-        %>
-        <label style="margin-right: 2rem;">Producto: <%=prod.getNom_prod()%></label><label>Cantidad: <%=dp.getCant_detPed()%></label>
-        <br>
-        <%
-            }
-        %>
-        <br>
-        <form action="CancelarPedido" method="POST" >
-        <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
-        <input onclick="return confirmacion()" type="submit" value="Cancelar Pedido"/>
-        </form>
-        <br>
-        <%
-            if(finalizar==true){
-        %>
-        <br>
-        <form action="FinalizarPedido" method="POST" >
-        <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
-        <input type="submit" value="Finalizar Pedido"/>
-        </form>
-        <br>
-        <br><br>
-        <%
-            }else{
-        %>
-        <br><br>
-        <%
-            }
+            
+                <div class="pedido">
+                    <%
+                        for(DetallePedido dp: listadp){
+                            Productos oprod = new Productos();
+                            Productos prod = oprod.getProductoById(dp.getId_prod());
+                    %>
+                    <p class="titulo-cuarto"><%=dp.getCant_detPed()%> <%=prod.getNom_prod()%></p>
+                    <i class="fas fa-angle-down fa-lg"></i>
+                    <%
+                        }
+                    %>
+                </div>
+                <div class="descripcion">
+                    <p class="texto">Nombre del Cliente: <%=u.getNom_usu()%> <%=u.getAppat_usu()%> <%=u.getApmat_usu()%></p>
+                    <p class="texto">Fecha: <%=p.getFecha_ped()%></p>
+                    <p class="texto">Hora: <%=h.getHora()%>:<%=m.getMinuto()%></p>
+                    <p class="texto">Costo Total: <%=p.getTot_ped()%></p>
+                    <form action="CancelarPedido" method="POST" >
+                    <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
+                    <button type="submit" onclick="return confirmacion()"><i class="fas fa-times"></i> Cancelar pedido</button>
+                    </form>
+            <%
+                if(finalizar==true){
+            %>
+                    <form action="FinalizarPedido" method="POST" >
+                    <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
+                    <input type="submit" value="Finalizar Pedido"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+                    <%
+                        }else{
+                    %>
+                </div>
+            </div>
+        </div>
+            <%
+                }
             }
             contador=p.getId_ped();
         }
-
         %>
-        <script src="js/Cancelacion.js"></script>
+            
+    </div>
+    <footer>
+        <div class="presentacion-kuali">
+            <h3>KUALI</h3>
+            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+
+        <div class="derechos">
+            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
+            <div class="enlacer">
+                <a href="./avisoPrivacidad.html">Política de privacidad</a>
+                <a href="./terminosyCondiciones.html">Terminos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/pedidosAgendados.js"></script>    
+    <script src="js/Cancelacion.js"></script>
     </body>
 </html>
 <%
@@ -134,10 +190,14 @@ if(sessionOk.getAttribute("usuario")==null){
         Pedido.checkoutPendientes(Integer.parseInt(idUS), true);
 %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pedidos Agendados</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/externals/normalize.css">
+        <link rel="stylesheet" href="css/pedidosAgendados.css">
+        <title>Pedidos Agendados | KUALI</title>
     <script>
             function aviso(){
             <%
@@ -159,12 +219,38 @@ if(sessionOk.getAttribute("usuario")==null){
         </script>
     </head>
     <body onload="aviso()">
+        <div class="contenedor-principal">
+        <nav class="menu">
+            <div class="logo">
+                <a href="./index.html"><img src="img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+            </div>
+            
+            <div class="ubicacion">
+                <a href="./usuario/carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
+            </div>
+    
+            <div class="pedidos-agendados">
+                <a href="./pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Pedidos pendientes</a>
+            </div>
+            
+            <div class="pedidos-agendados">
+                <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Perfil</a>
+            </div>
+    
+            <div class="opciones-usuario">
+                <div class="caja_busqueda">
+                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
+                    
+                    <a class="boton_buscar">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </div>
+                
+                <img src="img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+            </div>
+        </nav>
+        <h1 align="center">Pedidos Agendados</h1>
         
-            <a href="./index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
-            <a href="./usuario/carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
-            <a href="./pedidosAgendados.html"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
-            <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Perfil</a>
-        <h1>Pedidos Agendos</h1>
         <%
         DetallePedido odp = new DetallePedido();
         Pedido op = new Pedido();
@@ -178,40 +264,68 @@ if(sessionOk.getAttribute("usuario")==null){
                 Cafeteria oc= new Cafeteria();
                 
                 Cafeteria c = oc.getCafeteriaByIdCaf(p.getId_caf());
-                System.out.println(c.getNom_caf());
                 Hora oh=new Hora();
                 Hora h= oh.getHoraById(p.getId_hora());
                 Minuto om=new Minuto();
                 Minuto m=om.getMinutoById(p.getId_min());
         %>
-        <label>Nombre de la cafeteria: <%=c.getNom_caf()%></label><br>
-        <label>Fecha: <%=p.getFecha_ped()%></label><br>
-        <label>Hora: <%=h.getHora()%>:<%=m.getMinuto()%></label><br>
-        <label>Costo Total: <%=p.getTot_ped()%></label><br><br>
+        <div class="pedidos">
         
-        <%
-            for(DetallePedido dp: listadp){
-                Productos oprod = new Productos();
-                Productos prod = oprod.getProductoById(dp.getId_prod());
-        %>
-        <label style="margin-right: 2rem;">Producto: <%=prod.getNom_prod()%></label>
-        <label style="margin-right: 2rem;">Cantidad: <%=dp.getCant_detPed()%></label>
-        <label>SubTotal: <%=dp.getSub_detPed()%></label>
-        <br>
-        <%
-            }
-        %>
-        <br>
-        <form action="CancelarPedido" method="POST" >
-        <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
-        <input onclick="return confirmacion()" type="submit" value="Cancelar Pedido"/>
-        </form>
-        <br><br><br>
-        <%
+            <div class="contenedor-pedido">
+                <div class="pedido">
+                    <%
+                        for(DetallePedido dp: listadp){
+                            Productos oprod = new Productos();
+                            Productos prod = oprod.getProductoById(dp.getId_prod());
+                    %>
+                    <p class="titulo-cuarto"><%=dp.getCant_detPed()%> <%=prod.getNom_prod()%> 
+                        $ <%=dp.getSub_detPed()%></p>
+                    <i class="fas fa-angle-down fa-lg"></i>
+                    <%
+                        }
+                    %>
+                </div>
+                <div class="descripcion">
+                    <p class="texto">Nombre de la Cafeteria: <%=c.getNom_caf()%> </p>
+                    <p class="texto">Fecha: <%=p.getFecha_ped()%></p>
+                    <p class="texto">Hora: <%=h.getHora()%>:<%=m.getMinuto()%></p>
+                    <p class="texto">Costo Total: <%=p.getTot_ped()%></p>
+                    <form action="CancelarPedido" method="POST" >
+                    <input type="hidden" name="id_pedido" value="<%=p.getId_ped()%>"/>
+                    <button type="submit" onclick="return confirmacion()"><i class="fas fa-times"></i> Cancelar pedido</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+            <%
             }
             contador=p.getId_ped();
         }
         %>
+        
+        </div>
+        <footer>
+        <div class="presentacion-kuali">
+            <h3>KUALI</h3>
+            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
+        </div>
+
+        <div class="redes-sociales">
+
+        </div>
+
+        <div class="derechos">
+            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
+            <div class="enlacer">
+                <a href="./avisoPrivacidad.html">Política de privacidad</a>
+                <a href="./terminosyCondiciones.html">Terminos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/pedidosAgendados.js"></script>
         <script src="js/Cancelacion.js"></script>
     </body>
 </html>
