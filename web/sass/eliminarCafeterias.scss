@@ -28,12 +28,33 @@
             margin-left: 10px;
         }
 
+        .pendiente {
+            color: color.$amarillo-kuali;
+        }
+
+        .inactivo {
+            color: color.$status-inactivo;
+        }
+
         a {
             text-decoration: none;
             cursor: pointer;
             background: color.$status-inactivo;
             border-radius: 50px;
             padding: 5px 10px;
+            color: color.$blanco-kuali;
+        }
+
+        input[type='submit'] {
+            background: color.$amarillo-kuali;
+            color: color.$azul-kuali;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+
+        input[type='submit']:hover {
+            background: color.$status-inactivo;
             color: color.$blanco-kuali;
         }
     }

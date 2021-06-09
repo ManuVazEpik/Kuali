@@ -98,9 +98,9 @@ if(sessionOk.getAttribute("id")==null){
                             <input type="submit" value="Eliminar"/>
                         </form>
                     <%  }else if(autorizacion==2){%>
-                        <p class="texto">Estatus: Pendiente <i class="fas fa-circle"></i></p>
+                        <p class="texto">Estatus: Pendiente <i class="fas fa-circle pendiente"></i></p>
                     <%  }else if(autorizacion==3){%>
-                        <p class="texto">Estatus: Inactivo <i class="fas fa-circle"></i></p>
+                        <p class="texto">Estatus: Inactivo <i class="fas fa-circle inactivo"></i></p>
                         <form action="../EliminarCaf" method="POST">
                             <input type="hidden" name="id" value='<%=caf.getId_caf()%>'/>
                             <input type="submit" value="Eliminar"/>
