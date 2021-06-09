@@ -27,7 +27,7 @@ if (sesionOk.getAttribute("usuario") == null ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/verCafeteria.css">
+    <link rel="stylesheet" href="../css/administrarUsuarios.css">
     <title>Administrador | KUALI</title>
     </head>
     <body>
@@ -65,33 +65,35 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 </div>
             
                 <div class="usuarios">
-                    <h3>Usuarios</h3>
+                    <h3 class="titulo-secundario">Usuarios</h3>
                     <%
                     Usuario u = new Usuario();
                     ArrayList<Usuario> listaUsu=u.getUsuarios();
                     
                     %>
                     <table>
-                        <th>Id_usu</th>
-                        <th>Nombre_usu</th>
-                        <th>Appat_usu</th>
-                        <th>Apmat_usu</th>
-                        <th>Email</th>
-                        <th>Contraseña</th>
-                        <th>Telefono</th>
-                        <th>Eliminar</th>
+                        <thead>
+                            <th class="titulo-terciario borderI">Id_usu</th>
+                            <th class="titulo-terciario">Nombre_usu</th>
+                            <th class="titulo-terciario">Appat_usu</th>
+                            <th class="titulo-terciario">Apmat_usu</th>
+                            <th class="titulo-terciario">Email</th>
+                            <th class="titulo-terciario">Contraseña</th>
+                            <th class="titulo-terciario">Telefono</th>
+                            <th class="titulo-terciario borderF">Eliminar</th>
+                        </thead>
                     <%
                         for(Usuario c:listaUsu){
                     %>
                     <tr>
-                        <td><%=c.getId_usu()%></td>
-                        <td><%=c.getNom_usu()%></td>
-                        <td><%=c.getAppat_usu()%></td>
-                        <td><%=c.getApmat_usu()%></td>
-                        <td><%=c.getEmail_usu()%></td>
-                        <td><%=c.getPass_usu()%></td>
-                        <td><%=c.getTel_usu()%></td>
-                        <td><form action="EliminarUsu" method="POST">
+                        <td class="texto"><%=c.getId_usu()%></td>
+                        <td class="texto"><%=c.getNom_usu()%></td>
+                        <td class="texto"><%=c.getAppat_usu()%></td>
+                        <td class="texto"><%=c.getApmat_usu()%></td>
+                        <td class="texto"><%=c.getEmail_usu()%></td>
+                        <td class="texto"><%=c.getPass_usu()%></td>
+                        <td class="texto"><%=c.getTel_usu()%></td>
+                        <td class="texto"><form action="EliminarUsu" method="POST">
                             <input type="hidden" name="id" value="<%=c.getId_usu()%>"/>
                             <input type="hidden" name="tipo" value="1"/>
                             <input type="submit" value="Eliminar"/>
