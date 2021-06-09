@@ -19,6 +19,7 @@
 
             .contenedor-producto {
                 width: 370px;
+                margin-bottom: 20px;
 
                 .imagen {
                     width: 100%;
@@ -81,14 +82,11 @@
         margin: 50px auto;
     }
 
-
     .contenedor-cafeterias, .cafeterias {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
-
-        
+        align-items: center;    
     }
 
     .contenedor-cafeterias {
@@ -100,14 +98,10 @@
             align-items: center;
             margin: 50px;
 
-            // .texto {
-            //     border-radius: 50px;
-            //     background: color.$status-activo;
-            //     padding: 5px 20px;
-            // }
-
             img {
                 border-radius: 10px;
+                width: 250px;
+                height: 200px;
             }
 
             a {
@@ -125,6 +119,16 @@
             a:hover {
                 background: color.$azul-kuali;
                 color: color.$amarillo-kuali;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .contenedor-principal {
+        .contenedor-promociones, .contenedor-favoritos, .contenedor-destacados, .menus-cafeterias {
+            .contenedor-grid {
+                grid-template-columns: 30% 30% 30%;
             }
         }
     }

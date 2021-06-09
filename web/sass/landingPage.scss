@@ -60,13 +60,21 @@
             transition: ease 0.5s;
 
             .video {
-                background: #675867;
                 width: 50%;
                 margin-right: 50px;
+
+                video {
+                    background: color.$cafe-kuali;
+                    width: 100%;
+                    height: 100%;
+                    outline: none;
+                    border-radius: 5px;
+                }
             }
 
             .contenido {
                 width: 50%;
+                align-items: center;
             }
         }
 
@@ -181,8 +189,9 @@
                     background: color.$amarillo-kuali;
                     border-radius: 50%;
                     color: color.$cafe-kuali;
-                    padding: 35px;
+                    padding: 20px;
                     margin-right: 10px;
+                    align-items: start;
                 }
 
                 .descripcion {
