@@ -64,7 +64,7 @@ if(sessionOk.getAttribute("usuario")==null){
         </nav>
 
         <div class="header">
-            <img src="../img/logos-cafeterias/logo cafeteria test.jpg" alt="Logo cafeteria">
+            <!-- <img src="../img/logos-cafeterias/logo cafeteria test.jpg" alt="Logo cafeteria"> -->
         </div>
         <%
         try{
