@@ -73,23 +73,23 @@ if (sesionOk.getAttribute("usuario") == null ) {
                     %>
                     <table>
                         <thead>
-                            <th class="titulo-terciario borderI">Id_usu</th>
-                            <th class="titulo-terciario">Nombre_usu</th>
-                            <th class="titulo-terciario">Appat_usu</th>
-                            <th class="titulo-terciario">Apmat_usu</th>
-                            <th class="titulo-terciario">Email</th>
-                            <th class="titulo-terciario">Contraseña</th>
-                            <th class="titulo-terciario">Telefono</th>
-                            <th class="titulo-terciario borderF">Eliminar</th>
+                            <th class="titulo-cuarto borderI">ID</th>
+                            <th class="titulo-cuarto">Nombre</th>
+                            <th class="titulo-cuarto">Email</th>
+                            <th class="titulo-cuarto">Contraseña</th>
+                            <th class="titulo-cuarto">Telefono</th>
+                            <th class="titulo-cuarto borderF">Acciones</th>
                         </thead>
                     <%
                         for(Usuario c:listaUsu){
                     %>
                     <tr>
                         <td class="texto"><%=c.getId_usu()%></td>
-                        <td class="texto"><%=c.getNom_usu()%></td>
-                        <td class="texto"><%=c.getAppat_usu()%></td>
-                        <td class="texto"><%=c.getApmat_usu()%></td>
+                        <td class="texto">
+                            <%=c.getNom_usu()%>
+                            <%=c.getAppat_usu()%>
+                            <%=c.getApmat_usu()%>
+                        </td>
                         <td class="texto"><%=c.getEmail_usu()%></td>
                         <td class="texto"><%=c.getPass_usu()%></td>
                         <td class="texto"><%=c.getTel_usu()%></td>

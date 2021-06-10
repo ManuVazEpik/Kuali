@@ -31,34 +31,20 @@
                 <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             
-            <div class="ubicacion">
-                <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
-            </div>
-            <%
-                String id_cafS = request.getParameter("admrs");
-                int id_caf = 0;
-                if(id_cafS!=null){
-                    id_caf = Integer.parseInt(id_cafS);
-            %>
-            
-            <div class="ubicacion">
-                <a href="./menuCafeteria.jsp?qwer=<%=id_caf%>"><i class="fas fa-mug-hot fa-lg"></i>Menú</a>
-            </div>
-            
-            <%    
-                }
-            %>
-            
             <div class="pedidos-agendados">
                 <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
             </div>
-            
+
+            <div class="ubicacion">
+                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
+            </div>
+
             <div class="ubicacion">
                 <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
             </div>
-    
-            <div class="opciones-usuario">
-                <a href="inicioUsuarios.jsp"><img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual"></a>
+
+            <div class="opciones-usuario">         
+                <a href="../IniciarSesion.html"><img src="../img/usuario-perfil.png" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
         
@@ -159,7 +145,7 @@
 
             <%
             }else{%>
-            <h2 class="titulo-principal">No hay Articulos en el carro</h2> 
+            <h2 class="titulo-principal noHay">No hay Articulos en el carro</h2> 
             <%}
             %>
             </div>

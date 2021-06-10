@@ -46,6 +46,7 @@ body {
                 img {
                     width: 150px;
                     height: 100px;
+                    border-radius: 20px;
                 }
     
                 input {
@@ -75,10 +76,7 @@ body {
                     background: color.$status-inactivo;
                 }
             }
-    
-            tr:hover {
-                background: rgba(color.$verde-kuali, 0.9);
-            }
+
         }
 
         .ordenar {
@@ -142,6 +140,14 @@ body {
                     background: linear-gradient(125deg, color.$azul-kuali 20%, color.$verde-kuali 90%);
                 }
             }
+        }
+    
+        .noHay {
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

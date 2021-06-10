@@ -69,13 +69,13 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <h2 class="titulo-secundario">Quejas</h2>
                 <table>
                     <thead>
-                        <th class="titulo-terciario borderI">ID</th>
-                        <th class="titulo-terciario">Nombre</th>
-                        <th class="titulo-terciario">Correo</th>
-                        <th class="titulo-terciario">Telefono</th>
-                        <th class="titulo-terciario">Queja o sugerencia</th>
-                        <th class="titulo-terciario">Satisfacción</th>
-                        <th class="titulo-terciario borderF">Concluir Queja</th>
+                        <th class="titulo-cuarto borderI">ID</th>
+                        <th class="titulo-cuarto">Nombre</th>
+                        <th class="titulo-cuarto">Correo</th>
+                        <th class="titulo-cuarto">Telefono</th>
+                        <th class="titulo-cuarto">Queja o sugerencia</th>
+                        <th class="titulo-cuarto">Satisfacción</th>
+                        <th class="titulo-cuarto borderF">Concluir Queja</th>
                     </thead>
                 <%
                     Queja opq = new Queja();

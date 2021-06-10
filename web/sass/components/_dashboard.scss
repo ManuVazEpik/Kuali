@@ -8,7 +8,6 @@ body {
     height: 100%; 
 }
 
-
 .contenedor-dashboard {
     display: flex;
     flex-direction: row;
@@ -16,7 +15,7 @@ body {
     .menu-lateral {
         background: linear-gradient(90deg, color.$azul-kuali 10%, color.$verde-kuali 80%);
         width: 23%;
-        height: 100vh;
+        height: 100%;
         
         display: flex;
         flex-direction: column;

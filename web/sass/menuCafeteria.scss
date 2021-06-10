@@ -10,12 +10,12 @@
     .header {
         width: 100%;
         height: 40%;
-        background: url('../img/headers-cafeterias/Cafetería\ 3.jpg');
+        background: color.$verde-kuali url('../img/headers-cafeterias/Cafetería\ 3.jpg');
         background-repeat: no-repeat;
+        background-attachment: scroll;
         background-size: cover;
         background-position: center;
         position: relative;
-        z-index: 0;
 
         display: flex;
         flex-direction: row;

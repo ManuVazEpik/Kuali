@@ -101,23 +101,22 @@ if(sessionOk.getAttribute("usuario")==null){
                     <input class="texto campo" type="text" name="desc_prod" placeholder="Descripción del producto"/>
                     <input class="texto campo" type="text" name="pre_prod" placeholder="Precio del producto"/>
 
-                    <input onclick="return validar()" type="submit" value="Aceptar"/>
+                    <input class='boton' onclick="return validar()" type="submit" value="Aceptar"/>
                 </form>
             </div>
                 
-
             <div class="table-header">
                 <h1 class="titulo-secundario">Mis productos</h1>
                 <p class="texto">¡ Hey ! Aquí puedes ver los productos de tu cafetería.</p>
             </div> 
 
             <table>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Img</th>
-                <th>Disponibilidad</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
+                <th class="titulo-terciario">Nombre</th>
+                <th class="titulo-terciario">Precio</th>
+                <th class="titulo-terciario">Img</th>
+                <th class="titulo-terciario">Disponibilidad</th>
+                <th class="titulo-terciario">Modificar</th>
+                <th class="titulo-terciario">Eliminar</th>
                 <%
                 Productos opP = new Productos();
                 ArrayList<Productos> listap=opP.getProductosCaf(c.getId_caf());
@@ -126,8 +125,8 @@ if(sessionOk.getAttribute("usuario")==null){
 
             %>
                     <tr>
-                        <td><%=p.getNom_prod()%></td>
-                        <td><%=p.getPre_prod()%></td>
+                        <td class="texto"><%=p.getNom_prod()%></td>
+                        <td class="texto"><%=p.getPre_prod()%></td>
 
                         <td><img src="<%=p.getFot_prod()%>"></td>
 
@@ -138,11 +137,11 @@ if(sessionOk.getAttribute("usuario")==null){
                                 <%if(p.getDisp_prod()==true){%>
                                 <p>Disponible</p>
                                 <input type="hidden" value="Disponible" name="dis_prod"/>
-                                <input type="submit" value="Cambiar a no disponible"/>
+                                <input class="boton" type="submit" value="Cambiar a no disponible"/>
                                 <%}else{%>
                                 <p>No Disponible</p>
                                 <input type="hidden" value="NoDisponible" name="dis_prod"/>
-                                <input type="submit" value="Cambiar a disponible"/>
+                                <input class="boton" type="submit" value="Cambiar a disponible"/>
                                 <%}%>
                             </form>
                         </td>
@@ -151,7 +150,7 @@ if(sessionOk.getAttribute("usuario")==null){
                             <form action="modificarProducto.jsp" method="POST">
                                 <input type="hidden" name="id_pro" value="<%=p.getId_prod()%>"/>
                                 <input type="hidden" name="id_caf" value="<%=c.getId_caf()%>"/>
-                                <input type="submit" value="Aceptar"/>
+                                <input class="boton" type="submit" value="Modificar"/>
                             </form>
                         </td>
 
@@ -159,7 +158,7 @@ if(sessionOk.getAttribute("usuario")==null){
                             <form action="../EliminarPro" method="POST">
                                 <input type="hidden" name="id_prod" value="<%=p.getId_prod()%>"/>
                                 <input type='hidden' name='id' value='<%=c.getId_caf()%>'/>
-                                <input type="submit" value="Aceptar"/>
+                                <input class="boton eliminar" type="submit" value="Eliminar"/>
                             </form>
                         </td>
                     </tr>

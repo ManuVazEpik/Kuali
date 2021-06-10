@@ -98,14 +98,14 @@ if(sessionOk.getAttribute("id")==null){
                     
                     <div class="directLink">
                         <p class="texto">Copia y pega tu enlace de DirectLink aquí</p>
-                        <input type="text" name="fot_caf" autocomplete="off" placeholder="Link de DirectLink"><br>
+                        <input type="text" name="fot_caf" autocomplete="off" placeholder="Link de DirectLink">
                     </div>
 
                     <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
-                    <input type="text" name="nom_caf" placeholder="Nombre de la cafetería"/><br>
-                    <input type="text" name="calle_caf" placeholder="Calle del local"><br>
-                    <input type="text" name="col_caf" placeholder="Colonia del local"><br>
-                    <input type="text" name="num_caf" placeholder="Numero de tu local"><br>
+                    <input type="text" name="nom_caf" autocomplete="off" placeholder="Nombre de la cafetería"/>
+                    <input type="text" name="calle_caf" autocomplete="off" placeholder="Calle del local">
+                    <input type="text" name="col_caf" autocomplete="off" placeholder="Colonia del local">
+                    <input type="text" name="num_caf" autocomplete="off" placeholder="Numero de tu local">
                     <input onclick="return validar()" type="submit" value='Registrar cafetería'/>
                 
                 </form>

@@ -224,35 +224,27 @@ if(sessionOk.getAttribute("usuario")==null){
     </head>
     <body onload="aviso()">
         <div class="contenedor-principal">
-        <nav class="menu">
-            <div class="logo">
-                <a href="./index.html"><img src="img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
-            </div>
-            
-            <div class="ubicacion">
-                <a href="./usuario/carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
-            </div>
-    
-            <div class="pedidos-agendados">
-                <a href="./pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Pedidos pendientes</a>
-            </div>
-            
-            <div class="pedidos-agendados">
-                <a href="./usuario/ajustesUsuarios.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Perfil</a>
-            </div>
-    
-            <div class="opciones-usuario">
-                <div class="caja_busqueda">
-                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
-                    
-                    <a class="boton_buscar">
-                        <i class="fas fa-search"></i>
-                    </a>
+            <nav class="menu">
+                <div class="logo">
+                    <a href="./usuario/inicioUsuarios.jsp"><img src="./img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
                 </div>
                 
-                <img src="img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
-            </div>
-        </nav>
+                <div class="pedidos-agendados">
+                    <a href="./usuario/pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
+                </div>
+
+                <div class="ubicacion">
+                    <a href="./usuario/carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
+                </div>
+
+                <div class="ubicacion">
+                    <a href="./usuario//ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
+                </div>
+
+                <div class="opciones-usuario">         
+                    <a href="./IniciarSesion.html"><img src="./img/usuario-perfil.png" alt="imagen de perfil del usuario actual"></a>
+                </div>
+            </nav>
         <h1 align="center">Pedidos Agendados</h1>
         
         <%

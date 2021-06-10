@@ -5,23 +5,25 @@
 
 .contenedor-dashboard {
     .contenido {
-        
+        width: 100%;
+        height: 100%;
+
         .usuarios{
-            width: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
-            margin-bottom: 10%;
+            margin: 0 50px;
 
             .titulo-secundario {
                 color: color.$verde-kuali;
             }
 
             table {
-                width: 90%;
-                margin-left: 4em;
+                margin: 0 50px;
+
                 thead {
                     background: linear-gradient(0deg, #643f1c 10%, color.$cafe-kuali 50%);
                     
@@ -33,38 +35,34 @@
                         border-radius: 0px 30px 0px 0px;
                     }
 
-                    .titulo-terciario {
+                    .titulo-cuarto {
                         color: color.$blanco-kuali;
-                        padding: 20px 30px;
+                        padding: 10px;
                     }
                 }
 
                 td {
-                    padding: 10px 30px;
-                    align-items: center;
+                    padding: 10px 20px;
+                    text-align: center;
+                    vertical-align: middle;
                 }
 
                 input {
-                    background-color: red;
+                    width: 100%;
                     border-radius: 50px;
                     border: none;
                     outline: none;
                     padding: 10px 15px;
+                    margin: 5px 0px;
                     cursor: pointer;
                     color: color.$blanco-kuali;
-                }
-
-                input[type='submit']:hover{
-                    background: color.$verde-kuali;
+                    background: color.$azul-kuali;
                     color: color.$amarillo-kuali;
                 }
 
-                .aceptar {
-                    background: color.$status-activo;
-                }
-
-                .rechazar {
-                    background: color.$status-inactivo;
+                input:hover {
+                    background: color.$amarillo-kuali;
+                    color: color.$azul-kuali;
                 }
             }
         }

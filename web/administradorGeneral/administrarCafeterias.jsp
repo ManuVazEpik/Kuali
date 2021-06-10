@@ -74,12 +74,12 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 <table>
                     <thead>
                         <tr>
-                            <th class="titulo-terciario borderI">ID de Cafetería</th>
-                            <th class="titulo-terciario">Nombre</th>
-                            <th class="titulo-terciario">Direccion</th>
-                            <th class="titulo-terciario">ID de Usuario</th>
-                            <th class="titulo-terciario">Autorizar</th>
-                            <th class="titulo-terciario borderF">Rechazar</th>
+                            <th class="titulo-cuarto borderI">ID de Cafetería</th>
+                            <th class="titulo-cuarto">Nombre</th>
+                            <th class="titulo-cuarto">Direccion</th>
+                            <th class="titulo-cuarto">ID de Usuario</th>
+                            <th class="titulo-cuarto">Autorizar</th>
+                            <th class="titulo-cuarto borderF">Rechazar</th>
                         </tr>
                     </thead>
                 <%
@@ -114,43 +114,42 @@ if (sesionOk.getAttribute("usuario") == null ) {
                 %>
                 <table>
                     <thead>
-                        <th class="titulo-terciario borderI">ID de cafetería</th>
-                        <th class="titulo-terciario">Nombre</th>
-                        <th class="titulo-terciario">Direccion</th>
-                        <th class="titulo-terciario">ID de Usuario</th>
-                        <th class="titulo-terciario">Cambiar a Destacada</th>
-                        <th class="titulo-terciario borderF">Eliminar</th>
+                        <th class="titulo-cuarto borderI">ID de cafetería</th>
+                        <th class="titulo-cuarto">Nombre</th>
+                        <th class="titulo-cuarto">Direccion</th>
+                        <th class="titulo-cuarto borderF">Opciones</th>
                     </thead>
                 <%
                     for(Cafeteria c:listaAut){
                 %>
                     <tr>
-                        <td><%=c.getId_caf()%></td>
-                        <td><%=c.getNom_caf()%></td>
-                        <td><%=c.getDir_caf()%></td>
-                        <td><%=c.getId_usu()%></td>
-                        <td><form action="../EliminarCaf" method="POST">
-                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
-                            <input type="hidden" name="tipo" value="3"/>
-                            <input type="submit" value="Eliminar" class="rechazar"/>
-                        </form></td>
-                        <%
-                            if(c.getDest_caf()==false){
-                        %>
-                        <td><form action="../Destacada" method="POST">
-                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
-                            <input type="submit" value="Autorizar Destacada" class="rechazar"/>
-                        </form></td>
-                        <%
-                            }else{
-                        %>
-                        <td><form action="../NoDestacada" method="POST">
-                            <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
-                            <input type="submit" value="Quitar Destacada" class="rechazar"/>
-                        </form></td>
-                        <%
-                            }
-                        %>
+                        <td class="texto"><%=c.getId_caf()%></td>
+                        <td class="texto"><%=c.getNom_caf()%></td>
+                        <td class="texto"><%=c.getDir_caf()%></td>
+                        <td>
+                            <form action="../EliminarCaf" method="POST">
+                                <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                                <input type="hidden" name="tipo" value="3"/>
+                                <input type="submit" value="Eliminar" class="rechazar"/>
+                            </form>
+                            <%
+                                if(c.getDest_caf()==false){
+                            %>
+                            <form action="../Destacada" method="POST">
+                                <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                                <input type="submit" value="Autorizar Destacada" class="rechazar"/>
+                                </form>
+                            <%
+                                }else{
+                            %>
+                            <form action="../NoDestacada" method="POST">
+                                <input type="hidden" name="id" value="<%=c.getId_caf()%>"/>
+                                <input type="submit" value="Quitar Destacada" class="rechazar"/>
+                            </form>
+                            <%
+                                }
+                            %>
+                        </td>
                     </tr>
                 <%
                     }

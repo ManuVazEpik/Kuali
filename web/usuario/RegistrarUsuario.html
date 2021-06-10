@@ -31,17 +31,17 @@
             <div class="contenedor-login">
                 <h1 class="titulo-secundario">Regístrate</h1>
                 <form name="formRegistroUsuario" class="formulario" action="../RegistrarUsu" method="POST">
-                    <input type="text" name="nom_usu" placeholder="Nombre" required/>
+                    <input type="text" name="nom_usu" placeholder="Nombre" autocomplete="off" required/>
                     <div class="mitad-ancho">
-                        <input type="text" name="appat_usu" placeholder="Apellido Paterno" required/>
-                        <input type="text" name="apmat_usu" placeholder="Apellido Materno" required/>
+                        <input type="text" name="appat_usu" placeholder="Apellido Paterno" autocomplete="off" required/>
+                        <input type="text" name="apmat_usu" placeholder="Apellido Materno" autocomplete="off" required/>
                     </div>
                     
-                    <input type="number" name="tel_usu" placeholder="Teléfono" required/>
+                    <input type="number" name="tel_usu" placeholder="Teléfono" autocomplete="off" required/>
                     
                     <div class="mitad-ancho">
-                        <input type="text" name="email_usu" placeholder="Correo electrónico" required/>
-                        <input type="password" name="pass_usu" placeholder="Contraseña" required/>
+                        <input type="text" name="email_usu" placeholder="Correo electrónico" autocomplete="off" required/>
+                        <input type="password" name="pass_usu" placeholder="Contraseña" autocomplete="off" required/>
                     </div>
                     
                     <select name="tipo">

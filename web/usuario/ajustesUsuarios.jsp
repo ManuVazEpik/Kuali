@@ -59,24 +59,24 @@ if(sessionOk.getAttribute("id")==null){
             }else{
         %>
         <nav class="menu">
-           <div class="logo">
+            <div class="logo">
                 <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
-            </div>
-
-            <div class="ubicacion">
-                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
             
             <div class="pedidos-agendados">
                 <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
             </div>
-            
+
             <div class="ubicacion">
-                <a href="./inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
+                <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
-    
-            <div class="opciones-usuario">
-                <a href="inicioUsuarios.jsp"><img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual"></a>
+
+            <div class="ubicacion">
+                <a href="./ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
+            </div>
+
+            <div class="opciones-usuario">         
+                <a href="../IniciarSesion.html"><img src="../img/usuario-perfil.png" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
         <%

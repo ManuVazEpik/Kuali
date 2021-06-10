@@ -77,6 +77,20 @@ if(sessionOk.getAttribute("usuario")==null){
             </div>
 
             <div class="contenido">
+                <div class="menu-administrador">
+                    <div class="enlace primero">
+                        <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Pedidos Solicitados</a>
+                    </div>
+    
+                    <div class="enlace">
+                        <a href="../usuario/ajustesUsuarios.jsp"><i class="fas fa-user-cog fa-lg"></i>Perfil</a>
+                    </div>
+                        
+                    <div class="opciones-usuario">         
+                        <img src="../img/dueno-perfil.png" alt="imagen de perfil del usuario actual">
+                    </div>
+                </div>
+
                 <div class="modificar-cafeteria">
                     <div class="titulo">
                         <a href='modificarCafeterias.jsp'><i class="fas fa-chevron-circle-left fa-3x"></i></a>
