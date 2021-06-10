@@ -88,7 +88,7 @@ if(sessionOk.getAttribute("usuario")==null){
                             <p class="texto nombre"><%=prod.getNom_prod()%></p>
                             <p class="texto"><%= prod.getDesc_prod()%></p>
                             <p class="texto"><%=prod.getPre_prod()%></p>
-                            <form action="añadirPedido.jsp" method="POST">
+                            <form action="anadirPedido.jsp" method="POST">
                                 <input type="hidden" name="admrs" value="<%=prod.getId_prod()%>"/>
                                 <input type="hidden" name="ewewe" value="<%=id_caf%>"/>
                                 <button type="submit"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
