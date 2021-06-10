@@ -91,7 +91,7 @@ if(sessionOk.getAttribute("usuario")==null){
             <div class="nuevo-producto">
                 <h2 class="titulo-secundario">Nuevo Producto</h2>
 
-                <form name="formRegistroProducto" action="RegistrarPro" method="POST">
+                <form name="formRegistroProducto" action="../RegistrarPro" method="POST">
                     <a href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu producto</a>
                     <input class="texto campo" type="text" name="fot_prod" placeholder="Coloca aquí tu link de DirectLink">
                     
