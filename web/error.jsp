@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
-    <link rel="stylesheet" href="../css/externals/normalize.css">
-    <link rel="stylesheet" href="../css/anadirpedido.css">
+    <link rel="stylesheet" href="css/externals/normalize.css">
+    <link rel="stylesheet" href="css/anadirpedido.css">
     <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <title>Error | KUALI</title>
     </head>
     <body>
+        <style>
+            h1, a{
+                margin-left: 3rem;
+            }
+            
+        </style> 
         <div class="contenedor-principal">
             <nav class="menu">
                <div class="logo">
