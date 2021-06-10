@@ -40,7 +40,7 @@ if(sessionOk.getAttribute("id")==null){
         %>
         <nav class="menu">
            <div class="logo">
-                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             
             <div class="ubicacion">
@@ -52,7 +52,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
             
             <div class="opciones-usuario">
-                <img src="../img/administrador-perfil.png" alt="imagen de perfil del usuario actual">
+                <a href="inicioUsuarios.jsp"><img src="../img/administrador-perfil.png" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
         <%
@@ -60,7 +60,7 @@ if(sessionOk.getAttribute("id")==null){
         %>
         <nav class="menu">
            <div class="logo">
-                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
 
             <div class="ubicacion">
@@ -76,7 +76,7 @@ if(sessionOk.getAttribute("id")==null){
             </div>
     
             <div class="opciones-usuario">
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+                <a href="inicioUsuarios.jsp"><img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
         <%
@@ -93,8 +93,6 @@ if(sessionOk.getAttribute("id")==null){
                     <p class="texto"><span>Password:</span> <%=u.getPass_usu()%></p>
                 </div>
             </div>
-    
-            <a href="../CerrarSesion">Cerrar Sesion</a>
             
             <div class="under">
                 <div class="modificar-datos">

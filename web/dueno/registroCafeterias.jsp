@@ -73,6 +73,7 @@ if(sessionOk.getAttribute("id")==null){
                 </a>
             </div>
         </div>
+
         <div class="contenido">
             <div class="menu-administrador">
                 
@@ -89,26 +90,26 @@ if(sessionOk.getAttribute("id")==null){
                 </div>
             </div>
 
-           <div class="nueva-cafeteria">
-            <h2 class="titulo-principal">Registrar una cafetería</h2>
+            <div class="nueva-cafeteria">
+                <h2 class="titulo-principal">Registrar una cafetería</h2>
 
-            <form action="../RegistrarCaf" method="POST">
-                <a class="texto" href="https://postimages.org" target="_blank">Haz click aquí para subir la foto de tu cafeteria</a>
+                <form action="../RegistrarCaf" method="POST">
+                    <a class="texto" href="https://postimages.org" target="_blank">Haz click aquí para subir la foto de tu cafeteria</a>
+                    
+                    <div class="directLink">
+                        <p class="texto">Copia y pega tu enlace de DirectLink aquí</p>
+                        <input type="text" name="fot_caf" autocomplete="off" placeholder="Link de DirectLink"><br>
+                    </div>
+
+                    <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
+                    <input type="text" name="nom_caf" placeholder="Nombre de la cafetería"/><br>
+                    <input type="text" name="calle_caf" placeholder="Calle del local"><br>
+                    <input type="text" name="col_caf" placeholder="Colonia del local"><br>
+                    <input type="text" name="num_caf" placeholder="Numero de tu local"><br>
+                    <input onclick="return validar()" type="submit" value='Registrar cafetería'/>
                 
-                <div class="directLink">
-                    <p class="texto">Copia y pega tu enlace de DirectLink aquí</p>
-                    <input type="text" name="fot_caf" autocomplete="off" placeholder="Link de DirectLink"><br>
-                </div>
-
-                <input type='hidden' name="id_usuC" value='<%=id_usu%>'/>
-                <input type="text" name="nom_caf" placeholder="Nombre de la cafetería"/><br>
-                <input type="text" name="calle_caf" placeholder="Calle del local"><br>
-                <input type="text" name="col_caf" placeholder="Colonia del local"><br>
-                <input type="text" name="num_caf" placeholder="Numero de tu local"><br>
-                <input onclick="return validar()" type="submit" value='Registrar cafetería'/>
-            
-            </form>
-           </div>
+                </form>
+            </div>
         </div>
     <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>

@@ -12,27 +12,25 @@ String usuario="";
 HttpSession sessionOk = request.getSession();
 
 if(sessionOk.getAttribute("usuario")==null){
-    response.sendRedirect("../error.jsp?admrs=2");
-}else if(sessionOk.getAttribute("autorizacion")==null){
-    response.sendRedirect("../error.jsp?admrs=2");
+    response.sendRedirect("../error.jsp?admrs=2"); 
+}else if("0".equals(sessionOk.getAttribute("autorizacion"))){
+    response.sendRedirect("../dueno/verCafeterias.jsp");
 }else{
+
     usuario = (String)sessionOk.getAttribute("usuario");
     idUS = (String)session.getAttribute("id");
+
     int id_usu=Integer.parseInt(idUS);
+    int id_caf=Integer.parseInt(request.getParameter("admrs").trim());
     Cafeteria opc = new Cafeteria();
-    int id_caf = Integer.parseInt(request.getParameter("id_caf").trim());
     Cafeteria c=opc.getCafeteriaByIdCaf(id_caf);
     
-    String id_proS=request.getParameter("id_pro");
-    int id_prod=Integer.parseInt(id_proS);
-    Productos opP = new Productos();
-    Productos p=opP.getProductoById(id_prod);
     Usuario opu = new Usuario();
     Usuario u=opu.getUsuarioById(id_usu);
     
     if (u.getPerm_usu()==3){
 %>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -41,8 +39,8 @@ if(sessionOk.getAttribute("usuario")==null){
         <script data-ad-client="ca-pub-1261964740268428" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
         <link rel="stylesheet" href="../css/externals/normalize.css">
-        <link rel="stylesheet" href="../css/modificarProducto.css">
-        <title>Editar Producto | Kuali</title>
+        <link rel="stylesheet" href="../css/operacionCafeteria.css">
+        <title>Modificar Cafeteria | KUALI</title>
     </head>
     <body>
         <div class="contenedor-dashboard">
@@ -77,47 +75,43 @@ if(sessionOk.getAttribute("usuario")==null){
                     </a>
                 </div>
             </div>
-        
+
             <div class="contenido">
-                <div class="modificar-producto">
+                <div class="modificar-cafeteria">
                     <div class="titulo">
-                        <a href='operacionProductos.jsp?admrs=<%=id_caf%>'><i class="fas fa-chevron-circle-left fa-3x"></i></a>
-                        <h1 class="titulo-principal">Modificar Producto</h1>
+                        <a href='modificarCafeterias.js'><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+                        <h1 class="titulo-principal">Modificar Cafetetería</h1>
                     </div>
 
-                    <form name="formRegistroProducto" action="../ActualizarPro" method="POST">
-                        <div class="nombre-producto">
-                            <p class="texto">Nombre del producto</p>
-                            <input class="texto campo" type="text" name="nom_prod" value="<%=p.getNom_prod()%>"/>
-                        </div>
+                    <form name='formModificarCafeteria' action='../ActualizarCaf' method='POST' name='formModificarCafeteria'>
+                        <input type='hidden' name='id_caf' value='<%=c.getId_caf()%>'/>
                         
-                        <div class="descripcion">
-                            <p class="texto">Descripcion del producto</p>
-                            <input class="texto campo" type="text" name="desc_prod" value="<%=p.getDesc_prod()%>"/>
-                        </div>
-                        
-                        <div class="precio">
-                            <p class="texto">Precio del producto</p>
-                            <input class="texto campo" type="text" name="pre_prod" value="<%=p.getPre_prod()%>">
-                        </div>
-                        
-                        <a href="https://postimages.org" target="_blank">Haz click aquí para subir una nueva foto <i class="fas fa-mouse-pointer"></i></a>
+                        <a class="texto" href="https://postimages.org" target="_blank">Accede a la siguiente página para subir la foto de tu cafeteria</a>.
                         
                         <div class="foto-producto">
-                            <p class="texto">Link de la foto del producto</p>
-                            <input class="texto campo" type="text" name="fot_prod" value="<%=p.getFot_prod()%>"/>
+                            <p class="texto">Copia el url que dice DirectLink y pégalo en el siguiente campo de texto</p>
+                            <input class="texto campo" type="text" name="fot_caf" value="<%=c.getFot_caf()%>">
                         </div>
                         
-                        <input type="hidden" name='id_prod' value="<%=p.getId_prod()%>">
-                        <input type="hidden" name='id_caf' value="<%=c.getId_caf()%>">
-                        <input onclick="return validar()" type="submit" value="Aceptar"/>
+                        <div class="nombre-cafeteria">
+                            <p>Nombre Local</p> 
+                            <input class="texto campo" type='text' name='nom_caf' value='<%=c.getNom_caf()%>'/>
+                        </div>
+                        
+                        <div class="direccion">
+                            <p>Direccion de la cafeteria</p> 
+                            <input class="texto campo" type='text' name='dir_caf' value='<%=c.getDir_caf()%>'/>
+                        </div>
+                        
+                        <input onclick="return validar()"type="submit" value="Aceptar"/>
                     </form>
                 </div>
             </div>
         </div>
-    
+
         <!-- SCRIPTS -->
         <script src="https://kit.fontawesome.com/59bcf5d722.js" crossorigin="anonymous"></script>
+        <script src="../js/validarModificarCafeteria.js"></script>
     </body>
 </html>
 <%

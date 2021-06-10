@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../img/logos/granoCafe.png" type="image/x-icon" rel="shortcut icon" />
@@ -128,7 +128,7 @@
         <div class="contenedor-favoritos">
             <div class="encabezado">
                 <h2 class="titulo-terciario">Bebidas Especiales</h2>
-                <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
+                <p>Las ideales para esos momentos especiales.</p>
             </div>
 
             <div class="contenedor-grid">
@@ -180,7 +180,7 @@
                         <div class="producto">
                             <p class="texto-producto">Cafe Expreso | Los amigos</p>
                             <hr />
-                            <p class="texto-etiquetas">Expreso | Los amigos | Especial | Cafe</p>
+                            <p class="texto-etiquetas">Expreso | Los amigos | Especial | Café</p>
                         </div>
                         <div class="boton">
                             <a href="">¡ Lo quiero !</a>
@@ -213,7 +213,7 @@
         <div class="contenedor-destacados">
             <div class="encabezado">
                 <h2 class="titulo-terciario">Productos Destacadas</h2>
-                <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
+                <p>Conoce nuestros destacados, seguro te ancantarán.</p>
             </div>
 
             <div class="contenedor-grid">
@@ -299,7 +299,7 @@
     
         <div class="menus-cafeterias">
             <div class="encabezado">
-                <h2 class="titulo-terciario">Cafeter�as</h2>
+                <h2 class="titulo-terciario">Cafeterías</h2>
                 <p>Aprovecha ahora los descuentos que tenemos para ti.</p>
                 
                 <div class="contenedor-cafeterias">
@@ -312,7 +312,7 @@
                         <div class="cafeteria">
                             <img src="<%=c.getFot_caf()%>" alt="Logo Cafeteria">
 
-                            <a href="menuCafeteria.jsp?qwer=<%=c.getId_caf()%>">Ver men�</a>
+                            <a href="menuCafeteria.jsp?qwer=<%=c.getId_caf()%>">Ver menú</a>
 
                         <%
                         }
@@ -330,13 +330,13 @@
     <footer>
         <div class="presentacion-kuali">
             <h3>KUALI</h3>
-            <p>El �nico sistema de servicio instant�neo y reservaciones en la CDMX.</p>
+            <p>El único sistema de servicio instantáneo y reservaciones en la CDMX.</p>
         </div>
 
         <div class="derechos">
-            <p>� 2021 Axolo Software. Todos los derechos reservados.</p>
+            <p>© 2021 Axolo Software. Todos los derechos reservados.</p>
             <div class="enlacer">
-                <a href="../avisoPrivacidad.html">Pol�tica de privacidad</a>
+                <a href="../avisoPrivacidad.html">Política de privacidad</a>
                 <a href="../terminosyCondiciones.html">Terminos y Condiciones</a>
             </div>
         </div>

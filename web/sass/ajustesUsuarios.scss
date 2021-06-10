@@ -43,7 +43,9 @@
             }
 
             .datos-actuales {
-                border-color: color.$amarillo-kuali;
+                .titulo-principal {
+                    color: color.$amarillo-kuali;
+                }border-color: color.$amarillo-kuali;
                 
                 span {
                     font-weight: 400;

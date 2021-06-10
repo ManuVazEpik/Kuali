@@ -1,0 +1,122 @@
+// Archivos Parciales
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/dashboard';
+
+.contenido {
+    width: 100%;
+    height: 100%;
+
+    .nuevo-producto {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+        margin: 25px;
+        border-radius: 30px;
+            
+            .titulo-secundario {
+                margin-right: 50px;
+                color: color.$verde-kuali;
+            }
+
+            form {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                padding-left: 50px;
+                border-left: 2px solid color.$verde-kuali;
+            
+                .campo {
+                    outline: none;
+                    border: none;
+                    border-bottom: 2px solid color.$verde-kuali;
+                    background: none;
+                }
+
+                a {
+                    background-color: color.$cafe-kuali;
+                    color: color.$amarillo-kuali;
+                    padding: 1% 10%;
+                    text-decoration: none;
+                    text-align: center;
+                    margin-top: 30px;
+                    justify-content: center;
+                    border-radius: 5px;
+                    
+                    i {
+                        margin-left: 10px;
+                    }
+                }
+
+                a:hover {
+                    background-color: color.$verde-kuali;
+                    color: color.$blanco-kuali;
+                }
+            }
+    }
+
+    .table-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+            margin-left: 50px;
+            padding: 15px 0px;
+            border-bottom: 3px solid color.$cafe-kuali;
+        }
+    }
+
+    table, tr, td, th {
+        border: none;
+        outline: none;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 50px;
+
+        tr {
+            //border-radius: 10px;
+        
+            td {
+                padding: 10px 20px;
+            }
+
+            img {
+                width: 150px;
+                height: 100px;
+            }
+
+            // input {
+            //     color: color.$negro-kuali;
+            //     background: none;
+            //     border: none;
+            //     outline: none;
+            //     text-align: center;
+            // }
+
+            // input[name='cantidad'] {
+            //     border-radius: 50px;
+            //     border: 1px solid color.$amarillo-kuali;
+            //     padding: 10px 0px;
+            // }
+
+            // .cancelar {
+            //     border-radius: 50%;
+            //     padding: 15px 20px;
+            //     color: color.$amarillo-kuali;
+            //     background: color.$azul-kuali;
+            //     cursor: pointer;
+            // }
+
+            // .cancelar:hover {
+            //     color: color.$blanco-kuali;
+            //     background: color.$status-inactivo;
+            // }
+        }
+    }
+}

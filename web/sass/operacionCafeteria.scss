@@ -1,0 +1,100 @@
+// Archivos Parciales
+@use 'abstracts/colors' as color;
+@use 'abstracts/fonts';
+@use 'components/dashboard';
+
+.contenido {
+    width: 100%;
+    height: 100%;
+
+    .modificar-cafeteria {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        .titulo {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .titulo-principal {
+                color: color.$verde-kuali;
+                margin-left: 30px;
+            }
+
+            i {
+                color: color.$cafe-kuali;
+            }
+            
+            i:hover {
+                color: color.$amarillo-kuali;
+            }
+        }
+
+        form {
+            width: 65%;
+            padding-top: 25px;
+            border-top: 2px solid color.$amarillo-kuali;
+            
+            .nombre-cafeteria, .direccion, .foto-producto, a {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                p {
+                    font-weight: 400;
+                    color: color.$verde-kuali;
+                    width: 50%;
+                }
+
+                .campo {
+                    width: 50%;
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid color.$amarillo-kuali;
+                    background: none;
+                }
+            }
+
+            a {
+                background-color: color.$cafe-kuali;
+                color: color.$amarillo-kuali;
+                padding: 1% 10%;
+                text-decoration: none;
+                text-align: center;
+                justify-content: center;
+                border-radius: 5px;
+                
+                i {
+                    margin-left: 10px;
+                }
+            }
+
+            a:hover {
+                background-color: color.$verde-kuali;
+                color: color.$blanco-kuali;
+            }
+            
+            input[type='submit'] {
+                width: 30%;
+                margin-top: 20px;
+                float: right;
+                border-radius: 50px;
+                padding: 15px 40px;
+                cursor: pointer;
+                border: none;
+                border-bottom: none;
+                color: color.$amarillo-kuali;
+                background: color.$azul-kuali;
+            }
+
+            input[type='submit']:hover {
+                color: color.$azul-kuali;
+                background: color.$amarillo-kuali;
+            }
+        }
+    }
+}

@@ -40,7 +40,7 @@
     <div class="contenedor-principal">
         <nav class="menu">
            <div class="logo">
-                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             
             <div class="ubicacion">
@@ -54,7 +54,7 @@
     
             <div class="opciones-usuario">
                 
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+                <a href="inicioUsuarios.jsp"><img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
 

@@ -43,24 +43,16 @@ if(sessionOk.getAttribute("usuario")==null){
     <div class="contenedor-principal">
         <nav class="menu">
             <div class="logo">
-                <a href="../index.html"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="./inicioUsuarios.jsp"><img src="../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             <div class="ubicacion">
-                <a href="inicioUsuarios.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Cafeterías</a>
+                <a href="inicioUsuarios.jsp"><i class="fas fa-store-alt fa-lg"></i>Cafeterías</a>
             </div>
             <div class="ubicacion">
-                <a href="carritoCompras.jsp"><i class="fas fa-map-marker-alt fa-lg"></i>Carrito de compras</a>
+                <a href="carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
             <div class="opciones-usuario">
-                <div class="caja_busqueda">
-                    <input class="card-filter" type="search" id='buscar-en-usuarios' placeholder="Buscar ...">
-                    
-                    <a class="boton_buscar">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-                
-                <img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+                <a href="inicioUsuarios.jsp"><img src="../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual"></a>
             </div>
         </nav>
 
@@ -74,14 +66,19 @@ if(sessionOk.getAttribute("usuario")==null){
             Cafeteria c = opc.getCafeteriaByIdCaf(id_caf);
         %>
             <div class="menu-cafeteria">
-                <h1 class="texto-principal"><%=c.getNom_caf()%> <%=c.getDir_caf()%> </h1>
+                <h1 class="titulo-principal"><%=c.getNom_caf()%></h1>
+                <p class="titulo-terciario"><%=c.getDir_caf()%></p>
                 <div class="grid-menu">
         <%
             for (Productos prod: lp) {
         %>                        
                     <div class="producto">
+                        <div class="imagen-producto">
+                            <img src="<%=prod.getFot_prod()%>" alt="Imagen del cafe de moka">
+                        </div>
+
                         <div class="descripcion">
-                            <p class="texto"><%=prod.getNom_prod()%></p>
+                            <p class="texto nombre"><%=prod.getNom_prod()%></p>
                             <p class="texto"><%= prod.getDesc_prod()%></p>
                             <p class="texto"><%=prod.getPre_prod()%></p>
                             <form action="añadirPedido.jsp" method="POST">
@@ -89,9 +86,6 @@ if(sessionOk.getAttribute("usuario")==null){
                                 <input type="hidden" name="ewewe" value="<%=id_caf%>"/>
                                 <button type="submit"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
                             </form>
-                        </div>
-                        <div class="imagen-producto">
-                            <img src="<%=prod.getFot_prod()%>" alt="Imagen del cafe de moka">
                         </div>
                     </div>
         <%
@@ -104,6 +98,7 @@ if(sessionOk.getAttribute("usuario")==null){
                 </div>
         </div>
     </div>
+    
     <footer>
         <div class="presentacion-kuali">
             <h3>KUALI</h3>

@@ -5,20 +5,26 @@
 
 .contenedor-principal {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     .header {
         width: 100%;
-        height: 500px;
-        background: rgb(185, 6, 6);
-        //background-repeat: no-repeat;
-        //background-size: contain;
+        height: 40%;
+        background: url('../img/headers-cafeterias/Cafetería\ 3.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         position: relative;
         z-index: 0;
 
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
         img {
             position: absolute;
-            margin: 0% 45%;
+            padding: 0px;
             bottom: -50px;
             border-radius: 20px;
             border: solid 2px color.$negro-kuali;
@@ -28,37 +34,88 @@
     .menu-cafeteria {
         background: color.$blanco-kuali;
         border-radius: 20px 20px 0px 0px;
-        padding: 50px;
         z-index: 1;
+        width: 100%;
+        height: 100%;
 
-        .texto-principal {
+        .titulo-principal, .titulo-terciario {
             text-align: center;
         }
 
         .grid-menu {
+            margin: 0px 50px;
             display: grid;
             grid-template-columns: 30% 30% 30%;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
 
             .producto {
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
+
+                //background: rgb(85, 33, 33);
+                border-radius: 20px;
+                padding: 50px;
 
                 .texto {
                     padding-left: 30px;
                 }
 
-                button {
-                    border-radius: 50px;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    background: color.$verde-kuali;
-                    padding: 10px 30px;
-                    color: color.$amarillo-kuali;
+                .imagen-producto {
+                    width: 50%;
+
+                    img {
+                        width: 250px;
+                        height: 200px;
+                        border-radius: 5px;
+                    }
+                }
+
+                .descripcion {
+                    margin-left: 20px;
+                    width: 50%;
+
+                    .nombre {
+                        font-weight: 400;
+                    }
+
+                    button {
+                        border-radius: 50px;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        background: color.$verde-kuali;
+                        padding: 10px 20px;
+                        color: color.$amarillo-kuali;
+                        width: 100%;
+                        margin-left: 25px;
+                    }
+
+                    button:hover {
+                        color: color.$verde-kuali;
+                        background: color.$amarillo-kuali;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .contenedor-principal {
+        .menu-cafeteria {
+            .grid-menu {
+                grid-template-columns: 45% 45%;
+            }
+
+            .producto {
+                .imagen-producto {
+                    img {
+                        width: 150px;
+                        height: 100px;
+                    }
                 }
             }
         }
