@@ -90,12 +90,12 @@ if (sesionOk.getAttribute("usuario") == null ) {
                         <td class="texto"><%=c.getNom_caf()%></td>
                         <td class="texto"><%=c.getDir_caf()%></td>
                         <td class="texto"><%=c.getId_usu()%></td>
-                        <td class="texto"><form action="Autorizar" method="POST">
+                        <td class="texto"><form action="../Autorizar" method="POST">
                             <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
                             <input type="hidden" name="tipo" value="1"/>
                             <input type="submit" value="Aceptar" class="aceptar"/>
                         </form></td>
-                        <td class="texto"><form action="Autorizar" method="POST">
+                        <td class="texto"><form action="../Autorizar" method="POST">
                             <input type="hidden" name="id_usu" value="<%=c.getId_caf()%>"/>
                             <input type="hidden" name="tipo" value="2"/>
                             <input type="submit" value="Rechazar" class="rechazar"/>
