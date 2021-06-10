@@ -70,7 +70,7 @@ if(sessionOk.getAttribute("usuario")==null){
     <div class="contenedor-principal">
         <nav class="menu">
             <div class="logo">
-                <a href="../usuario/inicioUsuarios.jsp"><img src="../../img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
+                <a href="../usuario/inicioUsuarios.jsp"><img src="img/logos/Logo_negro.png" alt="Logotipo de KUALI color blanco"></a>
             </div>
             
             <div class="ubicacion">
@@ -90,7 +90,7 @@ if(sessionOk.getAttribute("usuario")==null){
                     </a>
                 </div>
                 
-                <img src="../../img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
+                <img src="img/perfil-ejemplo.jpg" alt="imagen de perfil del usuario actual">
             </div>
         </nav>
         <h1 align="center">Pedidos Agendados</h1>
@@ -107,6 +107,7 @@ if(sessionOk.getAttribute("usuario")==null){
         for(Pedido p:listap){
             
             boolean finalizar= opP.comprobarFinalizacion(p.getId_ped());
+            
             if(contador!=p.getId_ped()){
                 ArrayList<DetallePedido> listadp=odp.getDetallePedidoCaf(p.getId_ped());
                 Usuario ou= new Usuario();
