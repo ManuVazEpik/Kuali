@@ -1,3 +1,4 @@
+;%@pafe contentType="text/html" pageEnconding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Cafeteria"%>
 <!DOCTYPE html>
