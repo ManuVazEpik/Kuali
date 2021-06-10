@@ -1,4 +1,4 @@
-;%@pafe contentType="text/html" pageEnconding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Clases.Cafeteria"%>
 <!DOCTYPE html>
@@ -68,7 +68,7 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <img src="../img/productos/sandwichJamon.jpg" class="imagen" alt="Primer Café">
+                            <img src="../img/Productos/sandwichJamon.jpg" class="imagen" alt="Primer Café">
                             <p class="texto-promocion">Solo $70.00 MXM</p>
                         </div>
 
@@ -87,7 +87,7 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <img src="../img/productos/tazaChocolate.jpg" class="imagen" alt="Primer Café">
+                            <img src="../img/Productos/tazaChocolate.jpg" class="imagen" alt="Primer Café">
                             <p class="texto-promocion">Solo $55.00 MXM</p>
                         </div>
 
@@ -106,7 +106,7 @@
                     
                     <div class="contenedor-producto">
                         <div class="imagen">
-                            <img src="../img/productos/pastelChocolate.jpg" class="imagen" alt="Primer Café"> 
+                            <img src="../img/Productos/pastelChocolate.jpg" class="imagen" alt="Primer Café"> 
                             <p class="texto-promocion">Solo $50.00 MXM</p>
                         </div>
 
@@ -135,7 +135,7 @@
             <div class="contenedor-grid">
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/cafeAmericano.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/cafeAmericano.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $50.00 MXM</p>
                     </div>
 
@@ -154,7 +154,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/cafeCapuchino.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/cafeCapuchino.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $45.00 MXM</p>
                     </div>
 
@@ -173,7 +173,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/cafeExpreso.jpg" class="imagen" alt="Primer Café">
+                        <img src="../img/Productos/cafeExpreso.jpg" class="imagen" alt="Primer Café">
                         <p class="texto-promocion">Solo $50.00 MXM</p>
                     </div>
 
@@ -192,7 +192,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/cafeLatte.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/cafeLatte.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $55.00 MXM</p>
                     </div>
 
@@ -220,7 +220,7 @@
             <div class="contenedor-grid">
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/sandwichPollo.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/sandwichPollo.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $80.00 MXM</p>
                     </div>
 
@@ -239,7 +239,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/croissant.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/croissant.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $40.00 MXM</p>
                     </div>
 
@@ -258,7 +258,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/frappeChocolate.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/frappeChocolate.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $55.00 MXM</p>
                     </div>
 
@@ -277,7 +277,7 @@
                 
                 <div class="contenedor-producto">
                     <div class="imagen">
-                        <img src="../img/productos/molletes.jpg" class="imagen" alt="Primer Café"> -->
+                        <img src="../img/Productos/molletes.jpg" class="imagen" alt="Primer Café"> -->
                         <p class="texto-promocion">Solo $70.00 MXM</p>
                     </div>
 
