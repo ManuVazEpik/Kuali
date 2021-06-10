@@ -34,7 +34,21 @@
             <div class="pedidos-agendados">
                 <a href="../pedidosAgendados.jsp"><i class="fas fa-calendar-alt fa-lg"></i>Mis Pedidos Agendados</a>
             </div>
-
+            <%
+                String id_cafS = request.getParameter("admrs");
+                int id_caf = 0;
+                if(id_cafS!=null){
+                    id_caf = Integer.parseInt(id_cafS);
+            %>
+            
+            <div class="ubicacion">
+                <a href="./menuCafeteria.jsp?qwer=<%=id_caf%>"><i class="fas fa-mug-hot fa-lg"></i>Menú</a>
+            </div>
+            
+            <%    
+                }
+            %>
+            
             <div class="ubicacion">
                 <a href="./carritoCompras.jsp"><i class="fas fa-shopping-cart fa-lg"></i>Carrito de compras</a>
             </div>
