@@ -100,8 +100,9 @@
                     </td>
                     <td>
                         <form action="../EliminarDelCarro" method="POST">
-                            <% System.out.println(prod.getId_prod()); %>
+                            
                             <input type="hidden" value="<%=prod.getId_prod()%>" name="id_elm">
+                            <input type="hidden" value="<%=id_cafS%>" name="admrs">
                             <input type="submit" value="X" class="cancelar">
 
                         </form>

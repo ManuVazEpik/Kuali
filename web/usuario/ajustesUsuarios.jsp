@@ -87,7 +87,7 @@ if(sessionOk.getAttribute("id")==null){
                 <h1 class="titulo-principal">Mis Datos</h1>
 
                 <div class="datos-actuales">
-                    <p class="texto"><span>completo:</span> <%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%></p>
+                    <p class="texto"><span>Nombre completo:</span> <%=u.getNom_usu()+" "+u.getAppat_usu()+" "+u.getApmat_usu()%></p>
                     <p class="texto"><span>Telefono:</span> <%=u.getTel_usu()%></p>
                     <p class="texto"><span>Email:</span> <%=u.getEmail_usu()%></p>
                     <p class="texto"><span>Password:</span> <%=u.getPass_usu()%></p>

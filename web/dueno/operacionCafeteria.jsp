@@ -79,7 +79,7 @@ if(sessionOk.getAttribute("usuario")==null){
             <div class="contenido">
                 <div class="modificar-cafeteria">
                     <div class="titulo">
-                        <a href='modificarCafeterias.js'><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+                        <a href='modificarCafeterias.jsp'><i class="fas fa-chevron-circle-left fa-3x"></i></a>
                         <h1 class="titulo-principal">Modificar Cafetetería</h1>
                     </div>
 

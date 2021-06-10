@@ -107,7 +107,7 @@ if(sessionOk.getAttribute("usuario")==null){
                 
 
             <div class="table-header">
-                <h1 class="titulo-secundario">Mis prodcutos</h1>
+                <h1 class="titulo-secundario">Mis productos</h1>
                 <p class="texto">¡ Hey ! Aquí puedes ver los productos de tu cafetería.</p>
             </div> 
 

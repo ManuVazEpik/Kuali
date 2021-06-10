@@ -94,8 +94,7 @@ if(sessionOk.getAttribute("usuario")==null){
             </div>
         </nav>
         <h1 align="center">Pedidos Agendados</h1>
-        <div class="pedidos">
-            <div class="contenedor-pedido">
+        
         <%
         DetallePedido odp = new DetallePedido();
         Pedido op = new Pedido();
@@ -117,19 +116,22 @@ if(sessionOk.getAttribute("usuario")==null){
                 Minuto om=new Minuto();
                 Minuto m=om.getMinutoById(p.getId_min());
         %>
-            
-                <div class="pedido">
+        <div class="pedidos">
+            <div class="contenedor-pedido">
+                
                     <%
                         for(DetallePedido dp: listadp){
                             Productos oprod = new Productos();
                             Productos prod = oprod.getProductoById(dp.getId_prod());
                     %>
+                <div class="pedido">
                     <p class="titulo-cuarto"><%=dp.getCant_detPed()%> <%=prod.getNom_prod()%></p>
                     <i class="fas fa-angle-down fa-lg"></i>
+                </div>
                     <%
                         }
                     %>
-                </div>
+                
                 <div class="descripcion">
                     <p class="texto">Nombre del Cliente: <%=u.getNom_usu()%> <%=u.getAppat_usu()%> <%=u.getApmat_usu()%></p>
                     <p class="texto">Fecha: <%=p.getFecha_ped()%></p>
